@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <title>Ionic App</title>
@@ -27,9 +28,27 @@
     }
   </script>-->
 
+  <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDJ43hNkwFMIbN-byQHkhC2-C_eZla1LAY",
+      authDomain: "new4irhubdatbase.firebaseapp.com",
+      databaseURL: "https://new4irhubdatbase.firebaseio.com",
+      projectId: "new4irhubdatbase",
+      storageBucket: "new4irhubdatbase.appspot.com",
+      messagingSenderId: "574481394265",
+      appId: "1:574481394265:web:0ea67c2de752aa8a"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
   <link href="build/main.css" rel="stylesheet">
 
 </head>
+
 <body>
 
   <!-- Ionic's root component and where the app will load -->
@@ -44,6 +63,8 @@
 
   <!-- The main bundle js is generated during the build process -->
   <script src="build/main.js"></script>
-
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAT55USDnQ-tZLHJlzryDJbxseD8sLSdZE&callback=initMap">
+  </script>
 </body>
+
 </html>
