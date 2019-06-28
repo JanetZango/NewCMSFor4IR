@@ -1,0 +1,7 @@
+{
+  "name": "NewCMSFor4IR",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
