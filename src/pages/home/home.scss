@@ -142,7 +142,7 @@ page-home {
         background: whitesmoke;
     }
     .switch-box>.view:nth-child(4){
-        background: green;
+        background: whitesmoke;
     }
     .view{
         width: 100%;
@@ -169,6 +169,7 @@ page-home {
         margin: 5px;
         border-radius: 10px;
         overflow: hidden;
+        background:white;
     }
     .card-container{
         width: 100%;
@@ -188,7 +189,7 @@ page-home {
         height: 70%;
         width: 100%;
         padding: 10px;
-        background: whitesmoke;
+        background: white;
         overflow-y: scroll;
     }
     .dates{
@@ -233,6 +234,12 @@ page-home {
         text-align: left;
         font-size: 12px;
     }
+    #subSub-head{
+        
+        font-weight: bold;
+        text-align: left;
+        font-size: 10px;
+    }
     .theSub-head{
         text-align: center !important;
     }
@@ -244,6 +251,9 @@ page-home {
     }
     #bg-desc{
         padding-left: 5px;
+    }
+    #bg-desc-email{
+        text-transform: lowercase;
     }
     @keyframes fadeInAnim {
         0%{
