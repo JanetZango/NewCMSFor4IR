@@ -8,13 +8,12 @@ page-home {
     .side-pane{
         width: 20%;
         height: 100%;
-        background: green;
+        background: white;
     }
     .cover-image{
         width: 100%;
         height: 250px;
         background: whitesmoke;
-        border: 1px solid black;
         position: relative;
         object-fit: cover;
     }
@@ -27,25 +26,60 @@ page-home {
         bottom: -40px;
         left: 50%;
         transform: translateX(-50%);
-        border: 1px solid black;
     }
     .buttons{
         width: 100%;
         height: calc(100% - 250px);
-        border: 1px solid black;
         padding: 10px;
         padding-top: 50px;
     }
-    .about-org{
-        border: 1px solid red;
+    .btns{
+        width: 100%;
     }
-    .misc{
-        border: 1px solid pink;
+    .btns>div{
+        width: calc(100% + 10px);
+        height: 35px;
+        line-height: 35px;
+        padding-left: 10px;
+        background: rgba(0, 0, 0, 0.192);
+        font-size: 16px;
+        font-weight: bold;
+        color: rgb(41, 41, 41);
+        margin: 2px;
+    }
+    .btns>div:hover{
+        background: rgba(83, 83, 83, 0.5);
+        cursor: pointer;
+
+    }
+    .about-org{
+    }
+    #misc{
+        padding: 5px;
+        max-height: 35px;
+        // border: 1px solid red;
+        position: relative;
+        overflow: hidden;
+        padding-bottom: 30px;
+        transition: 700ms;
+        #label{
+            line-height: 25px;
+        }
+    }
+    .more{
+        // width: 200px;
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        color: rgb(0, 102, 255);
+        font-weight: bold;
+    }
+    .more:hover{
+        cursor: pointer;
     }
     .org-name{
         width: 100%;
         text-align: center;
-        border: 1px solid;
     }
     .view-pane{
         width: 80%;
@@ -62,7 +96,6 @@ page-home {
         padding: 5px;
         width: 50%;
         height: 100%;
-        border: 1px solid black;
         display: flex;
     }
     .left{
