@@ -8,13 +8,12 @@ page-home {
     .side-pane{
         width: 20%;
         height: 100%;
-        background: green;
+        background: white;
     }
     .cover-image{
         width: 100%;
         height: 250px;
         background: whitesmoke;
-        border: 1px solid black;
         position: relative;
         object-fit: cover;
     }
@@ -27,30 +26,72 @@ page-home {
         bottom: -40px;
         left: 50%;
         transform: translateX(-50%);
-        border: 1px solid black;
     }
     .buttons{
         width: 100%;
         height: calc(100% - 250px);
-        border: 1px solid black;
         padding: 10px;
         padding-top: 50px;
     }
-    .about-org{
-        border: 1px solid red;
+    .btns{
+        width: 100%;
     }
-    .misc{
-        border: 1px solid pink;
+    .btns>div{
+        width: calc(100% + 10px);
+        height: 35px;
+        line-height: 35px;
+        padding-left: 10px;
+        background: rgba(0, 0, 0, 0.192);
+        font-size: 16px;
+        font-weight: bold;
+        color: rgb(41, 41, 41);
+        margin: 2px;
+        transition: 700ms;
+        border-bottom: 1px solid grey;
+    }
+    .btns>div:hover{
+        background: rgba(0, 0, 0, 0.342) !important;
+        cursor: pointer;
+
+    }
+    .btns>div:nth-child(1){
+        background: rgba(54, 54, 54, 0.5);
+    }
+    .about-org{
+        border-bottom: 1px solid rgba(0, 0, 0, 0.425);
+    }
+    #misc{
+        padding: 5px;
+        max-height: 35px;
+        // border: 1px solid red;
+        position: relative;
+        overflow: hidden;
+        padding-bottom: 30px;
+        transition: 700ms;
+        #label{
+            line-height: 25px;
+        }
+    }
+    .more{
+        // width: 200px;
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        color: rgb(0, 102, 255);
+        font-weight: bold;
+    }
+    .more:hover{
+        cursor: pointer;
     }
     .org-name{
         width: 100%;
         text-align: center;
-        border: 1px solid;
     }
     .view-pane{
         width: 80%;
         height: 100%;
         background: orange;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.288);
     }
     .nav-pane{
         width: 100%;
@@ -62,7 +103,6 @@ page-home {
         padding: 5px;
         width: 50%;
         height: 100%;
-        border: 1px solid black;
         display: flex;
     }
     .left{
@@ -86,23 +126,144 @@ page-home {
     .switch-box{
         width: 100%;
         height: calc(100% - 60px);
-        background: pink;
-        overflow-y: scroll;
+        background: white;
+        overflow-y: hidden;
+    }
+    .switch-box>div{
+        animation: 1s fadeInAnim;
     }
     .switch-box>.view:nth-child(1){
         background: red;
     }
     .switch-box>.view:nth-child(2){
-        background: blue;
+        background: whitesmoke;
     }
     .switch-box>.view:nth-child(3){
-        background: black;
+        background: whitesmoke;
     }
     .switch-box>.view:nth-child(4){
-        background: green;
+        background: whitesmoke;
     }
     .view{
         width: 100%;
         height: 100%;
+        overflow-y: scroll;
+    }
+    #pg3, #pg2, #pg1{
+        display: none;
+    }
+    #pg2, #pg3, #pg4{
+        padding: 15px;
+    }
+    #map{
+        
+    width: 100%;
+    height: 100%;
+    }
+    .card{
+        width: 29%;
+        min-width:200px;
+        height: 80%;
+        border: .5px solid rgba(0, 0, 0, 0.384);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.288);
+        margin: 5px;
+        border-radius: 10px;
+        overflow: hidden;
+        background:white;
+    }
+    .card-container{
+        width: 100%;
+        height: 100%;
+        // background: green;
+        display:flex;
+        flex-wrap: wrap;
+    }
+    .image-image{
+        width: 100%;
+        height: 30%;
+        // border: 1px solid red;
+        position: relative;
+        z-index: 1;
+    }
+    .more-details{
+        height: 70%;
+        width: 100%;
+        padding: 10px;
+        background: white;
+        overflow-y: scroll;
+    }
+    .dates{
+        display: flex;
+        width: 100%;
+        text-align: center;
+    }
+    .open, .close{
+        width:50%;
+        border: 1px solid rgba(0, 0, 0, 0.171);
+        margin: 5px;
+        border-radius: 5px;
+    }
+    .image-actual{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .action-buttons{
+        transition:700ms;
+        opacity: 0;
+        height: 30px;
+        background:rgba(0, 0, 0, 0.486);
+        position: absolute;
+        z-index: 1000000;
+        width: 100%;
+        bottom: 0;
+        text-align: right;
+        button{
+            height: 100%;
+            margin: 0;
+        }
+    }
+    #heading{
+        font-size: 20px;
+        font-weight: 400;
+        text-align: center;
+        margin-top: 10px;
+    }
+    #sub-head{
+        font-weight: bold;
+        text-align: left;
+        font-size: 12px;
+    }
+    #subSub-head{
+        
+        font-weight: bold;
+        text-align: left;
+        font-size: 10px;
+    }
+    .theSub-head{
+        text-align: center !important;
+    }
+    .card:hover .action-buttons{
+        opacity: 1;
+    }
+    #bg-desc::first-letter{
+        text-transform: capitalize
+    }
+    #bg-desc{
+        padding-left: 5px;
+    }
+    #bg-desc-email{
+        text-transform: lowercase;
+    }
+    @keyframes fadeInAnim {
+        0%{
+            opacity: 0;
+        }
+        20%{
+            opacity: 0;
+        }
+        100%{
+            opacity: 1;
+        }
     }
 }
