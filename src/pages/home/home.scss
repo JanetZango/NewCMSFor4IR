@@ -1,269 +1,270 @@
 page-home {
-    .container{
-        width: 100%;
-        height: 100%;
-        background: red;
-        display: flex;
-    }
-    .side-pane{
-        width: 20%;
-        height: 100%;
-        background: white;
-    }
-    .cover-image{
-        width: 100%;
-        height: 250px;
-        background: whitesmoke;
-        position: relative;
-        object-fit: cover;
-    }
-    .logo-image{
-        width: 80px;
-        height: 80px;
-        border-radius: 100px;
-        object-fit: contain;
-        position: absolute;
-        bottom: -40px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    .buttons{
-        width: 100%;
-        height: calc(100% - 250px);
-        padding: 10px;
-        padding-top: 50px;
-    }
-    .btns{
-        width: 100%;
-    }
-    .btns>div{
-        width: calc(100% + 10px);
-        height: 35px;
-        line-height: 35px;
-        padding-left: 10px;
-        background: rgba(0, 0, 0, 0.192);
-        font-size: 16px;
-        font-weight: bold;
-        color: rgb(41, 41, 41);
-        margin: 2px;
-        transition: 700ms;
-        border-bottom: 1px solid grey;
-    }
-    .btns>div:hover{
-        background: rgba(0, 0, 0, 0.342) !important;
-        cursor: pointer;
-
-    }
-    .btns>div:nth-child(1){
-        background: rgba(54, 54, 54, 0.5);
-    }
-    .about-org{
-        border-bottom: 1px solid rgba(0, 0, 0, 0.425);
-    }
-    #misc{
-        padding: 5px;
-        max-height: 35px;
-        // border: 1px solid red;
-        position: relative;
-        overflow: hidden;
-        padding-bottom: 30px;
-        transition: 700ms;
-        #label{
-            line-height: 25px;
-        }
-    }
-    .more{
-        // width: 200px;
-        position: absolute;
-        right: 10px;
-        bottom: 10px;
-        color: rgb(0, 102, 255);
-        font-weight: bold;
-    }
-    .more:hover{
-        cursor: pointer;
-    }
-    .org-name{
-        width: 100%;
-        text-align: center;
-    }
-    .view-pane{
-        width: 80%;
-        height: 100%;
-        background: orange;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.288);
-    }
-    .nav-pane{
-        width: 100%;
-        height: 60px;
-        background: rgb(202, 124, 124);
-        display: flex;
-    }
-    .left, .right{
-        padding: 5px;
-        width: 50%;
-        height: 100%;
-        display: flex;
-    }
-    .left{
-        img{
-            height: 100%;
-
-        }
-        h4{
-            margin-left: 10px;
-            line-height: 20px;
-            color: rgb(49, 49, 49);
-        }
-    }
-    .right{
-        text-align: right;
-        ion-searchbar{
-            width: 50%;
-            
-        }
-    }
-    .switch-box{
-        width: 100%;
-        height: calc(100% - 60px);
-        background: white;
-        overflow-y: hidden;
-    }
-    .switch-box>div{
-        animation: 1s fadeInAnim;
-    }
-    .switch-box>.view:nth-child(1){
-        background: red;
-    }
-    .switch-box>.view:nth-child(2){
-        background: whitesmoke;
-    }
-    .switch-box>.view:nth-child(3){
-        background: whitesmoke;
-    }
-    .switch-box>.view:nth-child(4){
-        background: whitesmoke;
-    }
-    .view{
-        width: 100%;
-        height: 100%;
-        overflow-y: scroll;
-    }
-    #pg3, #pg2, #pg1{
-        display: none;
-    }
-    #pg2, #pg3, #pg4{
-        padding: 15px;
-    }
-    #map{
-        
+  .container {
     width: 100%;
     height: 100%;
+    background: red;
+    display: flex;
+  }
+  .side-pane {
+    width: 20%;
+    height: 100%;
+    background: white;
+  }
+  .cover-image {
+    width: 100%;
+    height: 250px;
+    background: whitesmoke;
+    position: relative;
+    object-fit: cover;
+  }
+  .logo-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+    object-fit: contain;
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .buttons {
+    width: 100%;
+    height: calc(100% - 250px);
+    padding: 10px;
+    padding-top: 50px;
+  }
+  .btns {
+    width: 100%;
+  }
+  .btns > div {
+    width: calc(100% + 10px);
+    height: 35px;
+    line-height: 35px;
+    padding-left: 10px;
+    background: rgba(0, 0, 0, 0.192);
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(41, 41, 41);
+    margin: 2px;
+    transition: 700ms;
+    border-bottom: 1px solid grey;
+  }
+  .btns > div:hover {
+    background: rgba(0, 0, 0, 0.342) !important;
+    cursor: pointer;
+  }
+  .btns > div:nth-child(1) {
+    background: rgba(54, 54, 54, 0.5);
+  }
+  .about-org {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.425);
+  }
+  #misc {
+    padding: 5px;
+    max-height: 35px;
+    // border: 1px solid red;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 30px;
+    transition: 700ms;
+    #label {
+      line-height: 25px;
     }
-    .card{
-        width: 29%;
-        min-width:200px;
-        height: 80%;
-        border: .5px solid rgba(0, 0, 0, 0.384);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.288);
-        margin: 5px;
-        border-radius: 10px;
-        overflow: hidden;
-        background:white;
+  }
+  .more {
+    // width: 200px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    color: rgb(0, 102, 255);
+    font-weight: bold;
+  }
+  .more:hover {
+    cursor: pointer;
+  }
+  .org-name {
+    width: 100%;
+    text-align: center;
+  }
+  .view-pane {
+    width: 80%;
+    height: 100%;
+    background: orange;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.288);
+  }
+  .nav-pane {
+    width: 100%;
+    height: 60px;
+    background: rgb(202, 124, 124);
+    display: flex;
+  }
+  .left,
+  .right {
+    padding: 5px;
+    width: 50%;
+    height: 100%;
+    display: flex;
+  }
+  .left {
+    img {
+      height: 100%;
     }
-    .card-container{
-        width: 100%;
-        height: 100%;
-        // background: green;
-        display:flex;
-        flex-wrap: wrap;
+    h4 {
+      margin-left: 10px;
+      line-height: 20px;
+      color: rgb(49, 49, 49);
     }
-    .image-image{
-        width: 100%;
-        height: 30%;
-        // border: 1px solid red;
-        position: relative;
-        z-index: 1;
+  }
+  .right {
+    text-align: right;
+    ion-searchbar {
+      width: 50%;
     }
-    .more-details{
-        height: 70%;
-        width: 100%;
-        padding: 10px;
-        background: white;
-        overflow-y: scroll;
+  }
+  .switch-box {
+    width: 100%;
+    height: calc(100% - 60px);
+    background: white;
+    overflow-y: hidden;
+  }
+  .switch-box > div {
+    animation: 1s fadeInAnim;
+  }
+  .switch-box > .view:nth-child(1) {
+    background: red;
+  }
+  .switch-box > .view:nth-child(2) {
+    background: whitesmoke;
+  }
+  .switch-box > .view:nth-child(3) {
+    background: whitesmoke;
+  }
+  .switch-box > .view:nth-child(4) {
+    background: whitesmoke;
+  }
+  .view {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+  }
+  #pg3,
+  #pg2,
+  #pg1 {
+    display: none;
+  }
+  #pg2,
+  #pg3,
+  #pg4 {
+    padding: 15px;
+  }
+  #map {
+    width: 100%;
+    height: 100%;
+  }
+  .card {
+    width: 29%;
+    min-width: 200px;
+    height: 80%;
+    border: 0.5px solid rgba(0, 0, 0, 0.384);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.288);
+    margin: 5px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+  }
+  .card-container {
+    width: 100%;
+    height: 100%;
+    // background: green;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .image-image {
+    width: 100%;
+    height: 30%;
+    // border: 1px solid red;
+    position: relative;
+    z-index: 1;
+  }
+  .more-details {
+    height: 70%;
+    width: 100%;
+    padding: 10px;
+    background: white;
+    overflow-y: scroll;
+  }
+  .dates {
+    display: flex;
+    width: 100%;
+    text-align: center;
+  }
+  .open,
+  .close {
+    width: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.171);
+    margin: 5px;
+    border-radius: 5px;
+  }
+  .image-actual {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .action-buttons {
+    transition: 700ms;
+    opacity: 0;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.486);
+    position: absolute;
+    z-index: 1000000;
+    width: 100%;
+    bottom: 0;
+    text-align: right;
+    button {
+      height: 100%;
+      margin: 0;
     }
-    .dates{
-        display: flex;
-        width: 100%;
-        text-align: center;
+  }
+  #heading {
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 10px;
+  }
+  #sub-head {
+    font-weight: bold;
+    text-align: left;
+    font-size: 12px;
+  }
+  #subSub-head {
+    font-weight: bold;
+    text-align: left;
+    font-size: 10px;
+  }
+  .theSub-head {
+    text-align: center !important;
+  }
+  .card:hover .action-buttons {
+    opacity: 1;
+  }
+  #bg-desc::first-letter {
+    text-transform: capitalize;
+  }
+  #bg-desc {
+    padding-left: 5px;
+  }
+  #bg-desc-email {
+    text-transform: lowercase;
+  }
+  @keyframes fadeInAnim {
+    0% {
+      opacity: 0;
     }
-    .open, .close{
-        width:50%;
-        border: 1px solid rgba(0, 0, 0, 0.171);
-        margin: 5px;
-        border-radius: 5px;
+    20% {
+      opacity: 0;
     }
-    .image-actual{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    100% {
+      opacity: 1;
     }
-    .action-buttons{
-        transition:700ms;
-        opacity: 0;
-        height: 30px;
-        background:rgba(0, 0, 0, 0.486);
-        position: absolute;
-        z-index: 1000000;
-        width: 100%;
-        bottom: 0;
-        text-align: right;
-        button{
-            height: 100%;
-            margin: 0;
-        }
-    }
-    #heading{
-        font-size: 20px;
-        font-weight: 400;
-        text-align: center;
-        margin-top: 10px;
-    }
-    #sub-head{
-        font-weight: bold;
-        text-align: left;
-        font-size: 12px;
-    }
-    #subSub-head{
-        
-        font-weight: bold;
-        text-align: left;
-        font-size: 10px;
-    }
-    .theSub-head{
-        text-align: center !important;
-    }
-    .card:hover .action-buttons{
-        opacity: 1;
-    }
-    #bg-desc::first-letter{
-        text-transform: capitalize
-    }
-    #bg-desc{
-        padding-left: 5px;
-    }
-    #bg-desc-email{
-        text-transform: lowercase;
-    }
-    @keyframes fadeInAnim {
-        0%{
-            opacity: 0;
-        }
-        20%{
-            opacity: 0;
-        }
-        100%{
-            opacity: 1;
-        }
-    }
+  }
 }
