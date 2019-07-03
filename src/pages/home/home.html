@@ -1,10 +1,10 @@
-<ion-content>
+
   <div class="container">
     <!-- this is the side panel -->
     <div class="side-pane">
       <div class="cover-image">
-        <img src="../../assets/imgs/logo.png" alt="" class="cover-image">
-        <img src="../../assets/imgs/logo.png" alt="" class="logo-image">
+        <img src="../../assets/imgs/placeholder.jpg" alt="" class="cover-image">
+        <img src="../../assets/imgs/placeholder.jpg" alt="" class="logo-image">
       </div>
       <div class="buttons">
         <div class="org-name">
@@ -15,10 +15,12 @@
           <div (click)="showServicesPage()" id="btn2">Services</div>
           <div (click)="showProgrammesPage()" id="btn3">Progammes</div>
           <div (click)="showJobsPage()" id="btn4">Job Opportunities</div>
+          <div (click)="showWiFiPage()" id="btn5">WiFi</div>
         </div>
         <div class="about-org">
+          
+            <div id="more" (click)="showMoreDetails()">{{more}}</div>
           <div id="misc">
-            <div class="more" (click)="showMoreDetails()">{{more}}</div>
             <b id="label">About</b> <br><br>
             <b>Address:</b> <br>
             4877 ugago street protea glen ext 3 johannesburg 1819 <br><br>
@@ -41,7 +43,7 @@
       <!-- top navigation pane -->
       <div class="nav-pane">
         <div class="left">
-          <img src="../../assets/imgs/logo.png" alt="">
+          <img id="web-logo" src="../../assets/imgs/placeholder.jpg" alt="">
           <h4>4IR Resources Hub</h4>
         </div>
         <div class="right">
@@ -64,11 +66,11 @@
             <div class="card">
               <div class="image-image">
                 <div class="action-buttons">
-                  <button ion-button clear color="light">Hide</button>
+                  <button ion-button clear color="light" (click)="hideService()">{{showHide}}</button>
                   <button ion-button clear color="light">Delete</button>
                   <button ion-button clear color="light">Edit</button>
                 </div>
-                <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
+                <img src="../../assets/imgs/placeholder.jpg" alt="" class="image-actual">
               </div>
               <div class="more-details">
                 <p id="heading">Service Name</p>
@@ -101,20 +103,30 @@
           <div class="card-container">
             <div class="card">
               <div class="image-image">
+                <img src="../../assets/imgs/placeholder.jpg" alt="" id="prog-logo">
                 <div class="action-buttons">
-                  <button ion-button clear color="light">Hide</button>
+                    <button ion-button clear color="light" (click)="hideProgramme()">{{showHideProg}}</button>
                   <button ion-button clear color="light">Delete</button>
                   <button ion-button clear color="light">Edit</button>
                 </div>
-                <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
+                <img src="../../assets/imgs/placeholder.jpg" alt="" class="image-actual">
               </div>
               <div class="more-details">
                 <p id="heading">Programme Name</p>
+                <p id="sub-head">Programme Type</p>
+                <p id="bg-desc">Learnership</p>
                 <p id="sub-head">Background</p>
                 <p id="bg-desc">
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe totam culpa quisquam molestias
                   blanditiis voluptatem necessitatibus id natus, consequuntur beatae tempore sunt vel. Recusandae
                   necessitatibus quos aspernatur, qui nesciunt nihil.
+                </p>
+                <p id="sub-head">Benefits</p>
+                <p id="bg-desc">
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe atque libero praesentium
+                  exercitationem rem aut voluptas, eius quae rerum quo architecto incidunt consequatur molestias a,
+                  soluta ipsum accusamus? Dignissimos fugit nam provident recusandae officiis eveniet, aspernatur sequi
+                  velit ratione voluptatibus?
                 </p>
                 <p id="sub-head">Description</p>
                 <p id="bg-desc">
@@ -124,6 +136,15 @@
                   similique delectus, quos, perspiciatis nam nesciunt qui nihil atque obcaecati minus. Deleniti
                   reiciendis quod cum nulla saepe nisi ratione.
                 </p>
+                <p id="sub-head">Application Link</p>
+                <p id="bg-desc-link"><a href="https://www.google.com">https://www.google.com</a>
+                </p>
+                <p id="sub-head">Contact Details</p>
+                <p id="subSub-head">Phone</p>
+                <p id="bg-desc">0813917127</p>
+                <p id="subSub-head">Email</p>
+                <p id="bg-desc-email">Me@email.com</p>
+                <p id="sub-head">Dates</p>
                 <div class="dates">
                   <div class="open">
                     <p id="sub-head" class="theSub-head">Application Open Date</p>
@@ -136,11 +157,11 @@
                 </div>
                 <div class="dates">
                   <div class="open">
-                    <p id="sub-head" class="theSub-head">Application Open Date</p>
+                    <p id="sub-head" class="theSub-head">Programme Start Date</p>
                     <p id="bg-desc">99/99/1999</p>
                   </div>
                   <div class="close">
-                    <p id="sub-head" class="theSub-head">Application Close Date</p>
+                    <p id="sub-head" class="theSub-head">Programme Close Date</p>
                     <p id="bg-desc">99/99/1999</p>
                   </div>
                 </div>
@@ -158,11 +179,11 @@
             <div class="card">
               <div class="image-image">
                 <div class="action-buttons">
-                  <button ion-button clear color="light">Hide</button>
+                    <button ion-button clear color="light" (click)="hideJob()">{{showHideJob}}</button>
                   <button ion-button clear color="light">Delete</button>
                   <button ion-button clear color="light">Edit</button>
                 </div>
-                <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
+                <img src="../../assets/imgs/placeholder.jpg" alt="" class="image-actual">
               </div>
               <div class="more-details">
                 <p id="heading">Job Name</p>
@@ -171,10 +192,6 @@
                   lore ipsum, dolor sit amet consectetur adipisicing elit. Saepe totam culpa quisquam molestias
                   blanditiis voluptatem necessitatibus id natus, consequuntur beatae tempore sunt vel. Recusandae
                   necessitatibus quos aspernatur, qui nesciunt nihil.
-                </p>
-                <p id="sub-head">Address</p>
-                <p id="bg-desc">
-                  4877 Ugago Street Protea Glen Ext 3
                 </p>
                 <p id="sub-head">Description</p>
                 <p id="bg-desc">
@@ -186,6 +203,13 @@
                 </p>
                 <p id="sub-head">Job Type</p>
                 <p id="bg-desc">Permanent</p>
+                <p id="sub-head">Address</p>
+                <p id="bg-desc">4877 ugago Street Protea Glen Ext 3</p>
+                <p id="sub-head">Contact Details</p>
+                <p id="subSub-head">Phone</p>
+                <p id="bg-desc">0813917127</p>
+                <p id="subSub-head">Email</p>
+                <p id="bg-desc-email">Me@email.com</p>
                 <p id="sub-head">Dates</p>
                 <div class="dates">
                   <div class="open">
@@ -211,9 +235,13 @@
             </div>
           </div>
         </div>
+        <div class="view" id="pg5">
+          <div class="wifi-container">
+
+          </div>
+        </div>
 
       </div>
 
     </div>
   </div>
-</ion-content>

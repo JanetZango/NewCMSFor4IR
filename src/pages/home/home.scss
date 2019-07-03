@@ -25,12 +25,28 @@ page-home {
     position: absolute;
     bottom: -40px;
     left: 50%;
+    background: whitesmoke;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.452);
+    border: 2px solid whitesmoke;
     transform: translateX(-50%);
+  }
+  #prog-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+    object-fit: contain;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: whitesmoke;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.452);
+    border: 2px solid whitesmoke;
   }
   .buttons {
     width: 100%;
     height: calc(100% - 250px);
     padding: 10px;
+    overflow: hidden;
     padding-top: 50px;
   }
   .btns {
@@ -57,34 +73,50 @@ page-home {
     background: rgba(54, 54, 54, 0.5);
   }
   .about-org {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.425);
+    border: 1px solid blue;
+    position: relative;
+    height: calc(100% - 250px);
   }
   #misc {
     padding: 5px;
     max-height: 35px;
-    // border: 1px solid red;
     position: relative;
-    overflow: hidden;
+    overflow-y: hidden;
     padding-bottom: 30px;
     transition: 700ms;
+    z-index: 1;
     #label {
       line-height: 25px;
     }
   }
-  .more {
+  #more {
     // width: 200px;
     position: absolute;
-    right: 10px;
-    bottom: 10px;
+    right: 18px;
+    top: 10px;
+    z-index: 10;
+    height: 25px;
+    // line-height: 25px;
+    width: 30%;
+    text-align: right;
+    background: white;
     color: rgb(0, 102, 255);
     font-weight: bold;
   }
-  .more:hover {
+  #more:hover {
     cursor: pointer;
   }
   .org-name {
     width: 100%;
     text-align: center;
+  }
+  #pg1{
+      overflow: hidden;
+  }
+  .wifi-container{
+      width: 100%;
+      height: 100%;
+      background: blue;
   }
   .view-pane {
     width: 80%;
@@ -95,7 +127,8 @@ page-home {
   .nav-pane {
     width: 100%;
     height: 60px;
-    background: rgb(202, 124, 124);
+    background: whitesmoke;
+    border-bottom: 1px solid black;
     display: flex;
   }
   .left,
@@ -117,7 +150,10 @@ page-home {
   }
   .right {
     text-align: right;
+    position: relative;
     ion-searchbar {
+      position: absolute;
+      right: 0;
       width: 50%;
     }
   }
@@ -142,15 +178,27 @@ page-home {
   .switch-box > .view:nth-child(4) {
     background: whitesmoke;
   }
+  .switch-box > .view:nth-child(5) {
+    background: green;
+  }
   .view {
     width: 100%;
     height: 100%;
     overflow-y: scroll;
   }
-  #pg3,
   #pg2,
-  #pg1 {
+  #pg3,
+  #pg4 {
     display: none;
+  }
+  a,
+  #bg-desc-link {
+    color: blue;
+  }
+  #bg-desc-link:visited,
+  a:visited {
+    color: red;
+    font-style: italic;
   }
   #pg2,
   #pg3,
@@ -182,7 +230,6 @@ page-home {
   .image-image {
     width: 100%;
     height: 30%;
-    // border: 1px solid red;
     position: relative;
     z-index: 1;
   }
@@ -197,6 +244,11 @@ page-home {
     display: flex;
     width: 100%;
     text-align: center;
+  }
+  #web-logo {
+    width: 80px;
+    height: 100%;
+    object-fit: contain;
   }
   .open,
   .close {
@@ -214,7 +266,7 @@ page-home {
     transition: 700ms;
     opacity: 0;
     height: 30px;
-    background: rgba(0, 0, 0, 0.486);
+    background: linear-gradient(rgba(0, 0, 0, 0.13), rgb(0, 0, 0));
     position: absolute;
     z-index: 1000000;
     width: 100%;
@@ -222,8 +274,13 @@ page-home {
     text-align: right;
     button {
       height: 100%;
-      margin: 0;
+      margin-bottom: 0;
     }
+  }
+  #prog-logo {
+    transition: 700ms;
+    position: absolute;
+    z-index: 1000000;
   }
   #heading {
     font-size: 20px;
@@ -247,13 +304,24 @@ page-home {
   .card:hover .action-buttons {
     opacity: 1;
   }
+
+  .card:hover #prog-logo {
+    top: 20px;
+    left: 20px;
+    width: 90px;
+    height: 90px;
+  }
+
   #bg-desc::first-letter {
     text-transform: capitalize;
   }
-  #bg-desc {
+  #bg-desc,
+  #bg-desc-email,
+  #bg-desc-link {
     padding-left: 5px;
   }
-  #bg-desc-email {
+  #bg-desc-email,
+  #bg-desc-link {
     text-transform: lowercase;
   }
   @keyframes fadeInAnim {
