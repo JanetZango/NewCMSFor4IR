@@ -3,12 +3,12 @@
     <!-- this is the side panel -->
     <div class="side-pane">
       <div class="cover-image">
-        <img src="../../assets/imgs/logo.png" alt="" class="cover-image">
-        <img src="../../assets/imgs/logo.png" alt="" class="logo-image">
+        <img src="{{downloadurl}}" alt="" class="cover-image">
+        <img src="{{downloadurlLogo}}" alt="" class="logo-image">
       </div>
       <div class="buttons">
         <div class="org-name">
-          <h4>Department of Science and Technology</h4>
+          <h4>{{category}}</h4>
         </div>
         <div class="btns">
           <div (click)="showMapPage()" id="btn1">Home</div>
@@ -21,17 +21,14 @@
             <div class="more" (click)="showMoreDetails()">{{more}}</div>
             <b id="label">About</b> <br><br>
             <b>Address:</b> <br>
-            4877 ugago street protea glen ext 3 johannesburg 1819 <br><br>
+            {{address}} <br><br>
             <b>Phone:</b>
             <br>
-            0813917127 <br><br>
+         {{contact}} <br><br>
             <b>Email:</b> <br>
-            email@domain.com <br><br>
+           {{email}} <br><br>
             <b>Description:</b> <br>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus alias, est cumque libero obcaecati, culpa
-            cum repellendus molestiae dolores doloremque totam mollitia minus facilis amet odio quas tempore! Quo
-            eveniet vitae illum, doloribus voluptatibus omnis blanditiis est deleniti mollitia dicta voluptatum eius
-            iste neque vero reprehenderit. Fugit eveniet sequi deserunt?
+            {{background}}
           </div>
         </div>
       </div>
@@ -45,14 +42,19 @@
           <h4>4IR Resources Hub</h4>
         </div>
         <div class="right">
-          <ion-searchbar placeholder="Search"></ion-searchbar>
+          <ion-searchbar placeholder="Search" (ionInput)="getItems($event)"></ion-searchbar>
+        </div>
+        <div class="results">
+          <ion-item *ngFor="let item of items" (click)="goToViewPage(item)">
+            {{ item}}
+          </ion-item>
         </div>
       </div>
       <!-- content switch case box -->
       <div class="switch-box">
 
         <div class="view" id="pg1">
-          <div id="map"></div>
+          <div #map  id="map"></div>
         </div>
         <div class="view" id="pg2">
           <ion-fab bottom right>
