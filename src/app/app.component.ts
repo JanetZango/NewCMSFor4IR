@@ -10,7 +10,7 @@ import { HubsProvider } from '../providers/hubs/hubs'
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LoginRegisterPage;
+  rootPage:any ;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public hubs: HubsProvider) {
     platform.ready().then(() => {
@@ -20,7 +20,7 @@ export class MyApp {
           this.rootPage = HomePage
         }
         else {
-          this.rootPage = HomePage
+          this.rootPage = LoginRegisterPage
         }
        })
       // Okay, so the platform is ready and our plugins are available.
