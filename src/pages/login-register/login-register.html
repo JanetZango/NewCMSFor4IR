@@ -1,24 +1,137 @@
-<ion-content>
-  <!-- content container  -->
-  <div class="container">
-    <!-- inputs to login -->
-    <div class="login-content">
-      <!-- Login div -->
-      <div>
-        <h1>Login</h1>
-        <ion-input placeholder="Email" [(ngModel)]="email" gModel required></ion-input>
-        <ion-input type="password" placeholder="Password" [(ngModel)]="password" gModel required> </ion-input>
-        <button ion-button (click)="Login()">Login</button>
-      </div>
+<ion-content class="cover">
+  <div class="background">
+   
+    <div class="left" padding>
+        <!-- <h2 text-center>Welcome please Login</h2> -->
+      <img class="logo" src="../../assets/imgs/407893.png">
+      <h1 text-center >4IR HUB</h1>
+      <p text-center> Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt soluta iure, eos qui hic accusantium laboriosam dolore nisi? Nobis esse in adipisci repellat quo eum ipsa deserunt vitae quibusdam necessitatibus!</p>
+      <div class="login" padding>
+          <h1 text-center>LogIn</h1>
+        <ion-list>
+          <ion-item class="inputs">
+      <ion-input placeholder="Email" [(ngModel)]="email" gModel required></ion-input>
+      </ion-item>
+      <br>
+      <ion-item class="inputs">
+      <ion-input type="password" placeholder="Password" [(ngModel)]="password" gModel required> </ion-input>
+      </ion-item>
+    </ion-list>
 
-      <!-- Risgter div -->
-      <div>
-        <h1>Register</h1>
-        <ion-input placeholder="Email" [(ngModel)]="signUpEmail" gModel required></ion-input>
-        <ion-input type="password" placeholder="Password" [(ngModel)]="signUpPassword" gModel required> </ion-input>
-        <button ion-button (click)="regsiter()">Register</button>
-      </div>
-    </div>
+    <button  block ion-button  (click)="Login()">Login</button>
+  </div>
+  
+  <div class="signup" padding>
+    <h1 text-center>SignUp</h1>
+    <ion-list>
+      <ion-item class="inputs">
+  <ion-input placeholder="Email" [(ngModel)]="signUpEmail" gModel required></ion-input>
+  </ion-item>
+  <br>
+  <ion-item class="inputs">
+  <ion-input type="password" placeholder="Password" [(ngModel)]="signUpPassword" gModel required> </ion-input>
+  </ion-item>
+  </ion-list>
+
+  <button round block ion-button  (click)="regsiter()">SignUp</button>
   </div>
 
+<h2 text-center id="or">OR</h2>
+<br>
+<div class="bottombtn">
+ <button outline block ion-button class="create" (click)="switchlogin()">Create Account</button>
+  <button outline block ion-button class="forgot" (click)="switchlogin()">Forgot Password</button>
+</div>
+ 
+    </div>
+
+    <div class="right">
+      <div class="test"></div>
+      <div class="border">
+
+     
+    <div class="hero-text" padding>
+<h1>4IR HUB</h1>
+<h5 text-center>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae nobis distinctio ea facilis debitis ipsa, repellendus omnis tempora explicabo accusamus sed nihil, quo non dignissimos minus reiciendis officia, autem ipsam.</h5>
+    </div>
+    </div>
+  </div>
+  </div>
+
+
+
+
+  <!-- <div class="container">
+  
+  <div class="header">
+     <img class="logotop" src="../../assets/imgs/407893.png" alt="" srcset=""> 
+      <h1 text-center class="logotext"> Welcome to <br> 4IR Hub</h1>
+  </div>
+  <div class="footer"></div>
+  </div>
+    <ion-card id="login-content" >
+     
+      <div class="right" padding>
+      <img class="logo" src="../../assets/imgs/407893.png" alt="" srcset="">
+      
+      <div class="Register">
+        <h1 text-center>Register</h1>
+        <h3 text-center>We're happy you're here!</h3>
+        <br>
+        <ion-list>
+            <ion-item class="inputs">
+        <ion-input placeholder="Email" [(ngModel)]="signUpEmail" gModel required></ion-input>
+        </ion-item>
+        <br>
+        <ion-item class="inputs">
+        <ion-input type="password" placeholder="Password" [(ngModel)]="signUpPassword" gModel required> </ion-input>
+        </ion-item>
+      </ion-list>
+      <br>
+        <button text-center block round ion-button (click)="regsiter()">Register</button>
+      </div>
+      </div>
+      <div class="left" padding>
+          <div class="leftcontent">
+            <h1 class="lefttext" text-center>Already have an account?</h1>
+            <h5 class="lefttext" text-center>Log in and go to your Dashboard.</h5>
+            <br>
+            <button round block outline ion-button color="light" (click)="switchlogin()">Login</button>
+          </div>
+        </div>
+      
+    </ion-card>
+  
+
+    <ion-card id="login-contentL" >
+      
+        <div class="leftL" padding>
+           <img class="logo" src="../../assets/imgs/407893.png" alt="" srcset=""> 
+            <div class="RegisterL">
+            <h1 text-center>Hi, there</h1>
+            <h3 text-center>You can log in to your account here!</h3>
+            <br>
+            <ion-list>
+                <ion-item class="inputs">
+            <ion-input placeholder="Email" [(ngModel)]="signUpEmail" gModel required></ion-input>
+            </ion-item>
+            <br>
+            <ion-item class="inputs">
+            <ion-input type="password" placeholder="Password" [(ngModel)]="signUpPassword" gModel required> </ion-input>
+            </ion-item>
+          </ion-list>
+          <br>
+            <button text-center block round ion-button (click)="Login()">LogIn</button>
+          </div>
+        </div>
+        <div class="rightL" padding>
+            <div class="leftcontent">
+                <h1 class="lefttext" text-center>New Here?</h1>
+                <h5 class="lefttext" text-center>Sign up and go to your Dashboard.</h5>
+                <br>
+                <button round block outline ion-button color="light" (click)="switchlogin()">SignUp</button>
+              
+        </div>
+        </div>
+      </ion-card> -->
 </ion-content>

@@ -55,5 +55,31 @@ export class LoginRegisterPage {
       Error.message;
     })
   }
+switchlogin() {
+  console.log(`click`);
+   let left = document.getElementsByClassName('login') as HTMLCollectionOf<HTMLElement>;
+   let right = document.getElementsByClassName('signup') as HTMLCollectionOf<HTMLElement>;
+   let background = document.getElementsByClassName('left') as HTMLCollectionOf<HTMLElement>;
+   let covercontent = document.getElementsByClassName('cover') as HTMLCollectionOf<HTMLElement>;
+ if (left[0].style.display == "flex" ) {
+  console.log(`if`);
+  left[0].style.display = "none"
+  right[0].style.display = "block"
+  
+ } else if(left[0].style.display == "none"){
+   console.log(`else if`);
+   left[0].style.display = "block" 
+   right[0].style.display = "none"
+   background[0].style.backgroundColor = "#dfde80"
+   covercontent[0].style.backgroundColor = "#dfde80"
+ }
+ else{
+console.log(`else`);
+left[0].style.display = "none"
+right[0].style.display = "block" 
+background[0].style.backgroundColor = "#abdf80"
+covercontent[0].style.backgroundColor = "#abdf80"
+ }
+}
 
 }
