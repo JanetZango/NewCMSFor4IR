@@ -5,7 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { LoginRegisterPage } from '../pages/login-register/login-register';
-import { HubsProvider } from '../providers/hubs/hubs'
+import { HubsProvider } from '../providers/hubs/hubs';
+import { FormsPage } from '../pages/forms/forms';
 @Component({
   templateUrl: 'app.html'
 })
@@ -17,7 +18,7 @@ export class MyApp {
 
       hubs.checkOrgAuthState().then((data: any) => {
         if (data == 1) {
-          this.rootPage = HomePage
+          this.rootPage = FormsPage
         }
         else {
           this.rootPage = HomePage

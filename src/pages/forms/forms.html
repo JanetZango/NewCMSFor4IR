@@ -1,0 +1,474 @@
+<ion-content>
+    <div class="theBody">
+      <div class="decider" *ngIf="hideRegisterAs">
+        <!-- <p class="intro">Kindly register as a programme or organization</p> -->
+        <p>Register as...</p>
+  
+        <select (change)="RegistrationType()" [(ngModel)]="program">
+          <option>Programme</option>
+          <option>Organisation</option>
+        </select>
+      </div>
+      <!-- <div class="left" id="placeholderDiv">
+        <div class="box">
+          <div class="step1" padding>
+            <div class="logo-container">
+              <div id="logoBG"></div>
+            </div>
+            <br>
+            <br>
+            <p>
+              Kindly fill in the following details and please dont leave out anything.
+            </p>
+          </div>
+        </div>
+      </div> --> 
+      <!-- *ngIf="showRegistionOrgs" -->
+      <div class="left">
+        <div class="box">
+          <div class="step1" padding>
+            <div class="logo-container">
+              <div id="logoBG"></div>
+            </div>
+            <br>
+            <br>
+            <p>
+              Kindly fill in the following details and please dont leave out anything.
+            </p>
+          </div>
+          <div class="step2">
+            <div class="slide-custom">
+  
+              <div class="dots">
+                <!-- <div>
+                  <progress id="file" max="100" value="{{progressBar}}"> </progress>
+                </div> -->
+                <div id="theDot"></div>
+              </div>
+  
+  
+  
+              <div class="theSlider">
+  
+                <div class="slideShow" id="page1">
+                  <p>Kindly fill in your communication details and please dont leave out anything.</p>
+                  <input type="text" class="inputText" placeholder="Name" [(ngModel)]="orgName" required>
+                  <input type="text" class="inputText" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()">
+                  <input type="tel" class="inputText" placeholder="Phone" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" [(ngModel)]="orgPhone">
+                  <input type="url" class="inputText" id="web" placeholder="Website" [(ngModel)]="orgWebsite">
+                  <br>
+                  <textarea name="" id="orgDesc" max="250" placeholder="Organisation Description" cols="4" [(ngModel)]="orgDescription"></textarea>
+                  <br>
+  
+  
+                  <button ion-button id="movetopage2" class="theButton" (click)="moveToPage2()">NEXT</button>
+  
+  
+  
+                </div>
+                <div class="slideShow" id="page2">
+                  <p>Does the organisation have WiFi</p>
+                  <select class="select-css" [(ngModel)]="offerWifi" (change)="checkWifi()">
+                    <option value="Do you offer WiFi" disabled>Do you offer WiFi?</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                  <br>
+                  <div *ngIf="ShowWifi">
+                    <p>Is it free?</p>
+                    <select class="select-css" [(ngModel)]="wifi" (change)="checkWifipayment()">
+                      <option value="Is it free?" disabled>Is it free?</option>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
+                    </select>
+                    <br>
+  
+                    <div *ngIf="ShowChooseRange">
+  
+                      <p>What is your pricing?</p>
+                      <select class="select-css" [(ngModel)]="chooseWifiRange">
+                        <option value="Choose Range" disabled>Choose Range</option>
+                        <option value="200MB Free">200MB Free</option>
+                        <option value="1GB Free">1GB Free</option>
+                        <option value="2GB Free">2GB Free</option>
+                        <option value="Unlimited">Unlimited</option>
+                      </select>
+                    </div>
+                  </div>
+  
+                  <button ion-button id="movetopage2" class="theButton" (click)="moveToPage3()">NEXT</button>
+                  <button ion-button class="theButtonBack" (click)="backToPage1()">BACK</button>
+                </div>
+                <div class="slideShow" id="page3" id="page3Org">
+                  <p>Almost there, please provide a category for the organisation.</p>
+                  <select class="select-css" (change)="showServices()" [(ngModel)]="category">
+                    <option value="Do you offer WiFi" disabled> Choose category </option>
+                    <option value="Higher Education Institution">Higher Education Institution </option>
+                    <option value="Library">Library</option>
+                    <option value="Learning Center">Learning Center</option>
+                    <option value="InterCafe">InterCafe</option>
+                    <option value="Mall">Mall</option>
+                    <option value="Coffee Shop">Coffee Shop</option>
+                  </select>
+                  <br>
+  
+  
+                  <div *ngIf="showheiServices" class="customSelect" (click)="HEIservices()">
+                    Select your services
+                    {{catService.title}}
+  
+                                        
+                        <ion-select [(ngModel)]="HeiServices" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="hei()">
+                          <ion-option value="Testing and analystics" selected="true">Testing and analystics</ion-option>
+                          <ion-option value="Rapid prototype">Rapid prototype</ion-option>
+                          <ion-option value="Consulation" selected="true"> Consulation</ion-option>
+                          <ion-option value="Research">Research</ion-option>
+                          <ion-option value="Applied Research">Applied Research</ion-option>
+                           </ion-select>
+                  </div>
+                  <br>
+  
+  
+                  <div *ngIf="showLibaryServices" class="customSelect" (click)="LibraryServices()">
+                    Select your services
+                    {{catService}}
+                    <ion-item>
+                        
+                          <ion-select [(ngModel)]="LibaryServices" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="libary()">
+                            <ion-option value="Research" selected="true">Research</ion-option>
+                            <ion-option value=">Training">Training</ion-option>
+                           </ion-select>
+                        </ion-item>
+                  </div>
+                  <br>
+  
+                  <div *ngIf="showinternetCafeServices" class="customSelect" (click)="internetCafe()">
+                    Select your services
+                    {{catService}}
+                    <ion-item>
+                        
+                          <ion-select [(ngModel)]="internetCafeService" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="internet()">
+                            <ion-option value="internet" selected="true">internet</ion-option>
+                            <ion-option value="printing">printing</ion-option>
+                            <ion-option value="fax">fax</ion-option>
+                           
+                           </ion-select>
+                        </ion-item>
+                  </div>
+                  <br>
+  
+                  <div *ngIf="showlearningCenterServices" class="customSelect" (click)="learningCenter()">
+                    Select your services
+                  </div>
+  
+                  <div *ngIf="showMallServices" class="customSelect" (click)="mall()">
+  
+                  </div>
+  
+  
+                  <div *ngIf="showCoffeeShopServices" class="customSelect" (click)=" Coffeeshops()">
+                    Select your services
+  
+                    <!-- <ion-select [(ngModel)]="mallService" multiple="true" cancelText="Cancel" okText="Okay">
+                        <!-- <ion-option value="Training" selected="true">Training</ion-option>
+                        <ion-option value="Skill development">Skill development</ion-option>
+                        <ion-option value="Research">Research</ion-option>
+                        <ion-option value="Incubation">Incubation</ion-option>
+                      </ion-select> --> -->
+                  </div>
+  
+                  <div *ngFor="let a of catService">
+                    &#65517; {{a.title}}
+                  </div>
+  
+  
+                  <div>
+  
+                  </div>
+                  <br>
+                  <textarea name="" id="orgDesc" placeholder="Provide clarity if any" cols="4"></textarea>
+                  <button ion-button id="movetopage2" class="theButton" (click)="moveToPage4()">NEXT</button>
+                  <button ion-button class="theButtonBack" (click)="backToPage2()">BACK</button>
+  
+                </div>
+                <div class="slideShow" id="page4">
+                  <div class="confirm">
+                    <p>
+                      Please confirm all the information you have inserted on the form, if everything is correct, please click "Done" to continue.</p>
+                    <div class="description" padding>
+  
+                      <h3>{{orgName}}</h3>
+                      <p>
+                        <b>Address</b>
+                        <br> {{orgAdress}}</p>
+                      <p>
+                        <b>Tel:</b> {{orgPhone}}</p>
+                      <p>
+                        <b>Website:</b> {{orgWebsite}}</p>
+                      <p>
+                        <b>Description</b>
+                        <br> {{orgDescription}}</p>
+                      <p>
+                        <b>WiFi Connectivity:</b> {{offerWifi}}</p>
+                      <p>
+                        <b>Free WiFi:</b> {{wifi}}</p>
+                      <p>
+                        <b>WiFi Range:</b> {{chooseWifiRange}}</p>
+  
+                    </div>
+  
+  
+                    <b>Selected Services</b>
+                    <div *ngFor="let a of catService ">
+                      {{a.title}}
+                    </div>
+                  </div>
+                  <!-- <textarea name="" id="orgDesc1" placeholder="Lorem ipsum dolor sit." cols="6"></textarea> -->
+                  <button ion-button class="theButton" id="movetopage2" (click)="saveToDB()">Done</button>
+                  <button ion-button class="theButtonBack" (click)="backToPage3()">BACK</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+  
+  
+  
+  
+  
+  
+      <div class="left" *ngIf="showRegistionProgs">
+        <div class="box">
+          <div class="step1" padding>
+            <div class="logo-container">
+              <div id="logoBG"></div>
+            </div>
+            <br>
+            <br>
+            <p>Welcome to the 4IR Resource Hub Content Managment System.
+            </p>
+          </div>
+          <div class="step2">
+            <div class="slide-custom">
+  
+              <div class="dots">
+  
+                <!-- <div>
+                  <progress id="file" max="100" value="{{progressBar}}"> </progress>
+                </div> -->
+                <div id="theDot"></div>
+              </div>
+  
+  
+  
+              <div class="theSlider">
+  
+                <div class="slideShow" id="page1">
+                  <p>Kindly fill in the following details and please dont leave out anything.</p>
+                  <div class="pusher"></div>
+  
+                  <input type="text" placeholder="programme Name" [(ngModel)]="promName" required>
+                  <br>
+                  <br>
+                  <label>Choose programme Category</label>
+                  <select class="select-css" (change)="selectProgramCategory()" [(ngModel)]="Programcategory" *ngIf="showProgramcategory">
+  
+                    <option value="Do you offer WiFi" disabled> Choose Programme </option>
+                    <option value="Biomanufacturing industry development centre">Biomanufacturing industry development centre </option>
+                    <option value="Biorefinery industry development Facility">Biorefinery industry development Facility
+                    </option>
+                    <option value="Data Science for impact and decision enablement program">Data Science for impact and decision enablement program</option>
+                    <option value="Experiential Training Programme">Experiential Training Programme</option>
+                    <option value="Grassroots innovation Programme">Grassroots innovation Programme</option>
+                    <option value="ICT-enabled Agriculture">ICT-enabled Agriculture</option>
+                    <option value="Nanomaterials Industrial Development Programme ">Nanomaterials Industrial Development Programme </option>
+                    <option value="Science and Technology Youth Journalists Programme ">Science and Technology Youth Journalists Programme</option>
+                    <option value="Water Technologies Demonstration Programme  ">Water Technologies Demonstration Programme </option>
+  
+                    <option value="Youth Technology Innovation Programme  ">Youth Technology Innovation Programme
+                    </option>
+                    <option value="mlab">mlab </option>
+                    <option value="Photonics Phototyping Facility">Photonics Phototyping Facility</option>
+  
+                    <option value="The Technology StationsProgramme">The Technology Stations Programme (TSP</option>
+                    <option value="Other">Other</option>
+  
+                  </select>
+  
+  
+                  <textarea *ngIf="showOther" name="" id="orgDesc" placeholder=" " cols="4" [(ngModel)]="other"></textarea>
+  
+  
+  
+                  <div class="the-dates">
+                    <div class="horizontal-containter">
+                      <div class="container-box">
+                        <div class="start">
+                          Application Start Date
+                          <br>
+                          <input type="date" class="text-center" class="dates-input" [(ngModel)]="openApplicationDate">
+                        </div>
+                      </div>
+                      <div class="container-box">
+                        <div class="end">
+                          Application End Date
+                          <br>
+                          <input type="date" class="text-center" class="dates-input" [(ngModel)]="closeApplicationDate">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="horizontal-containter">
+                      <div class="container-box">
+                        <div class="start">
+                          Programme Start Date
+                          <br>
+                          <input type="date" class="text-center" class="dates-input" [(ngModel)]="programStartDate">
+                        </div>
+                      </div>
+  
+                      <div class="container-box">
+                        <div class="end">
+                          Programme End Date
+                          <br>
+                          <input type="date" class="text-center" class="dates-input" [(ngModel)]="programCloseDate">
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="horizontal-containter">
+                      <div class="container-box">
+                      </div>
+                      <div class="container-box">
+                        <button ion-button id="movetopage2" class="theButton" (click)="moveToPage2progs()">NEXT</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="slideShow" id="page2">
+                  <div id="page2indent"></div>
+                  <p>Getting there, please provide your Introduction,Objectives and a Full Discription of your programme.</p>
+                  <div class="imput-field">
+                    <textarea name="" id="orgDesc" placeholder="Introduction" cols="4" [(ngModel)]="ProgramIntroduction"></textarea>
+  
+                    <span (mouseenter)="ProgramIntroductionHint()" (mouseleave)='hideProgramIntroductionHint()' class="dot">?</span>
+  
+                    <div *ngIf="showProgramIntroduction" class="info">Describes the scope of the program and give a brief explanation or summary of the Program.
+  
+                    </div>
+                  </div>
+                  <div class="imput-field">
+                    <textarea name="" id="orgDesc" placeholder="Objectives" cols="4" [(ngModel)]="objectives"></textarea>
+  
+  
+                    <span (mouseenter)="ProgramObjectiveHint()" (mouseleave)='hideObjectiveHint()' class="dot">?</span>
+  
+                    <div *ngIf='showObjective' class="info">All planning and strategic activities of the program</div>
+                  </div>
+                  <select class="select-css" [(ngModel)]="targetAudience">
+                    <option value="Do you offer WiFi" disabled> Target Audience </option>
+                    <option value="18 -25">18 - 25</option>
+                    <option value="18-35">18 - 35 </option>
+                  </select>
+                  <textarea name="" id="orgDesc" placeholder="Full description" cols="4" [(ngModel)]="programDescription"></textarea>
+                  <div class="horizontal-containter">
+                    <div class="container-box">
+                      <button ion-button id="movetopage2" class="theButton" (click)="moveToPage3progs()">NEXT</button>
+                    </div>
+                    <div class="container-box">
+                      <button ion-button class="theButtonBack" (click)="backToPage1()">BACK</button>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="slideShow" id="page3">
+                  <p>Almost there, please provide a category for the Programme.</p>
+                  <div class="customSelect" (click)="services()">
+                    Services
+                  </div>
+                  <div class="showSelected">
+  
+                    <b>Selected Services</b>
+                    <div class="services">
+                      <p *ngFor="let a of serviceArrayTemp">{{a}}</p>
+  
+                    </div>
+                  </div>
+                  <input class="fixSize1" type="text" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()">
+                  <br>
+                  <div class="input-field">
+                    <textarea name="" id="orgDesc" placeholder="Programme Benefits" cols="4" [(ngModel)]="programBenefits"></textarea>
+                    <span (mouseenter)="programeBenefits()" (mouseleave)='hideProgramBenefits()' class="dot">?</span>
+                    <div *ngIf="showProgramBenefits" class="info">What the programme offers</div>
+                  </div>
+                  <div class="imput-field">
+                    <textarea name="" id="orgDesc" placeholder="Additional Benefits" cols="4" [(ngModel)]="programAdditionalBenefits"></textarea>
+                    <span (mouseenter)="AdditionalBenefits()" (mouseleave)='hideAdditionalBenefits()' class="dot">?</span>
+                    <div *ngIf="showAdditionalBenefits" class="info">Extra information apart from the already mentioned.
+                    </div>
+                  </div>
+                  <div class="input-field"></div>
+                  <textarea name="" id="orgDesc" placeholder="Eligible Criteria" cols="4" [(ngModel)]="EligibleCriteria"></textarea>
+                  <span (mouseenter)="EligibleCriteriaHint()" (mouseleave)='hideEligibleCriteria()' class="dot">?</span>
+                  <div *ngIf="showEligibleCriteria" class="info">Who can apply for this program e.g. South African Citizen and must be the age of 18-35 years </div>
+  
+                  <div class="horizontal-containter">
+                    <div class="container-box">
+                      <button ion-button id="movetopage2" class="theButton" (click)="moveToPage3()">NEXT</button>
+                    </div>
+                    <div class="container-box">
+                      <button ion-button class="theButtonBack" (click)="backToPage1()">BACK</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="slideShow" id="page4" id="done">
+                  <br>
+                  <p>We are done after provide your social media details.</p>
+  
+                  <div class="description" id="progDesc" padding>
+                    <div class="input-field">
+                      <input class="fixSize" type="text" placeholder="Application link" [(ngModel)]="applicationLink" required>
+                      <span id="linkz" (mouseenter)="applicationLinkHint()" (mouseleave)='hideapplicationLinkHint()' class="dot">?</span>
+                      <div *ngIf="showApplicationLink" class="info">Please type links that will direct users to the application form
+                      </div>
+                    </div>
+                    <input class="fixSize" type="email" placeholder="Email" [(ngModel)]="Programemail" required>
+                    <div class="numbers">
+  
+                      <input type="tel" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" class="fixSize" type="tel" placeholder="Phone (No space in between)"
+                        [(ngModel)]="promPhone">
+  
+                      <!-- <span (mouseenter)="phoneHint()" (mouseleave)='hidephoneHint()' class="dot">?</span>
+                    <div *ngIf="showPhoneHint" class="info">Please enter ten numbers and no space in between
+                    </div> -->
+                    </div>
+  
+  
+                    <!-- <span (mouseenter)="phoneHint()" (mouseleave)='hidephoneHint()' class="dot">?</span>
+                    <div *ngIf="showPhoneHint" class="info">Please enter ten numbers and no space in between
+                    </div> -->
+  
+                    <input class="fixSize" type="text" placeholder="Twitter" [(ngModel)]="twitter">
+                    <br>
+                    <input class="fixSize" type="text" placeholder="Facebook" [(ngModel)]="facebook">
+                    <br>
+                  </div>
+  
+                  <div class="horizontal-containter">
+                    <div class="container-box">
+                      <button ion-button id="pg4btnDone" class="theButton" (click)="uploadInfoDone()">Done</button>
+                    </div>
+                    <div class="container-box">
+                      <button ion-button class="theButtonBack" id="backBtn" (click)="backToPage3()">BACK</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>

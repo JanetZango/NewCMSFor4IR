@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { HubsProvider } from '../providers/hubs/hubs';
 import { LoginRegisterPage } from '../pages/login-register/login-register';
 import { AddOrganizationPage } from '../pages/add-organization/add-organization';
+import { FormsPage } from '../pages/forms/forms';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { AddOrganizationPage } from '../pages/add-organization/add-organization'
     MyApp,
     HomePage,
     LoginRegisterPage,
-    AddOrganizationPage
+    AddOrganizationPage,
+    FormsPage
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,8 @@ import { AddOrganizationPage } from '../pages/add-organization/add-organization'
     MyApp,
     HomePage,
     LoginRegisterPage,
-    AddOrganizationPage
+    AddOrganizationPage,
+    FormsPage
   ],
   providers: [
     StatusBar,
