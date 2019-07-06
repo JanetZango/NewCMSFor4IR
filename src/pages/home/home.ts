@@ -1,7 +1,6 @@
-import { Component,ViewChild ,ElementRef, OnInit} from '@angular/core';
-import { NavController,LoadingController, AlertController, ToastController } from 'ionic-angular';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { NavController, LoadingController, AlertController, ToastController } from 'ionic-angular';
 import { HubsProvider } from '../../providers/hubs/hubs'
-
 
 
 //global declaration
@@ -12,10 +11,10 @@ declare var google;
 })
 export class HomePage implements OnInit {
   @ViewChild('map') mapRef: ElementRef;
-//arrays
- getOrgArry = new Array();
- items = new Array()
- orgNames = new Array()
+  //arrays
+  getOrgArry = new Array();
+  items = new Array()
+  orgNames = new Array()
 
   //variables
   lat = -26.2620;
@@ -36,14 +35,15 @@ export class HomePage implements OnInit {
   userLocation: String;
   map;
 
+  toggleList = "ios-arrow-back";
   icon = 'assets/imgs/wifi2.svg'
   locIcon = 'assets/imgs/loc-user.svg'
-  more = "Show More";
+  more = "ios-arrow-down";
   dateer = "this the date";
   activeState = "disabled"
-  constructor(public navCtrl: NavController, public hubs: HubsProvider,public loadingCtrl:LoadingController) {
+  constructor(public navCtrl: NavController, public hubs: HubsProvider, public loadingCtrl: LoadingController) {
 
-    this.hubs.getAllOrganizations().then((data:any) => {
+    this.hubs.getAllOrganizations().then((data: any) => {
       this.getOrgArry = data
       var names = this.hubs.getOrgNames()
       this.storeOrgNames(names)
@@ -51,13 +51,13 @@ export class HomePage implements OnInit {
       this.address = this.getOrgArry[0].address
       this.lat = this.getOrgArry[0].lat;
       this.background = this.getOrgArry[0].background
-      this.category= this.getOrgArry[0].category;
+      this.category = this.getOrgArry[0].category;
       this.downloadurl = this.getOrgArry[0].downloadurl;
       this.downloadurlLogo = this.getOrgArry[0].downloadurlLogo;
       this.wifi = this.getOrgArry[0].wifi;
       this.long = this.getOrgArry[0].long;
       this.email = this.getOrgArry[0].email;
-      this.contact = this. getOrgArry[0].contact
+      this.contact = this.getOrgArry[0].contact
     })
 
     this.hubs.getCurrentLocation(this.lat, this.long).then((radius: any) => {
@@ -72,20 +72,54 @@ export class HomePage implements OnInit {
     this.initMap();
   }
 
- 
-  
+
+
   m = 0
   showMoreDetails() {
+    var morebtn = document.getElementById("more");
     var detailsOrg = document.getElementById("misc");
+    var moreInfo = document.getElementById("about-org");
     if (this.m == 0) {
       this.m = 1;
-      detailsOrg.style.maxHeight = "1000px"
-      this.more = "Show Less"
+      moreInfo.style.display = "block"
+      moreInfo.style.animation = "1s faderIn"
+      setTimeout(() => {
+
+        detailsOrg.style.maxHeight = "250px";
+        setTimeout(() => {
+          detailsOrg.style.overflowY = "scroll"
+        }, 600);
+        this.more = "ios-arrow-up"
+      }, 100);
+      // morebtn.style.bottom = "10px"
     }
     else {
       this.m = 0;
-      detailsOrg.style.maxHeight = "35px"
-      this.more = "Show More"
+      // setTimeout(() => {
+
+      // }, 100);
+      // morebtn.style.bottom = "10px"
+      detailsOrg.style.maxHeight = "0px";
+      moreInfo.style.animation = "1s faderOut"
+      setTimeout(() => {
+        moreInfo.style.display = "none"
+        detailsOrg.style.overflowY = "hidden"
+      }, 600);
+      this.more = "ios-arrow-down"
+    }
+  }
+  mm = 0;
+  toggleOrgList(){
+    var orgListView = document.getElementById("org-list-view");
+    if(this.mm == 0){
+      this.mm = 1;
+      this.toggleList = "ios-arrow-forward"
+      orgListView.style.right = "0"
+    }
+    else{
+      this.mm = 0;
+      this.toggleList = "ios-arrow-back"
+      orgListView.style.right = "-400px"
     }
   }
   showMapPage() {
@@ -95,10 +129,10 @@ export class HomePage implements OnInit {
     var theProgs = document.getElementById("pg3").style.display = "none";
     var theJobs = document.getElementById("pg4").style.display = "none";
 
-    var btn1 = document.getElementById("btn1").style.background = "whitesmoke";
-    var btn1 = document.getElementById("btn2").style.background = "rgba(0, 0, 0, 0.192)";
-    var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0.192)";
-    var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0.192)";
+    var btn1 = document.getElementById("btn1").style.background = "rgba(255, 255, 255, 0.1)";
+    var btn1 = document.getElementById("btn2").style.background = "rgba(0, 0, 0, 0)";
+    var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0)";
+    var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0)";
   }
   showServicesPage() {
     // this will show the services
@@ -107,10 +141,10 @@ export class HomePage implements OnInit {
     var theProgs = document.getElementById("pg3").style.display = "none";
     var theJobs = document.getElementById("pg4").style.display = "none";
 
-    var btn1 = document.getElementById("btn1").style.background = "rgba(0, 0, 0, 0.192)";
-    var btn1 = document.getElementById("btn2").style.background = "whitesmoke";
-    var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0.192)";
-    var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0.192)";
+    var btn1 = document.getElementById("btn1").style.background = "rgba(0, 0, 0, 0)";
+    var btn1 = document.getElementById("btn2").style.background = "rgba(255, 255, 255, 0.1)";
+    var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0)";
+    var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0)";
   }
   showProgrammesPage() {
     // this will show programmes
@@ -119,10 +153,10 @@ export class HomePage implements OnInit {
     var theProgs = document.getElementById("pg3").style.display = "block";
     var theJobs = document.getElementById("pg4").style.display = "none";
 
-    var btn1 = document.getElementById("btn1").style.background = "rgba(0, 0, 0, 0.192)";
-    var btn1 = document.getElementById("btn2").style.background = "rgba(0, 0, 0, 0.192)";
-    var btn1 = document.getElementById("btn3").style.background = "whitesmoke";
-    var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0.192)";
+    var btn1 = document.getElementById("btn1").style.background = "rgba(0, 0, 0, 0)";
+    var btn1 = document.getElementById("btn2").style.background = "rgba(0, 0, 0, 0)";
+    var btn1 = document.getElementById("btn3").style.background = "rgba(255, 255, 255, 0.1)";
+    var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0)";
   }
   showJobsPage() {
     // this will show jobs
@@ -131,10 +165,10 @@ export class HomePage implements OnInit {
     var theProgs = document.getElementById("pg3").style.display = "none";
     var theJobs = document.getElementById("pg4").style.display = "block";
 
-    var btn1 = document.getElementById("btn1").style.background = "rgba(0, 0, 0, 0.192)";
-    var btn1 = document.getElementById("btn2").style.background = "rgba(0, 0, 0, 0.192)";
-    var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0.192)";
-    var btn1 = document.getElementById("btn4").style.background = "whitesmoke";
+    var btn1 = document.getElementById("btn1").style.background = "rgba(0, 0, 0, 0)";
+    var btn1 = document.getElementById("btn2").style.background = "rgba(0, 0, 0, 0)";
+    var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0)";
+    var btn1 = document.getElementById("btn4").style.background = "rgba(255, 255, 255, 0.1)";
   }
 
   //show map
@@ -153,7 +187,7 @@ export class HomePage implements OnInit {
       content: 'Please wait...',
       duration: 15000
     });
-    loading.present();
+    // loading.present();
 
     // console.log(this.lng)
     const options = {

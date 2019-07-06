@@ -2,13 +2,39 @@
   <div class="container">
     <!-- this is the side panel -->
     <div class="side-pane">
+      <div id="actions">
+        <p (click)="goToSetting()">Settings</p>
+        <p (click)="logUserOut()">Logout</p>
+      </div>
       <div class="cover-image">
-        <img src="{{downloadurl}}" alt="" class="cover-image">
+        <!-- <img src="{{downloadurl}}" alt="" class="cover-image-cover"> -->
         <img src="{{downloadurlLogo}}" alt="" class="logo-image">
       </div>
       <div class="buttons">
         <div class="org-name">
           <h4>{{category}}</h4>
+        </div>
+        <div id="about-org">
+
+          <div id="misc">
+            <div class="about-label">
+              <b id="label">About</b>
+            </div>
+            <b>Address:</b> <br>
+            {{address}}<br><br>
+            <b>Phone:</b>
+            <br>
+            {{contact}} <br><br>
+            <b>Email:</b> <br>
+            {{email}}<br><br>
+            <b>Description:</b> <br>
+            <p>{{background}}</p>
+          </div>
+        </div>
+        <div id="more" (click)="showMoreDetails()">
+          <b>
+            <ion-icon name="{{more}}"></ion-icon>
+          </b>
         </div>
         <div class="btns">
           <div (click)="showMapPage()" id="btn1">Home</div>
@@ -16,7 +42,7 @@
           <div (click)="showProgrammesPage()" id="btn3">Progammes</div>
           <div (click)="showJobsPage()" id="btn4">Job Opportunities</div>
         </div>
-        <div class="about-org">
+        <!-- <div class="about-org">
           <div id="misc">
             <div class="more" (click)="showMoreDetails()">{{more}}</div>
             <b id="label">About</b> <br><br>
@@ -30,7 +56,7 @@
             <b>Description:</b> <br>
             {{background}}
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <!-- this is the main view -->
@@ -38,23 +64,43 @@
       <!-- top navigation pane -->
       <div class="nav-pane">
         <div class="left">
-          <img src="../../assets/imgs/logo.png" alt="">
-          <h4>4IR Resources Hub</h4>
+            <ion-searchbar placeholder="Search" (ionInput)="getItems($event)"></ion-searchbar>
         </div>
         <div class="right">
-          <ion-searchbar placeholder="Search" (ionInput)="getItems($event)"></ion-searchbar>
+          <div class="person-info">
+            
+            <!-- <img src="../../assets/imgs/logo.png" alt=""> -->
+            <!-- <h4>4IR Resources Hub</h4> -->
+            <p>John Doe</p>
+            <p id="subStatement">Co-ordinator</p>
+          </div>
         </div>
         <div class="results">
-          <ion-item *ngFor="let item of items" (click)="goToViewPage(item)">
-            {{ item}}
-          </ion-item>
         </div>
       </div>
+        <div id="org-list-view">
+          <div class="toggle-list" (click)="toggleOrgList()">
+            <ion-icon name="{{toggleList}}"></ion-icon>
+          </div>
+          <div class="list-head">
+            Fellow Organisations
+          </div>
+          <div class="list-view-cotainer">
+              <div class="listed-item">
+                <div>
+                  <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+                </div>
+                <div>
+                  <p><b>Department of Science and Technology</b></p>
+                  <p>Multimedia Services</p>
+                </div>
+              </div>
+          </div>
+        </div>
       <!-- content switch case box -->
       <div class="switch-box">
-
         <div class="view" id="pg1">
-          <div #map  id="map"></div>
+          <div #map id="map"></div>
         </div>
         <div class="view" id="pg2">
           <ion-fab bottom right>
