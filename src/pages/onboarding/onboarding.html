@@ -1,0 +1,110 @@
+
+<ion-content>
+  <div pager class="background">
+    <div  class="wave"></div>
+    <div class="slide1" padding>
+      <ion-card class="cardcenter">
+        <div text-center class="cardimg">
+          <img style="height: 40%; width: 40%;margin-top: 10%" src="../../assets/imgs/407893.png" />
+        </div>
+        <ion-card-content class="cardcontent">
+          <ion-card-title text-center>
+            Nine Inch Nails Live
+          </ion-card-title>
+          <p text-center>
+            The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.
+          </p>
+          <br>
+          <br>
+          <button ion-button round color="btn"  (click)="nextpage()">start
+            <!-- <ion-icon name="arrow-round-forward"></ion-icon> -->
+          </button>
+          <br>
+          <br>
+          <br>
+         
+          
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <div class="slide2">
+      <ion-card class="cardcenter">
+        <div text-center class="cardimg">
+          <img style="height: 40%; width: 40%; margin-top: 10%" src="../../assets/imgs/407893.png" />
+        </div>
+        <ion-card-content class="cardcontent">
+          <ion-card-title text-center>
+            Nine Inch Nails Live
+          </ion-card-title>
+          <p text-center>
+            The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.
+          </p>
+          <br>
+          <br>
+          <button ion-button round color="btn"  (click)="nextpage()">Skip</button>
+          <br>
+          
+         
+          <ion-grid class="nextflex">
+            <ion-row>
+              <ion-col item-left>
+                  <button ion-button outline round color="btn" class="endbtn" (click)="prevpage()">previous</button>
+              </ion-col >
+              <!-- <ion-col text-center>
+
+        
+
+              </ion-col> -->
+              <ion-col text-end>
+                <button ion-button round outline color="btn" class="endbtn" (click)="nextpage2()">next
+                  <!-- <ion-icon name="arrow-round-forward"></ion-icon> -->
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <div class="slide3">
+      <ion-card class="cardcenter">
+        <div text-center class="cardimg">
+          <img style="height: 40%; width: 40%; margin-top: 10%" src="../../assets/imgs/407893.png" />
+        </div>
+        <ion-card-content class="cardcontent">
+          <ion-card-title text-center>
+            Nine Inch Nails Live
+          </ion-card-title>
+          <p text-center>
+            The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.
+          </p>
+          <br>
+          <br>
+          <button ion-button round color="btn"  (click)="nextpage()">Skip</button>
+          <br>
+          
+         
+
+          <ion-grid class="nextflex">
+            <ion-row>
+              <ion-col col-6 text-end>
+                  <button ion-button outline round color="btn" class="endbtn" (click)="prevpage2()">previous</button>
+              </ion-col>
+              <!-- <ion-col text-center >
+
+              </ion-col> -->
+              <ion-col col-6 text-end>
+                <button ion-button outline round color="btn" class="endbtn" (click)="nextpage()">next
+                  <!-- <ion-icon name="arrow-round-forward"></ion-icon> -->
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+  </div>
+</ion-content>

@@ -1,60 +1,170 @@
-<!--
-  Generated template for the AddOrganizationPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-
-
 <ion-content>
-    <div>
-        <h1>Add Organization</h1>
-        <ion-input type="text" placeholder="OrgName" [(ngModel)]="orgName" required></ion-input>
-        <ion-input type="text" placeholder="OrgBackground" [(ngModel)]="orgDescription"required> </ion-input>
-        <input type="text" class="inputText" placeholder="Address" [(ngModel)]="orgAdress" (change)="setAddress()">
-        <input type="tel" class="inputText" placeholder="Phone" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" [(ngModel)]="orgPhone">
-        <input type="url" class="inputText" id="web" placeholder="Website" [(ngModel)]="orgWebsite">
+  <div class="everything">
+    <div class="content-container">
+      <div class="left-tab">
+        <div class="infor-left">
+          <div class="bg"></div>
+          <div class="statement">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore blanditiis reiciendis porro nulla soluta
+            vero iure eum, itaque.
+          </div>
+        </div>
+      </div>
+      <div class="right-tab">
+        <div id="bar">
+          <div id="barSlide"></div>
+        </div>
+        <div class="view" id="placeholder">
 
-        <p>Does the organisation have WiFi</p>
-        <select class="select-css" [(ngModel)]="offerWifi" (change)="checkWifi()">
-          <option value="Do you offer WiFi" disabled>Do you offer WiFi?</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-        </select>
-
-        <div *ngIf="ShowWifi">
-            <p>Is it free?</p>
-            <select class="select-css" [(ngModel)]="wifi" (change)="checkWifipayment()">
-              <option value="Is it free?" disabled>Is it free?</option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-            </select>
-            <br>
-
-            <div *ngIf="ShowChooseRange">
-
-              <p>What is your pricing?</p>
-              <select class="select-css" [(ngModel)]="chooseWifiRange">
-                <option value="Choose Range" disabled>Choose Range</option>
-                <option value="200MB Free">200MB Free</option>
-                <option value="1GB Free">1GB Free</option>
-                <option value="2GB Free">2GB Free</option>
-                <option value="Unlimited">Unlimited</option>
-              </select>
+        </div>
+        <div class="view" id="Programmes">
+          <div class="pageProgrammes">
+            <div class="buttons">
+              <button id="forward" ion-button (click)="click()">Next</button>
+            </div>
+            <div class="inputs">
+              Please complete the form to continue
+              <br>
+              <ion-input type="text" id="input-field" placeholder="Programme Name"></ion-input>
+              <br>
+              <ion-list class="programme-options">
+                <ion-item>
+                  <ion-label>Gaming</ion-label>
+                  <ion-select [(ngModel)]="gaming">
+                    <ion-option value="nes">NES</ion-option>
+                    <ion-option value="n64">Nintendo64</ion-option>
+                    <ion-option value="ps">PlayStation</ion-option>
+                    <ion-option value="genesis">Sega Genesis</ion-option>
+                    <ion-option value="saturn">Sega Saturn</ion-option>
+                    <ion-option value="snes">SNES</ion-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+              <textarea name="" id="text-field" cols="30" rows="10" placeholder="Programme Background"></textarea>
+              <textarea name="" id="text-field" cols="30" rows="10" placeholder="Programme Background"></textarea>
             </div>
           </div>
+          <div class="pageProgrammes">
+            <div class="buttons">
+              <button id="backward" ion-button>Back</button>
+              <button id="forward" ion-button>Next</button>
+            </div>
+            <div class="inputs">
+              Please complete the form to continue
+              <br>
+              <textarea name="" id="text-field" cols="30" rows="10" placeholder="Programme Background"></textarea>
+              <textarea name="" id="text-field" cols="30" rows="10" placeholder="Programme Background"></textarea>
+              <div class="Contacts">
+                <ion-input type="text" id="input-field" placeholder="Programme Name"></ion-input>
+                <ion-input type="text" id="input-field" placeholder="Programme Name"></ion-input>
+              </div>
+            </div>
+          </div>
+          <div class="pageProgrammes">
+            <div class="buttons">
+              <button id="backward" ion-button>Back</button>
+              <button id="forward" ion-button>Next</button>
+            </div>
+            <div class="inputs">
+              Please complete the form to continue
+              <br>
+              <div class="Dates">
+                <h5>Applications</h5>
+                <p>Please enter the dates for the applications.</p>
 
-          <h1>select</h1>
-          <label for="selectBox" id="mySelect">Select service</label>
-          <select class="select-css"  (change)="showServices()"   [(ngModel)]="category">
-              <option value="Select Your Service that you offer" disabled> Choose service </option>
-              <option value="3D Printer">3D Printer </option>
-              <option value="Laser Cutter">Laser Cutter</option>
-              <option value="Screen Printer">Screen Printer</option>
-              <option value="Heat Press Machine">Heat Press Machine</option>
-              <option value="flexographic">flexographic</option>
-              <option value="Traning">Traning</option>
-            </select>
-        <button ion-button (click)="saveToDB()">Register</button>
+                <div class="Contacts">
+                  <ion-input type="date" id="input-field"></ion-input>
+                  <ion-input type="date" id="input-field"></ion-input>
+                </div>
+              </div>
+
+              <div class="Dates">
+                <h5>Programme</h5>
+                <p>Please enter the dates for the commencement and ending of the programme.</p>
+
+                <div class="Contacts">
+                  <ion-input type="date" id="input-field"></ion-input>
+                  <ion-input type="date" id="input-field"></ion-input>
+                </div>
+              </div>
+              <div class="Contacts">
+                <ion-input type="link" id="input-field" placeholder="Website link to online application"></ion-input>
+              </div>
+            </div>
+          </div>
+          <div class="pageProgrammes">
+            <div class="buttons">
+              <button id="backward" ion-button>Back</button>
+              <button id="forward" ion-button>Done</button>
+            </div>
+            
+            <!-- User clicks here to upload the logo and cover image -->
+            <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image">
+            <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image">
+            <div class="inputs">
+              <label for="cover-image" id="coverImage">
+
+                <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+              </label>
+              <label for="cover-image" id="logoImage">
+                <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="view" id="Jobs">
+          <div class="pageJobs">
+            <div class="inputs">
+              <ion-input type="text" id="input-field" placeholder="Job Name"></ion-input>
+              <ion-input type="date" id="input-field" placeholder="Application Open Date"></ion-input>
+              <ion-input type="date" id="input-field" placeholder="Application Close Date"></ion-input>
+              <ion-list class="programme-options">
+                <ion-item>
+                  <ion-label>Job Type</ion-label>
+                  <ion-select [(ngModel)]="gaming">
+                    <ion-option value="nes">Part-time</ion-option>
+                    <ion-option value="n64">Full-time</ion-option>
+                    <ion-option value="ps">Contract</ion-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+            </div>
+          </div>
+          <div class="pageJobs">
+            <div class="inputs">
+                <textarea name="" id="input-field" cols="30" rows="10"></textarea>
+                <textarea name="" id="input-field" cols="30" rows="10"></textarea>
+                <ion-input type="text" id="input-field" placeholder="Address"></ion-input>
+                <ion-input type="tel" id="input-field" placeholder="Phone"></ion-input>
+                <ion-input type="email" id="input-field" placeholder="Email"></ion-input>
+            </div>
+          </div>
+          <div class="pageJobs">
+            <!-- User clicks here to upload logo and cover for Jobs -->
+            <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image">
+            <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image">
+            <div class="inputs">
+              <ion-input type="text" id="input-field" placeholder="Link to online application form"></ion-input>
+              <label for="logo-image">
+                <img src="../../assets/imgs/logo.png" alt="">
+              </label>
+            </div>
+          </div>
+          <div class="pageJobs"></div>
+        </div>
+        <div class="view" id="Services">
+          <div class="pageServices"></div>
+          <div class="pageServices"></div>
+          <div class="pageServices"></div>
+          <div class="pageServices"></div>
+        </div>
+        <div class="view" id="Wifi">
+          <div class="pageWifi"></div>
+          <div class="pageWifi"></div>
+          <div class="pageWifi"></div>
+          <div class="pageWifi"></div>
+        </div>
+      </div>
     </div>
+  </div>
 </ion-content>

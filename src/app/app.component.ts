@@ -7,6 +7,8 @@ import { HomePage } from '../pages/home/home';
 import { LoginRegisterPage } from '../pages/login-register/login-register';
 import { HubsProvider } from '../providers/hubs/hubs';
 import { FormsPage } from '../pages/forms/forms';
+import { AddOrganizationPage } from '../pages/add-organization/add-organization';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -21,7 +23,7 @@ export class MyApp {
           this.rootPage = FormsPage
         }
         else {
-          this.rootPage = HomePage
+          this.rootPage = AddOrganizationPage
         }
        })
       // Okay, so the platform is ready and our plugins are available.
