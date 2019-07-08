@@ -97,7 +97,7 @@
               <button id="backward" ion-button>Back</button>
               <button id="forward" ion-button>Done</button>
             </div>
-            
+
             <!-- User clicks here to upload the logo and cover image -->
             <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image">
             <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image">
@@ -114,6 +114,9 @@
         </div>
         <div class="view" id="Jobs">
           <div class="pageJobs">
+            <div class="buttons">
+              <button id="forward" ion-button (click)="click()">Next</button>
+            </div>
             <div class="inputs">
               <ion-input type="text" id="input-field" placeholder="Job Name"></ion-input>
               <ion-input type="date" id="input-field" placeholder="Application Open Date"></ion-input>
@@ -131,38 +134,205 @@
             </div>
           </div>
           <div class="pageJobs">
+            <div class="buttons">
+              <button id="backward" ion-button>Back</button>
+              <button id="forward" ion-button>Next</button>
+            </div>
             <div class="inputs">
-                <textarea name="" id="input-field" cols="30" rows="10"></textarea>
-                <textarea name="" id="input-field" cols="30" rows="10"></textarea>
-                <ion-input type="text" id="input-field" placeholder="Address"></ion-input>
-                <ion-input type="tel" id="input-field" placeholder="Phone"></ion-input>
-                <ion-input type="email" id="input-field" placeholder="Email"></ion-input>
+              <textarea name="" id="input-field" cols="30" rows="10"></textarea>
+              <textarea name="" id="input-field" cols="30" rows="10"></textarea>
+              <ion-input type="text" id="input-field" placeholder="Address"></ion-input>
+              <ion-input type="tel" id="input-field" placeholder="Phone"></ion-input>
+              <ion-input type="email" id="input-field" placeholder="Email"></ion-input>
             </div>
           </div>
           <div class="pageJobs">
-            <!-- User clicks here to upload logo and cover for Jobs -->
-            <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image">
-            <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image">
+            <div class="buttons">
+              <button id="backward" ion-button>Back</button>
+              <button id="forward" ion-button>Next</button>
+            </div>
             <div class="inputs">
+              <!-- User clicks here to upload logo and cover for Jobs -->
+              <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image">
+              <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image">
               <ion-input type="text" id="input-field" placeholder="Link to online application form"></ion-input>
               <label for="logo-image">
                 <img src="../../assets/imgs/logo.png" alt="">
               </label>
+              <label for="cover-image">
+                <img src="../../assets/imgs/logo.png" alt="">
+              </label>
             </div>
           </div>
-          <div class="pageJobs"></div>
+          <div class="pageJobs">
+            <div class="buttons">
+              <button id="backward" ion-button>Back</button>
+              <button id="forward" ion-button>done</button>
+            </div>
+            <div class="inputs">
+              <div id="confirm-logo">
+                <img src="../../assets/imgs/logo.png" alt="">
+              </div>
+              <div id="confirm-cover">
+                <img src="../../assets/imgs/logo.png" alt="">
+              </div>
+              <p><b>Job Name:</b> My Job</p>
+              <p><b>Employment Type:</b> Part-Time</p>
+              <p><b>Applications Open:</b> 01/01/2019</p>
+              <p><b>Applications Close: </b> 01/02/2019</p>
+              <p><b>Requirements:</b><br>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur assumenda
+                accusamus velit? Rem ducimus vitae pariatur. Possimus reprehenderit accusantium quia.</p>
+              <p><b>Responsiblities:</b><br>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, animi. Nostrum ipsa nisi dolorum
+                temporibus est distinctio eaque tempora adipisci, ratione facilis, dignissimos neque? Perferendis
+                adipisci tempora vel cupiditate dolorum.</p>
+              <p><b>Address:</b><br>
+                4877 Ugago Street Protea Glen Ext 3 Johannesburg 1819</p>
+              <p><b>Contact Details:</b><br>
+                <b>Email:</b> spazgrafficz@outlook.com <br>
+                <b>Phone:</b> 081 391 7127
+              </p>
+              <p><b>Application Link:</b>
+                <a href="google.com">google.com</a></p>
+            </div>
+          </div>
         </div>
         <div class="view" id="Services">
-          <div class="pageServices"></div>
-          <div class="pageServices"></div>
-          <div class="pageServices"></div>
-          <div class="pageServices"></div>
+          <div class="pageServices">
+            <div class="buttons">
+              <button id="forward" ion-button>Next</button>
+              <div class="inputs">
+                Please complete the form to continue
+                <br>
+                <ion-input type="text" id="input-field" placeholder="Service Name"></ion-input>
+                <br>
+                <textarea name="" id="text-field" cols="30" rows="10" placeholder="About Servie"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="pageServices">
+            <div class="buttons">
+              <button id="backward" ion-button>Back</button>
+              <button id="forward" ion-button>Next</button>
+            </div>
+            <div class="inputs">
+              Please complete your contact details to continue
+              <br>
+              <ion-input type="text" id="input-field" placeholder="Address"></ion-input>
+              <br>
+              <div class="contacts">
+                <ion-input type="email" id="input-field" placeholder="Email"></ion-input>
+                <ion-input type="number" id="input-field" placeholder="Phone"></ion-input>
+              </div>
+            </div>
+          </div>
+          <div class="pageServices">
+            <div class="buttons">
+              <button id="backward" ion-button>Back</button>
+              <button id="forward" ion-button>Next</button>
+            </div>
+            <div class="inputs">
+              <!-- User clicks here to upload logo and cover for Jobs -->
+              <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image">
+              <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image">
+              <label for="logo-image">
+                <img src="../../assets/imgs/logo.png" alt="">
+              </label>
+              <label for="cover-image">
+                <img src="../../assets/imgs/logo.png" alt="">
+              </label>
+            </div>
+          </div>
+          <div class="pageServices">
+            <div class="buttons">
+              <button id="backward" ion-button>Back</button>
+              <button id="forward" ion-button>Done</button>
+            </div>
+            <div class="inputs">
+              <div id="confirm-logo">
+                <img src="../../assets/imgs/logo.png" alt="">
+              </div>
+              <div id="confirm-cover">
+                <img src="../../assets/imgs/logo.png" alt="">
+              </div>
+              <p><b>Service Name:</b> Photography</p>
+              <p><b>Description:</b>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima reprehenderit architecto fugit sed, unde
+                molestiae odit ipsum sit minus quas.
+              </p>
+              <p><b>Address: </b>
+                4877 Ugago Street Protea Glen Ext 3 Johannesburg 1819
+              </p>
+              <p><b>Contact Details:</b><br>
+                <b>Email: </b> spaz@me.com <br>
+                <b>Phone: </b> 0813917127
+              </p>
+            </div>
+          </div>
         </div>
         <div class="view" id="Wifi">
-          <div class="pageWifi"></div>
-          <div class="pageWifi"></div>
-          <div class="pageWifi"></div>
-          <div class="pageWifi"></div>
+          <div class="pageWifi">
+            <div class="buttons">
+              <button id="forward" ion-button>Next</button>
+            </div>
+            <div class="inputs">
+              
+                <ion-list class="programme-options">
+                    <ion-item>
+                      <ion-label>do you offer WiFi</ion-label>
+                      <ion-select [(ngModel)]="gaming">
+                        <ion-option value="Yes">Yes</ion-option>
+                        <ion-option value="No">No</ion-option>
+                      </ion-select>
+                    </ion-item>
+                  </ion-list>
+            </div>
+          </div>
+          <div class="pageWifi">
+            <div class="buttons">
+              <button id="backward" ion-button>Back</button>
+              <button id="forward" ion-button>Next</button>
+            </div>
+            <div class="inputs">
+              
+                <ion-list class="programme-options">
+                    <ion-item>
+                      <ion-label>Is it free or paid</ion-label>
+                      <ion-select [(ngModel)]="gaming">
+                        <ion-option value="Free">Free</ion-option>
+                        <ion-option value="Paid">Paid</ion-option>
+                      </ion-select>
+                    </ion-item>
+                  </ion-list>
+            </div>
+          </div>
+          <div class="pageWifi">
+            <div class="buttons">
+              <button id="backward" ion-button>Back</button>
+              <button id="forward" ion-button>Next</button>
+            </div>
+            <div class="inputs">
+              
+                <ion-list class="programme-options">
+                    <ion-item>
+                      <ion-label>Select data range</ion-label>
+                      <ion-select [(ngModel)]="gaming">
+                        <ion-option value="Yes">1GB</ion-option>
+                        <ion-option value="No">2GB</ion-option>
+                        <ion-option value="No">5GB</ion-option>
+                        <ion-option value="No">Unlimited</ion-option>
+                      </ion-select>
+                    </ion-item>
+                  </ion-list>
+            </div>
+          </div>
+          <div class="pageWifi">
+            <div class="buttons">
+              <button id="backward" ion-button>Back</button>
+              <button id="forward" ion-button>Done</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
