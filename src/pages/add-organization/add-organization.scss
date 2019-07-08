@@ -33,6 +33,9 @@ page-add-organization {
     position: relative;
     overflow: scroll;
   }
+  textarea{
+    resize: none;
+  }
   #placeholder {
     background: pink;
     display: none;
@@ -71,6 +74,7 @@ page-add-organization {
       width: 80%;
       margin: 10px auto; 
       display: flex;
+      border: 1px solid red;
       #input-field{
           margin: 5px;
           width: 50% !important;
@@ -82,7 +86,13 @@ page-add-organization {
   }
   #coverImage {
       width: 100%;
+      border: 2px solid red;
       height: 250px;
+      img{
+        width: 100%;
+        height: 100%;
+
+      }
   }
   #logoImage{
       width: 80px;
@@ -97,39 +107,84 @@ page-add-organization {
   }
   #coverImage img{
       width: 100%;
-      height: 250px;
+      height: 50px;
       object-fit: contain;
+  }
+  .view > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    width: 25%;
+    height: 100%;
   }
   .view > div:nth-child(1) {
     background: white;
+    width: 25%;
+    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    width: 25%;
+    height: 100%;
     // display: none;
   }
   .view > div:nth-child(2) {
     background: white;
+    border: 2px solid blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    width: 25%;
+    height: 100%;
     // display: none;
   }
   .view > div:nth-child(3) {
     background: white;
+    border: 2px solid green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    width: 25%;
+    height: 100%;
     // display: none;
   }
   .view > div:nth-child(4) {
     background: orange;
+    border: 2px solid plum;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    width: 25%;
+    height: 100%;
+    // display: none;
   }
   .pageProgrammes {
     width: 25%;
     height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .pageJobs {
     width: 25%;
     height: 100%;
+    position: relative;
   }
   .pageServices {
     width: 25%;
     height: 100%;
+    position: relative;
   }
   .pageWifi {
     width: 25%;
     height: 100%;
+    position: relative;
   }
   #bar {
     width: 300px;
@@ -157,10 +212,12 @@ page-add-organization {
   }
   .inputs {
     width: 100%;
-    height: 100%;
+    // height: 100%;
     text-align: center;
-    margin-top: 50%;
-    transform: translateY(-40%);
+    background: whitesmoke;
+    border: 2px solid black;
+    // margin-top: 50%;
+    // transform: translateY(-40%);
   }
   #input-field {
     border: 1px solid black;
@@ -187,7 +244,7 @@ page-add-organization {
       height: 70px;
       background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.144));
       position: relative;
-      // position: absolute;
+      position: absolute;
       bottom: 0;
       z-index: 10;
   }
@@ -223,5 +280,28 @@ page-add-organization {
   .statement{
       padding: 10px;
       text-align: center;
+  }
+  #coverImage{
+
+  }
+  #confirm-logo{
+    width: 80px;
+    height: 80Px;
+  }
+  #confirm-cover{
+    width: 100%;
+    height: 200px;
+  }
+  #confirm-cover img, #confirm-logo img{
+    height: 80px;
+    text-align: center;
+  }
+  #confirm-cover img{
+    width: 80%;
+    object-fit: cover;
+  }
+  #confirm-logo img{
+    width: 80px;
+    object-fit: cover;
   }
 }

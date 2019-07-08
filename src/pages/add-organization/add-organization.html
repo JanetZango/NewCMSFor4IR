@@ -98,7 +98,6 @@
               <button id="forward" ion-button>Done</button>
             </div>
 
-            <!-- User clicks here to upload the logo and cover image -->
             <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image">
             <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image">
             <div class="inputs">
@@ -119,8 +118,11 @@
             </div>
             <div class="inputs">
               <ion-input type="text" id="input-field" placeholder="Job Name"></ion-input>
+              <b>Applications</b>
+              <div class="Contacts">
               <ion-input type="date" id="input-field" placeholder="Application Open Date"></ion-input>
               <ion-input type="date" id="input-field" placeholder="Application Close Date"></ion-input>
+              </div>
               <ion-list class="programme-options">
                 <ion-item>
                   <ion-label>Job Type</ion-label>
@@ -156,10 +158,10 @@
               <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image">
               <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image">
               <ion-input type="text" id="input-field" placeholder="Link to online application form"></ion-input>
-              <label for="logo-image">
+              <label for="logo-image" id="logoImage">
                 <img src="../../assets/imgs/logo.png" alt="">
               </label>
-              <label for="cover-image">
+              <label for="cover-image" id="coverImage">
                 <img src="../../assets/imgs/logo.png" alt="">
               </label>
             </div>
@@ -202,13 +204,13 @@
           <div class="pageServices">
             <div class="buttons">
               <button id="forward" ion-button>Next</button>
-              <div class="inputs">
-                Please complete the form to continue
-                <br>
-                <ion-input type="text" id="input-field" placeholder="Service Name"></ion-input>
-                <br>
-                <textarea name="" id="text-field" cols="30" rows="10" placeholder="About Servie"></textarea>
-              </div>
+            </div>
+            <div class="inputs">
+              Please complete the form to continue
+              <br>
+              <ion-input type="text" id="input-field" placeholder="Service Name"></ion-input>
+              <br>
+              <textarea name="" id="text-field" cols="30" rows="10" placeholder="About Servie"></textarea>
             </div>
           </div>
           <div class="pageServices">
@@ -236,10 +238,10 @@
               <!-- User clicks here to upload logo and cover for Jobs -->
               <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image">
               <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image">
-              <label for="logo-image">
+              <label for="logo-image" id="logoImage">
                 <img src="../../assets/imgs/logo.png" alt="">
               </label>
-              <label for="cover-image">
+              <label for="cover-image" id="coverImage">
                 <img src="../../assets/imgs/logo.png" alt="">
               </label>
             </div>
