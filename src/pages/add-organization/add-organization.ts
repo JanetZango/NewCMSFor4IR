@@ -400,111 +400,151 @@ export class AddOrganizationPage {
     }
   }
 
-  moveToPage2() {
+  // moveToPage2() {
 
-    // this.phonenumberValidatin();
-    var progBar = document.getElementById("theDot");
-    // this.is_urlValidation(this.orgWebsite);
-    // if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
-    //   this.alert("Please complete all details ")
-    // } else if (this.orgName == undefined) {
-    //   this.alert("Enter organisation Name ")
-    // } else if (this.orgAdress == undefined) {
-    //   this.alert("Enter Address  ")
-    // } else if (this.contactValidation == 1) {
-    //   this.alert("The phone numbers you have entered is invalid, please enter a valid phone numbers  ")
-    // } else if (this.websiteValidation == 1) {
-    //   this.alert("The website address you have entered is invalid, please enter a valid website address ")
-    // } else if (this.checkAddress == 1) {
-    //   this.alert("The address you have entered is invalid, please enter a valid address ")
-    // }
-    // else if (this.orgPhone == undefined) {
-    //   this.alert("Enter Phone numbers  ")
-    // } else if (this.orgDescription == undefined) {
-    //   this.alert("Enter Phone numbers  ")
+  //   // this.phonenumberValidatin();
+  //   var progBar = document.getElementById("theDot");
+  //   // this.is_urlValidation(this.orgWebsite);
+  //   // if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
+  //   //   this.alert("Please complete all details ")
+  //   // } else if (this.orgName == undefined) {
+  //   //   this.alert("Enter organisation Name ")
+  //   // } else if (this.orgAdress == undefined) {
+  //   //   this.alert("Enter Address  ")
+  //   // } else if (this.contactValidation == 1) {
+  //   //   this.alert("The phone numbers you have entered is invalid, please enter a valid phone numbers  ")
+  //   // } else if (this.websiteValidation == 1) {
+  //   //   this.alert("The website address you have entered is invalid, please enter a valid website address ")
+  //   // } else if (this.checkAddress == 1) {
+  //   //   this.alert("The address you have entered is invalid, please enter a valid address ")
+  //   // }
+  //   // else if (this.orgPhone == undefined) {
+  //   //   this.alert("Enter Phone numbers  ")
+  //   // } else if (this.orgDescription == undefined) {
+  //   //   this.alert("Enter Phone numbers  ")
 
-    // } else {
+  //   // } else {
 
-      var toSlide = document.getElementById("page1");
-      toSlide.style.marginLeft = "-25%";
-      // this.progressBar = this.progressBar + 25
-      progBar.style.width = "50%";
-    }
+  //     var toSlide = document.getElementById("page1");
+  //     toSlide.style.marginLeft = "-25%";
+  //     // this.progressBar = this.progressBar + 25
+  //     progBar.style.width = "50%";
+  //   }
     
-  moveToPage3() {
+  // moveToPage3() {
 
 
-    var progBar = document.getElementById("theDot");
+  //   var progBar = document.getElementById("theDot");
 
 
-    if (this.offerWifi == "No") {
-      if (this.wifi == undefined) {
-        this.wifi = "No"
-      } if (this.chooseWifiRange == undefined) {
-        this.chooseWifiRange = "No"
-      }
+  //   if (this.offerWifi == "No") {
+  //     if (this.wifi == undefined) {
+  //       this.wifi = "No"
+  //     } if (this.chooseWifiRange == undefined) {
+  //       this.chooseWifiRange = "No"
+  //     }
 
-    }
+  //   }
 
-    if (this.offerWifi != undefined) {
-      if (this.wifi != undefined && this.chooseWifiRange != undefined) {
-        var toSlide = document.getElementById("page1");
-        toSlide.style.marginLeft = "-50%";
-        this.progressBar = this.progressBar + 25;
-        progBar.style.width = "75%";
-      } else {
-        alert("Please complete all details")
-      }
+  //   if (this.offerWifi != undefined) {
+  //     if (this.wifi != undefined && this.chooseWifiRange != undefined) {
+  //       var toSlide = document.getElementById("page1");
+  //       toSlide.style.marginLeft = "-50%";
+  //       this.progressBar = this.progressBar + 25;
+  //       progBar.style.width = "75%";
+  //     } else {
+  //       alert("Please complete all details")
+  //     }
 
-    }
+  //   }
 
-    else {
+  //   else {
 
-      alert("Please complete all details")
-    }
-
-
-
-  }
+  //     alert("Please complete all details")
+  //   }
 
 
-  moveToPage4() {
 
-    var progBar = document.getElementById("theDot");
-    // if (this.category != undefined && this.catService.length != 0) {
-      console.log(this.catService);
+  // }
 
 
-      var toSlide = document.getElementById("page1");
-      toSlide.style.marginLeft = "-75%";
-      this.progressBar = this.progressBar + 25;
-      progBar.style.width = "100%";
-    // } else {
-    //   alert("Complete all the Details ")
-    // }
+  // moveToPage4() {
 
-  }
+  //   var progBar = document.getElementById("theDot");
+  //   // if (this.category != undefined && this.catService.length != 0) {
+  //     console.log(this.catService);
 
-  backToPage3() {
-    var progressBar = document.getElementById("theDot");
-    var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "-50%";
-    progressBar.style.width = "75%"
-  }
-  backToPage2() {
-    var progressBar = document.getElementById("theDot");
-    var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "-25%";
-    progressBar.style.width ="50%"
-  }
-  backToPage1() {
-    var progressBar = document.getElementById("theDot");
-    var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "0%";
-    progressBar.style.width ="25%"
-  }
+
+  //     var toSlide = document.getElementById("page1");
+  //     toSlide.style.marginLeft = "-75%";
+  //     this.progressBar = this.progressBar + 25;
+  //     progBar.style.width = "100%";
+  //   // } else {
+  //   //   alert("Complete all the Details ")
+  //   // }
+
+  // }
+
+  // backToPage3() {
+  //   var progressBar = document.getElementById("theDot");
+  //   var toSlide = document.getElementById("page1");
+  //   toSlide.style.marginLeft = "-50%";
+  //   progressBar.style.width = "75%"
+  // }
+  // backToPage2() {
+  //   var progressBar = document.getElementById("theDot");
+  //   var toSlide = document.getElementById("page1");
+  //   toSlide.style.marginLeft = "-25%";
+  //   progressBar.style.width ="50%"
+  // }
+  // backToPage1() {
+  //   var progressBar = document.getElementById("theDot");
+  //   var toSlide = document.getElementById("page1");
+  //   toSlide.style.marginLeft = "0%";
+  //   progressBar.style.width ="25%"
+  // }
 
   click(){
     alert("clicked")
+  }
+
+  toPage2Progs(){
+    var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf <HTMLElement>;
+    pager[0].style.marginLeft = "-25%"
+  }
+  toPage3Progs(){
+    var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf <HTMLElement>;
+    pager[0].style.marginLeft = "-50%"
+  }
+  toPage4Progs(){
+    var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf <HTMLElement>;
+    pager[0].style.marginLeft = "-75%"
+  }
+
+  
+  toPage2Jobs(){
+    var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf <HTMLElement>;
+    pager[0].style.marginLeft = "-25%"
+  }
+  toPage3Jobs(){
+    var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf <HTMLElement>;
+    pager[0].style.marginLeft = "-50%"
+  }
+  toPage4Jobs(){
+    var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf <HTMLElement>;
+    pager[0].style.marginLeft = "-75%"
+  }
+  backToPage1(){
+
+    var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf <HTMLElement>;
+    pager[0].style.marginLeft = "0"
+  }
+  backToPage2(){
+
+    var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf <HTMLElement>;
+    pager[0].style.marginLeft = "0"
+  }
+  backToPage3(){
+
   }
 }

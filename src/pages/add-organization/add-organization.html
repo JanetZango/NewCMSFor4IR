@@ -20,7 +20,7 @@
         <div class="view" id="Programmes">
           <div class="pageProgrammes">
             <div class="buttons">
-              <button id="forward" ion-button (click)="click()">Next</button>
+              <button id="forward" ion-button (click)="toPage2Progs()">Next1</button>
             </div>
             <div class="inputs">
               Please complete the form to continue
@@ -47,7 +47,7 @@
           <div class="pageProgrammes">
             <div class="buttons">
               <button id="backward" ion-button>Back</button>
-              <button id="forward" ion-button>Next</button>
+              <button id="forward" ion-button (click)="toPage3Progs()">Next2</button>
             </div>
             <div class="inputs">
               Please complete the form to continue
@@ -63,7 +63,7 @@
           <div class="pageProgrammes">
             <div class="buttons">
               <button id="backward" ion-button>Back</button>
-              <button id="forward" ion-button>Next</button>
+              <button id="forward" ion-button (click)="toPage4Progs()">Next3</button>
             </div>
             <div class="inputs">
               Please complete the form to continue
@@ -95,7 +95,7 @@
           <div class="pageProgrammes">
             <div class="buttons">
               <button id="backward" ion-button>Back</button>
-              <button id="forward" ion-button>Done</button>
+              <button id="forward" ion-button>Done4</button>
             </div>
 
             <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image">
@@ -114,7 +114,7 @@
         <div class="view" id="Jobs">
           <div class="pageJobs">
             <div class="buttons">
-              <button id="forward" ion-button (click)="click()">Next</button>
+              <button id="forward" ion-button (click)="toPage2Jobs()">Next</button>
             </div>
             <div class="inputs">
               <ion-input type="text" id="input-field" placeholder="Job Name"></ion-input>
@@ -137,8 +137,8 @@
           </div>
           <div class="pageJobs">
             <div class="buttons">
-              <button id="backward" ion-button>Back</button>
-              <button id="forward" ion-button>Next</button>
+              <button id="backward" ion-button (click)="backToPage1()">Back</button>
+              <button id="forward" ion-button  (click)="toPage3Jobs()">Next</button>
             </div>
             <div class="inputs">
               <textarea name="" id="input-field" cols="30" rows="10"></textarea>
@@ -151,7 +151,7 @@
           <div class="pageJobs">
             <div class="buttons">
               <button id="backward" ion-button>Back</button>
-              <button id="forward" ion-button>Next</button>
+              <button id="forward" ion-button (click)="toPage4Jobs()">Next</button>
             </div>
             <div class="inputs">
               <!-- User clicks here to upload logo and cover for Jobs -->
