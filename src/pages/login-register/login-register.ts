@@ -226,7 +226,7 @@ forgotpassword(PlaceObject: object) {
         type: "success",
         title: "Signed in successfully"
       });
-      this.navCtrl.setRoot(HomePage)
+      // this.navCtrl.setRoot(HomePage)
     }).catch((Error) => {
       if (
         Error.message ==
