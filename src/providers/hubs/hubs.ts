@@ -164,9 +164,29 @@ export class HubsProvider {
       })
     })
   }
-
+//getcurrentProfile
+  retrieve() {
+    let userID = firebase.auth().currentUser;
+    return firebase.database().ref("Organizations/" + userID.uid)
+  }
   storeOrgNames(cat) {
     this.orgNames.push(cat);
+  }
+
+//updateOrganization
+  update(name, email, downloadurl, address, contact) {
+    return new Promise((pass, fail) => {
+      this.ngzone.run(() => {
+        var user = firebase.auth().currentUser
+        firebase.database().ref("Organizations/" + user.uid).update({
+          name: name,
+          email: email,
+          downloadurl: downloadurl,
+          address: address,
+          contact: contact
+        });
+      })
+    })
   }
 
   //getcurrentlocation
@@ -179,6 +199,19 @@ export class HubsProvider {
 
   }
 
+
+  //forgotpassword
+  forgetPassword(email) {
+    return new Promise((resolve, reject) => {
+      firebase.auth().sendPasswordResetEmail(email).then(() => {
+        resolve();
+      }, (error) => {
+        reject(error)
+      })
+
+    })
+
+  }
 
   //createradius
   createPositionRadius(latitude, longitude) {
