@@ -72,16 +72,25 @@ page-add-organization {
   // }
 
   .Contacts{
-      width: 80%;
+      width: calc(80% + 10px);
       margin: 10px auto; 
       display: flex;
-      border: 1px solid red;
+      // border: 1px solid red;
       #input-field{
           margin: 5px;
           width: 50% !important;
       }
   }
 
+  .instructions{
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    p{
+      font-size: 20px;
+      font-weight: bolder;
+    }
+  }
   #cover-image, #logo-image{
       display: none;
   }
@@ -107,7 +116,7 @@ page-add-organization {
   }
   #coverImage img{
       width: 100%;
-      height: 50px;
+      // height: 50px;
       object-fit: contain;
   }
   .view > div{
@@ -153,7 +162,7 @@ page-add-organization {
     // display: none;
   }
   .view > div:nth-child(4) {
-    background: orange;
+    background: white;
     // border: 2px solid plum;
     display: flex;
     flex-direction: column;
@@ -218,7 +227,7 @@ page-add-organization {
     width: 100%;
     // height: 100%;
     text-align: center;
-    background: whitesmoke;
+    background: red;
     // border: 2px solid black;
     // margin-top: 50%;
     // transform: translateY(-40%);
@@ -237,7 +246,7 @@ page-add-organization {
     width: 80%;
     padding: 5px;
     resize: none;
-    margin-top: 25px;
+    margin-top: 15px;
     border-radius: 10px;
   }
   ion-select{
@@ -288,20 +297,23 @@ page-add-organization {
   #coverImage{
 
   }
-  #confirm-logo{
+  #confirm-logo, #confirm-logo img{
     width: 80px;
-    height: 80Px;
+    height: 80px;
+    border-radius: 80px;
+    object-fit: cover;
   }
   #confirm-cover{
     width: 100%;
+    border: 2px solid;
     height: 200px;
   }
   #confirm-cover img, #confirm-logo img{
-    height: 80px;
     text-align: center;
   }
   #confirm-cover img{
-    width: 80%;
+    width: 100%;
+    height: 200px;
     object-fit: cover;
   }
   #confirm-logo img{

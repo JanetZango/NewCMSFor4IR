@@ -116,6 +116,9 @@
             <div class="buttons">
               <button id="forward" ion-button (click)="toPage2Jobs()">Next</button>
             </div>
+            <div class="instructions">
+              <p>Please fill in the form to add a job requirement</p>
+            </div>
             <div class="inputs">
               <ion-input type="text" id="input-field" placeholder="Job Name"></ion-input>
               <b>Applications</b>
@@ -141,8 +144,8 @@
               <button id="forward" ion-button  (click)="toPage3Jobs()">Next</button>
             </div>
             <div class="inputs">
-              <textarea name="" id="input-field" cols="30" rows="10"></textarea>
-              <textarea name="" id="input-field" cols="30" rows="10"></textarea>
+              <textarea name="" id="text-field" cols="30" rows="10" placeholder="Requirements"></textarea>
+              <textarea name="" id="text-field" cols="30" rows="10" placeholder="Responsibilities"></textarea>
               <ion-input type="text" id="input-field" placeholder="Address"></ion-input>
               <ion-input type="tel" id="input-field" placeholder="Phone"></ion-input>
               <ion-input type="email" id="input-field" placeholder="Email"></ion-input>
@@ -150,7 +153,7 @@
           </div>
           <div class="pageJobs">
             <div class="buttons">
-              <button id="backward" ion-button>Back</button>
+              <button id="backward" ion-button (click)="backToPage2()">Back</button>
               <button id="forward" ion-button (click)="toPage4Jobs()">Next</button>
             </div>
             <div class="inputs">
@@ -158,25 +161,25 @@
               <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image">
               <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image">
               <ion-input type="text" id="input-field" placeholder="Link to online application form"></ion-input>
-              <label for="logo-image" id="logoImage">
-                <img src="../../assets/imgs/logo.png" alt="">
-              </label>
               <label for="cover-image" id="coverImage">
+                <img src="../../assets/imgs/logo.png" alt="">
+              </label><br>
+              <label for="logo-image" id="logoImage">
                 <img src="../../assets/imgs/logo.png" alt="">
               </label>
             </div>
           </div>
           <div class="pageJobs">
             <div class="buttons">
-              <button id="backward" ion-button>Back</button>
+              <button id="backward" ion-button (click)="backToPage3Jobs()">Back</button>
               <button id="forward" ion-button>done</button>
             </div>
             <div class="inputs">
-              <div id="confirm-logo">
-                <img src="../../assets/imgs/logo.png" alt="">
-              </div>
               <div id="confirm-cover">
-                <img src="../../assets/imgs/logo.png" alt="">
+                <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+              </div>
+              <div id="confirm-logo">
+                <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
               </div>
               <p><b>Job Name:</b> My Job</p>
               <p><b>Employment Type:</b> Part-Time</p>
