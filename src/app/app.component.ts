@@ -9,7 +9,6 @@ import { HubsProvider } from '../providers/hubs/hubs';
 import { FormsPage } from '../pages/forms/forms';
 import { AddOrganizationPage } from '../pages/add-organization/add-organization';
 
-
 @Component({
   templateUrl: 'app.html'
 })
