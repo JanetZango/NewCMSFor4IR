@@ -22,4 +22,4 @@ export class OnboardingPage {
     console.log('ionViewDidLoad OnboardingPage');
   }
 
-
+}
