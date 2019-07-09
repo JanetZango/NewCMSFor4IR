@@ -51,7 +51,7 @@ export class AddOrganizationPage {
   facebook;
   programService;
   serviceArrayTemp = []
-  showPhoneHint :boolean =false ;
+  showPhoneHint: boolean = false;
 
   heiServices = [{ title: "Testing & Analytical", description: " Services include material testing and behaviour analysis, as well as quality tests. These can be R&D or routine jobs according to existing standards or client's specifications, using readily available high-end software and equipment." },
 
@@ -88,15 +88,15 @@ export class AddOrganizationPage {
   allServices = [{ title: "Testing & Analystical", description: " Services include material testing and behaviour analysis, as well as quality tests. These can be R&D or routine jobs according to existing standards or client's specifications, using readily available high-end software and equipment." },
   { title: "Rapid Prototyping and Manufacturing", description: 'model with regard to the indicated functional aspects of a product. The manufacturing is not limited to batch/pilot manufacturing of models, but can include either contract machining or manufacturing, based on the clients drawings or specifications' },
   { title: "Consultation, Technology Audit and Feasibility Study", description: 'Consultation includes search and technology brokerage services, finding the know-how as a diagnostic service, assessment or consultancy. This is usually the first part of any project to identify the potential for improvement and the required interventions. This involves the searching and sourcing of technology from outside the Universities of Technology, generally from firms, engineering consultants; brokering as well as possibly managing technology transfers to SME' },
- 
+
   { title: "Skill Development", description: " is the process of (1) identifying your skill gaps, and (2) developing and honing these skills. It is important because your skills determine your ability to execute your plans with success. ... In goal achievement, your skills are your tools." },
   { title: "Enterpreneurship Programme", description: "The Entrepreneurship Development Programme is aimed at creating a conducive environment for young entrepreneurs to access relevant entrepreneurship skills, knowledge, values and attitudes for their businesses." },
-  { title: "Training ", description: "Training is a program that helps people learn specific knowledge or skills to improve performance in their current roles. Development is more expansive and focuses on people growth and future performance, rather than an immediate job role" } ,
+  { title: "Training ", description: "Training is a program that helps people learn specific knowledge or skills to improve performance in their current roles. Development is more expansive and focuses on people growth and future performance, rather than an immediate job role" },
   { title: "Applied Development, Engineering and Design", description: 'This involves the application of engineering processes from CAD to CAM now CA ,including scaled production based on the know-how from Technology Stations, needing professional engineering and design skills as well as identification and sourcing of technology or equipment. These services lead to demand driven projects that can be funded by various funding Agencies' },
-  {tittle:"Internet" , description:"provider is a company that provides access to the Internet. Most ISPs require you to subscribe in order to use their services, but there are ways to connect to the Internet for free"} ,
-  
+  { tittle: "Internet", description: "provider is a company that provides access to the Internet. Most ISPs require you to subscribe in order to use their services, but there are ways to connect to the Internet for free" },
+
   { title: "Printing", description: 'Managed print services (MPS) is the provision and oversight of business document output needs by an external service provider. ... The next step is typically a partial or complete replacement of existing hardware, including printers, faxes, scanners, photocopiers and multifunction (MFP) devices.' }
-]
+  ]
 
 
 
@@ -150,7 +150,7 @@ export class AddOrganizationPage {
   Programemail;
 
   showApplicationLink: boolean = false;
-  
+
 
   showProgramBenefits: boolean = false;
   showJobs: boolean = false;
@@ -174,9 +174,9 @@ export class AddOrganizationPage {
 
   pushid = this.navParams.get('pushid')
 
- 
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public hubs: HubsProvider, public ngzone: NgZone, public alertCtrl: AlertController) {
-  console.log(this.email)
+    console.log(this.email)
   }
 
   ionViewDidLoad() {
@@ -361,7 +361,7 @@ export class AddOrganizationPage {
     alert(this.program)
     // if(this.program != undefined){
     //   var decider = document.getElementsByClassName("decider") as HTMLCollectionOf <HTMLElement>
-      
+
     //   decider[0].style.display = "none"
     // }
     // if (this.program == undefined) {
@@ -384,127 +384,260 @@ export class AddOrganizationPage {
       this.showRegistionOrgs = true;
       this.hideRegisterAs = false
       thePlaceholder.style.display = "none"
-    } else if(this.program == "Programme"){
+    } else if (this.program == "Programme") {
       this.showRegistionProgs = true;
       this.hideRegisterAs = false
       thePlaceholder.style.display = "none"
     }
-    else if(this.program == "Jobs"){
+    else if (this.program == "Jobs") {
       this.showJobs = true;
       this.hideRegisterAs = false
       thePlaceholder.style.display = "none"
     }
-    else if(this.program == "WiFi Access"){
+    else if (this.program == "WiFi Access") {
 
       this.showWifiAccess = true;
     }
   }
 
-  moveToPage2() {
+  // moveToPage2() {
 
-    // this.phonenumberValidatin();
-    var progBar = document.getElementById("theDot");
-    // this.is_urlValidation(this.orgWebsite);
-    // if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
-    //   this.alert("Please complete all details ")
-    // } else if (this.orgName == undefined) {
-    //   this.alert("Enter organisation Name ")
-    // } else if (this.orgAdress == undefined) {
-    //   this.alert("Enter Address  ")
-    // } else if (this.contactValidation == 1) {
-    //   this.alert("The phone numbers you have entered is invalid, please enter a valid phone numbers  ")
-    // } else if (this.websiteValidation == 1) {
-    //   this.alert("The website address you have entered is invalid, please enter a valid website address ")
-    // } else if (this.checkAddress == 1) {
-    //   this.alert("The address you have entered is invalid, please enter a valid address ")
-    // }
-    // else if (this.orgPhone == undefined) {
-    //   this.alert("Enter Phone numbers  ")
-    // } else if (this.orgDescription == undefined) {
-    //   this.alert("Enter Phone numbers  ")
+  //   // this.phonenumberValidatin();
+  //   var progBar = document.getElementById("theDot");
+  //   // this.is_urlValidation(this.orgWebsite);
+  //   // if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
+  //   //   this.alert("Please complete all details ")
+  //   // } else if (this.orgName == undefined) {
+  //   //   this.alert("Enter organisation Name ")
+  //   // } else if (this.orgAdress == undefined) {
+  //   //   this.alert("Enter Address  ")
+  //   // } else if (this.contactValidation == 1) {
+  //   //   this.alert("The phone numbers you have entered is invalid, please enter a valid phone numbers  ")
+  //   // } else if (this.websiteValidation == 1) {
+  //   //   this.alert("The website address you have entered is invalid, please enter a valid website address ")
+  //   // } else if (this.checkAddress == 1) {
+  //   //   this.alert("The address you have entered is invalid, please enter a valid address ")
+  //   // }
+  //   // else if (this.orgPhone == undefined) {
+  //   //   this.alert("Enter Phone numbers  ")
+  //   // } else if (this.orgDescription == undefined) {
+  //   //   this.alert("Enter Phone numbers  ")
 
-    // } else {
+  //   // } else {
 
-      var toSlide = document.getElementById("page1");
-      toSlide.style.marginLeft = "-25%";
-      // this.progressBar = this.progressBar + 25
-      progBar.style.width = "50%";
-    }
-    
-  moveToPage3() {
+  //     var toSlide = document.getElementById("page1");
+  //     toSlide.style.marginLeft = "-25%";
+  //     // this.progressBar = this.progressBar + 25
+  //     progBar.style.width = "50%";
+  //   }
 
-
-    var progBar = document.getElementById("theDot");
+  // moveToPage3() {
 
 
-    if (this.offerWifi == "No") {
-      if (this.wifi == undefined) {
-        this.wifi = "No"
-      } if (this.chooseWifiRange == undefined) {
-        this.chooseWifiRange = "No"
-      }
-
-    }
-
-    if (this.offerWifi != undefined) {
-      if (this.wifi != undefined && this.chooseWifiRange != undefined) {
-        var toSlide = document.getElementById("page1");
-        toSlide.style.marginLeft = "-50%";
-        this.progressBar = this.progressBar + 25;
-        progBar.style.width = "75%";
-      } else {
-        alert("Please complete all details")
-      }
-
-    }
-
-    else {
-
-      alert("Please complete all details")
-    }
+  //   var progBar = document.getElementById("theDot");
 
 
+  //   if (this.offerWifi == "No") {
+  //     if (this.wifi == undefined) {
+  //       this.wifi = "No"
+  //     } if (this.chooseWifiRange == undefined) {
+  //       this.chooseWifiRange = "No"
+  //     }
 
-  }
+  //   }
+
+  //   if (this.offerWifi != undefined) {
+  //     if (this.wifi != undefined && this.chooseWifiRange != undefined) {
+  //       var toSlide = document.getElementById("page1");
+  //       toSlide.style.marginLeft = "-50%";
+  //       this.progressBar = this.progressBar + 25;
+  //       progBar.style.width = "75%";
+  //     } else {
+  //       alert("Please complete all details")
+  //     }
+
+  //   }
+
+  //   else {
+
+  //     alert("Please complete all details")
+  //   }
 
 
-  moveToPage4() {
 
-    var progBar = document.getElementById("theDot");
-    // if (this.category != undefined && this.catService.length != 0) {
-      console.log(this.catService);
+  // }
 
 
-      var toSlide = document.getElementById("page1");
-      toSlide.style.marginLeft = "-75%";
-      this.progressBar = this.progressBar + 25;
-      progBar.style.width = "100%";
-    // } else {
-    //   alert("Complete all the Details ")
-    // }
+  // moveToPage4() {
 
-  }
+  //   var progBar = document.getElementById("theDot");
+  //   // if (this.category != undefined && this.catService.length != 0) {
+  //     console.log(this.catService);
 
-  backToPage3() {
-    var progressBar = document.getElementById("theDot");
-    var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "-50%";
-    progressBar.style.width = "75%"
-  }
-  backToPage2() {
-    var progressBar = document.getElementById("theDot");
-    var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "-25%";
-    progressBar.style.width ="50%"
-  }
-  backToPage1() {
-    var progressBar = document.getElementById("theDot");
-    var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "0%";
-    progressBar.style.width ="25%"
-  }
 
-  click(){
+  //     var toSlide = document.getElementById("page1");
+  //     toSlide.style.marginLeft = "-75%";
+  //     this.progressBar = this.progressBar + 25;
+  //     progBar.style.width = "100%";
+  //   // } else {
+  //   //   alert("Complete all the Details ")
+  //   // }
+
+  // }
+
+  // backToPage3() {
+  //   var progressBar = document.getElementById("theDot");
+  //   var toSlide = document.getElementById("page1");
+  //   toSlide.style.marginLeft = "-50%";
+  //   progressBar.style.width = "75%"
+  // }
+  // backToPage2() {
+  //   var progressBar = document.getElementById("theDot");
+  //   var toSlide = document.getElementById("page1");
+  //   toSlide.style.marginLeft = "-25%";
+  //   progressBar.style.width ="50%"
+  // }
+  // backToPage1() {
+  //   var progressBar = document.getElementById("theDot");
+  //   var toSlide = document.getElementById("page1");
+  //   toSlide.style.marginLeft = "0%";
+  //   progressBar.style.width ="25%"
+  // }
+
+  click() {
     alert("clicked")
+  }
+
+  toPage2Progs() {
+    var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "-25%"
+  }
+  toPage3Progs() {
+    var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "-50%"
+  }
+  toPage4Progs() {
+    var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "-75%"
+  }
+  backToPage3Progs() {
+    var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "-50%"
+  }
+  backToPage2Progs() {
+    var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "-25%"
+  }
+  backToPage1Progs() {
+    var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "0"
+  }
+
+
+  
+
+
+
+
+
+  
+  toPage2Services() {
+    var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "-25%"
+  }
+  toPage3Services() {
+    var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "-50%"
+  }
+  toPage4Services() {
+    var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "-75%"
+  }
+  backToPage3Services() {
+    var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "-50%"
+  }
+  backToPage2Services() {
+    var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "-25%"
+  }
+  backToPage1Services() {
+    var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "0"
+  }
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  toPage2WiFi() {
+    var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "-25%"
+  }
+  toPage3WiFi() {
+    var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "-50%"
+  }
+  toPage4WiFi() {
+    var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "-75%"
+  }
+  backToPage1WiFi() {
+    var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "0"
+  }
+  backToPage2WiFi() {
+    var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "-25%"
+  }
+  backToPage3WiFi() {
+    var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "-50%"
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  toPage2Jobs() {
+    var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "-25%"
+  }
+  toPage3Jobs() {
+    var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "-50%"
+  }
+  toPage4Jobs() {
+    var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "-75%"
+  }
+  backToPage1Jobs() {
+    var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "0"
+  }
+  backToPage2Jobs() {
+    var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "-25%"
+  }
+  backToPage3Jobs() {
+    var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
+    pager[0].style.marginLeft = "-50%"
   }
 }
