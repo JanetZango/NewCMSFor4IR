@@ -1,487 +1,275 @@
 page-login-register {
-//     .header{
-//         width: 100%;
-//         height: 10%;
-//         background-color: #ffffff;
-//         z-index: 2;
-//         margin: 0%;
-//         padding: 0%
-//         // position: absolute
-//     }
-//     .footer{
-//         width: 100%;
-//         height: 80%;
-//         //background-color: #8d8d8d;
-//         z-index: 2;
-//         margin: 0%;
-//         padding: 0%;
-//         background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../assets/imgs/Screenshot\ 2019-07-04\ at\ 08.11.36.png');
-//         background-position: center;
-//         background-repeat: no-repeat;
-//         background-size: cover;
-//     }
-//     .footer {
-//         -webkit-animation: footer 10s ease-out both;
-//                 animation: footer 10s ease-out both;
-//     }
-// @-webkit-keyframes footer {
-//     0% {
-//       -webkit-transform: scale(1) translateY(0);
-//               transform: scale(1) translateY(0);
-//       -webkit-transform-origin: 50% 16%;
-//               transform-origin: 50% 16%;
-//     }
-//     100% {
-//       -webkit-transform: scale(1.25) translateY(-15px);
-//               transform: scale(1.25) translateY(-15px);
-//       -webkit-transform-origin: top;
-//               transform-origin: top;
-//     }
-//   }
-//   @keyframes footer {
-//     0% {
-//       -webkit-transform: scale(1) translateY(0);
-//               transform: scale(1) translateY(0);
-//       -webkit-transform-origin: 50% 16%;
-//               transform-origin: 50% 16%;
-//     }
-//     100% {
-//       -webkit-transform: scale(1.25) translateY(-15px);
-//               transform: scale(1.25) translateY(-15px);
-//       -webkit-transform-origin: top;
-//               transform-origin: top;
-//     }
-//   }
-  
-//     .container{
-//         width: 100%;
-//         height: 100%;
-//         background: rgb(255, 255, 255);
-//         //background-image: url('../../assets/imgs/South-African-Parliament-AT-1030x691.jpg');
-//         //background-image: url('../../assets/imgs/1522-removebg-preview.png');
-//         background-position: center;
-//         background-repeat: no-repeat;
-//         background-size: cover;
-//         //filter: blur(5px);
-//         z-index: 1;
-//         position: absolute
-//     }
-//     .logotext{
-//         // padding-top: 10%;
-//         // position: relative;
-//         // top: -4%;
-//         // left: 50%;
-//         // transform: translate(-50%,-50%);
-//     }
-//     .logo{
-//         height: 10em;
-//         width: 10em;
-//         position: relative;
-//         top: 10%;
-//         left: 50%;
-//         transform: translate(-50%,-50%);
-//         z-index: 2;
-//     }
-//     .logotop{
-//         margin: 0 auto;
-//         height: 6.5em;
-//         width: 7em;
-//         position: absolute;
-//         top: 6%;
-//         left: 4%;
-//         transform: translate(-50%,-50%);
+    .cover{
+        background-color: whitesmoke; 
+    }
+    .logininputdiv{
+        width: 60%; 
+        margin: 0 auto;
+     
+    }
+    .login{
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .signup{
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .background{
+        display: flex;
+        flex-direction: row;
+        width: 80%;
+        height: 80%;
+        background-color: lavenderblush; 
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0px 15px 30px -15px rgb(0, 0, 0); 
+        border-radius: 15px;
         
-//     }
-//     #login-content{
-//         width: 65%;
-//         height: 65%;
-//         background: rgb(255, 255, 255);
-//         position: relative;
-//         top: 56%;
-//         left: 50%;
-//         transform: translate(-50%,-50%);
-//         display: flex;
-//         border-radius: 25px;
-//         z-index: 2;
-//         //opacity: 0.8;
-
-//     }
-//     .right{
-//         width: 60%;
-//         height: 100%;
-//         background-color: whitesmoke;
-//         z-index: 2;
-//     }
-//     .left{
-//         width: 40%;
-//         height: 100%;
-//         background-color: #00bd55;
-//         z-index: 2;
-//     }
-//     .leftcontent{
-   
-//         position: relative;
-//         top: 50%;
-//         left: 50%;
-//         transform: translate(-50%,-50%);
-//         z-index: 2;
-//     }
-//     .Register{
-//         position: relative;
-//         top: 30%;
-//         left: 50%;
-//         transform: translate(-50%,-50%);
-//         z-index: 2;
-//         //display: initial
-//     }
-//     .inputs{
-//         border-radius: 100px;
-//         box-shadow: 0px 15px 20px -15px #111; 
-//     }
-//     .lefttext{
-//         color: white
-//     }
-
-    
-
-
-
-
-
-
-//     #login-contentL{
-//         width: 65%;
-//         height: 66%;
-//         background: rgb(255, 255, 255);
-//         position: absolute;
-//         top: 58%;
-//         left: 50%;
-//         transform: translate(-50%,-50%);
-//         display: flex;
-//         border-radius: 25px;
-//         z-index: 2;
-//     }
-//     .rightL{
-//         width: 40%;
-//         height: 100%;
-//         background-color: #00bd55;
-        
+    }
+    .text-input-md {
+        margin: 13px 8px;
+        padding: 0;
+        width: calc(100% - 8px - 8px);
+        box-shadow: 0px 15px 30px -15px rgb(0, 0, 0);
+    }
+    .left{
+        height: 100%;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+        padding-top: 10%;
+        z-index: 2;
+        border-bottom-left-radius: 15px; 
+        border-top-left-radius: 15px;
+        padding: 100px ;
+    }
+    .right{
+        height: 100%;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.6);
+        //background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('../../assets/imgs/South-African-Parliament-AT-1030x691.jpg');
+        //background-image: url('../../assets/imgs/South-African-Parliament-AT-1030x691.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-bottom-right-radius: 15px; 
+        border-top-right-radius: 15px;
+        z-index: 2;
        
-//     }
-//     .leftL{
-//         width: 60%;
-//         height: 100%;
-//         background-color: whitesmoke;
         
-//     }
-//     .leftcontentL{
-//         position: relative;
-//         top: 50%;
-//         left: 50%;
-//         transform: translate(-50%,-50%);
-//         z-index: 2;
-//     }
-//     .RegisterL{
-//         position: relative;
-//         top: 30%;
-//         left: 50%;
-//         transform: translate(-50%,-50%);
-//         z-index: 2;
-//     }
-//     .inputs{
-//         border-radius: 100px;
-//         box-shadow: 0px 15px 20px -15px #111; 
-//     }
-//     .lefttext{
-//         color: white
-//     }
-
-
-//     @media only screen and (max-width: 414px) {
-//         .header{
-//             width: 100%;
-//             height: 15%;
-//             background-color: #ffffff;
-//             z-index: 2;
-//             margin: 0%;
-//             padding: 0%;
-//            display: none
-//         }
-//         .footer{
-//             width: 100%;
-//             height: 85%;
-//             z-index: 2;
-//             margin: 0%;
-//             padding: 0%;
-//             background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('../../assets/imgs/Screenshot\ 2019-07-04\ at\ 08.11.36.png');
-//             background-position: center;
-//             background-repeat: no-repeat;
-//             background-size: cover;
-//         }
-//         #login-contentL{
-//             width: 100%;
-//             height: 100%;
-//             background: rgb(255, 255, 255);
-//             position: absolute;
-//             top: 50%;
-//             left: 47%;
-//             transform: translate(-50%,-50%);
-//             display: flex;
-//             flex-direction: column;
-//              border-radius: 0px;
-//             z-index: 2;
-//             //opacity: 0.8;
-    
-//         }
-//         .rightL{
-//             width: 100%;
-//             height: 20%;
-//             background-color: #00bd55;
+    }
+    .cardright{
+        height: 80%;
+        width: 50%;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 8px
+        
+    }
+    .cardrightimg{
+        height: 40%;
+        //width: 50%
+    }
+    .cardrightcontent{
+        height: 60%;
+        //width: 50%
+    }
+    .cardcenter{
+        display: flex;
+        margin: 0 auto;
+        justify-content: center;
+        align-content: center
+        // position: relative;
+        // top: 50%;
+        // left: 50%;
+        // transform: translate(-50%, -50%);
+    }
+    .logo{
+        height: 25%;
+        width: 25%;
+        //margin-top: 10%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        display: none;
+    }
+    .create{
+        width: 50%
+    }
+    .forgot{
+        width: 50%
+    }
+    .bottombtn{
+        display: flex;
+        flex-direction: row;
+    }
+    .hero-text {
+        text-align: center;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        z-index: 2;
+      }
+      .border{
+          border: 1rem solid white;
+          height: 45%;
+          width: 40%;
+          position: absolute;
+          top: 50%;
+          left: 75%;
+          transform: translate(-50%, -50%);
+          z-index: 2;
+      }
+      .signup{
+          display: none
+      }
+      .test{
+        height: 100rem;
+        width: 100rem;
+        background-color: #2a0961;
+        z-index: 1;
+        position: absolute;
+        top: -20%;
+        left: 70%;
+        transform: translate(-50%, -50%);
+        border-bottom-right-radius: 15px; 
+        border-radius: 50px;
+        transform: rotate(45deg);
+        z-index: -1;
+      }
+      .test1{
+        height: 100rem;
+        width: 100rem;
+        background-color: rgba(82, 29, 167, 0.7);
+        z-index: 1;
+        position: absolute;
+        top: -33%;
+        left: 72%;
+        transform: translate(-50%, -50%);
+        border-bottom-right-radius: 15px; 
+        border-radius: 50px;
+        transform: rotate(45deg);
+        z-index: -1;
+      }
+      .scroll-content {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        z-index: 1;
+        display: block;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        will-change: scroll-position;
+        contain: size style layout;
+    }
+    .list-md {
+        margin: -1px 0 26px;
+    }
+    .inputs{
+        border-radius: 100px;
+        border: 5xp solid rgb(119, 0, 255)
+        //box-shadow: 0px 5px 15px 1px rgb(220, 220, 220); 
+    }
+    .button-btn {
+        color: #fff;
+        background-color: #2a0961;
+        box-shadow: 10px 15px 20px -15px #111; 
+        border: 5xp solid #5600b8
+    }
+          @media only screen and (max-width: 414px) {
+            .background{
+                display: flex;
+                flex-direction: column;
+                width: 90%;
+                height: 90%;
+                background-color: rgba(255, 255, 255, 0.897)
             
-//             z-index: 2;
-//         }
-//         .leftL{
-//             width: 100%;
-//             height: 80%;
-//             background-color: whitesmoke;
-//             z-index: 2;
-//         }
-//         .leftcontentL{
-//             //width: 80%;
-//             //height: 80%;
-//             position: relative;
-//             top: 50%;
-//             left: 50%;
-//             transform: translate(-50%,-50%);
-//             z-index: 2;
-//         }
-//         .RegisterL{
-//             position: relative;
-//             top: 30%;
-//             left: 50%;
-//             transform: translate(-50%,-50%);
-//             z-index: 2;
-//         }
-//         .inputs{
-//             border-radius: 100px;
-//             box-shadow: 0px 15px 20px -15px #111; 
-//         }
-//         .lefttext{
-//             color: white
-//         }
-
-
-//         #login-content{
-//             width: 100%;
-//             height: 100%;
-//             background: rgb(255, 255, 255);
-//             position: relative;
-//             top: 48%;
-//             left: 47%;
-//             transform: translate(-50%,-50%);
-//             display: flex;
-//             flex-direction: column;
-//              border-radius: 0px;
-//             z-index: 2;
-//             //opacity: 0.8;
-    
-//         }
-//         .right{
-//             width: 100%;
-//             height: 80%;
-//             background-color: whitesmoke;
-//             z-index: 2;
-//         }
-//         .left{
-//             width: 100%;
-//             height: 20%;
-//             background-color: #00bd55;
-//             z-index: 2;
-//         }
-//         .leftcontent{
-//             position: relative;
-//             top: 50%;
-//             left: 50%;
-//             transform: translate(-50%,-50%);
-//             z-index: 2;
-//         }
-//         .Register{
-//             position: relative;
-//             top: 30%;
-//             left: 50%;
-//             transform: translate(-50%,-50%);
-//             z-index: 2;
-//         }
-//         .inputs{
-//             border-radius: 100px;
-//             box-shadow: 0px 15px 20px -15px #111; 
-//         }
-//         .lefttext{
-//             color: white
-//         }
-//       }
-
-//<!---------------------------------------------------------------------------------------------------------------------------------------------------------------->
-.cover{
-    background-color: #dfde80; 
-}
-.background{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-    background-color: #dfde80;
-
-}
-.left{
-    height: 100%;
-    width: 100%;
-    background-color: #dfde80;
-    padding-top: 10%;
-    z-index: 2;
-}
-.right{
-    height: 100%;
-    width: 100%;
-    background-color: rgb(230, 230, 230);
-    //background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('../../assets/imgs/South-African-Parliament-AT-1030x691.jpg');
-    //background-image: url('../../assets/imgs/South-African-Parliament-AT-1030x691.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    z-index: 1;
-}
-.logo{
-    height: 25%;
-    width: 25%;
-    margin-top: 10%;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.create{
-    width: 50%
-}
-.forgot{
-    width: 50%
-}
-.bottombtn{
-    display: flex;
-    flex-direction: row;
-}
-.hero-text {
-    text-align: center;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    z-index: 2;
-  }
-  .border{
-      border: 1rem solid white;
-      height: 45%;
-      width: 90%;
-      position: relative;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 2;
-  }
-  .signup{
-      display: none
-  }
-  .test{
-    height: 100%;
-    width: 100%;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../assets/imgs/South-African-Parliament-AT-1030x691.jpg');
-    //background-image: url('../../assets/imgs/South-African-Parliament-AT-1030x691.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    z-index: 1;
-    position: absolute
-  }
-  .test {
-            -webkit-animation: test 5s ease-out reverse;
-                    animation: test 5s ease-out reverse;
-        }
-    @-webkit-keyframes test {
-        0% {
-          -webkit-transform: scale(1) translateY(0);
-                  transform: scale(1) translateY(0);
-          -webkit-transform-origin: 50% 16%;
-                  transform-origin: 50% 16%;
-        }
-        100% {
-          -webkit-transform: scale(1.1) translateY(-15px);
-                  transform: scale(1.1) translateY(-15px);
-          -webkit-transform-origin: top;
-                  transform-origin: top;
-        }
-      }
-      @keyframes test {
-        0% {
-          -webkit-transform: scale(1) translateY(0);
-                  transform: scale(1) translateY(0);
-          -webkit-transform-origin: 50% 16%;
-                  transform-origin: 50% 16%;
-        }
-        100% {
-          -webkit-transform: scale(1.1) translateY(-15px);
-                  transform: scale(1.1) translateY(-15px);
-          -webkit-transform-origin: top;
-                  transform-origin: top;
-        }
-      }
-      
-
-
-
-
-
-      @media only screen and (max-width: 414px) {
-        .background{
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            height: 100%;
-        
-        }
-        .left{
-            height: 100%;
-            width: 100%;
-            background-color: rgb(223, 222, 128);
-            padding-top: 0%;
-            z-index: 2;
-        }
-        .right{
-            height: 100%;
-            width: 100%;
-            background-color: rgb(230, 230, 230);
-            //background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('../../assets/imgs/South-African-Parliament-AT-1030x691.jpg');
-            //background-image: url('../../assets/imgs/South-African-Parliament-AT-1030x691.jpg');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            z-index: 1;
-            display: none;
-        }
-        #or{
-            display: none
-        }
-        .logo{
-            height: 25%;
-            width: 40%;
-            margin-top: 10%;
-            margin-left: auto;
-            margin-right: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-      }
-
-}
+            }
+            .left{
+                height: 100%;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.8);
+                padding-top: 0%;
+                z-index: 2;
+            }
+            .right{
+                height: 100%;
+                width: 100%;
+                background-color: rgb(230, 230, 230);
+                //background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('../../assets/imgs/South-African-Parliament-AT-1030x691.jpg');
+                //background-image: url('../../assets/imgs/South-African-Parliament-AT-1030x691.jpg');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                z-index: 1;
+                display: none;
+            }
+            #or{
+                display: none
+            }
+            .logo{
+                height: 25%;
+                width: 40%;
+                margin-top: 10%;
+                margin-left: auto;
+                margin-right: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                display: block;
+            }
+            .logininputdiv{
+                width: 100%; 
+                margin: 0 auto;
+             
+            }
+            .scroll-content {
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                position: absolute;
+                z-index: 1;
+                display: block;
+                overflow-x: hidden;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                will-change: scroll-position;
+                contain: size style layout;
+            }
+            .inputs{
+                border-radius: 100px;
+                box-shadow: 0px 15px 20px -15px #000; 
+            }
+            .list-ios > .item-block:first-child {
+                 border-top: 0px solid #ffffff; 
+            }
+            .login{
+                position: relative;
+                top: 35%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .signup{
+                position: relative;
+                top: 35%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+          }
+    }
