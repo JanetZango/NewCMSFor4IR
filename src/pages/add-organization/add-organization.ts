@@ -510,27 +510,39 @@ export class AddOrganizationPage {
 
   toPage2Progs() {
     var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-25%"
+    pager[0].style.marginLeft = "-25%";
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "50%"
   }
   toPage3Progs() {
     var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-50%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "75%"
   }
   toPage4Progs() {
     var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-75%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "100%"
   }
   backToPage3Progs() {
     var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-50%"
+    pager[0].style.marginLeft = "-50%";
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "75%"
   }
   backToPage2Progs() {
     var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-25%"
+    pager[0].style.marginLeft = "-25%";
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "50%"
   }
   backToPage1Progs() {
     var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "0"
+    pager[0].style.marginLeft = "0";
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "25%"
   }
 
 
@@ -543,27 +555,39 @@ export class AddOrganizationPage {
   
   toPage2Services() {
     var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-25%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "50%"
+    pager[0].style.marginLeft = "-25%";
   }
   toPage3Services() {
     var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-50%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "75%"
   }
   toPage4Services() {
     var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-75%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "100%"
   }
   backToPage3Services() {
     var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-50%"
+    pager[0].style.marginLeft = "-50%";
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "75%"
   }
   backToPage2Services() {
     var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-25%"
+    pager[0].style.marginLeft = "-25%";
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "50%"
   }
   backToPage1Services() {
     var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "0"
+    pager[0].style.marginLeft = "0";
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "25%"
   }
 
 
@@ -580,26 +604,38 @@ export class AddOrganizationPage {
   toPage2WiFi() {
     var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-25%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "50%"
   }
   toPage3WiFi() {
     var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-50%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "75%"
   }
   toPage4WiFi() {
     var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-75%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "100%"
   }
   backToPage1WiFi() {
     var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "0"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "25%"
   }
   backToPage2WiFi() {
     var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-25%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "50%"
   }
   backToPage3WiFi() {
     var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-50%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "75%"
   }
 
 
@@ -619,25 +655,37 @@ export class AddOrganizationPage {
   toPage2Jobs() {
     var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-25%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "50%"
   }
   toPage3Jobs() {
     var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-50%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "75%"
   }
   toPage4Jobs() {
     var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-75%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "100%"
   }
   backToPage1Jobs() {
     var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "0"
+    pager[0].style.marginLeft = "0";
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "25%"
   }
   backToPage2Jobs() {
     var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-25%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "50%"
   }
   backToPage3Jobs() {
     var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-50%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "75%"
   }
 }

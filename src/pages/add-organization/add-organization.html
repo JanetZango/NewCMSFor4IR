@@ -140,7 +140,7 @@
           </div>
           <div class="pageJobs">
             <div class="buttons">
-              <button id="backward" ion-button (click)="backToPage1()">Back</button>
+              <button id="backward" ion-button (click)="backToPage1Jobs()">Back</button>
               <button id="forward" ion-button  (click)="toPage3Jobs()">Next</button>
             </div>
             <div class="inputs">
@@ -153,20 +153,41 @@
           </div>
           <div class="pageJobs">
             <div class="buttons">
-              <button id="backward" ion-button (click)="backToPage2()">Back</button>
+              <button id="backward" ion-button (click)="backToPage2Jobs()">Back</button>
               <button id="forward" ion-button (click)="toPage4Jobs()">Next</button>
             </div>
             <div class="inputs">
               <!-- User clicks here to upload logo and cover for Jobs -->
               <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image">
               <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image">
-              <ion-input type="text" id="input-field" placeholder="Link to online application form"></ion-input>
-              <label for="cover-image" id="coverImage">
-                <img src="../../assets/imgs/logo.png" alt="">
+              <div class="instructions">
+                <p>Please choose a cover photo and a logo (if any).
+</p>
+              </div>
+              <div class="images-container">
+                <label for="cover-image" id="myCover">
+                  <div class="myLabel">
+                    Upload cover image
+                  </div>
+                  <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+                </label>
+                <label for="logo-image" id="myLogo">
+                    <div class="myLabel2">
+                      Logo
+                    </div>
+                  <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+                </label>
+              </div>
+              <!-- <label for="cover-image" id="coverImage">
+                <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
               </label><br>
               <label for="logo-image" id="logoImage">
-                <img src="../../assets/imgs/logo.png" alt="">
-              </label>
+                <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+              </label> -->
+              <div class="instructions">
+                <p> add a link to the online application form</p>
+              </div>
+              <ion-input type="text" id="input-field" placeholder="Link to online application form"></ion-input>
             </div>
           </div>
           <div class="pageJobs">
@@ -206,7 +227,7 @@
         <div class="view" id="Services">
           <div class="pageServices">
             <div class="buttons">
-              <button id="forward" ion-button>Next</button>
+              <button id="forward" ion-button (click)="toPage2Services()">Next</button>
             </div>
             <div class="inputs">
               Please complete the form to continue
@@ -218,14 +239,13 @@
           </div>
           <div class="pageServices">
             <div class="buttons">
-              <button id="backward" ion-button>Back</button>
-              <button id="forward" ion-button>Next</button>
+              <button id="backward" ion-button (click)="backToPage1Services()">Back</button>
+              <button id="forward" ion-button (click)="toPage3Services()">Next</button>
             </div>
             <div class="inputs">
               Please complete your contact details to continue
               <br>
               <ion-input type="text" id="input-field" placeholder="Address"></ion-input>
-              <br>
               <div class="contacts">
                 <ion-input type="email" id="input-field" placeholder="Email"></ion-input>
                 <ion-input type="number" id="input-field" placeholder="Phone"></ion-input>
@@ -234,31 +254,42 @@
           </div>
           <div class="pageServices">
             <div class="buttons">
-              <button id="backward" ion-button>Back</button>
-              <button id="forward" ion-button>Next</button>
+              <button id="backward" ion-button (click)="backToPage2Services()">Back</button>
+              <button id="forward" ion-button (click)="toPage4Services()">Next</button>
             </div>
             <div class="inputs">
               <!-- User clicks here to upload logo and cover for Jobs -->
               <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image">
               <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image">
-              <label for="logo-image" id="logoImage">
-                <img src="../../assets/imgs/logo.png" alt="">
-              </label>
-              <label for="cover-image" id="coverImage">
-                <img src="../../assets/imgs/logo.png" alt="">
-              </label>
+              <div id="uploadPage">
+                
+              <div class="images-container">
+                  <label for="cover-image" id="myCover">
+                    <div class="myLabel">
+                      Upload cover image
+                    </div>
+                    <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+                  </label>
+                  <label for="logo-image" id="myLogo">
+                      <div class="myLabel2">
+                        Logo
+                      </div>
+                    <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
           <div class="pageServices">
             <div class="buttons">
-              <button id="backward" ion-button>Back</button>
+              <button id="backward" ion-button (click)="backToPage3Services()">Back</button>
               <button id="forward" ion-button>Done</button>
             </div>
             <div class="inputs">
-              <div id="confirm-logo">
+              <div id="confirm-cover">
                 <img src="../../assets/imgs/logo.png" alt="">
               </div>
-              <div id="confirm-cover">
+              <div id="confirm-logo">
                 <img src="../../assets/imgs/logo.png" alt="">
               </div>
               <p><b>Service Name:</b> Photography</p>

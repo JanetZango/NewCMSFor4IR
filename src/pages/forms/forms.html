@@ -1,14 +1,19 @@
 <ion-content>
+  <div class="overlay" id="getStarted1">
+    <h5>Click this Get Started to finish registration</h5>
+    <button id="getStarted" ion-button (click)="getStarted()">
+      Get Started
+    </button>
+  </div>
   <div class="theBody">
-    <div class="decider" *ngIf="hideRegisterAs">
-      <!-- <p class="intro">Kindly register as a programme or organization</p> -->
+    <!-- <div class="decider" *ngIf="hideRegisterAs">
       <p>Register as...</p>
 
       <select (change)="RegistrationType()" [(ngModel)]="program">
         <option>Programme</option>
         <option>Organisation</option>
       </select>
-    </div>
+    </div> -->
     <!-- <div class="left" id="placeholderDiv">
       <div class="box">
         <div class="step1" padding>
@@ -24,6 +29,7 @@
       </div>
     </div> --> 
     <!-- *ngIf="showRegistionOrgs" -->
+
     <div class="left">
       <div class="box">
         <div class="step1" padding>
@@ -49,7 +55,6 @@
 
 
             <div class="theSlider">
-
               <div class="slideShow" id="page1">
                 <p>Kindly fill in your communication details and please dont leave out anything.</p>
                 <input type="text" class="inputText" placeholder="Name" [(ngModel)]="orgName" required>
@@ -101,7 +106,7 @@
               </div>
               <div class="slideShow" id="page3" id="page3Org">
                 <p>Almost there, please provide a category for the organisation.</p>
-                <select class="select-css" (change)="showServices()" [(ngModel)]="category">
+                <select class="select-css" [(ngModel)]="category">
                   <option value="Do you offer WiFi" disabled> Choose category </option>
                   <option value="Higher Education Institution">Higher Education Institution </option>
                   <option value="Library">Library</option>
@@ -110,76 +115,9 @@
                   <option value="Mall">Mall</option>
                   <option value="Coffee Shop">Coffee Shop</option>
                 </select>
-                <br>
 
 
-                <div *ngIf="showheiServices" class="customSelect" (click)="HEIservices()">
-                  Select your services
-                  {{catService.title}}
 
-                                      
-                      <ion-select [(ngModel)]="HeiServices" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="hei()">
-                        <ion-option value="Testing and analystics" selected="true">Testing and analystics</ion-option>
-                        <ion-option value="Rapid prototype">Rapid prototype</ion-option>
-                        <ion-option value="Consulation" selected="true"> Consulation</ion-option>
-                        <ion-option value="Research">Research</ion-option>
-                        <ion-option value="Applied Research">Applied Research</ion-option>
-                         </ion-select>
-                </div>
-                <br>
-
-
-                <div *ngIf="showLibaryServices" class="customSelect" (click)="LibraryServices()">
-                  Select your services
-                  {{catService}}
-                  <ion-item>
-                      
-                        <ion-select [(ngModel)]="LibaryServices" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="libary()">
-                          <ion-option value="Research" selected="true">Research</ion-option>
-                          <ion-option value=">Training">Training</ion-option>
-                         </ion-select>
-                      </ion-item>
-                </div>
-                <br>
-
-                <div *ngIf="showinternetCafeServices" class="customSelect" (click)="internetCafe()">
-                  Select your services
-                  {{catService}}
-                  <ion-item>
-                      
-                        <ion-select [(ngModel)]="internetCafeService" multiple="true" cancelText="Cancel" okText="Okay"  (ionChange)="internet()">
-                          <ion-option value="internet" selected="true">internet</ion-option>
-                          <ion-option value="printing">printing</ion-option>
-                          <ion-option value="fax">fax</ion-option>
-                         
-                         </ion-select>
-                      </ion-item>
-                </div>
-                <br>
-
-                <div *ngIf="showlearningCenterServices" class="customSelect" (click)="learningCenter()">
-                  Select your services
-                </div>
-
-                <div *ngIf="showMallServices" class="customSelect" (click)="mall()">
-
-                </div>
-
-
-                <div *ngIf="showCoffeeShopServices" class="customSelect" (click)=" Coffeeshops()">
-                  Select your services
-
-                  <!-- <ion-select [(ngModel)]="mallService" multiple="true" cancelText="Cancel" okText="Okay">
-                      <!-- <ion-option value="Training" selected="true">Training</ion-option>
-                      <ion-option value="Skill development">Skill development</ion-option>
-                      <ion-option value="Research">Research</ion-option>
-                      <ion-option value="Incubation">Incubation</ion-option>
-                    </ion-select> --> -->
-                </div>
-
-                <div *ngFor="let a of catService">
-                  &#65517; {{a.title}}
-                </div>
 
 
                 <div>
