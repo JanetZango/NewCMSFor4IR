@@ -315,6 +315,9 @@ export class HomePage implements OnInit {
       settingsUpdate.style.display = "none";
     // }, 510);
   }
+  updateDetails(){
+    this.cancelSettings()
+  }
   getItems(ev) {
     this.initializeItems();
     // set val to the value of the ev target
