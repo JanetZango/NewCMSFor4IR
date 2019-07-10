@@ -80,7 +80,7 @@ page-home {
   #container-overlay{
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgb(10,132,218);
     position: absolute;
     top: 0;
     animation: faderIn 500ms;
@@ -94,7 +94,7 @@ page-home {
   .side-pane {
     width: 300px;
     height: 100%;
-    background: rgb(42, 8, 97);
+    background: rgb(0, 100, 172);
     color: white;
     position: relative;
   }
@@ -110,7 +110,7 @@ page-home {
       transform: translateX(-50%);
       height: 35px;
       border-top: 1px solid rgba(255, 255, 255, 0.822);
-      background: rgb(42, 8, 97);
+      background: transparent;
       position: absolute;
       bottom: 0;
       display: flex;
@@ -233,7 +233,7 @@ page-home {
   .nav-pane {
     width: 100%;
     height: 60px;
-    background: rgb(82, 29, 167);
+    background: rgb(10,132,218);
     display: flex;
   }
   .left,
@@ -291,7 +291,7 @@ page-home {
     width: 30px;
     transition: 300ms;
     line-height: 80px;
-    background: rgb(42, 8, 97);
+    background: rgb(10,132,218);
     text-align: center;
     color: white;
     position: absolute;
