@@ -18,7 +18,8 @@ import { FormsPage } from '../pages/forms/forms';
     HomePage,
     LoginRegisterPage,
     AddOrganizationPage,
-    FormsPage
+    FormsPage,
+    
   ],
   imports: [
     BrowserModule,
