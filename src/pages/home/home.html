@@ -3,7 +3,7 @@
     <!-- this is the side panel -->
     <div class="side-pane">
       <div id="actions">
-        <p (click)="goToSetting()">Settings</p>
+        <p (click)="goToSettings()">Settings</p>
         <p (click)="logUserOut()">Logout</p>
       </div>
       <div class="cover-image">
@@ -262,6 +262,29 @@
 
       </div>
 
+    </div>
+  </div>
+  <div id="container-overlay">
+    <div class="editing-data-inputs">
+        <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logoUpdate">
+        <div id="theLogo-update">
+          
+          <label for="logoUpdate">
+            <div>Logo</div>
+            <img id="click-upload" src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt=""></label>
+        </div>
+        <div id="update-inputs">
+          <p>Update organisation profile</p>
+            <ion-input type="text" class="text-field" placeholder="Organisation Name" value="{{category}}"></ion-input>
+            <ion-input type="text" class="text-field" placeholder="Physical Address" value="{{address}}"></ion-input>
+            <ion-input type="tel" class="text-field" placeholder="Phone" value="{{contact}}"></ion-input>
+            <ion-input type="email" class="text-field" placeholder="Email Address" value="{{email}}"></ion-input>
+            <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="10" value="{{background}}"></textarea>
+            <div id="update-buttons">
+              <button ion-button outline color="danger" (click)="cancelSettings()">Cancel</button>
+              <button ion-button>Update</button>
+            </div>
+        </div>
     </div>
   </div>
 </ion-content>

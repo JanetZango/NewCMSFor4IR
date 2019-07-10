@@ -11,6 +11,11 @@
         </div>
       </div>
       <div class="right-tab">
+        <ion-fab top right>
+          <button ion-fab mini>
+            <ion-icon name="close"></ion-icon>
+          </button>
+        </ion-fab>
         <div id="bar">
           <div id="barSlide"></div>
         </div>
@@ -293,7 +298,7 @@
                 <img src="../../assets/imgs/logo.png" alt="">
               </div>
               <p><b>Service Name:</b> Photography</p>
-              <p><b>Description:</b>
+              <p><b>Description:</b><br>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima reprehenderit architecto fugit sed, unde
                 molestiae odit ipsum sit minus quas.
               </p>
@@ -308,16 +313,16 @@
           </div>
         </div>
         <div class="view" id="Wifi">
-          <div class="pageWifi">
+          <div class="pageWifi" id="page1Wifi">
             <div class="buttons">
-              <button id="forward" ion-button>Next</button>
+              <button id="forward" ion-button (click)="toPage2WiFi()">Next</button>
             </div>
             <div class="inputs">
-              
+              1
                 <ion-list class="programme-options">
                     <ion-item>
                       <ion-label>do you offer WiFi</ion-label>
-                      <ion-select [(ngModel)]="gaming">
+                      <ion-select [(ngModel)]="WiFiAvailability" (ionChange)="togglePrice()">
                         <ion-option value="Yes">Yes</ion-option>
                         <ion-option value="No">No</ion-option>
                       </ion-select>
@@ -325,17 +330,17 @@
                   </ion-list>
             </div>
           </div>
-          <div class="pageWifi">
+          <div class="pageWifi" id="page2Wifi">
             <div class="buttons">
-              <button id="backward" ion-button>Back</button>
-              <button id="forward" ion-button>Next</button>
+              <button id="backward" ion-button (click)="backToPage1WiFi()">Back</button>
+              <button id="forward" ion-button (click)="toPage3WiFi()">Next</button>
             </div>
-            <div class="inputs">
-              
+            <div class="inputs" *ngIf="showChargeWiFi">
+              2
                 <ion-list class="programme-options">
                     <ion-item>
                       <ion-label>Is it free or paid</ion-label>
-                      <ion-select [(ngModel)]="gaming">
+                      <ion-select [(ngModel)]="freeOrPaidWiFi" (ionChange)="togglePayment()">
                         <ion-option value="Free">Free</ion-option>
                         <ion-option value="Paid">Paid</ion-option>
                       </ion-select>
@@ -343,30 +348,39 @@
                   </ion-list>
             </div>
           </div>
-          <div class="pageWifi">
+          <div class="pageWifi" id="page3Wifi">
             <div class="buttons">
-              <button id="backward" ion-button>Back</button>
-              <button id="forward" ion-button>Next</button>
+              <button id="backward" ion-button (click)="backToPage2WiFi()">Back</button>
+              <button id="forward" ion-button (click)="toPage4WiFi()">Next</button>
             </div>
-            <div class="inputs">
-              
+            <div class="inputs" *ngIf="showPricing">
+              3
                 <ion-list class="programme-options">
                     <ion-item>
                       <ion-label>Select data range</ion-label>
-                      <ion-select [(ngModel)]="gaming">
-                        <ion-option value="Yes">1GB</ion-option>
-                        <ion-option value="No">2GB</ion-option>
-                        <ion-option value="No">5GB</ion-option>
-                        <ion-option value="No">Unlimited</ion-option>
+                      <ion-select [(ngModel)]="priceWiFi" (ionChange)="toggleRange()">
+                        <ion-option value="1GB">1GB</ion-option>
+                        <ion-option value="2GB">2GB</ion-option>
+                        <ion-option value="5GB">5GB</ion-option>
+                        <ion-option value="Unlimited">Unlimited</ion-option>
                       </ion-select>
                     </ion-item>
                   </ion-list>
             </div>
           </div>
-          <div class="pageWifi">
+          <div class="pageWifi" id="page4Wifi">
             <div class="buttons">
-              <button id="backward" ion-button>Back</button>
+              <button id="backward" ion-button (click)="backToPage3WiFi()">Back</button>
               <button id="forward" ion-button>Done</button>
+            </div>
+            <div class="inputs">
+              4
+              <div class="about-wifi">
+                <p><b>WiFi Availability: </b> {{WiFiAvailability}}
+                </p>
+                <p><b>Pricing: </b> {{freeOrPaidWiFi}}</p>
+                <p><b>Range: </b> {{priceWiFi}}</p>
+              </div>
             </div>
           </div>
         </div>

@@ -28,10 +28,10 @@ export class FormsPage {
   wifi;
   catService;
   chooseWifiRange;
-  ShowWifi:boolean = false;
-  ShowChooseRange:boolean = false;
+  ShowWifi: boolean = false;
+  ShowChooseRange: boolean = false;
 
-  
+
   showCoffeeShopServices;
   showlearningCenterServices;
   showinternetCafeServices;
@@ -45,7 +45,7 @@ export class FormsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad FormsPage');
   }
-  
+
   checkWifi() {
     console.log("testing");
     console.log(this.offerWifi);
@@ -114,129 +114,129 @@ export class FormsPage {
     toSlide.style.marginLeft = "-25%";
     progBar.style.width = "50%";
 
-  // }
+    // }
 
 
 
 
-
-}
-moveToPage3() {
-
-
-  var progBar = document.getElementById("theDot");
-
-
-  if (this.offerWifi == "No") {
-    if (this.wifi == undefined) {
-      this.wifi = "No"
-    } if (this.chooseWifiRange == undefined) {
-      this.chooseWifiRange = "No"
-    }
 
   }
+  moveToPage3() {
 
-  if (this.offerWifi != undefined) {
-    if (this.wifi != undefined && this.chooseWifiRange != undefined) {
-      var toSlide = document.getElementById("page1");
-      toSlide.style.marginLeft = "-50%";
-      // this.progressBar = this.progressBar + 25;
-      progBar.style.width = "75%";
-    } else {
+
+    var progBar = document.getElementById("theDot");
+
+
+    if (this.offerWifi == "No") {
+      if (this.wifi == undefined) {
+        this.wifi = "No"
+      } if (this.chooseWifiRange == undefined) {
+        this.chooseWifiRange = "No"
+      }
+
+    }
+
+    if (this.offerWifi != undefined) {
+      if (this.wifi != undefined && this.chooseWifiRange != undefined) {
+        var toSlide = document.getElementById("page1");
+        toSlide.style.marginLeft = "-50%";
+        // this.progressBar = this.progressBar + 25;
+        progBar.style.width = "75%";
+      } else {
+        alert("Please complete all details")
+      }
+
+    }
+
+    else {
+
       alert("Please complete all details")
     }
 
-  }
 
-  else {
 
-    alert("Please complete all details")
   }
 
 
+  moveToPage4() {
 
-}
-
-
-moveToPage4() {
-
-  var progBar = document.getElementById("theDot");
-  // if (this.category != undefined && this.catService.length != 0) {
-  //   console.log(this.catService);
+    var progBar = document.getElementById("theDot");
+    // if (this.category != undefined && this.catService.length != 0) {
+    //   console.log(this.catService);
 
 
     var toSlide = document.getElementById("page1");
     toSlide.style.marginLeft = "-75%";
     // this.progressBar = this.progressBar + 25;
     progBar.style.width = "100%";
-  // } else {
+    // } else {
     alert("Complete all the Details ")
-  // }
+    // }
 
-}
+  }
 
-backToPage3() {
-  var progressBar = document.getElementById("theDot");
-  var toSlide = document.getElementById("page1");
-  toSlide.style.marginLeft = "-50%";
-  progressBar.style.width = "75%"
-}
-backToPage2() {
-  var progressBar = document.getElementById("theDot");
-  var toSlide = document.getElementById("page1");
-  toSlide.style.marginLeft = "-25%";
-  progressBar.style.width = "50%"
-}
-backToPage1() {
-  var progressBar = document.getElementById("theDot");
-  var toSlide = document.getElementById("page1");
-  toSlide.style.marginLeft = "0%";
-  progressBar.style.width = "25%"
-}
-showPrompt() {
-  const prompt = this.alertCtrl.create({
-    title: 'Registration',
-    message: "Please fill in your personal details to get started.",
-    inputs: [
-      {
-        name: 'userName',
-        placeholder: 'First Name'
-      },
-      {
-        name: 'userSurname',
-        placeholder: 'Surname'
-      },
-      {
-        name: 'UserIDNumber',
-        placeholder: 'ID Number'
-      },
-      {
-        name: 'userPosition',
-        placeholder: 'Position'
-      },
-    ],
-    buttons: [
-      {
-        text: 'Cancel',
-        handler: data => {
-          console.log('Cancel clicked');
-          var getStarted = document.getElementById("getStarted1");
-          getStarted.style.display = "block"
+  backToPage3() {
+    var progressBar = document.getElementById("theDot");
+    var toSlide = document.getElementById("page1");
+    toSlide.style.marginLeft = "-50%";
+    progressBar.style.width = "75%"
+  }
+  backToPage2() {
+    var progressBar = document.getElementById("theDot");
+    var toSlide = document.getElementById("page1");
+    toSlide.style.marginLeft = "-25%";
+    progressBar.style.width = "50%"
+  }
+  backToPage1() {
+    var progressBar = document.getElementById("theDot");
+    var toSlide = document.getElementById("page1");
+    toSlide.style.marginLeft = "0%";
+    progressBar.style.width = "25%"
+  }
+  showPrompt() {
+    const prompt = this.alertCtrl.create({
+      title: 'Registration',
+      message: "Please fill in your personal details to get started.",
+      inputs: [
+        {
+          name: 'userName',
+          placeholder: 'First Name'
+        },
+        {
+          name: 'userSurname',
+          placeholder: 'Surname'
+        },
+        {
+          name: 'UserIDNumber',
+          placeholder: 'ID Number'
+        },
+        {
+          name: 'userPosition',
+          placeholder: 'Position'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+            var getStarted = document.getElementById("getStarted1");
+            getStarted.style.display = "block"
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            var getStarted = document.getElementById("getStarted1");
+            getStarted.style.display = "none"
+            console.log('Saved clicked');
+          }
         }
-      },
-      {
-        text: 'Save',
-        handler: data => {
-          var getStarted = document.getElementById("getStarted1");
-          getStarted.style.display = "none"
-          console.log('Saved clicked');
-        }
-      }
-    ]
-  });
-  prompt.present();
-}
-getStarted(){
-  this.showPrompt()  
-}
+      ]
+    });
+    prompt.present();
+  }
+  getStarted() {
+    this.showPrompt()
+  }
 }

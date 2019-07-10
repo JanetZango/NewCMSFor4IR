@@ -109,14 +109,14 @@ export class HomePage implements OnInit {
     }
   }
   mm = 0;
-  toggleOrgList(){
+  toggleOrgList() {
     var orgListView = document.getElementById("org-list-view");
-    if(this.mm == 0){
+    if (this.mm == 0) {
       this.mm = 1;
       this.toggleList = "ios-arrow-forward"
       orgListView.style.right = "0"
     }
-    else{
+    else {
       this.mm = 0;
       this.toggleList = "ios-arrow-back"
       orgListView.style.right = "-400px"
@@ -303,7 +303,18 @@ export class HomePage implements OnInit {
     }
   }
 
-
+  goToSettings() {
+    var settingsUpdate = document.getElementById("container-overlay");
+    settingsUpdate.style.display = "block";
+    settingsUpdate.style.display = "flex";
+  }
+  cancelSettings() {
+    var settingsUpdate = document.getElementById("container-overlay");
+    // settingsUpdate.style.opacity = "0";
+    // setTimeout(() => {
+      settingsUpdate.style.display = "none";
+    // }, 510);
+  }
   getItems(ev) {
     this.initializeItems();
     // set val to the value of the ev target
