@@ -11,6 +11,7 @@ import { LoginRegisterPage } from '../pages/login-register/login-register';
 import { AddOrganizationPage } from '../pages/add-organization/add-organization';
 import { FormsPage } from '../pages/forms/forms';
 
+
 @NgModule({
   declarations: [
     MyApp,

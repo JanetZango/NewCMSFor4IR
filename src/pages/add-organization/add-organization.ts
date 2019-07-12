@@ -675,6 +675,9 @@ export class AddOrganizationPage {
   }
   backToPage3WiFi() {
     // alert(this.freeOrPaidWiFi)
+    if(this.WiFiAvailability == "No"){
+      this.backToPage1WiFi()
+    }
     if (this.freeOrPaidWiFi == "Paid") {
       var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
       pager[0].style.marginLeft = "-50%"

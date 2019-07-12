@@ -20,6 +20,7 @@ page-home {
     margin: 0 auto;
     transition: 300ms;
     border-radius: 15px;
+    z-index: 1;
   }
   #theLogo-update{
     width: 100px;
@@ -48,7 +49,8 @@ page-home {
   #textarea-update{
     width: 100%;
     resize: none;
-    padding: 5px;
+    padding: 10px;
+    border-radius: 5px;
     // height: 40px;
     border: 1px solid rgba(0, 0, 0, 0.39);
   }
@@ -57,6 +59,7 @@ page-home {
     // height: 40px;
     border: 1px solid rgba(0, 0, 0, 0.39);
     margin: 10px auto;
+    border-radius: 5px
   }
   #update-buttons{
     display: flex;
@@ -81,7 +84,7 @@ page-home {
   #container-overlay{
     width: 100%;
     height: 100%;
-    background: rgb(10,132,218);
+    background: rgba(0, 0, 0, 0.438);
     position: absolute;
     top: 0;
     animation: faderIn 500ms;
@@ -90,6 +93,13 @@ page-home {
     flex-direction: column;
     justify-content: center;
     display: none;
+  }
+  .toDismiss{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+    background: transparent;
   }
   
   .side-pane {
