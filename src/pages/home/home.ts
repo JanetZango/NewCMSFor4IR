@@ -304,7 +304,6 @@ export class HomePage implements OnInit {
         map.setZoom(13);
         map.setCenter(marker.getPosition());
       });
-
     }, 4000);
 
 
