@@ -10,6 +10,7 @@ import { HubsProvider } from '../providers/hubs/hubs';
 import { LoginRegisterPage } from '../pages/login-register/login-register';
 import { AddOrganizationPage } from '../pages/add-organization/add-organization';
 import { FormsPage } from '../pages/forms/forms';
+import { OnboardingPage } from '../pages/onboarding/onboarding';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { FormsPage } from '../pages/forms/forms';
     LoginRegisterPage,
     AddOrganizationPage,
     FormsPage,
+
   ],
   imports: [
     BrowserModule,

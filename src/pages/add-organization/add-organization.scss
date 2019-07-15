@@ -1,478 +1,325 @@
 page-add-organization {
-  .everything {
-    width : 100%;
-    height: 100%;
-    background-image: linear-gradient(to bottom, rgba(239, 239, 239, 0), rgb(193, 193, 193)),
-      url("../../assets/imgs/parl.jpg");
-    background-size  : cover;
-    background-repeat: no-repeat;
-  }
-
-  .content-container {
-    width        : 60%;
-    height       : 80%;
-    background   : white;
-    overflow     : hidden;
-    border-radius: 15px;
-    // position  : absolute;
-    left         : 50%;
-    top          : 50%;
-    transform    : translate(-50%, -50%);
-    position     : relative;
-    display      : flex;
-  }
-
-  .left-tab {
-    width     : 25%;
-    height    : 100%;
-    background: whitesmoke;
-    position  : relative;
-  }
-
-  .right-tab {
-    width     : 75%;
-    height    : 100%;
-    background: rgb(228, 228, 228);
-    position  : relative;
-    overflow  : hidden;
-  }
-
-  textarea {
-    resize: none;
-  }
-
-  #placeholder {
-    background: pink;
-    display   : none;
-  }
-
-  #Programmes {
-    background: peachpuff;
-    position  : relative;
-    display   : none;
-  }
-
-  #Jobs {
-    background: green;
-    position  : relative;
-    display   : none;
-  }
-
-  #Services {
-    background: teal;
-    position  : relative;
-    display   : none;
-  }
-.about-wifi{
-  p{
-    font-size: 2rem
-  }
-}
-  #Wifi {
-    background: blue;
-    position  : relative;
-  }
-
-  .view {
-    width     : 400%;
-    height    : 100%;
-    display   : flex;
-    transition: 300ms;
-
-      }
-
-  // .pages{
-  //     width : 400%;
-  //     height: 100%;
-  // }
-
-  .Contacts {
-    width  : calc(80% + 10px);
-    margin : 10px auto;
-    display: flex;
-
-    // border: 1px solid red;
-    #input-field {
-      margin: 5px;
-      width : 50% !important;
-    }
-  }
-
-  #instruction {
-    //   font
-  }
-
-  .instructions {
-    width     : 80%;
-    margin    : 0 auto;
-    text-align: center;
-
-    p {
-      font-size  : 20px;
-      font-weight: bolder;
-    }
-  }
-
-  #cover-image,
-  #logo-image {
-    display: none;
-  }
-
-  #coverImage {
-    width : 100%;
-    border: 2px solid green;
-    height: 250px;
-  }
-
-  #uploadPage {
-    position: relative;
-
-    //   border: 2px solid red;
-    #coverImage {
-      width : 100%;
+    .everything {
+      width: 100%;
       height: 100%;
-
-      #myImgCover {
-        width : 100% !important;
-        height: 250px;
+      background-image: linear-gradient(to bottom, rgba(239, 239, 239, 0), rgb(193, 193, 193)),
+        url("../../assets/imgs/parl.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .content-container {
+      width: 60%;
+      height: 80%;
+      background: white;
+      overflow: hidden;
+      border-radius: 15px;
+      // position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      position: relative;
+      display: flex;
+    }
+    .left-tab {
+      width: 25%;
+      height: 100%;
+      background: whitesmoke;
+      position: relative;
+    }
+    .right-tab {
+      width: 75%;
+      height: 100%;
+      background: rgb(228, 228, 228);
+      position: relative;
+      overflow: hidden;
+    }
+    textarea{
+      resize: none;
+    }
+    #placeholder {
+      background: pink;
+      display: none;
+    }
+    #Programmes {
+      background: peachpuff;
+      position: relative;
+      display: none
+    }
+    #Jobs {
+      background: green;
+      position: relative;
+    }
+    #Services {
+      background: teal;
+      position: relative;
+    }
+    #Wifi {
+      background: blue;
+      position: relative;
+    }
+    .view {
+      width: 400%;
+      height: 100%;
+      display: flex;
+      transition: 300ms;
+      div {
+      //   border: 2px solid white;
       }
     }
-  }
-
-  #coverImage img {
-    width : 100%;
-    height: 250px !important;
-  }
-
-  #logoImage {
-    width : 80px;
-    height: 80px;
-  }
-
-  #myCover {
-    width   : 100%;
-    height  : 250px;
-    position: relative;
-  }
-
-  #myCover:hover {
-    cursor: pointer;
-
-    .myLabel {
-      opacity: 1;
+    // .pages{
+    //     width: 400%;
+    //     height: 100%;
+    // }
+  
+    .Contacts{
+        width: calc(80% + 10px);
+        margin: 10px auto; 
+        display: flex;
+        // border: 1px solid red;
+        #input-field{
+            margin: 5px;
+            width: 50% !important;
+        }
+    }
+  
+    .instructions{
+      width: 80%;
+      margin: 0 auto;
+      text-align: center;
+      p{
+        font-size: 20px;
+        font-weight: bolder;
+      }
+    }
+    #cover-image, #logo-image{
+        display: none;
+    }
+    #coverImage {
+        width: 100%;
+        border: 2px solid red;
+        height: 250px;
+        img{
+          width: 300px !important;
+          height: 100px !important;
+        }
+    }
+    #logoImage{
+        width: 80px;
+        height: 80px;
+        border: 1px solid red;
+    }
+    #logoImage img{
+        width: 80px;
+        height: 80px;
+        border-radius: 80px;
+        object-fit: contain;
+    }
+    #coverImage img{
+        width: 100%;
+        // height: 50px;
+        object-fit: contain;
+    }
+    .view > div{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      width: 25%;
+      height: 100%;
+    }
+    .view > div:nth-child(1) {
+      background: white;
+      width: 25%;
+      // border: 2px solid red;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      width: 25%;
+      height: 100%;
+      // display: none;
+    }
+    .view > div:nth-child(2) {
+      background: white;
+      // border: 2px solid blue;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      width: 25%;
+      height: 100%;
+      // display: none;
+    }
+    .view > div:nth-child(3) {
+      background: white;
+      // border: 2px solid green;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      width: 25%;
+      height: 100%;
+      // display: none;
+    }
+    .view > div:nth-child(4) {
+      background: white;
+      // border: 2px solid plum;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      width: 25%;
+      height: 100%;
+      // display: none;
+    }
+    .pageProgrammes {
+      // width: 25%;
+      transition: 300ms;
+      height: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .pageJobs {
+      transition: 300ms;
+      width: 25%;
+      height: 100%;
+      position: relative;
+    }
+    .pageServices {
+      transition: 300ms;
+      width: 25%;
+      height: 100%;
+      position: relative;
+    }
+    .pageWifi {
+      transition: 300ms;
+      width: 25%;
+      height: 100%;
+      position: relative;
+    }
+    #bar {
+      width: 300px;
+      height: 10px;
+      border: 2px solid green;
+      border-radius: 10px;
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+    }
+    #barSlide {
+      width: 25%;
+      height: 100%;
+      background: green;
+      transition: 300ms;
+    }
+    .programme-options {
+      border: 1px solid black;
+      width: 80%;
+      margin: 10px auto;
+      border-radius: 10px;
+      overflow: hidden
+    }
+    .inputs {
+      width: 100%;
+      // height: 100%;
+      text-align: center;
+      background: red;
+      // border: 2px solid black;
+      // margin-top: 50%;
+      // transform: translateY(-40%);
+    }
+    #input-field {
+      border: 1px solid black;
+      width: 80%;
+      height: 50px;
+      margin: 10px auto;
+      border-radius: 10px;
+      background: white;
+    }
+    #text-field {
+      border: 1px solid black;
+      height: 90px;
+      width: 80%;
+      padding: 5px;
+      resize: none;
+      margin-top: 15px;
+      border-radius: 10px;
+    }
+    ion-select{
+        margin: 0;
+    }
+    .buttons{
+        width: 100%;
+        height: 70px;
+        background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.144));
+        position: relative;
+        position: absolute;
+        bottom: 0;
+        z-index: 10;
+    }
+    #forward{
+      //   float: right;
+        margin: 20px;
+        width: 130px;
+        position: absolute;
+        right: 0px;
+      //   z-index: inherit;
+    }
+    #backward{
+      margin: 20px;
+      width: 130px;
+    }
+    .infor-left{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .bg{
+        width: 50%;
+        margin: 0 auto;
+        height: 150px;
+        border: 1px solid black;
+        background: url("../../assets/imgs/4IR\ logo.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center
+    }
+    .statement{
+        padding: 10px;
+        text-align: center;
+    }
+    #coverImage{
+  
+    }
+    #confirm-logo, #confirm-logo img{
+      width: 80px;
+      height: 80px;
+      border-radius: 80px;
+      object-fit: cover;
+    }
+    #confirm-cover{
+      width: 100%;
+      border: 2px solid;
+      height: 200px;
+    }
+    #confirm-cover img, #confirm-logo img{
+      text-align: center;
+    }
+    #confirm-cover img{
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    #confirm-logo img{
+      width: 80px;
+      object-fit: cover;
     }
   }
+  
 
-  #myLogo {
-    width   : 80px;
-    height  : 80px;
-    margin  : 5px;
-    position: relative;
-  }
-
-  #myLogo:hover {
-    cursor: pointer;
-
-    .myLabel2 {
-      opacity: 1;
-    }
-  }
-
-  .myLabel2 {
-    color        : white;
-    text-align   : center;
-    transition   : 300ms;
-    background   : rgba(0, 0, 0, 0.336);
-    width        : 80px;
-    border-radius: 80px;
-    height       : 80px;
-    position     : absolute;
-    line-height  : 80px;
-    opacity      : 0;
-    z-index      : 100;
-  }
-
-  .myLabel {
-    color      : white;
-    transition : 300ms;
-    background : rgba(0, 0, 0, 0.336);
-    width      : 100%;
-    height     : 250px;
-    text-align : center;
-    position   : absolute;
-    line-height: 250px;
-    opacity    : 0;
-    z-index    : 100;
-  }
-
-  #myLogo img {
-    width         : 80px;
-    height        : 80px;
-    object-fit    : cover;
-    // margin-left: 0;
-    border-radius : 80px;
-  }
-
-  .images-container {
-    text-align: left;
-    width     : 100%;
-    position  : relative;
-    // height : 250px;
-  }
-
-  #myCover img {
-    height    : 250px;
-    width     : 100%;
-    object-fit: cover;
-  }
-
-  #logoImage img {
-    width        : 80px;
-    height       : 80px;
-    border-radius: 80px;
-    object-fit   : contain;
-  }
-
-  #coverImage img {
-    width     : 100%;
-    // height : 50px;
-    object-fit: contain;
-  }
-
-  .view>div {
-    display        : flex;
-    flex-direction : column;
-    justify-content: center;
-    position       : relative;
-    width          : 25%;
-    height         : 100%;
-  }
-
-  .view>div:nth-child(1) {
-    background     : white;
-    width          : 25%;
-    // border      : 2px solid red;
-    display        : flex;
-    flex-direction : column;
-    justify-content: center;
-    position       : relative;
-    padding        : 10px;
-    width          : 25%;
-    height         : 100%;
-    // display     : none;
-  }
-
-  .view>div:nth-child(2) {
-    background     : white;
-    padding        : 10px;
-    // border      : 2px solid blue;
-    display        : flex;
-    flex-direction : column;
-    justify-content: center;
-    position       : relative;
-    width          : 25%;
-    height         : 100%;
-    // display     : none;
-  }
-
-  .view>div:nth-child(3) {
-    padding        : 10px;
-    background     : white;
-    // border      : 2px solid green;
-    display        : flex;
-    flex-direction : column;
-    justify-content: center;
-    position       : relative;
-    width          : 25%;
-    height         : 100%;
-    // display     : none;
-  }
-
-  .view>div:nth-child(4) {
-    padding        : 10px;
-    background     : white;
-    // border      : 2px solid plum;
-    display        : flex;
-    flex-direction : column;
-    justify-content: center;
-    position       : relative;
-    width          : 25%;
-    height         : 100%;
-    // display     : none;
-  }
-
-  .pageProgrammes {
-    // width       : 25%;
-    transition     : 300ms;
-    height         : 100%;
-    position       : relative;
-    display        : flex;
-    flex-direction : column;
-    justify-content: center;
-  }
-
-  .pageJobs {
-    transition: 300ms;
-    width     : 25%;
-    height    : 100%;
-    position  : relative;
-  }
-
-  .pageServices {
-    transition: 300ms;
-    width     : 25%;
-    height    : 100%;
-    position  : relative;
-  }
-
-  .pageWifi {
-    transition: 300ms;
-    width     : 25%;
-    height    : 100%;
-    position  : relative;
-  }
-
-  #bar {
-    width        : 300px;
-    height       : 10px;
-    border       : 1px solid green;
-    border-radius: 10px;
-    position     : absolute;
-    background   : white;
-    bottom       : 5px;
-    left         : 50%;
-    transform    : translateX(-50%);
-    z-index      : 100;
-  }
-
-  #barSlide {
-    width     : 25%;
-    height    : 100%;
-    background: green;
-    transition: 300ms;
-  }
-
-  .programme-options {
-    border       : 1px solid black;
-    width        : 80%;
-    margin       : 10px auto;
-    border-radius: 10px;
-    overflow     : hidden;
-  }
-
-  .inputs {
-    width           : 100%;
-    // height       : 100%;
-    // padding      : 10px;
-    text-align      : center;
-    // background   : red;
-    // border       : 2px solid black;
-    // margin-top   : 50%;
-    // transform    : translateY(-40%);
-  }
-
-  #input-field {
-    border       : 1px solid black;
-    width        : 80%;
-    height       : 50px;
-    margin       : 10px auto;
-    border-radius: 10px;
-    background   : white;
-  }
-
-  #text-field {
-    border       : 1px solid black;
-    height       : 90px;
-    width        : 80%;
-    padding      : 5px;
-    resize       : none;
-    margin-top   : 15px;
-    border-radius: 10px;
-  }
-
-  ion-select {
-    margin: 0;
-  }
-
-  .buttons {
-    width     : 100%;
-    height    : 70px;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.144));
-    // position  : relative;
-    position  : absolute;
-    bottom    : 0;
-    padding-bottom: 10px;
-    left: 0;
-    z-index   : 10;
-  }
-
-  #forward {
-    //   float  : right;
-    margin      : 20px;
-    width       : 130px;
-    position    : absolute;
-    right       : 0px;
-    //   z-index: inherit;
-  }
-
-  #backward {
-    margin: 20px;
-    width : 130px;
-  }
-
-  .infor-left {
-    width          : 100%;
-    height         : 100%;
-    display        : flex;
-    flex-direction : column;
-    justify-content: center;
-  }
-
-  .bg {
-    width              : 50%;
-    margin             : 0 auto;
-    height             : 150px;
-    // border          : 1px solid black;
-    background         : url("../../assets/imgs/4IR\ logo.png");
-    background-size    : contain;
-    background-repeat  : no-repeat;
-    background-position: center;
-  }
-
-  .statement {
-    padding   : 10px;
-    text-align: center;
-  }
-
-  #coverImage {}
-
-  #confirm-logo,
-  #confirm-logo img {
-    width        : 80px;
-    height       : 80px;
-    border-radius: 80px;
-    object-fit   : cover;
-  }
-
-  #confirm-cover {
-    width    : 100%;
-    // border: 2px solid;
-    height   : 200px;
-  }
-
-  #confirm-cover img,
-  #confirm-logo img {
-    text-align: center;
-  }
-
-  #confirm-cover img {
-    width     : 100%;
-    height    : 200px;
-    object-fit: cover;
-  }
-
-  #confirm-logo img {
-    width     : 80px;
-    object-fit: cover;
-  }
-}

@@ -193,9 +193,29 @@ export class HubsProvider {
       })
     })
   }
-
+//getcurrentProfile
+  retrieve() {
+    let userID = firebase.auth().currentUser;
+    return firebase.database().ref("Organizations/" + userID.uid)
+  }
   storeOrgNames(cat) {
     this.orgNames.push(cat);
+  }
+
+//updateOrganization
+  update(name, email, downloadurl, address, contact) {
+    return new Promise((pass, fail) => {
+      this.ngzone.run(() => {
+        var user = firebase.auth().currentUser
+        firebase.database().ref("Organizations/" + user.uid).update({
+          name: name,
+          email: email,
+          downloadurl: downloadurl,
+          address: address,
+          contact: contact
+        });
+      })
+    })
   }
 
   //getcurrentlocation
@@ -208,6 +228,19 @@ export class HubsProvider {
 
   }
 
+
+  //forgotpassword
+  forgetPassword(email) {
+    return new Promise((resolve, reject) => {
+      firebase.auth().sendPasswordResetEmail(email).then(() => {
+        resolve();
+      }, (error) => {
+        reject(error)
+      })
+
+    })
+
+  }
 
   //createradius
   createPositionRadius(latitude, longitude) {
@@ -355,4 +388,164 @@ export class HubsProvider {
   getOrgNames() {
     return this.orgNames
   }
+
+
+  addPrograme(openDate, closeDate,progName,progType,progBackround,benefits,desc,progStartDate,progEndDate,address,contacts,img){
+    return new Promise((resolve, reject) => {
+      this.ngzone.run(() => {          
+          var user = firebase.auth().currentUser
+          firebase.database().ref("programmes/" + user.uid).set({
+           openDate:openDate,
+           closeDate:closeDate,
+           progName:progName,
+           progType:progType,
+           progBackround:progBackround,
+           benefits:benefits,
+           desc:desc,
+           progStartDate:progStartDate,
+           progEndDate:progEndDate,
+           address:address,
+           contacts:contacts,
+           img:img
+          })
+          resolve();
+      })
+    })
+  }
+
+
+  getPrograme(){
+    return new Promise((resolve, reject) => {
+      this.ngzone.run(() => {          
+        var user = firebase.auth().currentUser;
+        firebase.database().ref("programmes/" + user.uid).on("value", (data: any) => {
+          if (data.val() != undefined){
+            var progs = new Array();
+            var details = data.val();
+            var keys = Object.keys(details);
+            for (var x =0; x < keys.length; x++){
+              var k = keys[0];
+              var progObject = {
+                openDate:details[k].openDate,
+                closeDate:details[k].closeDate,
+                progName:details[k].progName,
+                progType:details[k].progType,
+                progBackround:details[k].progBackround,
+                benefits:details[k].benefits,
+                desc:details[k].desc,
+                progStartDate:details[k].progStartDate,
+                progEndDate:details[k].progEndDate,
+                address:details[k].address,
+                contacts:details[k].contacts,
+                img:details[k].img,
+              }
+              progs.push(progObject)
+            }
+            resolve(progs);
+          }
+        }) 
+      })
+    })
+  }
+
+
+addJob(openDate,closeDate,address,desc,benefits,jobStartdate, jobEndDate, contact, img){
+  return new Promise((resolve, reject) => {
+    this.ngzone.run(() => {          
+        var user = firebase.auth().currentUser
+        firebase.database().ref("jobs/" + user.uid).set({
+          openDate:openDate,
+          closeDate:closeDate,
+          address:address,
+          desc:desc,
+          benefits:benefits,
+          jobStartdate:jobStartdate,
+          jobEndDate:jobEndDate,
+          img:img,
+          contact:contact 
+        })
+        resolve();
+    })
+  })
+}
+
+
+getJobs(){
+  return new Promise((resolve, reject) => {
+    this.ngzone.run(() => {          
+      var user = firebase.auth().currentUser;
+      firebase.database().ref("jobs/" + user.uid).on("value", (data: any) => {
+        if (data.val() != undefined){
+          var jobs = new Array();
+          var details = data.val();
+          var keys = Object.keys(details);
+          for (var x =0; x < keys.length; x++){
+            var k = keys[0];
+            var jobObject = {
+              openDate:details[k].openDate,
+              closeDate:details[k].closeDate,
+              benefits:details[k].benefits,
+              desc:details[k].desc,
+              jobStartdate:details[k].jobStartdate,
+              jobEndDate:details[k].jobEndDate,
+              address:details[k].address,
+              contacts:details[k].contacts,
+              img:details[k].img,
+            }
+            jobs.push(jobObject)
+          }
+          resolve(jobs);
+        }
+      }) 
+    })
+  })
+}
+
+
+addService(openDate,closeDate,address,serviceName,contact,desc, img){
+  return new Promise((resolve, reject) => {
+    this.ngzone.run(() => {          
+        var user = firebase.auth().currentUser
+        firebase.database().ref("services/" + user.uid).set({
+          openDate:openDate,
+          closeDate:closeDate,
+          address:address,
+          desc:desc,
+          img:img,
+          contact:contact 
+        })
+        resolve();
+    })
+  })
+}
+
+getServices(){
+  return new Promise((resolve, reject) => {
+    this.ngzone.run(() => {          
+      var user = firebase.auth().currentUser;
+      firebase.database().ref("services/" + user.uid).on("value", (data: any) => {
+        if (data.val() != undefined){
+          var services = new Array();
+          var details = data.val();
+          var keys = Object.keys(details);
+          for (var x =0; x < keys.length; x++){
+            var k = keys[0];
+            var serviceObject = {
+              openDate:details[k].openDate,
+              closeDate:details[k].closeDate,
+              desc:details[k].desc,
+              address:details[k].address,
+              contacts:details[k].contacts,
+              img:details[k].img,
+              serviceName:details[k].serviceName
+            }
+            services.push(serviceObject)
+          }
+          resolve(services);
+        }
+      }) 
+    })
+  })
+}
+
 }
