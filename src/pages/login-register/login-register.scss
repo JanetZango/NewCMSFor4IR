@@ -181,9 +181,14 @@ page-login-register {
         margin: -1px 0 26px;
     }
     .inputs{
-        border-radius: 100px;
-        border: 5xp solid rgb(119, 0, 255)
+        //border-radius: 100px;
+        //border: 5xp solid rgb(119, 0, 255) !important
         //box-shadow: 0px 5px 15px 1px rgb(220, 220, 220); 
+    }
+    .inputs {
+        width: 100%;
+        text-align: center;
+        background: white !important;
     }
     .button-btn {
         color: #fff;

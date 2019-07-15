@@ -10,8 +10,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-landing',
-  templateUrl: 'landing.html',
+  selector: 'page-onboarding',
+  templateUrl: 'onboarding.html',
 })
 export class OnboardingPage {
 
