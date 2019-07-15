@@ -2,6 +2,7 @@ page-home {
   .searchbar-input-container {
     border-radius: 100px;
     overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.459);
   }
   .container {
     width: 100%;
@@ -9,10 +10,102 @@ page-home {
     // background: red;
     display: flex;
   }
+  #logoUpdate{
+    display: none;
+  }
+  .editing-data-inputs{
+    width: 320px;
+    height: 560px;
+    background: white;
+    margin: 0 auto;
+    transition: 300ms;
+    border-radius: 15px;
+    z-index: 1;
+  }
+  #theLogo-update{
+    width: 100px;
+    margin: 0 auto;
+    margin-top: -50px;
+    height: 100px;
+  }
+  #theLogo-update > label div{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+    line-height: 100px;
+    transition: 300ms;
+    border-radius: 10px;
+    opacity: 0;
+  }
+  #theLogo-update:hover{
+    label > div {
+      opacity: 1;
+      border-radius: 50px;
+    }
+  }
+  #textarea-update{
+    width: 100%;
+    resize: none;
+    padding: 10px;
+    border-radius: 5px;
+    // height: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.39);
+  }
+  .text-field{
+    width: 100%;
+    // height: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.39);
+    margin: 10px auto;
+    border-radius: 5px
+  }
+  #update-buttons{
+    display: flex;
+    button{
+      width: 100%;
+      margin: 2px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+  }
+  #update-inputs{
+    width: 90%;
+    margin: 10px auto; 
+    text-align: center;
+  }
+  #click-upload{
+    width: 100px;
+    height: 100px;
+    background: black;
+    border-radius: 50px;
+  }
+  #container-overlay{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.438);
+    position: absolute;
+    top: 0;
+    animation: faderIn 500ms;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    display: none;
+  }
+  .toDismiss{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+    background: transparent;
+  }
+  
   .side-pane {
     width: 300px;
     height: 100%;
-    background: rgb(42, 8, 97);
+    background: rgb(0, 100, 172);
     color: white;
     position: relative;
   }
@@ -28,7 +121,7 @@ page-home {
       transform: translateX(-50%);
       height: 35px;
       border-top: 1px solid rgba(255, 255, 255, 0.822);
-      background: rgb(42, 8, 97);
+      background: transparent;
       position: absolute;
       bottom: 0;
       display: flex;
@@ -151,7 +244,7 @@ page-home {
   .nav-pane {
     width: 100%;
     height: 60px;
-    background: rgb(82, 29, 167);
+    background: rgb(10,132,218);
     display: flex;
   }
   .left,
@@ -209,7 +302,7 @@ page-home {
     width: 30px;
     transition: 300ms;
     line-height: 80px;
-    background: rgb(42, 8, 97);
+    background: rgb(10,132,218);
     text-align: center;
     color: white;
     position: absolute;

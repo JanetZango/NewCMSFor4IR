@@ -11,6 +11,11 @@
         </div>
       </div>
       <div class="right-tab">
+        <ion-fab top right>
+          <button ion-fab mini>
+            <ion-icon name="close"></ion-icon>
+          </button>
+        </ion-fab>
         <div id="bar">
           <div id="barSlide"></div>
         </div>
@@ -140,7 +145,7 @@
           </div>
           <div class="pageJobs">
             <div class="buttons">
-              <button id="backward" ion-button (click)="backToPage1()">Back</button>
+              <button id="backward" ion-button (click)="backToPage1Jobs()">Back</button>
               <button id="forward" ion-button  (click)="toPage3Jobs()">Next</button>
             </div>
             <div class="inputs">
@@ -153,20 +158,41 @@
           </div>
           <div class="pageJobs">
             <div class="buttons">
-              <button id="backward" ion-button (click)="backToPage2()">Back</button>
+              <button id="backward" ion-button (click)="backToPage2Jobs()">Back</button>
               <button id="forward" ion-button (click)="toPage4Jobs()">Next</button>
             </div>
             <div class="inputs">
               <!-- User clicks here to upload logo and cover for Jobs -->
               <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image">
               <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image">
-              <ion-input type="text" id="input-field" placeholder="Link to online application form"></ion-input>
-              <label for="cover-image" id="coverImage">
-                <img src="../../assets/imgs/logo.png" alt="">
+              <div class="instructions">
+                <p>Please choose a cover photo and a logo (if any).
+</p>
+              </div>
+              <div class="images-container">
+                <label for="cover-image" id="myCover">
+                  <div class="myLabel">
+                    Upload cover image
+                  </div>
+                  <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+                </label>
+                <label for="logo-image" id="myLogo">
+                    <div class="myLabel2">
+                      Logo
+                    </div>
+                  <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+                </label>
+              </div>
+              <!-- <label for="cover-image" id="coverImage">
+                <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
               </label><br>
               <label for="logo-image" id="logoImage">
-                <img src="../../assets/imgs/logo.png" alt="">
-              </label>
+                <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+              </label> -->
+              <div class="instructions">
+                <p> add a link to the online application form</p>
+              </div>
+              <ion-input type="text" id="input-field" placeholder="Link to online application form"></ion-input>
             </div>
           </div>
           <div class="pageJobs">
@@ -206,7 +232,7 @@
         <div class="view" id="Services">
           <div class="pageServices">
             <div class="buttons">
-              <button id="forward" ion-button>Next</button>
+              <button id="forward" ion-button (click)="toPage2Services()">Next</button>
             </div>
             <div class="inputs">
               Please complete the form to continue
@@ -218,14 +244,13 @@
           </div>
           <div class="pageServices">
             <div class="buttons">
-              <button id="backward" ion-button>Back</button>
-              <button id="forward" ion-button>Next</button>
+              <button id="backward" ion-button (click)="backToPage1Services()">Back</button>
+              <button id="forward" ion-button (click)="toPage3Services()">Next</button>
             </div>
             <div class="inputs">
               Please complete your contact details to continue
               <br>
               <ion-input type="text" id="input-field" placeholder="Address"></ion-input>
-              <br>
               <div class="contacts">
                 <ion-input type="email" id="input-field" placeholder="Email"></ion-input>
                 <ion-input type="number" id="input-field" placeholder="Phone"></ion-input>
@@ -234,35 +259,46 @@
           </div>
           <div class="pageServices">
             <div class="buttons">
-              <button id="backward" ion-button>Back</button>
-              <button id="forward" ion-button>Next</button>
+              <button id="backward" ion-button (click)="backToPage2Services()">Back</button>
+              <button id="forward" ion-button (click)="toPage4Services()">Next</button>
             </div>
             <div class="inputs">
               <!-- User clicks here to upload logo and cover for Jobs -->
               <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image">
               <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image">
-              <label for="logo-image" id="logoImage">
-                <img src="../../assets/imgs/logo.png" alt="">
-              </label>
-              <label for="cover-image" id="coverImage">
-                <img src="../../assets/imgs/logo.png" alt="">
-              </label>
+              <div id="uploadPage">
+                
+              <div class="images-container">
+                  <label for="cover-image" id="myCover">
+                    <div class="myLabel">
+                      Upload cover image
+                    </div>
+                    <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+                  </label>
+                  <label for="logo-image" id="myLogo">
+                      <div class="myLabel2">
+                        Logo
+                      </div>
+                    <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
           <div class="pageServices">
             <div class="buttons">
-              <button id="backward" ion-button>Back</button>
+              <button id="backward" ion-button (click)="backToPage3Services()">Back</button>
               <button id="forward" ion-button>Done</button>
             </div>
             <div class="inputs">
-              <div id="confirm-logo">
-                <img src="../../assets/imgs/logo.png" alt="">
-              </div>
               <div id="confirm-cover">
                 <img src="../../assets/imgs/logo.png" alt="">
               </div>
+              <div id="confirm-logo">
+                <img src="../../assets/imgs/logo.png" alt="">
+              </div>
               <p><b>Service Name:</b> Photography</p>
-              <p><b>Description:</b>
+              <p><b>Description:</b><br>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima reprehenderit architecto fugit sed, unde
                 molestiae odit ipsum sit minus quas.
               </p>
@@ -277,16 +313,16 @@
           </div>
         </div>
         <div class="view" id="Wifi">
-          <div class="pageWifi">
+          <div class="pageWifi" id="page1Wifi">
             <div class="buttons">
-              <button id="forward" ion-button>Next</button>
+              <button id="forward" ion-button (click)="toPage2WiFi()">Next</button>
             </div>
             <div class="inputs">
-              
+              1
                 <ion-list class="programme-options">
                     <ion-item>
                       <ion-label>do you offer WiFi</ion-label>
-                      <ion-select [(ngModel)]="gaming">
+                      <ion-select [(ngModel)]="WiFiAvailability" (ionChange)="togglePrice()">
                         <ion-option value="Yes">Yes</ion-option>
                         <ion-option value="No">No</ion-option>
                       </ion-select>
@@ -294,17 +330,17 @@
                   </ion-list>
             </div>
           </div>
-          <div class="pageWifi">
+          <div class="pageWifi" id="page2Wifi">
             <div class="buttons">
-              <button id="backward" ion-button>Back</button>
-              <button id="forward" ion-button>Next</button>
+              <button id="backward" ion-button (click)="backToPage1WiFi()">Back</button>
+              <button id="forward" ion-button (click)="toPage3WiFi()">Next</button>
             </div>
-            <div class="inputs">
-              
+            <div class="inputs" *ngIf="showChargeWiFi">
+              2
                 <ion-list class="programme-options">
                     <ion-item>
                       <ion-label>Is it free or paid</ion-label>
-                      <ion-select [(ngModel)]="gaming">
+                      <ion-select [(ngModel)]="freeOrPaidWiFi" (ionChange)="togglePayment()">
                         <ion-option value="Free">Free</ion-option>
                         <ion-option value="Paid">Paid</ion-option>
                       </ion-select>
@@ -312,30 +348,39 @@
                   </ion-list>
             </div>
           </div>
-          <div class="pageWifi">
+          <div class="pageWifi" id="page3Wifi">
             <div class="buttons">
-              <button id="backward" ion-button>Back</button>
-              <button id="forward" ion-button>Next</button>
+              <button id="backward" ion-button (click)="backToPage2WiFi()">Back</button>
+              <button id="forward" ion-button (click)="toPage4WiFi()">Next</button>
             </div>
-            <div class="inputs">
-              
+            <div class="inputs" *ngIf="showPricing">
+              3
                 <ion-list class="programme-options">
                     <ion-item>
                       <ion-label>Select data range</ion-label>
-                      <ion-select [(ngModel)]="gaming">
-                        <ion-option value="Yes">1GB</ion-option>
-                        <ion-option value="No">2GB</ion-option>
-                        <ion-option value="No">5GB</ion-option>
-                        <ion-option value="No">Unlimited</ion-option>
+                      <ion-select [(ngModel)]="priceWiFi" (ionChange)="toggleRange()">
+                        <ion-option value="1GB">1GB</ion-option>
+                        <ion-option value="2GB">2GB</ion-option>
+                        <ion-option value="5GB">5GB</ion-option>
+                        <ion-option value="Unlimited">Unlimited</ion-option>
                       </ion-select>
                     </ion-item>
                   </ion-list>
             </div>
           </div>
-          <div class="pageWifi">
+          <div class="pageWifi" id="page4Wifi">
             <div class="buttons">
-              <button id="backward" ion-button>Back</button>
+              <button id="backward" ion-button (click)="backToPage3WiFi()">Back</button>
               <button id="forward" ion-button>Done</button>
+            </div>
+            <div class="inputs">
+              4
+              <div class="about-wifi">
+                <p><b>WiFi Availability: </b> {{WiFiAvailability}}
+                </p>
+                <p><b>Pricing: </b> {{freeOrPaidWiFi}}</p>
+                <p><b>Range: </b> {{priceWiFi}}</p>
+              </div>
             </div>
           </div>
         </div>

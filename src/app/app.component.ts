@@ -13,7 +13,7 @@ import { AddOrganizationPage } from '../pages/add-organization/add-organization'
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any ;
+  rootPage:any;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public hubs: HubsProvider) {
     platform.ready().then(() => {
@@ -24,7 +24,6 @@ export class MyApp {
         }
         else {
           this.rootPage = LoginRegisterPage
-
         }
        })
       // Okay, so the platform is ready and our plugins are available.
