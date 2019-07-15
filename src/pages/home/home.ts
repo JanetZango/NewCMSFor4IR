@@ -1,7 +1,8 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { NavController, LoadingController, AlertController, ToastController } from 'ionic-angular';
 import { HubsProvider } from '../../providers/hubs/hubs'
-
+import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 //global declaration
 declare var google;
@@ -14,8 +15,10 @@ export class HomePage implements OnInit {
   //arrays
   getOrgArry = new Array();
   items = new Array()
-  orgNames = new Array()
+  orgNames = new Array();
   updateOrganization = new Array();
+
+
   //variables
   lat = -26.2620;
   name;
@@ -73,9 +76,58 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.initMap();
+
+    this.hubs.retrieve().on('value', (data: any) => {
+      let details = data.val();
+      this.name = details.name
+      this.address = details.address
+      this.lat = details.lat;
+      this.background = details.background
+      this.category = details.category;
+      this.downloadurl = details.downloadurl;
+      this.downloadurlLogo = details.downloadurlLogo;
+      this.wifi = details.wifi;
+      this.long = details.long;
+      this.email = details.email;
+      this.contact = details.contact
+      console.log(this.name)
+    })
   }
 
+  //updateLogo
+  insertpic(event: any) {
+    this.d = 1;
+    let opts = document.getElementsByClassName('options') as HTMLCollectionOf<HTMLElement>;
+    if (this.d == 1) {
+      if (event.target.files && event.target.files[0]) {
+        let reader = new FileReader();
+        reader.onload = (event: any) => {
+          this.downloadurlLogo = event.target.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
 
+    }
+  }
+
+  logUserOut() {
+    swal({
+      text: "Click OK to sign out.",
+      icon: "warning",
+      // buttons: true,
+      dangerMode: true
+    }).then(leave => {
+      if (leave) {
+        this.hubs.logout().then(() => {
+          window.location.reload();
+        }, (error) => {
+          // console.log(error.message);
+        })
+      }
+
+    })
+
+  }
 
   m = 0
   showMoreDetails() {
@@ -255,7 +307,6 @@ export class HomePage implements OnInit {
         map.setZoom(13);
         map.setCenter(marker.getPosition());
       });
-
     }, 4000);
 
 
@@ -369,21 +420,6 @@ export class HomePage implements OnInit {
     });
   }
 
-  //updateLogo
-  insertpic(event: any) {
-    this.d = 1;
-    let opts = document.getElementsByClassName('options') as HTMLCollectionOf<HTMLElement>;
-    if (this.d == 1) {
-      if (event.target.files && event.target.files[0]) {
-        let reader = new FileReader();
-        reader.onload = (event: any) => {
-          this.downloadurlLogo = event.target.result;
-        }
-        reader.readAsDataURL(event.target.files[0]);
-      }
-
-    }
-  }
 
 
   //mapStyle
