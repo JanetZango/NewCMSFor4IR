@@ -22,9 +22,6 @@ export class OnboardingPage {
     console.log('ionViewDidLoad LandingPage');
   }
 
-
-}
-
   nextpage() {
     console.log(`click`);
      let slide1 = document.getElementsByClassName('slide1') as HTMLCollectionOf<HTMLElement>;
@@ -119,4 +116,7 @@ export class OnboardingPage {
    }
   }
 }
+
+
+ 
 
