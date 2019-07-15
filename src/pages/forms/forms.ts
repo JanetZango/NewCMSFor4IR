@@ -207,8 +207,8 @@ export class FormsPage {
           placeholder: 'Surname'
         },
         {
-          name: 'UserIDNumber',
-          placeholder: 'ID Number'
+          name: 'userEmail',
+          placeholder: 'Email'
         },
         {
           name: 'userPosition',

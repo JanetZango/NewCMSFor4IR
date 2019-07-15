@@ -21,6 +21,7 @@ page-home {
     transition: 300ms;
     border-radius: 15px;
     z-index: 1;
+    padding: 10px;
   }
   #theLogo-update{
     width: 100px;
@@ -80,6 +81,7 @@ page-home {
     height: 100px;
     background: black;
     border-radius: 50px;
+    object-fit: contain;
   }
   #container-overlay{
     width: 100%;
@@ -108,6 +110,7 @@ page-home {
     background: rgb(0, 100, 172);
     color: white;
     position: relative;
+    left: 0;
   }
   .cover-image {
     width: 100%;
@@ -153,6 +156,7 @@ page-home {
     bottom: -40px;
     left: 50%;
     transform: translateX(-50%);
+    background: white;
   }
   .buttons {
     width: 100%;
@@ -181,7 +185,7 @@ page-home {
     cursor: pointer;
   }
   .btns > div:nth-child(1) {
-    background: rgba(54, 54, 54, 0.5);
+    background: rgba(255, 255, 255, 0.1);
   }
   #about-org {
     // border: 10px solid rgb(0, 0, 0);
@@ -247,8 +251,60 @@ page-home {
     background: rgb(10,132,218);
     display: flex;
   }
-  .left,
-  .right {
+  #ifSmall{
+    display: none;
+  }
+  .person-info{
+    // border: 1px solid red;
+    display: flex;
+  }
+  #userimage{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    position: absolute;
+    right: 80px;
+    top: 5px;
+  }
+  @media screen and (max-width: 1000px){
+    #ifSmall{
+      z-index: 10;
+      display: block;
+    }
+    ion-searchbar {
+      width: 50%;
+      min-width: 225px;
+      position: absolute;
+      left: 50vw;
+      top: .0vh;
+      transform: translateX(-50%)
+    }
+    #userimage{
+      right: 10px;
+    }
+    .user-details{
+      display: none;
+    }
+    .float-right{
+      position: absolute;
+      right: 0;
+      font-size: 20px;
+    }
+    .side-pane {
+      width: 300px;
+      height: 100%;
+      background: rgb(0, 100, 172);
+      color: white;
+      z-index: 1000000000000000;
+      transition: 300ms;
+      position: absolute;
+      left: -300px;
+    }
+    .view-pane {
+      width: 100%;
+    }
+  }
+  .left{
     padding: 5px;
     width: 50%;
     height: 100%;
@@ -259,10 +315,14 @@ page-home {
     text-align: right;
     ion-searchbar {
       width: 50%;
+      min-width: 225px;
     }
   }
 
   .right {
+    width: 50%;
+    text-align: right;
+    // border: 1px solid green;
     div {
       width: 50%;
       margin-left: 50%;
@@ -351,12 +411,12 @@ page-home {
   }
   #org-list-view {
     transition: 300ms;
-    width: 400px;
+    width: 300px;
     height: calc(100% - 60px);
     // background: red;
     position: absolute;
     z-index: 1000;
-    right: -400px;
+    right: -300px;
     border-left: 1px solid rgb(42, 8, 97);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.281);
   }
@@ -409,7 +469,7 @@ page-home {
   }
   .card {
     width: 29%;
-    min-width: 200px;
+    min-width: 300px;
     height: 80%;
     border: 0.5px solid rgba(0, 0, 0, 0.384);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.288);

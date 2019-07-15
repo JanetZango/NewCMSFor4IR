@@ -41,8 +41,8 @@ export class HomePage implements OnInit {
   more = "ios-arrow-down";
   dateer = "this the date";
   activeState = "disabled";
-  d=1;
-  constructor(public navCtrl: NavController, public hubs: HubsProvider, public loadingCtrl: LoadingController,public toastCtrl :ToastController) {
+  d = 1;
+  constructor(public navCtrl: NavController, public hubs: HubsProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
 
     this.hubs.getAllOrganizations().then((data: any) => {
       this.getOrgArry = data
@@ -64,7 +64,7 @@ export class HomePage implements OnInit {
     this.hubs.getCurrentLocation(this.lat, this.long).then((radius: any) => {
     })
 
-    alert(this.downloadurlLogo)
+    // alert(this.downloadurlLogo)
   }
   storeOrgNames(names) {
     this.orgNames = names;
@@ -122,7 +122,7 @@ export class HomePage implements OnInit {
     else {
       this.mm = 0;
       this.toggleList = "ios-arrow-back"
-      orgListView.style.right = "-400px"
+      orgListView.style.right = "-300px"
     }
   }
   showMapPage() {
@@ -172,6 +172,20 @@ export class HomePage implements OnInit {
     var btn1 = document.getElementById("btn2").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn4").style.background = "rgba(255, 255, 255, 0.1)";
+  }
+  mySide = 0
+  showSidePane() {
+    var sidePane = document.getElementsByClassName("side-pane") as HTMLCollectionOf<HTMLElement>;
+    if (this.mySide == 0) {
+      this.mySide = 1
+      sidePane[0].style.left = "0";
+    }
+    else {
+      this.mySide = 0
+      sidePane[0].style.left = "-300px";
+    }
+
+
   }
 
   //show map
@@ -248,7 +262,7 @@ export class HomePage implements OnInit {
   }
 
 
-  click(){
+  click() {
     alert("clicked")
   }
   //markers for the map
@@ -318,10 +332,10 @@ export class HomePage implements OnInit {
     var settingsUpdate = document.getElementById("container-overlay");
     // settingsUpdate.style.opacity = "0";
     // setTimeout(() => {
-      settingsUpdate.style.display = "none";
+    settingsUpdate.style.display = "none";
     // }, 510);
   }
-  updateDetails(){
+  updateDetails() {
     this.cancelSettings()
   }
   getItems(ev) {
@@ -343,18 +357,20 @@ export class HomePage implements OnInit {
   }
 
   updateOrg() {
-    this.hubs.update(this.name, this.email, this.downloadurlLogo, this.address, this.contact,this.background).then((data) => {
-      let loading = this.loadingCtrl.create({
-        spinner: 'bubbles',
-        content: 'Please wait...',
-        duration: 15000
-      });
-     
+    this.cancelSettings();
+    let loading = this.loadingCtrl.create({
+      spinner: 'bubbles',
+      content: 'Please wait...',
+      duration: 15000
+    });
+    loading.present()
+    this.hubs.update(this.name, this.email, this.downloadurlLogo, this.address, this.contact, this.background).then((data) => {
+      loading.dismiss();
     });
   }
-  
-   //updateLogo
-   insertpic(event: any) {
+
+  //updateLogo
+  insertpic(event: any) {
     this.d = 1;
     let opts = document.getElementsByClassName('options') as HTMLCollectionOf<HTMLElement>;
     if (this.d == 1) {
