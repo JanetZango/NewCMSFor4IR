@@ -18,6 +18,7 @@ export class HomePage implements OnInit {
   orgNames = new Array();
   updateOrganization = new Array();
 
+
   //variables
   lat = -26.2620;
   name;
@@ -43,8 +44,11 @@ export class HomePage implements OnInit {
   more = "ios-arrow-down";
   dateer = "this the date";
   activeState = "disabled";
+
+
   d = 1;
   constructor(public navCtrl: NavController, public hubs: HubsProvider, public loadingCtrl: LoadingController,public toastCtrl: ToastController) {
+
 
     this.hubs.getAllOrganizations().then((data: any) => {
       this.getOrgArry = data
@@ -65,6 +69,10 @@ export class HomePage implements OnInit {
 
     this.hubs.getCurrentLocation(this.lat, this.long).then((radius: any) => {
     })
+
+
+
+
 
 
   }
@@ -304,13 +312,15 @@ export class HomePage implements OnInit {
         map.setZoom(13);
         map.setCenter(marker.getPosition());
       });
-
     }, 4000);
 
 
   }
 
 
+  click(){
+    alert("clicked")
+  }
   //markers for the map
   markers() {
     // console.log(this.orgArray);
@@ -369,7 +379,21 @@ export class HomePage implements OnInit {
     }
   }
 
-
+  goToSettings() {
+    var settingsUpdate = document.getElementById("container-overlay");
+    settingsUpdate.style.display = "block";
+    settingsUpdate.style.display = "flex";
+  }
+  cancelSettings() {
+    var settingsUpdate = document.getElementById("container-overlay");
+    // settingsUpdate.style.opacity = "0";
+    // setTimeout(() => {
+      settingsUpdate.style.display = "none";
+    // }, 510);
+  }
+  updateDetails(){
+    this.cancelSettings()
+  }
   getItems(ev) {
     this.initializeItems();
     // set val to the value of the ev target
@@ -386,6 +410,33 @@ export class HomePage implements OnInit {
       this.items = [];
     }
     // console.log(this.items);
+  }
+
+  updateOrg() {
+    this.hubs.update(this.name, this.email, this.downloadurlLogo, this.address, this.contact,this.background).then((data) => {
+      let loading = this.loadingCtrl.create({
+        spinner: 'bubbles',
+        content: 'Please wait...',
+        duration: 15000
+      });
+     
+    });
+  }
+  
+   //updateLogo
+   insertpic(event: any) {
+    this.d = 1;
+    let opts = document.getElementsByClassName('options') as HTMLCollectionOf<HTMLElement>;
+    if (this.d == 1) {
+      if (event.target.files && event.target.files[0]) {
+        let reader = new FileReader();
+        reader.onload = (event: any) => {
+          this.downloadurlLogo = event.target.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
+
+    }
   }
 
 

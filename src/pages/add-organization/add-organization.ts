@@ -510,96 +510,211 @@ export class AddOrganizationPage {
 
   toPage2Progs() {
     var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-25%"
+    pager[0].style.marginLeft = "-25%";
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "50%"
   }
   toPage3Progs() {
     var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-50%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "75%"
   }
   toPage4Progs() {
     var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-75%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "100%"
   }
   backToPage3Progs() {
     var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-50%"
+    pager[0].style.marginLeft = "-50%";
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "75%"
   }
   backToPage2Progs() {
     var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-25%"
+    pager[0].style.marginLeft = "-25%";
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "50%"
   }
   backToPage1Progs() {
     var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "0"
+    pager[0].style.marginLeft = "0";
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "25%"
   }
 
 
-  
 
 
 
 
 
-  
+
+
   toPage2Services() {
     var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-25%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "50%"
+    pager[0].style.marginLeft = "-25%";
   }
   toPage3Services() {
     var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-50%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "75%"
   }
   toPage4Services() {
     var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-75%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "100%"
   }
   backToPage3Services() {
     var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-50%"
+    pager[0].style.marginLeft = "-50%";
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "75%"
   }
   backToPage2Services() {
     var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-25%"
+    pager[0].style.marginLeft = "-25%";
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "50%"
   }
   backToPage1Services() {
     var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "0"
+    pager[0].style.marginLeft = "0";
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "25%"
   }
 
 
 
 
 
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+  WiFiAvailability;
+  freeOrPaidWiFi;
+  priceWiFi;
   toPage2WiFi() {
-    var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-25%"
+    if (this.WiFiAvailability == "Yes") {
+      var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
+      pager[0].style.marginLeft = "-25%"
+      var thebar = document.getElementById("barSlide");
+      thebar.style.width = "50%"
+      
+    }
+    else if (this.WiFiAvailability == "No") {
+      var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
+      pager[0].style.marginLeft = "-75%"
+      var thebar = document.getElementById("barSlide");
+      thebar.style.width = "100%";
+      this.freeOrPaidWiFi = "Unavailable";
+      this.priceWiFi = "Unavailable"
+    }
   }
   toPage3WiFi() {
-    var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-50%"
+    if (this.freeOrPaidWiFi == "Free") {
+      var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
+      pager[0].style.marginLeft = "-75%"
+      var thebar = document.getElementById("barSlide");
+      thebar.style.width = "100%";
+    }
+    else if (this.freeOrPaidWiFi == "Paid") {
+      var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
+      pager[0].style.marginLeft = "-50%"
+      var thebar = document.getElementById("barSlide");
+      thebar.style.width = "75%"
+    }
+    else if(this.freeOrPaidWiFi == "" || this.freeOrPaidWiFi == null || this.freeOrPaidWiFi == undefined){
+      
+      const alert = this.alertCtrl.create({
+        title: 'Choose One Option',
+        subTitle: "Please choose one of the options provided.",
+        buttons: ['OK']
+      });
+      alert.present();
+    }
   }
   toPage4WiFi() {
-    var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-75%"
+
+    if (this.priceWiFi == "" || this.priceWiFi == null || this.priceWiFi == undefined) {
+
+      const alert = this.alertCtrl.create({
+        title: 'Select Range',
+        subTitle: "It looks like you haven't chosen a data range.",
+        buttons: ['OK']
+      });
+      alert.present();
+    }
+    else {
+      var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
+      pager[0].style.marginLeft = "-75%"
+      var thebar = document.getElementById("barSlide");
+      thebar.style.width = "100%";
+    }
   }
   backToPage1WiFi() {
     var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "0"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "25%"
   }
   backToPage2WiFi() {
     var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-25%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "50%"
   }
   backToPage3WiFi() {
-    var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-50%"
+    // alert(this.freeOrPaidWiFi)
+    if(this.WiFiAvailability == "No"){
+      this.backToPage1WiFi()
+    }
+    if (this.freeOrPaidWiFi == "Paid") {
+      var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
+      pager[0].style.marginLeft = "-50%"
+      var thebar = document.getElementById("barSlide");
+      thebar.style.width = "75%"
+    }
+    else {
+      if (this.freeOrPaidWiFi == "Free") {
+        this.backToPage2WiFi();
+      }
+      else if (this.freeOrPaidWiFi == "" || this.freeOrPaidWiFi == null || this.freeOrPaidWiFi == undefined) {
+        this.backToPage1WiFi()
+      }
+    }
+  }
+  showChargeWiFi: boolean = false;
+  showPricing: boolean = false;
+  togglePrice() {
+    if (this.WiFiAvailability == "Yes") {
+      this.showChargeWiFi = true
+    }
+    else if (this.WiFiAvailability == "No") {
+      this.showChargeWiFi = false
+      this.freeOrPaidWiFi = ""
+
+    }
+  }
+  togglePayment() {
+    if (this.freeOrPaidWiFi == "Paid") {
+      this.showPricing = true
+    }
+    else if (this.freeOrPaidWiFi == "Free") {
+      this.priceWiFi = ""
+      this.showPricing = false
+    }
+  }
+  toggleRange() {
   }
 
 
@@ -615,29 +730,41 @@ export class AddOrganizationPage {
 
 
 
-  
+
   toPage2Jobs() {
     var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-25%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "50%"
   }
   toPage3Jobs() {
     var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-50%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "75%"
   }
   toPage4Jobs() {
     var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-75%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "100%"
   }
   backToPage1Jobs() {
     var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "0"
+    pager[0].style.marginLeft = "0";
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "25%"
   }
   backToPage2Jobs() {
     var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-25%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "50%"
   }
   backToPage3Jobs() {
     var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
     pager[0].style.marginLeft = "-50%"
+    var thebar = document.getElementById("barSlide");
+    thebar.style.width = "75%"
   }
 }

@@ -20,8 +20,6 @@ import { OnboardingPage } from '../pages/onboarding/onboarding';
     LoginRegisterPage,
     AddOrganizationPage,
     FormsPage,
-    OnboardingPage
-    
   ],
   imports: [
     BrowserModule,
@@ -34,7 +32,6 @@ import { OnboardingPage } from '../pages/onboarding/onboarding';
     LoginRegisterPage,
     AddOrganizationPage,
     FormsPage,
-    OnboardingPage
   ],
   providers: [
     StatusBar,
