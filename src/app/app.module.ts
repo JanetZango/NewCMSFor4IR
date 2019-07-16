@@ -20,7 +20,7 @@ import { OnboardingPage } from '../pages/onboarding/onboarding';
     LoginRegisterPage,
     AddOrganizationPage,
     FormsPage,
-    OnboardingPage
+    OnboardingPage,
   ],
   imports: [
     BrowserModule,
@@ -33,14 +33,14 @@ import { OnboardingPage } from '../pages/onboarding/onboarding';
     LoginRegisterPage,
     AddOrganizationPage,
     FormsPage,
-    OnboardingPage
+    OnboardingPage,
+    OnboardingPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HubsProvider,
-
   ]
 })
 export class AppModule {}
