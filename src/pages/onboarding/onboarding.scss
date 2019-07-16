@@ -19,10 +19,10 @@ page-onboarding {
       background-size: cover;
       // z-index: 1;
     }
-    .cardcenter {
-      height: 65vh;
-      width: 70%;
-  }
+  //   .cardcenter {
+  //     height: 70vh;
+  //     width: 70%;
+  // }
   .background {
     background-image: linear-gradient(#2f007b, #8e2dfd);
     display: flex;
@@ -43,7 +43,7 @@ page-onboarding {
     // z-index: 1;
   }
   .cardcenter {
-    height: 65vh;
+    height: 70vh;
     width: 70%;
     // display: flex;
     justify-content: center;
