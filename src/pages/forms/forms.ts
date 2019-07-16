@@ -227,17 +227,19 @@ export class FormsPage {
           text: 'Cancel',
           handler: data => {
             console.log('Cancel clicked');
-            var getStarted = document.getElementById("getStarted1");
-            getStarted.style.display = "block"
+            // var getStarted = document.getElementById("getStarted1");
+            // getStarted.style.display = "block"
             this.getStarted()
           }
         },
         {
           text: 'Continue',
           handler: data => {
-            var getStarted = document.getElementById("getStarted1");
-            getStarted.style.display = "none"
-
+            // var getStarted = document.getElementById("getStarted1");
+            // getStarted.style.display = "none"
+            if (name == "") {
+              this.getStarted()
+            }
             console.log('Saved clicked');
           }
         }
