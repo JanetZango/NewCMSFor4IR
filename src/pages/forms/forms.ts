@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { HubsProvider } from '../../providers/hubs/hubs';
 
 /**
  * Generated class for the FormsPage page.
@@ -38,13 +39,44 @@ export class FormsPage {
   showLibaryServices;
   showheiServices;
   showMallServices;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(public methods:HubsProvider, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
     this.showPrompt()
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FormsPage');
   }
+
+  addProgram(){
+    this.methods.addPrograme(this.openApplicationDate,this.closeApplicationDate,this.promName,this.Programcategory,this.porgBackground,this.progBenefits,this.progDesc,this.startDate,this.endDate,this.orgAdress,this.contacts,this.img).then(() =>{
+      const alert = this.alertCtrl.create({
+        subTitle: "Program Added",
+        buttons: ['OK']
+      });
+      alert.present();
+    })
+  }
+
+  addJob(){
+    this.methods.addJob(this.jobOpen,this.jobClose,this.orgAdress,this.jobDesc,this.jobBenefits,this.JobStartDate,this.jobEndDate,this.contactValidation,this.img).then(() =>{
+      const alert = this.alertCtrl.create({
+        subTitle: "Job added",
+        buttons: ['OK']
+      });
+      alert.present();
+    })
+  }
+
+  addService(){
+    this.methods.addService(this.serviceOpenDate,this.serviceCloseDate,this.orgAdress,this.serviceName,this.contact,this.serviceDesc,this.img).then(() =>{
+      const alert = this.alertCtrl.create({
+        subTitle: "Service Added",
+        buttons: ['OK']
+      });
+      alert.present();
+    })
+  }
+
 
   checkWifi() {
     console.log("testing");
