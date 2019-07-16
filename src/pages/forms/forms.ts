@@ -111,42 +111,43 @@ export class FormsPage {
     else {
       this.websiteV = 1;
       this.websiteValidation = 1
-      console.log("wrong website");
+      alert("wrong website");
       //return false;
     }
   }
-
+  errMessage
   moveToPage2() {
-
     // this.phonenumberValidatin();
     var progBar = document.getElementById("theDot");
-    // this.is_urlValidation(this.orgWebsite);
-    // if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
-    //   this.alert("Please complete all details ")
-    // } else if (this.orgName == undefined) {
-    //   this.alert("Enter organisation Name ")
-    // } else if (this.orgAdress == undefined) {
-    //   this.alert("Enter Address  ")
-    // } else if (this.contactValidation == 1) {
+    this.is_urlValidation(this.orgWebsite);
+    if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
+      alert("Please complete all details ")
+    } else if (this.orgName == undefined) {
+      alert("Enter organisation Name ")
+    } else if (this.orgAdress == undefined) {
+      alert("Enter Address  ")
+    }
+    // else if (this.contactValidation == 1) {
     //   this.alert("The phone numbers you have entered is invalid, please enter a valid phone numbers  ")
-    // } else if (this.websiteValidation == 1) {
+    // } 
+    // else if (this.websiteValidation == 1) {
     //   this.alert("The website address you have entered is invalid, please enter a valid website address ")
     // } 
     // else if (this.checkAddress == 1) {
     //   this.alert("The address you have entered is invalid, please enter a valid address ")
     // }
-    // else if (this.orgPhone == undefined) {
-    // this.alert("Enter Phone numbers  ")
-    // } else if (this.orgDescription == undefined) {
-    // this.alert("Enter Phone numbers  ")
+    else if (this.orgPhone == undefined) {
+      alert("Enter Phone numbers  ")
+    } else if (this.orgDescription == undefined) {
+      alert("Enter Phone numbers  ")
 
-    // } else {
+    } else {
 
-    var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "-25%";
-    progBar.style.width = "50%";
+      var toSlide = document.getElementById("page1");
+      toSlide.style.marginLeft = "-25%";
+      progBar.style.width = "50%";
 
-    // }
+    }
 
 
 
@@ -188,21 +189,26 @@ export class FormsPage {
 
 
   }
-
+  CatDesc
 
   moveToPage4() {
+    var toSlide = document.getElementById("page1");
 
     var progBar = document.getElementById("theDot");
-    // if (this.category != undefined && this.catService.length != 0) {
-    //   console.log(this.catService);
+    console.log(this.category);
+
+    if (this.category == null || this.category == undefined || this.category == " ") {
+
+      alert("Please omplete all the Details ")
+    }
+    else {
+      toSlide.style.marginLeft = "-75%";
+      progBar.style.width = "100%";
+    }
+    // if (this.category != undefined || this.category != " " || this.category != null || this.category != "" || this.category.length != 0) {
 
 
-    var toSlide = document.getElementById("page1");
-    toSlide.style.marginLeft = "-75%";
-    // this.progressBar = this.progressBar + 25;
-    progBar.style.width = "100%";
     // } else {
-    alert("Complete all the Details ")
     // }
 
   }
@@ -232,15 +238,16 @@ export class FormsPage {
       inputs: [
         {
           name: 'userName',
-          placeholder: 'First Name'
+          placeholder: 'First Name',
+          value: "user"
         },
         {
           name: 'userSurname',
           placeholder: 'Surname'
         },
         {
-          name: 'UserIDNumber',
-          placeholder: 'ID Number'
+          name: 'userEmail',
+          placeholder: 'Email'
         },
         {
           name: 'userPosition',
@@ -252,15 +259,19 @@ export class FormsPage {
           text: 'Cancel',
           handler: data => {
             console.log('Cancel clicked');
-            var getStarted = document.getElementById("getStarted1");
-            getStarted.style.display = "block"
+            // var getStarted = document.getElementById("getStarted1");
+            // getStarted.style.display = "block"
+            this.getStarted()
           }
         },
         {
-          text: 'Save',
+          text: 'Continue',
           handler: data => {
-            var getStarted = document.getElementById("getStarted1");
-            getStarted.style.display = "none"
+            // var getStarted = document.getElementById("getStarted1");
+            // getStarted.style.display = "none"
+            if (name == "") {
+              this.getStarted()
+            }
             console.log('Saved clicked');
           }
         }

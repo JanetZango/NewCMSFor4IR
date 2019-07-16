@@ -7,20 +7,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
+​
 @IonicPage()
 @Component({
   selector: 'page-onboarding',
   templateUrl: 'onboarding.html',
 })
 export class OnboardingPage {
-
+​
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
+​
   ionViewDidLoad() {
     console.log('ionViewDidLoad LandingPage');
   }
+  
 
   nextpage() {
     console.log(`click`);
@@ -35,9 +36,6 @@ export class OnboardingPage {
     
    } else if(slide1[0].style.display == "none"){
      console.log(`else if`);
-    //  slide1[0].style.display = "block" 
-    //  slide2[0].style.display = "none"
-    //  wave[0].style.transform = 'translate(300px,0px)'; 
    }
    else{
   console.log(`else`);
@@ -116,7 +114,3 @@ export class OnboardingPage {
    }
   }
 }
-
-
- 
-
