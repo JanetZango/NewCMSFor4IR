@@ -1,6 +1,6 @@
 <ion-content>
   <div class="overlay" id="getStarted1">
-    <h5>Click this Get Started to finish registration</h5>
+    <h5>Click Get Started to finish registration</h5>
     <button id="getStarted" ion-button (click)="getStarted()">
       Get Started
     </button>
@@ -33,7 +33,7 @@
                   onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" [(ngModel)]="orgPhone">
                 <input type="url" class="inputText" id="web" placeholder="Website" [(ngModel)]="orgWebsite">
                 <br>
-                <textarea name="" id="orgDesc" max="250" placeholder="Organisation Description" cols="4"
+                <textarea name="" id="orgDesc"  maxLength="250" placeholder="Organisation Description" cols="4"
                   [(ngModel)]="orgDescription"></textarea>
                 <br>
                 <button ion-button id="movetopage2" class="theButton" (click)="moveToPage2()">NEXT</button>
@@ -82,7 +82,8 @@
                 <div>
                 </div>
                 <br>
-                <textarea name="" id="orgDesc" placeholder="Provide clarity if any" cols="4"></textarea>
+                <textarea name="" id="orgDesc" placeholder="Provide clarity if any" cols="4"
+                  [(ngModel)]="CatDesc" maxLength="250"></textarea>
                 <button ion-button id="movetopage2" class="theButton" (click)="moveToPage4()">NEXT</button>
                 <button ion-button class="theButtonBack" (click)="backToPage2()">BACK</button>
               </div>
@@ -109,11 +110,16 @@
                       <b>Free WiFi:</b> {{wifi}}</p>
                     <p>
                       <b>WiFi Range:</b> {{chooseWifiRange}}</p>
+                    <p>
+                      <b>Business Category:</b> {{category}}</p>
+                      <p>
+                        <b>Cat Description:</b> {{CatDesc}}</p>
+                      
                   </div>
-                  <b>Selected Services</b>
+                  <!-- <b>Selected Services</b>
                   <div *ngFor="let a of catService ">
                     {{a.title}}
-                  </div>
+                  </div> -->
                 </div>
                 <button ion-button class="theButton" id="movetopage2" (click)="saveToDB()">Done</button>
                 <button ion-button class="theButtonBack" (click)="backToPage3()">BACK</button>

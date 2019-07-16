@@ -203,20 +203,20 @@ export class HubsProvider {
   }
 
 //updateOrganization
-  update(name, email, downloadurl, address, contact) {
-    return new Promise((pass, fail) => {
-      this.ngzone.run(() => {
-        var user = firebase.auth().currentUser
-        firebase.database().ref("Organizations/" + user.uid).update({
-          name: name,
-          email: email,
-          downloadurl: downloadurl,
-          address: address,
-          contact: contact
-        });
-      })
-    })
-  }
+  // update(name, email, downloadurl, address, contact) {
+  //   return new Promise((pass, fail) => {
+  //     this.ngzone.run(() => {
+  //       var user = firebase.auth().currentUser
+  //       firebase.database().ref("Organizations/" + user.uid).update({
+  //         name: name,
+  //         email: email,
+  //         downloadurl: downloadurl,
+  //         address: address,
+  //         contact: contact
+  //       });
+  //     })
+  //   })
+  // }
 
   //getcurrentlocation
   getCurrentLocation(lat, lng) {
@@ -229,18 +229,18 @@ export class HubsProvider {
   }
 
 
-  //forgotpassword
-  forgetPassword(email) {
-    return new Promise((resolve, reject) => {
-      firebase.auth().sendPasswordResetEmail(email).then(() => {
-        resolve();
-      }, (error) => {
-        reject(error)
-      })
+  // //forgotpassword
+  // forgetPassword(email) {
+  //   return new Promise((resolve, reject) => {
+  //     firebase.auth().sendPasswordResetEmail(email).then(() => {
+  //       resolve();
+  //     }, (error) => {
+  //       reject(error)
+  //     })
 
-    })
+  //   })
 
-  }
+  // }
 
   //createradius
   createPositionRadius(latitude, longitude) {
