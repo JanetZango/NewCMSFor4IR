@@ -268,6 +268,7 @@ forgotpassword(PlaceObject: object) {
   }
   }
 switchlogin() {
+
   console.log(`click`);
    let left = document.getElementsByClassName('login') as HTMLCollectionOf<HTMLElement>;
    let right = document.getElementsByClassName('signup') as HTMLCollectionOf<HTMLElement>;
@@ -293,5 +294,8 @@ right[0].style.display = "block"
 // covercontent[0].style.backgroundColor = "#abdf80"
  }
 }
-
+logohide(){
+  console.log(`click`);
+  
+}
 }

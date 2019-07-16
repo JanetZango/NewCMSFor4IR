@@ -34,6 +34,7 @@ import { OnboardingPage } from '../pages/onboarding/onboarding';
     AddOrganizationPage,
     FormsPage,
     OnboardingPage,
+    OnboardingPage,
   ],
   providers: [
     StatusBar,

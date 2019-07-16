@@ -23,21 +23,21 @@ export class HubsProvider {
     console.log('Hello HubsProvider Provider');
   }
 
-  update(name, email, downloadurlLogo, address, contact,background) {
-    return new Promise((pass, fail) => {
-      this.ngzone.run(() => {
-        var user = firebase.auth().currentUser
-        firebase.database().ref("Organizations/" + user.uid).update({
-          name: name,
-          email: email,
-          downloadurlLogo :downloadurlLogo,
-          address: address,
-          contact: contact ,
-          background :background
-        });
-      })
-    })
-  }
+  // update(name, email, downloadurlLogo, address, contact,background) {
+  //   return new Promise((pass, fail) => {
+  //     this.ngzone.run(() => {
+  //       var user = firebase.auth().currentUser
+  //       firebase.database().ref("Organizations/" + user.uid).update({
+  //         name: name,
+  //         email: email,
+  //         downloadurlLogo :downloadurlLogo,
+  //         address: address,
+  //         contact: contact ,
+  //         background :background
+  //       });
+  //     })
+  //   })
+  // }
 
   
   //check authstate
@@ -229,7 +229,7 @@ export class HubsProvider {
   }
 
 
-  // //forgotpassword
+  //forgotpassword
   // forgetPassword(email) {
   //   return new Promise((resolve, reject) => {
   //     firebase.auth().sendPasswordResetEmail(email).then(() => {

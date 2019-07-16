@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-​
+
 /**
  * Generated class for the LandingPage page.
  *
@@ -10,8 +10,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 ​
 @IonicPage()
 @Component({
-  selector: 'page-Onboarding',
-  templateUrl: 'Onboarding.html',
+  selector: 'page-onboarding',
+  templateUrl: 'onboarding.html',
 })
 export class OnboardingPage {
 ​
@@ -22,6 +22,7 @@ export class OnboardingPage {
     console.log('ionViewDidLoad LandingPage');
   }
   
+
   nextpage() {
     console.log(`click`);
      let slide1 = document.getElementsByClassName('slide1') as HTMLCollectionOf<HTMLElement>;
@@ -113,4 +114,3 @@ export class OnboardingPage {
    }
   }
 }
-​

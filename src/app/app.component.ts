@@ -8,6 +8,7 @@ import { LoginRegisterPage } from '../pages/login-register/login-register';
 import { HubsProvider } from '../providers/hubs/hubs';
 import { FormsPage } from '../pages/forms/forms';
 import { AddOrganizationPage } from '../pages/add-organization/add-organization';
+import { OnboardingPage } from '../pages/onboarding/onboarding';
 
 @Component({
   templateUrl: 'app.html'
