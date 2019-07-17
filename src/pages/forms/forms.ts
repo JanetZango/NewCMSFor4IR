@@ -168,7 +168,6 @@ export class FormsPage {
         {
           name: 'userName',
           placeholder: 'First Name',
-          value: "user"
         },
         {
           name: 'userSurname',
