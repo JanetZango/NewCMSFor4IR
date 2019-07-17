@@ -131,7 +131,7 @@ export class HubsProvider {
       firebase
         .database()
         .ref("Organizations/" + user.uid)
-        .set({
+        .push({
           name: Orgname,
           email: email,
           contact: cell,

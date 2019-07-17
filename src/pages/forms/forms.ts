@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { HubsProvider } from '../../providers/hubs/hubs'
 /**
  * Generated class for the FormsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+
+ declare var google;
 @IonicPage()
 @Component({
   selector: 'page-forms',
@@ -20,6 +23,7 @@ export class FormsPage {
   orgPhone;
   contactValidation;
   websiteValidation;
+  orgAddressObject = new Array();
   offerWifi;
   wifi;
   catService;
@@ -31,10 +35,17 @@ export class FormsPage {
   showinternetCafeServices;
   showLibaryServices;
   showheiServices;
+  checkAddress;
   showMallServices;
-  // email = this.navParams("email")
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  background;
+  downloadurl;
+  downloadurlLogo;
+lat;
+long;
+  email = this.navParams.get("email")
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,public hubs : HubsProvider) {
     this.showPrompt()
+    console.log(this.email)
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad FormsPage');
@@ -211,4 +222,50 @@ export class FormsPage {
   getStarted() {
     this.showPrompt()
   }
+
+  saveToDB(){
+    this.hubs.addOrganisation(this.email,this.orgPhone, this.category, this.background, this.lat,this.long, this.wifi,this.offerWifi,this.chooseWifiRange, this.orgWebsite,this.downloadurl,this.downloadurlLogo, this.orgAdress).then(() => {
+      console.log("added ");
+    });
+  }
+  getcoo(address) {
+    return new Promise((accpt, rej) => {
+        let geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ address: address }, function (results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            var arr = results[0].address_components;
+            var arr2 = arr[3];
+            this.latitude = results[0].geometry.location.lat();
+            this.longitude = results[0].geometry.location.lng();
+            let position = {
+              lat: results[0].geometry.location.lat(),
+              lng: results[0].geometry.location.lng(),
+              city: arr2.long_name
+            };
+            accpt(position);
+          }
+          else {
+            rej('')
+          }
+        })
+    });
+  }
+
+
+  setAddress(event) {
+    if (this.orgAdress != undefined) {
+      this.getcoo(this.orgAdress).then((data: any) => {
+        this.orgAddressObject = data;
+        this.checkAddress = 0
+
+        console.log(this.orgAddressObject);
+      }, Error => {
+        this.checkAddress = 1;
+
+        console.log(this.checkAddress);
+      })
+    }
+
+  }
+  
 }
