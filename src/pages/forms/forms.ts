@@ -32,7 +32,7 @@ export class FormsPage {
   showLibaryServices;
   showheiServices;
   showMallServices;
-  email = this.navParams("email")
+  // email = this.navParams("email")
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
     this.showPrompt()
   }
