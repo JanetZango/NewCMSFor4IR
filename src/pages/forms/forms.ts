@@ -179,7 +179,6 @@ long;
         {
           name: 'userName',
           placeholder: 'First Name',
-          value: "user"
         },
         {
           name: 'userSurname',
@@ -209,9 +208,7 @@ long;
           handler: data => {
             // var getStarted = document.getElementById("getStarted1");
             // getStarted.style.display = "none"
-            if (name == "") {
-              this.getStarted()
-            }
+            
             console.log('Saved clicked');
           }
         }
