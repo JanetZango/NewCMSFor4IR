@@ -6,6 +6,8 @@ import { HomePage } from '../home/home';
 import { AddOrganizationPage } from '../add-organization/add-organization';
 import swal from "sweetalert";
 import Swal from "sweetalert2";
+import { FormsPage } from '../forms/forms';
+import { OnboardingPage } from '../onboarding/onboarding';
 
 declare var firebase;
 /**
@@ -214,7 +216,7 @@ forgotpassword(PlaceObject: object) {
     if (this.signUpEmail != "" && this.signUpPassword != "") {
     this.hubs.signUp(this.signUpEmail,this.signUpPassword).then(()=>{
       this.navCtrl.setRoot(HomePage)
-      this.navCtrl.push(AddOrganizationPage, { email: this.signUpEmail })
+      this.navCtrl.push(FormsPage, { email: this.signUpEmail })
       const Toast = Swal.mixin({
         toast: true,
         position: "top-end",

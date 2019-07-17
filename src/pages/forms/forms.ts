@@ -1,22 +1,17 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { HubsProvider } from '../../providers/hubs/hubs';
-
 /**
  * Generated class for the FormsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
 @IonicPage()
 @Component({
   selector: 'page-forms',
   templateUrl: 'forms.html',
 })
 export class FormsPage {
-
-
   category;
   orgName;
   orgWebsite;
@@ -31,63 +26,27 @@ export class FormsPage {
   chooseWifiRange;
   ShowWifi: boolean = false;
   ShowChooseRange: boolean = false;
-
-
   showCoffeeShopServices;
   showlearningCenterServices;
   showinternetCafeServices;
   showLibaryServices;
   showheiServices;
   showMallServices;
-  constructor(public methods:HubsProvider, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  email = this.navParams("email")
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
     this.showPrompt()
   }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad FormsPage');
   }
-
-  addProgram(){
-    this.methods.addPrograme(this.openApplicationDate,this.closeApplicationDate,this.promName,this.Programcategory,this.porgBackground,this.progBenefits,this.progDesc,this.startDate,this.endDate,this.orgAdress,this.contacts,this.img).then(() =>{
-      const alert = this.alertCtrl.create({
-        subTitle: "Program Added",
-        buttons: ['OK']
-      });
-      alert.present();
-    })
-  }
-
-  addJob(){
-    this.methods.addJob(this.jobOpen,this.jobClose,this.orgAdress,this.jobDesc,this.jobBenefits,this.JobStartDate,this.jobEndDate,this.contactValidation,this.img).then(() =>{
-      const alert = this.alertCtrl.create({
-        subTitle: "Job added",
-        buttons: ['OK']
-      });
-      alert.present();
-    })
-  }
-
-  addService(){
-    this.methods.addService(this.serviceOpenDate,this.serviceCloseDate,this.orgAdress,this.serviceName,this.contact,this.serviceDesc,this.img).then(() =>{
-      const alert = this.alertCtrl.create({
-        subTitle: "Service Added",
-        buttons: ['OK']
-      });
-      alert.present();
-    })
-  }
-
-
   checkWifi() {
     console.log("testing");
     console.log(this.offerWifi);
-
     if ("Yes" == this.offerWifi) {
       this.ShowWifi = true;
     } else {
       this.ShowWifi = false;
     }
-
   }
   checkWifipayment() {
     if (this.wifi == "Yes") {
@@ -97,7 +56,6 @@ export class FormsPage {
     }
   }
   // showServices() {
-
   websiteV;
   is_urlValidation(str) {
     var regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
@@ -106,7 +64,6 @@ export class FormsPage {
       this.websiteV = 0
       // return true;
       console.log("correct website");
-
     }
     else {
       this.websiteV = 1;
@@ -140,35 +97,21 @@ export class FormsPage {
       alert("Enter Phone numbers  ")
     } else if (this.orgDescription == undefined) {
       alert("Enter Phone numbers  ")
-
     } else {
-
       var toSlide = document.getElementById("page1");
       toSlide.style.marginLeft = "-25%";
       progBar.style.width = "50%";
-
     }
-
-
-
-
-
   }
   moveToPage3() {
-
-
     var progBar = document.getElementById("theDot");
-
-
     if (this.offerWifi == "No") {
       if (this.wifi == undefined) {
         this.wifi = "No"
       } if (this.chooseWifiRange == undefined) {
         this.chooseWifiRange = "No"
       }
-
     }
-
     if (this.offerWifi != undefined) {
       if (this.wifi != undefined && this.chooseWifiRange != undefined) {
         var toSlide = document.getElementById("page1");
@@ -178,27 +121,17 @@ export class FormsPage {
       } else {
         alert("Please complete all details")
       }
-
     }
-
     else {
-
       alert("Please complete all details")
     }
-
-
-
   }
   CatDesc
-
   moveToPage4() {
     var toSlide = document.getElementById("page1");
-
     var progBar = document.getElementById("theDot");
     console.log(this.category);
-
     if (this.category == null || this.category == undefined || this.category == " ") {
-
       alert("Please omplete all the Details ")
     }
     else {
@@ -206,13 +139,9 @@ export class FormsPage {
       progBar.style.width = "100%";
     }
     // if (this.category != undefined || this.category != " " || this.category != null || this.category != "" || this.category.length != 0) {
-
-
     // } else {
     // }
-
   }
-
   backToPage3() {
     var progressBar = document.getElementById("theDot");
     var toSlide = document.getElementById("page1");

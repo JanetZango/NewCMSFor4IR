@@ -415,9 +415,9 @@ export class HomePage implements OnInit {
       duration: 15000
     });
     loading.present()
-    this.hubs.update(this.name, this.email, this.downloadurlLogo, this.address, this.contact, this.background).then((data) => {
-      loading.dismiss();
-    });
+    // this.hubs.update(this.name, this.email, this.downloadurlLogo, this.address, this.contact, this.background).then((data) => {
+    //   loading.dismiss();
+    // });
   }
 
 
