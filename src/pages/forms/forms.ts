@@ -47,35 +47,35 @@ export class FormsPage {
     console.log('ionViewDidLoad FormsPage');
   }
 
-  addProgram(){
-    this.methods.addPrograme(this.openApplicationDate,this.closeApplicationDate,this.promName,this.Programcategory,this.porgBackground,this.progBenefits,this.progDesc,this.startDate,this.endDate,this.orgAdress,this.contacts,this.img).then(() =>{
-      const alert = this.alertCtrl.create({
-        subTitle: "Program Added",
-        buttons: ['OK']
-      });
-      alert.present();
-    })
-  }
+  // addProgram(){
+  //   this.methods.addPrograme(this.openApplicationDate,this.closeApplicationDate,this.promName,this.Programcategory,this.porgBackground,this.progBenefits,this.progDesc,this.startDate,this.endDate,this.orgAdress,this.contacts,this.img).then(() =>{
+  //     const alert = this.alertCtrl.create({
+  //       subTitle: "Program Added",
+  //       buttons: ['OK']
+  //     });
+  //     alert.present();
+  //   })
+  // }
 
-  addJob(){
-    this.methods.addJob(this.jobOpen,this.jobClose,this.orgAdress,this.jobDesc,this.jobBenefits,this.JobStartDate,this.jobEndDate,this.contactValidation,this.img).then(() =>{
-      const alert = this.alertCtrl.create({
-        subTitle: "Job added",
-        buttons: ['OK']
-      });
-      alert.present();
-    })
-  }
+  // addJob(){
+  //   this.methods.addJob(this.jobOpen,this.jobClose,this.orgAdress,this.jobDesc,this.jobBenefits,this.JobStartDate,this.jobEndDate,this.contactValidation,this.img).then(() =>{
+  //     const alert = this.alertCtrl.create({
+  //       subTitle: "Job added",
+  //       buttons: ['OK']
+  //     });
+  //     alert.present();
+  //   })
+  // }
 
-  addService(){
-    this.methods.addService(this.serviceOpenDate,this.serviceCloseDate,this.orgAdress,this.serviceName,this.contact,this.serviceDesc,this.img).then(() =>{
-      const alert = this.alertCtrl.create({
-        subTitle: "Service Added",
-        buttons: ['OK']
-      });
-      alert.present();
-    })
-  }
+  // addService(){
+  //   this.methods.addService(this.serviceOpenDate,this.serviceCloseDate,this.orgAdress,this.serviceName,this.contact,this.serviceDesc,this.img).then(() =>{
+  //     const alert = this.alertCtrl.create({
+  //       subTitle: "Service Added",
+  //       buttons: ['OK']
+  //     });
+  //     alert.present();
+  //   })
+  // }
 
 
   checkWifi() {
