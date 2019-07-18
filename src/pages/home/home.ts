@@ -50,7 +50,7 @@ export class HomePage implements OnInit {
   d = 1;
   key;
   downloadurlPic;
-  constructor(public navCtrl: NavController, public hubs: HubsProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public hubs: HubsProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController,public alertCtrl:AlertController) {
 
     this.hubs.getAllOrganizations().then((data: any) => {
       this.getOrgArry = data
@@ -401,10 +401,7 @@ export class HomePage implements OnInit {
   }
   cancelSettings() {
     var settingsUpdate = document.getElementById("container-overlay");
-    // settingsUpdate.style.opacity = "0";
-    // setTimeout(() => {
     settingsUpdate.style.display = "none";
-    // }, 510);
   }
   updateDetails() {
     this.cancelSettings()
@@ -429,7 +426,12 @@ export class HomePage implements OnInit {
 
   updateOrg() {
     this.cancelSettings();
-    this.hubs.update(this.name, this.email, this.downloadurlLogo, this.address, this.contact, this.background,this.key).then((data) => {
+    this.hubs.update(this.name, this.downloadurlLogo, this.contact, this.background,this.key).then((data) => {
+      const alert = this.alertCtrl.create({
+        subTitle: 'Your Information has been updated',
+        buttons: ['OK']
+      });
+      alert.present();
     });
   }
 

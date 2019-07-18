@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { HubsProvider } from '../../providers/hubs/hubs'
+import { HomePage } from '../home/home';
+import swal from "sweetalert";
+import Swal from "sweetalert2";
 /**
  * Generated class for the FormsPage page.
  *
@@ -39,6 +42,7 @@ export class FormsPage {
   showMallServices;
   background;
   downloadurl;
+  alertMessage;
   downloadurlLogo;
   email = this.navParams.get("email")
   userName;
@@ -222,20 +226,20 @@ export class FormsPage {
       message: "Please fill in your personal details to get started.",
       inputs: [
         {
-          name: 'userName',
-          placeholder: this.userName,
+          name:this.userName,
+          placeholder: 'userName',
         },
         {
-          name: 'userSurname',
-          placeholder: this.userSurname,
+          name: this.userSurname,
+          placeholder: 'userSurname',
         },
         {
-          name: 'userEmail',
-          placeholder: this.userEmail,
+          name: this.userEmail,
+          placeholder: 'userEmail',
         },
         {
-          name: 'userPosition',
-          placeholder: this.userPosition
+          name: this.userPosition,
+          placeholder: 'userPosition'
         },
       ],
       buttons: [
@@ -249,14 +253,11 @@ export class FormsPage {
         {
           text: 'Continue',
           handler: data => {
-<<<<<<< HEAD
-=======
             // var getStarted = document.getElementById("getStarted1");
             // getStarted.style.display = "none"
 
->>>>>>> 26b2e1f4d1b17b61f29406cea94b20edc982451d
             console.log('Saved clicked');
-            this.hubs.getUserProfile(data.userName,data.downloadurl,data.userSurname,data.userEmail,data.userPosition).then((data)=>{
+            this.hubs.getUserProfile1(data.userName,data.userSurname,data.userEmail,data.userPosition).then((data)=>{
               console.log(data)
             })
           }
@@ -271,8 +272,20 @@ export class FormsPage {
 
   saveToDB() {
     console.log(this.wifi)
+    let b = window.innerHeight;
     this.hubs.addOrganisation(this.email, this.orgAddressObject.lat, this.orgAddressObject.lng,this.orgAddressObject.city,this.orgPhone, this.category,this.orgName ,this.orgDescription, this.orgAdress,this.wifi, this.offerWifi, this.chooseWifiRange, this.orgWebsite).then(() => {
-      alert("added ");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000
+      });
+
+      Toast.fire({
+        type: "success",
+        title: "Successfuly registered an Organization"
+      });
+      this.navCtrl.setRoot(HomePage)
     });
   }
   getcoo(address) {

@@ -42,7 +42,6 @@ export class LoginRegisterPage {
   Login() {
     console.log(this.email);
     let b = window.innerHeight;
-
     if (
       this.email == "" ||
       (this.email == undefined && this.password == "") ||
@@ -50,7 +49,6 @@ export class LoginRegisterPage {
     ) {
       this.alertMessage =
         "Please insert your email address and password to sign in.";
-
       swal(this.alertMessage);
     } else if (this.email == "" || this.email == undefined) {
       this.alertMessage = "Please insert your email address";
@@ -58,8 +56,11 @@ export class LoginRegisterPage {
       swal(this.alertMessage);
     } else if (this.password == "" || this.password == undefined) {
       this.alertMessage = "Please insert your password";
-
       swal(this.alertMessage);
+    }
+      else if (this.password == undefined || this.email == undefined) {
+        this.alertMessage ="There is no user record corresponding to this identifier. The user may have been deleted.";
+        swal(this.alertMessage);
     } else {
       Swal.fire({
         title: "Loading",
@@ -91,35 +92,27 @@ export class LoginRegisterPage {
           ) {
             this.alertMessage =
               "We do not have a record of this email address, please check your email address or sign up and get started...";
-            Swal.hideLoading();
+              swal(this.alertMessage);
           } else if (
             Error.message ==
             "The password is invalid or the user does not have a password."
           ) {
             this.alertMessage =
               "Please ensure that your password is correct.";
-            Swal.hideLoading();
+              swal(this.alertMessage);
           } else if (
             Error.message == "The email address is badly formatted."
           ) {
             this.alertMessage =
               "Please check if your email address is correct, something's not right.";
-            Swal.hideLoading();
+              swal(this.alertMessage);
           } else {
+            this.alertMessage =
             "Please check if your email address or password is correct, something's not right.";
-            Swal.hideLoading();
           }
           swal(this.alertMessage);
           Swal.close();
         })
-      } else {
-        const alert = this.alertCtrl.create({
-          cssClass: "myAlert",
-          title: '',
-          subTitle: 'Please enter your email and password ',
-          buttons: ['OK']
-        });
-        alert.present();
       }
     }
   }
@@ -129,7 +122,7 @@ export class LoginRegisterPage {
   forgotpassword(PlaceObject: object) {
     let b = window.innerHeight;
     return new Promise((resolve, reject) => {
-    if (this.email == null || this.email == undefined) {
+      if (this.email == null || this.email == undefined) {
         const alert = this.alertCtrl.create({
           cssClass: "myAlert",
           title: 'Forgot your password?',
@@ -152,7 +145,7 @@ export class LoginRegisterPage {
               text: 'Send',
               handler: data => {
                 this.hubs.forgetPassword(data.email).then(() => {
-                  this.alertMessage ="Please check your email to reset your password";
+                  this.alertMessage = "Please check your email to reset your password";
                   swal(this.alertMessage);
                 }, Error => {
                   this.alertMessage = Error.message;
@@ -167,7 +160,7 @@ export class LoginRegisterPage {
       }
       else if (this.email != null || this.email != undefined) {
         firebase.auth().sendPasswordResetEmail(this.email).then(() => {
-          this.alertMessage ="We've sent you and email with a reset link, go to your email to recover your account."
+          this.alertMessage = "We've sent you and email with a reset link, go to your email to recover your account."
           swal(this.alertMessage);
           resolve()
         }, Error => {
@@ -199,7 +192,7 @@ export class LoginRegisterPage {
           Swal.close();
         });
       }
-    
+
     }).catch((Error) => {
       if (
         Error.message ==
@@ -263,62 +256,62 @@ export class LoginRegisterPage {
         }
       }).then(result => { });
       this.alertMessage = "Signing up...";
-    if (this.signUpEmail != "" && this.signUpPassword != "") {
-      this.hubs.signUp(this.signUpEmail, this.signUpPassword).then(() => {
-        this.navCtrl.push(OnboardingPage, { email: this.signUpEmail })
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000
-        });
+      if (this.signUpEmail != "" && this.signUpPassword != "") {
+        this.hubs.signUp(this.signUpEmail, this.signUpPassword).then(() => {
+          this.navCtrl.push(OnboardingPage, { email: this.signUpEmail })
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000
+          });
 
-        Toast.fire({
-          type: "success",
-          title: "Welcome to 4IR"
-        });
-        // this.navCtrl.setRoot(HomePage)
-      }).catch((Error) => {
-        if (
-          Error.message ==
-          "There is no user record corresponding to this identifier. The user may have been deleted."
-        ) {
-          this.alertMessage =
-            "We do not have a record of this email address, please check your email address or sign up and get started...";
-          Swal.hideLoading();
-        } else if (
-          Error.message ==
-          "The password is invalid or the user does not have a password."
-        ) {
-          this.alertMessage =
-            "Please ensure that your password is correct.";
-          Swal.hideLoading();
-        } else if (
-          Error.message == "The email address is badly formatted."
-        ) {
-          this.alertMessage =
-            "Please check if your email address is correct, something's not right.";
-          Swal.hideLoading();
-        } else {
-          "Please check if your email address or password is correct, something's not right.";
-          Swal.hideLoading();
-          //  this.alertMessage = Error.message;
-        }
+          Toast.fire({
+            type: "success",
+            title: "Welcome to 4IR"
+          });
+          // this.navCtrl.setRoot(HomePage)
+        }).catch((Error) => {
+          if (
+            Error.message ==
+            "There is no user record corresponding to this identifier. The user may have been deleted."
+          ) {
+            this.alertMessage =
+              "We do not have a record of this email address, please check your email address or sign up and get started...";
+            Swal.hideLoading();
+          } else if (
+            Error.message ==
+            "The password is invalid or the user does not have a password."
+          ) {
+            this.alertMessage =
+              "Please ensure that your password is correct.";
+            Swal.hideLoading();
+          } else if (
+            Error.message == "The email address is badly formatted."
+          ) {
+            this.alertMessage =
+              "Please check if your email address is correct, something's not right.";
+            Swal.hideLoading();
+          } else {
+            "Please check if your email address or password is correct, something's not right.";
+            Swal.hideLoading();
+            //  this.alertMessage = Error.message;
+          }
 
-        swal(this.alertMessage);
-        Swal.close();
-      })
-    } else {
-      const alert = this.alertCtrl.create({
-        cssClass: "myAlert",
-        title: '',
-        subTitle: 'Please enter your email and password ',
-        buttons: ['OK']
-      });
-      alert.present();
+          swal(this.alertMessage);
+          Swal.close();
+        })
+      } else {
+        const alert = this.alertCtrl.create({
+          cssClass: "myAlert",
+          title: '',
+          subTitle: 'Please enter your email and password ',
+          buttons: ['OK']
+        });
+        alert.present();
+      }
     }
   }
-}
   switchlogin() {
 
     console.log(`click`);

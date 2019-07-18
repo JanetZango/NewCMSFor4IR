@@ -152,7 +152,23 @@ export class HubsProvider {
     })
   }
 
- 
+  getUserProfile1(userName,userSurname,userEmail,userPosition){
+    var user = firebase.auth().currentUser;
+    return new Promise((resolve, reject) => {
+      firebase
+        .database()
+        .ref("UserProfileForOrg/" + user.uid)
+        .push({
+          userName: userName,
+          userSurname: userSurname,
+          userEmail: userEmail,
+          userPosition:userPosition,
+          downloadurl: "assets/download.png",
+      
+        });
+      resolve()
+    })
+  }
 
   //retrieve organization
   getAllOrganizations() {
@@ -160,12 +176,14 @@ export class HubsProvider {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser;
         firebase.database().ref("Organizations").on("value", (data: any) => {
-          if (data.val() != null) {
+          if (data.val() != null || data.val() !=undefined) {
             let details = data.val();
+            console.log(details)
             let keys = Object.keys(details);
             for (var x = 0; x < keys.length; x++) {
-              firebase.database().ref("Organizations/" + keys[x]).on("value", (data2: any) => {
+              firebase.database().ref("Organizations/" + user.uid).on("value", (data2: any) => {
                 let displayDetails = data2.val();
+                console.log(keys[x])
                 console.log(displayDetails)
                 let keys2 = Object.keys(displayDetails);
                 console.log(keys2)
@@ -207,26 +225,28 @@ export class HubsProvider {
         this.ngzone.run(() => {
           var user = firebase.auth().currentUser;
           firebase.database().ref("UserProfileForOrg").on("value", (data: any) => {
-            if (data.val() != null) {
+            if (data.val() != null || data.val()) {
               let details = data.val();
               let keys = Object.keys(details);
               for (var x = 0; x < keys.length; x++) {
-                firebase.database().ref("UserProfileForOrg/" + keys[x]).on("value", (data2: any) => {
+                firebase.database().ref("UserProfileForOrg/" + user.uid).on("value", (data2: any) => {
                   let displayDetails = data2.val();
                   console.log(displayDetails)
-                  let keys2 = Object.keys(displayDetails);
-                  console.log(keys2)
-                  let k = keys2[x]
-                  let orgObject = {
-                    downloadurl: displayDetails[k].downloadurl,
-                    userEmail: displayDetails[k].userEmail,
-                    userName: displayDetails[k].userName,
-                    userPosition: displayDetails[k].userPosition,
-                    userSurname: displayDetails[k].userSurname,
-                   
+                  if(data2.val() !=null || data2.val() !=undefined){
+                    let keys2 = Object.keys(displayDetails);
+                    console.log(keys2)
+                    let k = keys2[x]
+                    let orgObject = {
+                      downloadurl: displayDetails[k].downloadurl,
+                      userEmail: displayDetails[k].userEmail,
+                      userName: displayDetails[k].userName,
+                      userPosition: displayDetails[k].userPosition,
+                      userSurname: displayDetails[k].userSurname,
+                     
+                    }
+                    this.orgProfile.push(orgObject)
+                    console.log(this.orgProfile)
                   }
-                  this.orgProfile.push(orgObject)
-                  console.log(this.orgProfile)
                 })
                 resolve(this.orgProfile)
               }
@@ -247,15 +267,13 @@ export class HubsProvider {
   }
 
   //updateOrganization
-  update(name,email,downloadurlLogo,address,contact,background,key) {
+  update(name,downloadurlLogo,contact,background,key) {
     return new Promise((pass, fail) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser
         firebase.database().ref("Organizations/" + user.uid + "/" + key).update({
           name: name,
-          email: email,
           downloadurlLogo: downloadurlLogo,
-          address: address,
           contact: contact,
           background:background
         });
