@@ -265,7 +265,7 @@ export class LoginRegisterPage {
       this.alertMessage = "Signing up...";
     if (this.signUpEmail != "" && this.signUpPassword != "") {
       this.hubs.signUp(this.signUpEmail, this.signUpPassword).then(() => {
-        this.navCtrl.push(FormsPage, { email: this.signUpEmail })
+        this.navCtrl.push(OnboardingPage, { email: this.signUpEmail })
         const Toast = Swal.mixin({
           toast: true,
           position: "top-end",
@@ -275,7 +275,7 @@ export class LoginRegisterPage {
 
         Toast.fire({
           type: "success",
-          title: "Signed up successfully"
+          title: "Welcome to 4IR"
         });
         // this.navCtrl.setRoot(HomePage)
       }).catch((Error) => {

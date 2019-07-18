@@ -17,7 +17,7 @@ export class HomePage implements OnInit {
   items = new Array()
   orgNames = new Array();
   updateOrganization = new Array();
-
+  getUserProfile = new Array();
 
   //variables
   lat = -26.2620;
@@ -44,11 +44,16 @@ export class HomePage implements OnInit {
   more = "ios-arrow-down";
   dateer = "this the date";
   activeState = "disabled";
+  userName;
+  userPosition;
+  userSurname;
   d = 1;
+  downloadurlPic;
   constructor(public navCtrl: NavController, public hubs: HubsProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
 
     this.hubs.getAllOrganizations().then((data: any) => {
       this.getOrgArry = data
+      console.log(this.getOrgArry)
       var names = this.hubs.getOrgNames()
       this.storeOrgNames(names)
       this.name = this.getOrgArry[0].name
@@ -62,6 +67,15 @@ export class HomePage implements OnInit {
       this.long = this.getOrgArry[0].long;
       this.email = this.getOrgArry[0].email;
       this.contact = this.getOrgArry[0].contact
+    })
+
+
+    this.hubs.getUserProfile().then((data: any) => {
+      console.log(this.downloadurl)
+      this.downloadurlPic = data[0].downloadurl;
+      this.userName = data[0].userName;
+      this.userPosition = data[0].userPosition;
+      this.userSurname = data[0].userSurname
     })
 
     this.hubs.getCurrentLocation(this.lat, this.long).then((radius: any) => {
@@ -444,7 +458,7 @@ export class HomePage implements OnInit {
       "elementType": "labels.text.fill",
       "stylers": [
         {
-          "color": "#04592a"
+          "color": "#0064AC"
         }
       ]
     },

@@ -8,7 +8,7 @@ import { HubsProvider } from '../../providers/hubs/hubs'
  * Ionic pages and navigation.
  */
 
- declare var google;
+declare var google;
 @IonicPage()
 @Component({
   selector: 'page-forms',
@@ -23,7 +23,7 @@ export class FormsPage {
   orgPhone;
   contactValidation;
   websiteValidation;
-  orgAddressObject = new Array();
+  orgAddressObject;
   offerWifi;
   wifi;
   catService;
@@ -40,12 +40,15 @@ export class FormsPage {
   background;
   downloadurl;
   downloadurlLogo;
-lat;
-long;
   email = this.navParams.get("email")
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,public hubs : HubsProvider) {
+  userName;
+  userSurname ;
+  userPosition;
+  userEmail;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public hubs: HubsProvider) {
     this.showPrompt()
     console.log(this.email)
+
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad FormsPage');
@@ -95,15 +98,7 @@ long;
     } else if (this.orgAdress == undefined) {
       alert("Enter Address  ")
     }
-    // else if (this.contactValidation == 1) {
-    //   this.alert("The phone numbers you have entered is invalid, please enter a valid phone numbers  ")
-    // } 
-    // else if (this.websiteValidation == 1) {
-    //   this.alert("The website address you have entered is invalid, please enter a valid website address ")
-    // } 
-    // else if (this.checkAddress == 1) {
-    //   this.alert("The address you have entered is invalid, please enter a valid address ")
-    // }
+
     else if (this.orgPhone == undefined) {
       alert("Enter Phone numbers  ")
     } else if (this.orgDescription == undefined) {
@@ -178,19 +173,19 @@ long;
       inputs: [
         {
           name: 'userName',
-          placeholder: 'First Name',
+          placeholder: this.userName,
         },
         {
           name: 'userSurname',
-          placeholder: 'Surname'
+          placeholder: this.userSurname,
         },
         {
           name: 'userEmail',
-          placeholder: 'Email'
+          placeholder: this.userEmail,
         },
         {
           name: 'userPosition',
-          placeholder: 'Position'
+          placeholder: this.userPosition
         },
       ],
       buttons: [
@@ -198,18 +193,16 @@ long;
           text: 'Cancel',
           handler: data => {
             console.log('Cancel clicked');
-            // var getStarted = document.getElementById("getStarted1");
-            // getStarted.style.display = "block"
             this.getStarted()
           }
         },
         {
           text: 'Continue',
           handler: data => {
-            // var getStarted = document.getElementById("getStarted1");
-            // getStarted.style.display = "none"
-            
             console.log('Saved clicked');
+            this.hubs.getUserProfile(data.userName,data.downloadurl,data.userSurname,data.userEmail,data.userPosition).then((data)=>{
+              console.log(data)
+            })
           }
         }
       ]
@@ -220,31 +213,32 @@ long;
     this.showPrompt()
   }
 
-  saveToDB(){
-    this.hubs.addOrganisation(this.email,this.orgPhone, this.category, this.background, this.lat,this.long, this.wifi,this.offerWifi,this.chooseWifiRange, this.orgWebsite,this.downloadurl,this.downloadurlLogo, this.orgAdress).then(() => {
-      console.log("added ");
+  saveToDB() {
+    console.log(this.wifi)
+    this.hubs.addOrganisation(this.email, this.orgAddressObject.lat, this.orgAddressObject.lng,this.orgAddressObject.city,this.orgPhone, this.category,this.orgName ,this.orgDescription, this.orgAdress,this.wifi, this.offerWifi, this.chooseWifiRange, this.orgWebsite).then(() => {
+      alert("added ");
     });
   }
   getcoo(address) {
     return new Promise((accpt, rej) => {
-        let geocoder = new google.maps.Geocoder();
-        geocoder.geocode({ address: address }, function (results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            var arr = results[0].address_components;
-            var arr2 = arr[3];
-            this.latitude = results[0].geometry.location.lat();
-            this.longitude = results[0].geometry.location.lng();
-            let position = {
-              lat: results[0].geometry.location.lat(),
-              lng: results[0].geometry.location.lng(),
-              city: arr2.long_name
-            };
-            accpt(position);
-          }
-          else {
-            rej('')
-          }
-        })
+      let geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ address: address }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          var arr = results[0].address_components;
+          var arr2 = arr[3];
+          this.latitude = results[0].geometry.location.lat();
+          this.longitude = results[0].geometry.location.lng();
+          let position = {
+            lat: results[0].geometry.location.lat(),
+            lng: results[0].geometry.location.lng(),
+            city: arr2.long_name
+          };
+          accpt(position);
+        }
+        else {
+          rej('')
+        }
+      })
     });
   }
 
@@ -264,5 +258,5 @@ long;
     }
 
   }
-  
+
 }
