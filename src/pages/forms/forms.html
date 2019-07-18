@@ -30,7 +30,7 @@
                 <textarea name="" id="orgDesc"  maxLength="250" placeholder="Organisation Description" cols="4"
                   [(ngModel)]="orgDescription"></textarea>
                 <br>
-                <button ion-button id="movetopage2" class="theButton" (click)="moveToPage2()">NEXT</button>
+                <button ion-button id="movetopage2" color="blue" class="theButton" (click)="moveToPage2()">NEXT</button>
               </div>
               <div class="slideShow" id="page2">
                 <p>Does the organisation have WiFi</p>
@@ -59,8 +59,8 @@
                     </select>
                   </div>
                 </div>
-                <button ion-button id="movetopage2" class="theButton" (click)="moveToPage3()">NEXT</button>
-                <button ion-button class="theButtonBack" (click)="backToPage1()">BACK</button>
+                <button ion-button id="movetopage2" color="blue" class="theButton" (click)="moveToPage3()">NEXT</button>
+                <button ion-button class="theButtonBack" color="blue" (click)="backToPage1()">BACK</button>
               </div>
               <div class="slideShow" id="page3" id="page3Org">
                 <p>Almost there, please provide a category for the organisation.</p>
@@ -78,8 +78,8 @@
                 <br>
                 <textarea name="" id="orgDesc" placeholder="Provide clarity if any" cols="4"
                   [(ngModel)]="CatDesc" maxLength="250"></textarea>
-                <button ion-button id="movetopage2" class="theButton" (click)="moveToPage4()">NEXT</button>
-                <button ion-button class="theButtonBack" (click)="backToPage2()">BACK</button>
+                <button ion-button id="movetopage2" color="blue" class="theButton" (click)="moveToPage4()">NEXT</button>
+                <button ion-button class="theButtonBack" color="blue" (click)="backToPage2()">BACK</button>
               </div>
               <div class="slideShow" id="page4">
                 <div class="confirm">
@@ -111,8 +111,8 @@
                       
                   </div>
                 </div>
-                <button ion-button class="theButton" id="movetopage2" (click)="saveToDB()">Done</button>
-                <button ion-button class="theButtonBack" (click)="backToPage3()">BACK</button>
+                <button ion-button class="theButton" color="blue" id="movetopage2" (click)="saveToDB()">Done</button>
+                <button ion-button class="theButtonBack" color="blue" (click)="backToPage3()">BACK</button>
               </div>
             </div>
           </div>

@@ -64,9 +64,11 @@ export class FormsPage {
   }
   checkWifipayment() {
     if (this.wifi == "Yes") {
-      this.ShowChooseRange = true
+      this.ShowChooseRange = true;
+      this.chooseWifiRange = null;
     } else {
-      this.ShowChooseRange = false
+      this.ShowChooseRange = false;
+      this.chooseWifiRange = "No"
     }
   }
   // showServices() {
@@ -92,17 +94,49 @@ export class FormsPage {
     var progBar = document.getElementById("theDot");
     this.is_urlValidation(this.orgWebsite);
     if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
-      alert("Please complete all details ")
+      // this.alert("Please complete all details ")
+      const alert = this.alertCtrl.create({
+        title: 'Error',
+        subTitle: "Please insert the organisation's details",
+        buttons: ['OK']
+      });
+      alert.present();
     } else if (this.orgName == undefined) {
-      alert("Enter organisation Name ")
+      const alert = this.alertCtrl.create({
+        title: 'Error',
+        subTitle: "Please insert the organisation's name",
+        buttons: ['OK']
+      });
+      alert.present();
+      // alert("Enter organisation Name ")
     } else if (this.orgAdress == undefined) {
-      alert("Enter Address  ")
+      const alert = this.alertCtrl.create({
+        title: 'Error',
+        subTitle: "Please insert the organisation's address",
+        buttons: ['OK']
+      });
+      // alert("Enter Address  ")
+      alert.present();
     }
 
     else if (this.orgPhone == undefined) {
-      alert("Enter Phone numbers  ")
+      // alert("Enter Phone numbers  ")
+      const alert = this.alertCtrl.create({
+        title: 'Error',
+        subTitle: "Please insert the organisation's phone numbers",
+        buttons: ['OK']
+      });
+      // alert("Enter Address  ")
+      alert.present();
     } else if (this.orgDescription == undefined) {
-      alert("Enter Phone numbers  ")
+      // alert("Enter Phone numbers  ")
+      const alert = this.alertCtrl.create({
+        title: 'Error',
+        subTitle: "Please insert the organisation's description.",
+        buttons: ['OK']
+      });
+      // alert("Enter Address  ")
+      alert.present();
     } else {
       var toSlide = document.getElementById("page1");
       toSlide.style.marginLeft = "-25%";
@@ -125,11 +159,22 @@ export class FormsPage {
         // this.progressBar = this.progressBar + 25;
         progBar.style.width = "75%";
       } else {
-        alert("Please complete all details")
+        // alert("")
+        const alert = this.alertCtrl.create({
+          title: 'Error',
+          subTitle: "Please complete all details.",
+          buttons: ['OK']
+        });
+        alert.present();
       }
     }
     else {
-      alert("Please complete all details")
+      const alert = this.alertCtrl.create({
+        title: 'Error',
+        subTitle: "Please choose an option.",
+        buttons: ['OK']
+      });
+      alert.present();
     }
   }
   CatDesc
@@ -138,7 +183,12 @@ export class FormsPage {
     var progBar = document.getElementById("theDot");
     console.log(this.category);
     if (this.category == null || this.category == undefined || this.category == " ") {
-      alert("Please omplete all the Details ")
+      const alert = this.alertCtrl.create({
+        title: 'Error',
+        subTitle: "Please insert a category for the organisation.",
+        buttons: ['OK']
+      });
+      alert.present();
     }
     else {
       toSlide.style.marginLeft = "-75%";
@@ -199,6 +249,12 @@ export class FormsPage {
         {
           text: 'Continue',
           handler: data => {
+<<<<<<< HEAD
+=======
+            // var getStarted = document.getElementById("getStarted1");
+            // getStarted.style.display = "none"
+
+>>>>>>> 26b2e1f4d1b17b61f29406cea94b20edc982451d
             console.log('Saved clicked');
             this.hubs.getUserProfile(data.userName,data.downloadurl,data.userSurname,data.userEmail,data.userPosition).then((data)=>{
               console.log(data)

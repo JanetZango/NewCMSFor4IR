@@ -48,6 +48,7 @@ export class HomePage implements OnInit {
   userPosition;
   userSurname;
   d = 1;
+  key;
   downloadurlPic;
   constructor(public navCtrl: NavController, public hubs: HubsProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
 
@@ -67,6 +68,7 @@ export class HomePage implements OnInit {
       this.long = this.getOrgArry[0].long;
       this.email = this.getOrgArry[0].email;
       this.contact = this.getOrgArry[0].contact
+      this.key = this.getOrgArry[0].id
     })
 
 
@@ -423,15 +425,8 @@ export class HomePage implements OnInit {
 
   updateOrg() {
     this.cancelSettings();
-    let loading = this.loadingCtrl.create({
-      spinner: 'bubbles',
-      content: 'Please wait...',
-      duration: 15000
+    this.hubs.update(this.name, this.email, this.downloadurlLogo, this.address, this.contact, this.background,this.key).then((data) => {
     });
-    loading.present()
-    // this.hubs.update(this.name, this.email, this.downloadurlLogo, this.address, this.contact, this.background).then((data) => {
-    //   loading.dismiss();
-    // });
   }
 
 
