@@ -219,6 +219,54 @@ export class HubsProvider {
   }
 
 
+  displayOnMAP() {
+    return new Promise((resolve, reject) => {
+      this.ngzone.run(() => {
+        var user = firebase.auth().currentUser;
+        firebase.database().ref("Organizations").on("value", (data: any) => {
+          if (data.val() != null || data.val() !=undefined) {
+            let details = data.val();
+            console.log(details)
+            let keys = Object.keys(details);
+            for (var x = 0; x < keys.length; x++) {
+              firebase.database().ref("Organizations/" + keys[x]).on("value", (data2: any) => {
+                let displayDetails = data2.val();
+                console.log(keys[x])
+                console.log(displayDetails)
+                let keys2 = Object.keys(displayDetails);
+                console.log(keys2)
+                let k = keys2[x]
+                let orgObject = {
+                  address: displayDetails[k].address,
+                  background: displayDetails[k].background,
+                  category: displayDetails[k].category,
+                  contact: displayDetails[k].contact,
+                  downloadurl: displayDetails[k].downloadurl,
+                  downloadurlLogo: displayDetails[k].downloadurlLogo,
+                  email: displayDetails[k].email,
+                  freeWifi: displayDetails[k].freeWifi,
+                  name: displayDetails[k].name,
+                  lat: displayDetails[k].lat,
+                  long: displayDetails[k].long,
+                  id: k,
+                  region: displayDetails[k].region,
+                  website: displayDetails[k].website,
+                  wifi: displayDetails[k].wifi,
+                  wifiRange: displayDetails[k].wifiRange,
+                }
+                this.storeOrgNames(displayDetails[k].programCategory);
+                this.orgArray.push(orgObject)
+                console.log(this.orgArray)
+              })
+              resolve(this.orgArray)
+            }
+          }
+        })
+      })
+    })
+  }
+
+
     //retrieve userProfile
     getUserProfile() {
       return new Promise((resolve, reject) => {
@@ -242,7 +290,7 @@ export class HubsProvider {
                       userName: displayDetails[k].userName,
                       userPosition: displayDetails[k].userPosition,
                       userSurname: displayDetails[k].userSurname,
-                     
+                    
                     }
                     this.orgProfile.push(orgObject)
                     console.log(this.orgProfile)
@@ -258,9 +306,9 @@ export class HubsProvider {
 
 
   //getcurrentProfile
-  retrieve() {
+  retrieve(key) {
     let userID = firebase.auth().currentUser;
-    return firebase.database().ref("Organizations/" + userID.uid)
+    return firebase.database().ref("Organizations/" + userID.uid + "/" + key)
   }
   storeOrgNames(cat) {
     this.orgNames.push(cat);
@@ -292,18 +340,6 @@ export class HubsProvider {
   }
 
 
-  //forgotpassword
-  // forgetPassword(email) {
-  //   return new Promise((resolve, reject) => {
-  //     firebase.auth().sendPasswordResetEmail(email).then(() => {
-  //       resolve();
-  //     }, (error) => {
-  //       reject(error)
-  //     })
-
-  //   })
-
-  // }
 
   //createradius
   createPositionRadius(latitude, longitude) {
