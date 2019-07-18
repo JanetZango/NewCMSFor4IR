@@ -90,6 +90,10 @@ export class HomePage implements OnInit {
     console.log(this.orgNames);
   }
 
+
+
+
+  
   ngOnInit() {
     this.initMap();
 
