@@ -251,6 +251,7 @@ page-home {
     height: 60px;
     background: rgb(10,132,218);
     display: flex;
+    position: relative
   }
   #ifSmall{
     display: none;
@@ -573,4 +574,11 @@ page-home {
       opacity: 1;
     }
   }
+}
+
+.searchbar-ios{
+  // border: 2px solid red;
+  height: 100%;
+  background: transparent;
+  padding: 5px;
 }

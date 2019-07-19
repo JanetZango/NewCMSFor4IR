@@ -45,6 +45,8 @@ export class HomePage implements OnInit {
   dateer = "this the date";
   activeState = "disabled";
   d = 1;
+  mm = 0;
+  mySide = 0
   constructor(public navCtrl: NavController, public hubs: HubsProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
 
     this.hubs.getAllOrganizations().then((data: any) => {
@@ -163,18 +165,43 @@ export class HomePage implements OnInit {
       this.more = "ios-arrow-down"
     }
   }
-  mm = 0;
-  toggleOrgList() {
-    var orgListView = document.getElementById("org-list-view");
-    if (this.mm == 0) {
-      this.mm = 1;
-      this.toggleList = "ios-arrow-forward"
-      orgListView.style.right = "0"
+  showSidePane() {
+    var sidePane = document.getElementsByClassName("side-pane") as HTMLCollectionOf<HTMLElement>;
+    if (this.mySide == 0) {
+      this.mySide = 1
+      sidePane[0].style.left = "0";
+      if (this.mm == 1) {
+        this.mm = 0
+        var orgListView = document.getElementById("org-list-view").style.right = "-300px";
+        console.log("closing organisations list");
+        this.toggleList = "ios-arrow-back"
+      }
+
     }
     else {
-      this.mm = 0;
-      this.toggleList = "ios-arrow-back"
-      orgListView.style.right = "-300px"
+      this.mySide = 0
+      sidePane[0].style.left = "-300px";
+    }
+
+
+  }
+  toggleOrgList() {
+    var orgListView = document.getElementById("org-list-view");
+    if (this.mySide == 1) {
+      console.log("Not going to open when the side pane is open");
+
+    }
+    else if (this.mySide == 0) {
+      if (this.mm == 0) {
+        this.mm = 1;
+        this.toggleList = "ios-arrow-forward"
+        orgListView.style.right = "0"
+      }
+      else {
+        this.mm = 0;
+        this.toggleList = "ios-arrow-back"
+        orgListView.style.right = "-300px"
+      }
     }
   }
   showMapPage() {
@@ -224,20 +251,6 @@ export class HomePage implements OnInit {
     var btn1 = document.getElementById("btn2").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn4").style.background = "rgba(255, 255, 255, 0.1)";
-  }
-  mySide = 0
-  showSidePane() {
-    var sidePane = document.getElementsByClassName("side-pane") as HTMLCollectionOf<HTMLElement>;
-    if (this.mySide == 0) {
-      this.mySide = 1
-      sidePane[0].style.left = "0";
-    }
-    else {
-      this.mySide = 0
-      sidePane[0].style.left = "-300px";
-    }
-
-
   }
 
   //show map
@@ -380,11 +393,9 @@ export class HomePage implements OnInit {
     settingsUpdate.style.display = "flex";
   }
   cancelSettings() {
+    
     var settingsUpdate = document.getElementById("container-overlay");
-    // settingsUpdate.style.opacity = "0";
-    // setTimeout(() => {
     settingsUpdate.style.display = "none";
-    // }, 510);
   }
   updateDetails() {
     this.cancelSettings()

@@ -24,7 +24,7 @@ export class MyApp {
           this.rootPage = HomePage
         }
         else {
-          this.rootPage = OnboardingPage
+          this.rootPage = LoginRegisterPage
         }
        })
       // Okay, so the platform is ready and our plugins are available.
