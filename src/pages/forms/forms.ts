@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { HubsProvider } from '../../providers/hubs/hubs'
+import { HomePage } from '../home/home';
+import swal from "sweetalert";
+import Swal from "sweetalert2";
 /**
  * Generated class for the FormsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+
+declare var google;
 @IonicPage()
 @Component({
   selector: 'page-forms',
@@ -20,6 +26,7 @@ export class FormsPage {
   orgPhone;
   contactValidation;
   websiteValidation;
+  orgAddressObject;
   offerWifi;
   wifi;
   catService;
@@ -31,10 +38,21 @@ export class FormsPage {
   showinternetCafeServices;
   showLibaryServices;
   showheiServices;
+  checkAddress;
   showMallServices;
-  // email = this.navParams("email")
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  background;
+  downloadurl;
+  alertMessage;
+  downloadurlLogo;
+  email = this.navParams.get("email")
+  userName;
+  userSurname ;
+  userPosition;
+  userEmail;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public hubs: HubsProvider) {
     this.showPrompt()
+    console.log(this.email)
+
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad FormsPage');
@@ -50,9 +68,11 @@ export class FormsPage {
   }
   checkWifipayment() {
     if (this.wifi == "Yes") {
-      this.ShowChooseRange = true
+      this.ShowChooseRange = true;
+      this.chooseWifiRange = null;
     } else {
-      this.ShowChooseRange = false
+      this.ShowChooseRange = false;
+      this.chooseWifiRange = "No"
     }
   }
   // showServices() {
@@ -78,25 +98,49 @@ export class FormsPage {
     var progBar = document.getElementById("theDot");
     this.is_urlValidation(this.orgWebsite);
     if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
-      alert("Please complete all details ")
+      // this.alert("Please complete all details ")
+      const alert = this.alertCtrl.create({
+        title: 'Error',
+        subTitle: "Please insert the organisation's details",
+        buttons: ['OK']
+      });
+      alert.present();
     } else if (this.orgName == undefined) {
-      alert("Enter organisation Name ")
+      const alert = this.alertCtrl.create({
+        title: 'Error',
+        subTitle: "Please insert the organisation's name",
+        buttons: ['OK']
+      });
+      alert.present();
+      // alert("Enter organisation Name ")
     } else if (this.orgAdress == undefined) {
-      alert("Enter Address  ")
+      const alert = this.alertCtrl.create({
+        title: 'Error',
+        subTitle: "Please insert the organisation's address",
+        buttons: ['OK']
+      });
+      // alert("Enter Address  ")
+      alert.present();
     }
-    // else if (this.contactValidation == 1) {
-    //   this.alert("The phone numbers you have entered is invalid, please enter a valid phone numbers  ")
-    // } 
-    // else if (this.websiteValidation == 1) {
-    //   this.alert("The website address you have entered is invalid, please enter a valid website address ")
-    // } 
-    // else if (this.checkAddress == 1) {
-    //   this.alert("The address you have entered is invalid, please enter a valid address ")
-    // }
+
     else if (this.orgPhone == undefined) {
-      alert("Enter Phone numbers  ")
+      // alert("Enter Phone numbers  ")
+      const alert = this.alertCtrl.create({
+        title: 'Error',
+        subTitle: "Please insert the organisation's phone numbers",
+        buttons: ['OK']
+      });
+      // alert("Enter Address  ")
+      alert.present();
     } else if (this.orgDescription == undefined) {
-      alert("Enter Phone numbers  ")
+      // alert("Enter Phone numbers  ")
+      const alert = this.alertCtrl.create({
+        title: 'Error',
+        subTitle: "Please insert the organisation's description.",
+        buttons: ['OK']
+      });
+      // alert("Enter Address  ")
+      alert.present();
     } else {
       var toSlide = document.getElementById("page1");
       toSlide.style.marginLeft = "-25%";
@@ -119,11 +163,22 @@ export class FormsPage {
         // this.progressBar = this.progressBar + 25;
         progBar.style.width = "75%";
       } else {
-        alert("Please complete all details")
+        // alert("")
+        const alert = this.alertCtrl.create({
+          title: 'Error',
+          subTitle: "Please complete all details.",
+          buttons: ['OK']
+        });
+        alert.present();
       }
     }
     else {
-      alert("Please complete all details")
+      const alert = this.alertCtrl.create({
+        title: 'Error',
+        subTitle: "Please choose an option.",
+        buttons: ['OK']
+      });
+      alert.present();
     }
   }
   CatDesc
@@ -132,7 +187,12 @@ export class FormsPage {
     var progBar = document.getElementById("theDot");
     console.log(this.category);
     if (this.category == null || this.category == undefined || this.category == " ") {
-      alert("Please omplete all the Details ")
+      const alert = this.alertCtrl.create({
+        title: 'Error',
+        subTitle: "Please insert a category for the organisation.",
+        buttons: ['OK']
+      });
+      alert.present();
     }
     else {
       toSlide.style.marginLeft = "-75%";
@@ -166,21 +226,20 @@ export class FormsPage {
       message: "Please fill in your personal details to get started.",
       inputs: [
         {
-          name: 'userName',
-          placeholder: 'First Name',
-          value: "user"
+          name:this.userName,
+          placeholder: 'userName',
         },
         {
-          name: 'userSurname',
-          placeholder: 'Surname'
+          name: this.userSurname,
+          placeholder: 'userSurname',
         },
         {
-          name: 'userEmail',
-          placeholder: 'Email'
+          name: this.userEmail,
+          placeholder: 'userEmail',
         },
         {
-          name: 'userPosition',
-          placeholder: 'Position'
+          name: this.userPosition,
+          placeholder: 'userPosition'
         },
       ],
       buttons: [
@@ -188,8 +247,6 @@ export class FormsPage {
           text: 'Cancel',
           handler: data => {
             console.log('Cancel clicked');
-            // var getStarted = document.getElementById("getStarted1");
-            // getStarted.style.display = "block"
             this.getStarted()
           }
         },
@@ -198,10 +255,11 @@ export class FormsPage {
           handler: data => {
             // var getStarted = document.getElementById("getStarted1");
             // getStarted.style.display = "none"
-            if (name == "") {
-              this.getStarted()
-            }
+
             console.log('Saved clicked');
+            this.hubs.getUserProfile1(data.userName,data.userSurname,data.userEmail,data.userPosition).then((data)=>{
+              console.log(data)
+            })
           }
         }
       ]
@@ -211,4 +269,63 @@ export class FormsPage {
   getStarted() {
     this.showPrompt()
   }
+
+  saveToDB() {
+    console.log(this.wifi)
+    let b = window.innerHeight;
+    this.hubs.addOrganisation(this.email, this.orgAddressObject.lat, this.orgAddressObject.lng,this.orgAddressObject.city,this.orgPhone, this.category,this.orgName ,this.orgDescription, this.orgAdress,this.wifi, this.offerWifi, this.chooseWifiRange, this.orgWebsite).then(() => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000
+      });
+
+      Toast.fire({
+        type: "success",
+        title: "Successfuly registered an Organization"
+      });
+      this.navCtrl.setRoot(HomePage)
+    });
+  }
+  getcoo(address) {
+    return new Promise((accpt, rej) => {
+      let geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ address: address }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          var arr = results[0].address_components;
+          var arr2 = arr[3];
+          this.latitude = results[0].geometry.location.lat();
+          this.longitude = results[0].geometry.location.lng();
+          let position = {
+            lat: results[0].geometry.location.lat(),
+            lng: results[0].geometry.location.lng(),
+            city: arr2.long_name
+          };
+          accpt(position);
+        }
+        else {
+          rej('')
+        }
+      })
+    });
+  }
+
+
+  setAddress(event) {
+    if (this.orgAdress != undefined) {
+      this.getcoo(this.orgAdress).then((data: any) => {
+        this.orgAddressObject = data;
+        this.checkAddress = 0
+
+        console.log(this.orgAddressObject);
+      }, Error => {
+        this.checkAddress = 1;
+
+        console.log(this.checkAddress);
+      })
+    }
+
+  }
+
 }

@@ -18,7 +18,7 @@ export class HubsProvider {
   //array
   orgArray = new Array();
   orgNames = new Array();
-
+  orgProfile = new Array();
   constructor(public ngzone: NgZone, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
     console.log('Hello HubsProvider Provider');
   }
@@ -39,7 +39,7 @@ export class HubsProvider {
   //   })
   // }
 
-  
+
   //check authstate
   checkOrgAuthState() {
     return new Promise((resolve, reject) => {
@@ -131,7 +131,7 @@ export class HubsProvider {
       firebase
         .database()
         .ref("Organizations/" + user.uid)
-        .set({
+        .push({
           name: Orgname,
           email: email,
           contact: cell,
@@ -147,7 +147,24 @@ export class HubsProvider {
           downloadurl: "assets/download.png",
           downloadurlLogo: "assets/download.png",
           address: address,
+        });
+      resolve()
+    })
+  }
 
+  getUserProfile1(userName,userSurname,userEmail,userPosition){
+    var user = firebase.auth().currentUser;
+    return new Promise((resolve, reject) => {
+      firebase
+        .database()
+        .ref("UserProfileForOrg/" + user.uid)
+        .push({
+          userName: userName,
+          userSurname: userSurname,
+          userEmail: userEmail,
+          userPosition:userPosition,
+          downloadurl: "assets/download.png",
+      
         });
       resolve()
     })
@@ -159,64 +176,158 @@ export class HubsProvider {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser;
         firebase.database().ref("Organizations").on("value", (data: any) => {
-          if (data.val() != null) {
+          if (data.val() != null || data.val() !=undefined) {
             let details = data.val();
+            console.log(details)
             let keys = Object.keys(details);
             for (var x = 0; x < keys.length; x++) {
-              let orgObject = {
-                address: details[keys[x]].address,
-                background: details[keys[x]].background,
-                category: details[keys[x]].category,
-                contact: details[keys[x]].contact,
-                downloadurl: details[keys[x]].downloadurl,
-                downloadurlLogo: details[keys[x]].downloadurlLogo,
-                email: details[keys[x]].email,
-                freeWifi: details[keys[x]].freeWifi,
-                name: details[keys[x]].name,
-                lat: details[keys[x]].lat,
-                long: details[keys[x]].long,
-                id: keys[x],
-                region: details[keys[x]].region,
-
-                website: details[keys[x]].website,
-                wifi: details[keys[x]].wifi,
-                wifiRange: details[keys[x]].wifiRange,
-              }
-              this.storeOrgNames(details[keys[x]].programCategory);
-              this.orgArray.push(orgObject)
-              console.log(this.orgArray)
+              firebase.database().ref("Organizations/" + user.uid).on("value", (data2: any) => {
+                let displayDetails = data2.val();
+                console.log(keys[x])
+                console.log(displayDetails)
+                let keys2 = Object.keys(displayDetails);
+                console.log(keys2)
+                let k = keys2[x]
+                let orgObject = {
+                  address: displayDetails[k].address,
+                  background: displayDetails[k].background,
+                  category: displayDetails[k].category,
+                  contact: displayDetails[k].contact,
+                  downloadurl: displayDetails[k].downloadurl,
+                  downloadurlLogo: displayDetails[k].downloadurlLogo,
+                  email: displayDetails[k].email,
+                  freeWifi: displayDetails[k].freeWifi,
+                  name: displayDetails[k].name,
+                  lat: displayDetails[k].lat,
+                  long: displayDetails[k].long,
+                  id: k,
+                  region: displayDetails[k].region,
+                  website: displayDetails[k].website,
+                  wifi: displayDetails[k].wifi,
+                  wifiRange: displayDetails[k].wifiRange,
+                }
+                this.storeOrgNames(displayDetails[k].programCategory);
+                this.orgArray.push(orgObject)
+                console.log(this.orgArray)
+              })
+              resolve(this.orgArray)
             }
-            resolve(this.orgArray)
-            console.log(this.orgArray)
           }
-        });
+        })
       })
     })
   }
-//getcurrentProfile
-  retrieve() {
+
+
+  displayOnMAP() {
+    return new Promise((resolve, reject) => {
+      this.ngzone.run(() => {
+        var user = firebase.auth().currentUser;
+        firebase.database().ref("Organizations").on("value", (data: any) => {
+          if (data.val() != null || data.val() !=undefined) {
+            let details = data.val();
+            console.log(details)
+            let keys = Object.keys(details);
+            for (var x = 0; x < keys.length; x++) {
+              firebase.database().ref("Organizations/" + keys[x]).on("value", (data2: any) => {
+                let displayDetails = data2.val();
+                console.log(keys[x])
+                console.log(displayDetails)
+                let keys2 = Object.keys(displayDetails);
+                console.log(keys2)
+                let k = keys2[x]
+                let orgObject = {
+                  address: displayDetails[k].address,
+                  background: displayDetails[k].background,
+                  category: displayDetails[k].category,
+                  contact: displayDetails[k].contact,
+                  downloadurl: displayDetails[k].downloadurl,
+                  downloadurlLogo: displayDetails[k].downloadurlLogo,
+                  email: displayDetails[k].email,
+                  freeWifi: displayDetails[k].freeWifi,
+                  name: displayDetails[k].name,
+                  lat: displayDetails[k].lat,
+                  long: displayDetails[k].long,
+                  id: k,
+                  region: displayDetails[k].region,
+                  website: displayDetails[k].website,
+                  wifi: displayDetails[k].wifi,
+                  wifiRange: displayDetails[k].wifiRange,
+                }
+                this.storeOrgNames(displayDetails[k].programCategory);
+                this.orgArray.push(orgObject)
+                console.log(this.orgArray)
+              })
+              resolve(this.orgArray)
+            }
+          }
+        })
+      })
+    })
+  }
+
+
+    //retrieve userProfile
+    getUserProfile() {
+      return new Promise((resolve, reject) => {
+        this.ngzone.run(() => {
+          var user = firebase.auth().currentUser;
+          firebase.database().ref("UserProfileForOrg").on("value", (data: any) => {
+            if (data.val() != null || data.val()) {
+              let details = data.val();
+              let keys = Object.keys(details);
+              for (var x = 0; x < keys.length; x++) {
+                firebase.database().ref("UserProfileForOrg/" + user.uid).on("value", (data2: any) => {
+                  let displayDetails = data2.val();
+                  console.log(displayDetails)
+                  if(data2.val() !=null || data2.val() !=undefined){
+                    let keys2 = Object.keys(displayDetails);
+                    console.log(keys2)
+                    let k = keys2[x]
+                    let orgObject = {
+                      downloadurl: displayDetails[k].downloadurl,
+                      userEmail: displayDetails[k].userEmail,
+                      userName: displayDetails[k].userName,
+                      userPosition: displayDetails[k].userPosition,
+                      userSurname: displayDetails[k].userSurname,
+                    
+                    }
+                    this.orgProfile.push(orgObject)
+                    console.log(this.orgProfile)
+                  }
+                })
+                resolve(this.orgProfile)
+              }
+            }
+          })
+        })
+      })
+    }
+
+
+  //getcurrentProfile
+  retrieve(key) {
     let userID = firebase.auth().currentUser;
-    return firebase.database().ref("Organizations/" + userID.uid)
+    return firebase.database().ref("Organizations/" + userID.uid + "/" + key)
   }
   storeOrgNames(cat) {
     this.orgNames.push(cat);
   }
 
-//updateOrganization
-  // update(name, email, downloadurl, address, contact) {
-  //   return new Promise((pass, fail) => {
-  //     this.ngzone.run(() => {
-  //       var user = firebase.auth().currentUser
-  //       firebase.database().ref("Organizations/" + user.uid).update({
-  //         name: name,
-  //         email: email,
-  //         downloadurl: downloadurl,
-  //         address: address,
-  //         contact: contact
-  //       });
-  //     })
-  //   })
-  // }
+  //updateOrganization
+  update(name,downloadurlLogo,contact,background,key) {
+    return new Promise((pass, fail) => {
+      this.ngzone.run(() => {
+        var user = firebase.auth().currentUser
+        firebase.database().ref("Organizations/" + user.uid + "/" + key).update({
+          name: name,
+          downloadurlLogo: downloadurlLogo,
+          contact: contact,
+          background:background
+        });
+      })
+    })
+  }
 
   //getcurrentlocation
   getCurrentLocation(lat, lng) {
@@ -229,18 +340,6 @@ export class HubsProvider {
   }
 
 
-  //forgotpassword
-  // forgetPassword(email) {
-  //   return new Promise((resolve, reject) => {
-  //     firebase.auth().sendPasswordResetEmail(email).then(() => {
-  //       resolve();
-  //     }, (error) => {
-  //       reject(error)
-  //     })
-
-  //   })
-
-  // }
 
   //createradius
   createPositionRadius(latitude, longitude) {
@@ -370,7 +469,7 @@ export class HubsProvider {
 
   }
 
-//getlocation
+  //getlocation
   getLocation(lat, lng) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -384,168 +483,168 @@ export class HubsProvider {
       })
     })
   }
-//getname globally
+  //getname globally
   getOrgNames() {
     return this.orgNames
   }
 
 
-  addPrograme(openDate, closeDate,progName,progType,progBackround,benefits,desc,progStartDate,progEndDate,address,contacts,img){
+  addPrograme(openDate, closeDate, progName, progType, progBackround, benefits, desc, progStartDate, progEndDate, address, contacts, img) {
     return new Promise((resolve, reject) => {
-      this.ngzone.run(() => {          
-          var user = firebase.auth().currentUser
-          firebase.database().ref("programmes/" + user.uid).set({
-           openDate:openDate,
-           closeDate:closeDate,
-           progName:progName,
-           progType:progType,
-           progBackround:progBackround,
-           benefits:benefits,
-           desc:desc,
-           progStartDate:progStartDate,
-           progEndDate:progEndDate,
-           address:address,
-           contacts:contacts,
-           img:img
-          })
-          resolve();
+      this.ngzone.run(() => {
+        var user = firebase.auth().currentUser
+        firebase.database().ref("programmes/" + user.uid).set({
+          openDate: openDate,
+          closeDate: closeDate,
+          progName: progName,
+          progType: progType,
+          progBackround: progBackround,
+          benefits: benefits,
+          desc: desc,
+          progStartDate: progStartDate,
+          progEndDate: progEndDate,
+          address: address,
+          contacts: contacts,
+          img: img
+        })
+        resolve();
       })
     })
   }
 
 
-  getPrograme(){
+  getPrograme() {
     return new Promise((resolve, reject) => {
-      this.ngzone.run(() => {          
+      this.ngzone.run(() => {
         var user = firebase.auth().currentUser;
         firebase.database().ref("programmes/" + user.uid).on("value", (data: any) => {
-          if (data.val() != undefined){
+          if (data.val() != undefined) {
             var progs = new Array();
             var details = data.val();
             var keys = Object.keys(details);
-            for (var x =0; x < keys.length; x++){
+            for (var x = 0; x < keys.length; x++) {
               var k = keys[0];
               var progObject = {
-                openDate:details[k].openDate,
-                closeDate:details[k].closeDate,
-                progName:details[k].progName,
-                progType:details[k].progType,
-                progBackround:details[k].progBackround,
-                benefits:details[k].benefits,
-                desc:details[k].desc,
-                progStartDate:details[k].progStartDate,
-                progEndDate:details[k].progEndDate,
-                address:details[k].address,
-                contacts:details[k].contacts,
-                img:details[k].img,
+                openDate: details[k].openDate,
+                closeDate: details[k].closeDate,
+                progName: details[k].progName,
+                progType: details[k].progType,
+                progBackround: details[k].progBackround,
+                benefits: details[k].benefits,
+                desc: details[k].desc,
+                progStartDate: details[k].progStartDate,
+                progEndDate: details[k].progEndDate,
+                address: details[k].address,
+                contacts: details[k].contacts,
+                img: details[k].img,
               }
               progs.push(progObject)
             }
             resolve(progs);
           }
-        }) 
+        })
       })
     })
   }
 
 
-addJob(openDate,closeDate,address,desc,benefits,jobStartdate, jobEndDate, contact, img){
-  return new Promise((resolve, reject) => {
-    this.ngzone.run(() => {          
+  addJob(openDate, closeDate, address, desc, benefits, jobStartdate, jobEndDate, contact, img) {
+    return new Promise((resolve, reject) => {
+      this.ngzone.run(() => {
         var user = firebase.auth().currentUser
         firebase.database().ref("jobs/" + user.uid).set({
-          openDate:openDate,
-          closeDate:closeDate,
-          address:address,
-          desc:desc,
-          benefits:benefits,
-          jobStartdate:jobStartdate,
-          jobEndDate:jobEndDate,
-          img:img,
-          contact:contact 
+          openDate: openDate,
+          closeDate: closeDate,
+          address: address,
+          desc: desc,
+          benefits: benefits,
+          jobStartdate: jobStartdate,
+          jobEndDate: jobEndDate,
+          img: img,
+          contact: contact
         })
         resolve();
+      })
     })
-  })
-}
+  }
 
 
-getJobs(){
-  return new Promise((resolve, reject) => {
-    this.ngzone.run(() => {          
-      var user = firebase.auth().currentUser;
-      firebase.database().ref("jobs/" + user.uid).on("value", (data: any) => {
-        if (data.val() != undefined){
-          var jobs = new Array();
-          var details = data.val();
-          var keys = Object.keys(details);
-          for (var x =0; x < keys.length; x++){
-            var k = keys[0];
-            var jobObject = {
-              openDate:details[k].openDate,
-              closeDate:details[k].closeDate,
-              benefits:details[k].benefits,
-              desc:details[k].desc,
-              jobStartdate:details[k].jobStartdate,
-              jobEndDate:details[k].jobEndDate,
-              address:details[k].address,
-              contacts:details[k].contacts,
-              img:details[k].img,
+  getJobs() {
+    return new Promise((resolve, reject) => {
+      this.ngzone.run(() => {
+        var user = firebase.auth().currentUser;
+        firebase.database().ref("jobs/" + user.uid).on("value", (data: any) => {
+          if (data.val() != undefined) {
+            var jobs = new Array();
+            var details = data.val();
+            var keys = Object.keys(details);
+            for (var x = 0; x < keys.length; x++) {
+              var k = keys[0];
+              var jobObject = {
+                openDate: details[k].openDate,
+                closeDate: details[k].closeDate,
+                benefits: details[k].benefits,
+                desc: details[k].desc,
+                jobStartdate: details[k].jobStartdate,
+                jobEndDate: details[k].jobEndDate,
+                address: details[k].address,
+                contacts: details[k].contacts,
+                img: details[k].img,
+              }
+              jobs.push(jobObject)
             }
-            jobs.push(jobObject)
+            resolve(jobs);
           }
-          resolve(jobs);
-        }
-      }) 
+        })
+      })
     })
-  })
-}
+  }
 
 
-addService(openDate,closeDate,address,serviceName,contact,desc, img){
-  return new Promise((resolve, reject) => {
-    this.ngzone.run(() => {          
+  addService(openDate, closeDate, address, serviceName, contact, desc, img) {
+    return new Promise((resolve, reject) => {
+      this.ngzone.run(() => {
         var user = firebase.auth().currentUser
         firebase.database().ref("services/" + user.uid).set({
-          openDate:openDate,
-          closeDate:closeDate,
-          address:address,
-          desc:desc,
-          img:img,
-          contact:contact 
+          openDate: openDate,
+          closeDate: closeDate,
+          address: address,
+          desc: desc,
+          img: img,
+          contact: contact
         })
         resolve();
+      })
     })
-  })
-}
+  }
 
-getServices(){
-  return new Promise((resolve, reject) => {
-    this.ngzone.run(() => {          
-      var user = firebase.auth().currentUser;
-      firebase.database().ref("services/" + user.uid).on("value", (data: any) => {
-        if (data.val() != undefined){
-          var services = new Array();
-          var details = data.val();
-          var keys = Object.keys(details);
-          for (var x =0; x < keys.length; x++){
-            var k = keys[0];
-            var serviceObject = {
-              openDate:details[k].openDate,
-              closeDate:details[k].closeDate,
-              desc:details[k].desc,
-              address:details[k].address,
-              contacts:details[k].contacts,
-              img:details[k].img,
-              serviceName:details[k].serviceName
+  getServices() {
+    return new Promise((resolve, reject) => {
+      this.ngzone.run(() => {
+        var user = firebase.auth().currentUser;
+        firebase.database().ref("services/" + user.uid).on("value", (data: any) => {
+          if (data.val() != undefined) {
+            var services = new Array();
+            var details = data.val();
+            var keys = Object.keys(details);
+            for (var x = 0; x < keys.length; x++) {
+              var k = keys[0];
+              var serviceObject = {
+                openDate: details[k].openDate,
+                closeDate: details[k].closeDate,
+                desc: details[k].desc,
+                address: details[k].address,
+                contacts: details[k].contacts,
+                img: details[k].img,
+                serviceName: details[k].serviceName
+              }
+              services.push(serviceObject)
             }
-            services.push(serviceObject)
+            resolve(services);
           }
-          resolve(services);
-        }
-      }) 
+        })
+      })
     })
-  })
-}
+  }
 
 }

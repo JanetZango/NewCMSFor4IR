@@ -75,13 +75,13 @@
           <div class="right">
             <div class="person-info">
               
-            <img src="../../assets/download.png" alt="" id="userimage">
+            <img src="{{downloadurlPic}}" alt="" id="userimage">
               <!-- <img src="../../assets/imgs/logo.png" alt=""> -->
               <!-- <h4>4IR Resources Hub</h4> -->
               <div class="user-details">
                 
-              <p>John Doe</p>
-              <p id="subStatement">Co-ordinator</p>
+              <p>{{userName}}</p>
+              <p id="subStatement">{{userPosition}}</p>
               </div>
             </div>
           </div>
@@ -618,9 +618,9 @@
           <div id="update-inputs">
             <p>Update organisation profile</p>
               <ion-input type="text" class="text-field" placeholder="Organisation Name" value="{{name}}"  [(ngModel)]="name"></ion-input>
-              <ion-input type="text" class="text-field" placeholder="Physical Address"  [(ngModel)]="address"></ion-input>
+              <!-- <ion-input type="text" class="text-field" placeholder="Physical Address"  [(ngModel)]="address"></ion-input> -->
               <ion-input type="tel" class="text-field" placeholder="Phone"  [(ngModel)]="contact"></ion-input>
-              <ion-input type="email" class="text-field" placeholder="Email Address"  [(ngModel)]="email"></ion-input>
+              <ion-input type="email" class="text-field" placeholder="Email Address"  [(ngModel)]="email" disabled></ion-input>
               <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="10" [(ngModel)]="background"></textarea>
               <div id="update-buttons">
                 <button ion-button outline color="danger" (click)="cancelSettings()">Cancel</button>

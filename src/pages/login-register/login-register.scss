@@ -138,7 +138,7 @@ page-login-register {
       .test{
         height: 100rem;
         width: 100rem;
-        background-color: #2a0961;
+        background-color: rgb(0, 100, 172);
         z-index: 1;
         position: absolute;
         top: -20%;
@@ -152,7 +152,7 @@ page-login-register {
       .test1{
         height: 100rem;
         width: 100rem;
-        background-color: rgba(82, 29, 167, 0.7);
+        background-color: rgba(0, 100, 172, 0.7);
         z-index: 1;
         position: absolute;
         top: -33%;
@@ -192,9 +192,9 @@ page-login-register {
     }
     .button-btn {
         color: #fff;
-        background-color: #2a0961;
+        background-color: rgb(14, 67, 105);
         box-shadow: 10px 15px 20px -15px #111; 
-        border: 5xp solid #5600b8
+        border: 5xp solid rgb(0, 100, 172)
     }
     .list-md .item-input:last-child {
         border-bottom: 1px solid #dedede;
