@@ -305,6 +305,18 @@ page-onboarding {
     height: 100%;
     // background: green;
   }
+  #direction-forwardS {
+    width: 35%;
+    max-width: 500px;
+    min-width: 150px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 50px;
+    left: 50%;
+    top: 95%;
+    transform: translate(-50%, -50%);
+  }
   #direction-forward {
     width: 35%;
     max-width: 500px;
@@ -313,15 +325,21 @@ page-onboarding {
     bottom: 10px;
     right: 10px;
     border-radius: 50px;
+    // left: 50%;
+    // top: 95%;
+    // transform: translate(-50%, -50%);
   }
   #skipper{
-    border-radius: 50px;
-    width: 35%;
-    max-width: 500px;
-    min-width: 150px;
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%);
+    //border-radius: 50px;
+    // width: 35%;
+    // max-width: 500px;
+    // min-width: 150px;
+    // bottom: 80px;
+    // left: 50%;
+    left: 90%;
+    top: 3%;
+    transform: translate(-50%, -50%);
+    // transform: translateX(-50%);
     position: absolute;
     z-index: 10;
     display: none;
