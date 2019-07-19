@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginRegisterPage } from '../login-register/login-register';
+import { FormsPage } from '../forms/forms';
 
 /**
  * Generated class for the LandingPage page.
@@ -15,8 +16,9 @@ import { LoginRegisterPage } from '../login-register/login-register';
   templateUrl: 'onboarding.html',
 })
 export class OnboardingPage {
-
+  email = this.navParams.get("email")
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    console.log(this.email)
   }
 
   ionViewDidLoad() {
@@ -58,9 +60,6 @@ export class OnboardingPage {
 
     } else if (slide2[0].style.display == "none") {
       console.log(`else if`);
-      //  slide2[0].style.display = "block" 
-      //  slide3[0].style.display = "none"
-      //  wave[0].style.transform = 'translate(300px,0px)'; 
     }
     else {
       console.log(`else`);
@@ -170,6 +169,7 @@ export class OnboardingPage {
     progressBar.style.marginLeft = "0%"
   }
   getStarted(){
-    this.navCtrl.setRoot(LoginRegisterPage);
+
+    this.navCtrl.setRoot(FormsPage, { email: this.email}) 
   }
 }

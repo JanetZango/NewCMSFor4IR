@@ -17,8 +17,8 @@ export class HomePage implements OnInit {
   items = new Array()
   orgNames = new Array();
   updateOrganization = new Array();
-
-
+  getUserProfile = new Array();
+  displayOrg = new Array();
   //variables
   lat = -26.2620;
   name;
@@ -44,13 +44,50 @@ export class HomePage implements OnInit {
   more = "ios-arrow-down";
   dateer = "this the date";
   activeState = "disabled";
+  userName;
+  userPosition;
+  userSurname;
   d = 1;
   mm = 0;
   mySide = 0
-  constructor(public navCtrl: NavController, public hubs: HubsProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
+  key;
+  downloadurlPic;
+  constructor(public navCtrl: NavController, public hubs: HubsProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController, public alertCtrl: AlertController) {
 
+    this.getallorg();
+
+
+
+    this.hubs.displayOnMAP().then((data:any) => {
+      this.displayOrg = data
+      console.log(data)
+    })
+
+
+
+    this.hubs.getUserProfile().then((data: any) => {
+      console.log(this.downloadurl)
+      this.downloadurlPic = data[0].downloadurl;
+      this.userName = data[0].userName;
+      this.userPosition = data[0].userPosition;
+      this.userSurname = data[0].userSurname
+    })
+
+    this.hubs.getCurrentLocation(this.lat, this.long).then((radius: any) => {
+    })
+
+    // alert(this.downloadurlLogo)
+  }
+  storeOrgNames(names) {
+    this.orgNames = names;
+    console.log(this.orgNames);
+  }
+
+
+  getallorg() {
     this.hubs.getAllOrganizations().then((data: any) => {
       this.getOrgArry = data
+      console.log(this.getOrgArry)
       var names = this.hubs.getOrgNames()
       this.storeOrgNames(names)
       this.name = this.getOrgArry[0].name
@@ -64,36 +101,15 @@ export class HomePage implements OnInit {
       this.long = this.getOrgArry[0].long;
       this.email = this.getOrgArry[0].email;
       this.contact = this.getOrgArry[0].contact
+      this.key = this.getOrgArry[0].id
     })
-
-    this.hubs.getCurrentLocation(this.lat, this.long).then((radius: any) => {
-    })
-
-    // alert(this.downloadurlLogo)
   }
-  storeOrgNames(names) {
-    this.orgNames = names;
-    console.log(this.orgNames);
-  }
+
 
   ngOnInit() {
     this.initMap();
 
-    this.hubs.retrieve().on('value', (data: any) => {
-      let details = data.val();
-      this.name = details.name
-      this.address = details.address
-      this.lat = details.lat;
-      this.background = details.background
-      this.category = details.category;
-      this.downloadurl = details.downloadurl;
-      this.downloadurlLogo = details.downloadurlLogo;
-      this.wifi = details.wifi;
-      this.long = details.long;
-      this.email = details.email;
-      this.contact = details.contact
-      console.log(this.name)
-    })
+
   }
 
   //updateLogo
@@ -255,23 +271,17 @@ export class HomePage implements OnInit {
 
   //show map
   initMap() {
-
     setTimeout(() => {
       this.hubs.getLocation(this.lat, this.long).then((data: any) => {
-        // console.log(data);
         this.userLocation = data;
-        // console.log(this.userLocation);
+        console.log(this.userLocation)
       })
-
     }, 1000);
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
       content: 'Please wait...',
       duration: 15000
     });
-    // loading.present();
-
-    // console.log(this.lng)
     const options = {
       center: { lat: this.lat, lng: this.long },
       zoom: 10,
@@ -281,7 +291,6 @@ export class HomePage implements OnInit {
     }
     var map = new google.maps.Map(this.mapRef.nativeElement, options);
     this.map = new google.maps.Map(this.mapRef.nativeElement, options);
-    // adding user marker to the map 
     var marker = new google.maps.Marker({
       map: this.map,
       zoom: 10,
@@ -289,24 +298,12 @@ export class HomePage implements OnInit {
       title: 'Your Location',
       position: this.map.getCenter(),
       styles: this.mapStyles
-      //animation: google.maps.Animation.DROP,
     });
-
-    // console.log();
-
-
     setTimeout(() => {
-      // console.log("show markers");
-
       this.markers();
-      // console.log("show markerzzzzzzzzzzzzzzzzzzzzzzz");
     }, 16000)
-    // console.log( this.userLocation);
     setTimeout(() => {
       var contentString = '<div id="content">' +
-
-
-
         '</div>' +
         this.userLocation
       '</div>';
@@ -326,20 +323,18 @@ export class HomePage implements OnInit {
   }
 
 
-  click() {
-    alert("clicked")
-  }
+
   //markers for the map
   markers() {
-    // console.log(this.orgArray);
-    for (let index = 0; index < this.getOrgArry.length; index++) {
+    console.log(this.displayOrg);
+    for (let index = 0; index < this.displayOrg.length; index++) {
       var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/'
       let showMultipleMarker = new google.maps.Marker({
         map: this.map,
         icon: this.icon,
-        title: this.getOrgArry[index].orgName,
+        title: this.displayOrg[index].orgName,
         size: { width: 5, height: 5 },
-        position: { lat: parseFloat(this.getOrgArry[index].lat), lng: parseFloat(this.getOrgArry[index].long) },
+        position: { lat: parseFloat(this.displayOrg[index].lat), lng: parseFloat(this.displayOrg[index].long) },
         label: name,
         zoom: 15,
         styles: this.mapStyles
@@ -351,7 +346,7 @@ export class HomePage implements OnInit {
           this.getOrgArry[index].category +
           '</b><div style="display: flex; padding-top: 10px;">' +
           '<img style="height: 100px; width: 100px; object-fit: cober; border-radius: 50px;" src=' +
-          this.getOrgArry[index].downloadurl +
+          this.getOrgArry[index].downloadurlLogo +
           ">" +
           '<div style="padding-left: 10px;padding-right: 10px">' +
           this.getOrgArry[index].background +
@@ -361,9 +356,8 @@ export class HomePage implements OnInit {
       showMultipleMarker.addListener('click', () => {
         this.map.setZoom(14);
         this.map.setCenter(showMultipleMarker.getPosition());
-        // console.log(index);
         infowindow.open(showMultipleMarker.get(this.map), showMultipleMarker);
-        // console.log(index);
+
 
       });
 
@@ -420,15 +414,14 @@ export class HomePage implements OnInit {
 
   updateOrg() {
     this.cancelSettings();
-    let loading = this.loadingCtrl.create({
-      spinner: 'bubbles',
-      content: 'Please wait...',
-      duration: 15000
+    this.hubs.update(this.name, this.downloadurlLogo, this.contact, this.background, this.key).then((data) => {
+      this.getallorg();
     });
-    loading.present()
-    // this.hubs.update(this.name, this.email, this.downloadurlLogo, this.address, this.contact, this.background).then((data) => {
-    //   loading.dismiss();
-    // });
+    const alert = this.alertCtrl.create({
+      subTitle: 'Your Information has been updated',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
 
@@ -455,7 +448,7 @@ export class HomePage implements OnInit {
       "elementType": "labels.text.fill",
       "stylers": [
         {
-          "color": "#04592a"
+          "color": "#0064AC"
         }
       ]
     },

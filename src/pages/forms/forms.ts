@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { HubsProvider } from '../../providers/hubs/hubs'
+import { HomePage } from '../home/home';
+import swal from "sweetalert";
+import Swal from "sweetalert2";
 /**
  * Generated class for the FormsPage page.
  *
@@ -8,7 +11,7 @@ import { HubsProvider } from '../../providers/hubs/hubs'
  * Ionic pages and navigation.
  */
 
- declare var google;
+declare var google;
 @IonicPage()
 @Component({
   selector: 'page-forms',
@@ -23,7 +26,7 @@ export class FormsPage {
   orgPhone;
   contactValidation;
   websiteValidation;
-  orgAddressObject = new Array();
+  orgAddressObject;
   offerWifi;
   wifi;
   catService;
@@ -39,13 +42,17 @@ export class FormsPage {
   showMallServices;
   background;
   downloadurl;
+  alertMessage;
   downloadurlLogo;
-lat;
-long;
   email = this.navParams.get("email")
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,public hubs : HubsProvider) {
+  userName;
+  userSurname ;
+  userPosition;
+  userEmail;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public hubs: HubsProvider) {
     this.showPrompt()
     console.log(this.email)
+
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad FormsPage');
@@ -115,15 +122,7 @@ long;
       // alert("Enter Address  ")
       alert.present();
     }
-    // else if (this.contactValidation == 1) {
-    //   this.alert("The phone numbers you have entered is invalid, please enter a valid phone numbers  ")
-    // } 
-    // else if (this.websiteValidation == 1) {
-    //   this.alert("The website address you have entered is invalid, please enter a valid website address ")
-    // } 
-    // else if (this.checkAddress == 1) {
-    //   this.alert("The address you have entered is invalid, please enter a valid address ")
-    // }
+
     else if (this.orgPhone == undefined) {
       // alert("Enter Phone numbers  ")
       const alert = this.alertCtrl.create({
@@ -227,20 +226,20 @@ long;
       message: "Please fill in your personal details to get started.",
       inputs: [
         {
-          name: 'userName',
-          placeholder: 'First Name',
+          name:this.userName,
+          placeholder: 'userName',
         },
         {
-          name: 'userSurname',
-          placeholder: 'Surname'
+          name: this.userSurname,
+          placeholder: 'userSurname',
         },
         {
-          name: 'userEmail',
-          placeholder: 'Email'
+          name: this.userEmail,
+          placeholder: 'userEmail',
         },
         {
-          name: 'userPosition',
-          placeholder: 'Position'
+          name: this.userPosition,
+          placeholder: 'userPosition'
         },
       ],
       buttons: [
@@ -248,8 +247,6 @@ long;
           text: 'Cancel',
           handler: data => {
             console.log('Cancel clicked');
-            // var getStarted = document.getElementById("getStarted1");
-            // getStarted.style.display = "block"
             this.getStarted()
           }
         },
@@ -260,6 +257,9 @@ long;
             // getStarted.style.display = "none"
 
             console.log('Saved clicked');
+            this.hubs.getUserProfile1(data.userName,data.userSurname,data.userEmail,data.userPosition).then((data)=>{
+              console.log(data)
+            })
           }
         }
       ]
@@ -270,31 +270,44 @@ long;
     this.showPrompt()
   }
 
-  saveToDB(){
-    this.hubs.addOrganisation(this.email,this.orgPhone, this.category, this.background, this.lat,this.long, this.wifi,this.offerWifi,this.chooseWifiRange, this.orgWebsite,this.downloadurl,this.downloadurlLogo, this.orgAdress).then(() => {
-      console.log("added ");
+  saveToDB() {
+    console.log(this.wifi)
+    let b = window.innerHeight;
+    this.hubs.addOrganisation(this.email, this.orgAddressObject.lat, this.orgAddressObject.lng,this.orgAddressObject.city,this.orgPhone, this.category,this.orgName ,this.orgDescription, this.orgAdress,this.wifi, this.offerWifi, this.chooseWifiRange, this.orgWebsite).then(() => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000
+      });
+
+      Toast.fire({
+        type: "success",
+        title: "Successfuly registered an Organization"
+      });
+      this.navCtrl.setRoot(HomePage)
     });
   }
   getcoo(address) {
     return new Promise((accpt, rej) => {
-        let geocoder = new google.maps.Geocoder();
-        geocoder.geocode({ address: address }, function (results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            var arr = results[0].address_components;
-            var arr2 = arr[3];
-            this.latitude = results[0].geometry.location.lat();
-            this.longitude = results[0].geometry.location.lng();
-            let position = {
-              lat: results[0].geometry.location.lat(),
-              lng: results[0].geometry.location.lng(),
-              city: arr2.long_name
-            };
-            accpt(position);
-          }
-          else {
-            rej('')
-          }
-        })
+      let geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ address: address }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          var arr = results[0].address_components;
+          var arr2 = arr[3];
+          this.latitude = results[0].geometry.location.lat();
+          this.longitude = results[0].geometry.location.lng();
+          let position = {
+            lat: results[0].geometry.location.lat(),
+            lng: results[0].geometry.location.lng(),
+            city: arr2.long_name
+          };
+          accpt(position);
+        }
+        else {
+          rej('')
+        }
+      })
     });
   }
 
@@ -314,5 +327,5 @@ long;
     }
 
   }
-  
+
 }
