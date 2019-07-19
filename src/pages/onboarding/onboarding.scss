@@ -222,12 +222,13 @@ page-onboarding {
     transition: 1.2s;
     height: 100%;
     width: 200%;
-    background: url(../../assets/icon/waves.png);
+    background: url(../../assets/icon/wave2.png);
     background-size: cover;
     background-repeat: no-repeat;
     margin-left: -0%;
   }
   .box {
+    transition: 700ms;
     width: 30%;
     height: 80%;
     background: white;
@@ -239,6 +240,11 @@ page-onboarding {
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.253);
   }
+  @media screen and (max-height: 800px){
+    .box{
+      height: 90%;
+    }
+  }
   #box-cont {
     width: 300%;
     height: 100%;
@@ -247,7 +253,7 @@ page-onboarding {
     flex-direction: row;
     transition: 700ms;
   }
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 1000px) {
     .box {
       width: 90%;
       height: 90%;
@@ -272,6 +278,12 @@ page-onboarding {
     #logo {
       width: 150px;
       margin: 10px auto;
+      transition: 700ms;
+    }
+    @media screen and (max-width: 1024px){
+      #logo{
+        width: 80px
+      }
     }
     // img{
     //   width: 100%;
@@ -279,7 +291,7 @@ page-onboarding {
     //   object-fit: cover;
     // }
     .card-title {
-      font-size: 2em;
+      font-size: 1em;
       width: 100%;
       font-weight: bold;
       padding: 5px;
@@ -308,7 +320,7 @@ page-onboarding {
   #direction-forward {
     width: 35%;
     max-width: 500px;
-    min-width: 150px;
+    min-width: 130px;
     position: absolute;
     bottom: 10px;
     right: 10px;
@@ -316,12 +328,12 @@ page-onboarding {
   }
   #skipper{
     border-radius: 50px;
-    width: 35%;
+    width: 50px;
     max-width: 500px;
-    min-width: 150px;
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%);
+    // min-width: 100px;
+    top: 5px;
+    right: 5px;
+    // transform: translateX(-50%);
     position: absolute;
     z-index: 10;
     display: none;
@@ -342,7 +354,7 @@ page-onboarding {
   #direction-back {
     width: 35%;
     max-width: 500px;
-    min-width: 150px;
+    min-width: 130px;
     position: absolute;
     bottom: 10px;
     left: 10px;

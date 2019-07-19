@@ -136,7 +136,7 @@ page-home {
           line-height: 35px;
       }
       p:hover{
-          background: #057035;
+          background: rgba(19, 19, 19, 0.342);
       }
   }
   .cover-image-cover {
@@ -192,6 +192,7 @@ page-home {
     position: relative;
     display: none;
     animation: 1s faderIn;
+    
   }
   @keyframes faderIn {
     0% {
@@ -231,7 +232,7 @@ page-home {
     color: white;
   }
   #more:hover {
-    background: #057035;
+    background: rgba(19, 19, 19, 0.342);
     cursor: pointer;
   }
   .org-name {
@@ -373,7 +374,7 @@ page-home {
     transform: translateY(-50%);
   }
   .toggle-list:hover {
-    background: #057035;
+    background: rgb(0, 56, 53);
   }
   .listed-item {
     width: 90%;
