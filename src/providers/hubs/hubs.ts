@@ -175,8 +175,10 @@ export class HubsProvider {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser;
-        firebase.database().ref("Organizations/" + user.uid).on("value", (data: any) => {
+        firebase.database().ref("Organizations").on("value", (data: any) => {
           if (data.val() != null) {
+            this.orgArray.length = 0;
+            this.orgNames.length = 0;
             let displayDetails = data.val();
             console.log(displayDetails)
             let keys = Object.keys(displayDetails);
@@ -214,55 +216,55 @@ export class HubsProvider {
 
 
 
-  // displayOnMAP() {
-  //   return new Promise((resolve, reject) => {
-  //     this.ngzone.run(() => {
-  //       var user = firebase.auth().currentUser;
-  //       firebase.database().ref("Organizations").on("value", (data: any) => {
-  //         if (data.val() != null || data.val() !=undefined) {
-  //           let details = data.val();
-  //           console.log(details)
-  //           let keys = Object.keys(details);
-  //           for (var x = 0; x < keys.length; x++) {
-  //             firebase.database().ref("Organizations/" + keys[x]).on("value", (data2: any) => {
-  //               console.log(keys[x])
-  //               let displayDetails = data2.val();       
-  //               console.log(displayDetails)
-  //               let keys2 = Object.keys(displayDetails);
-  //               console.log(keys2)
+  displayOnMAP() {
+    return new Promise((resolve, reject) => {
+      this.ngzone.run(() => {
+        var user = firebase.auth().currentUser;
+        firebase.database().ref("Organizations").on("value", (data: any) => {
+          if (data.val() != null || data.val() !=undefined) {
+            let details = data.val();
+            console.log(details)
+            let keys = Object.keys(details);
+            for (var x = 0; x < keys.length; x++) {
+              firebase.database().ref("Organizations/" + keys[x]).on("value", (data2: any) => {
+                console.log(keys[x])
+                let displayDetails = data2.val();       
+                console.log(displayDetails)
+                let keys2 = Object.keys(displayDetails);
+                console.log(keys2)
 
-  //               let k = keys2[x]
-  //               // console.log(k)
-  //               let orgObject = {
-  //                 address: displayDetails[k].address,
-  //                 background: displayDetails[k].background,
-  //                 category: displayDetails[k].category,
-  //                 contact: displayDetails[k].contact,
-  //                 downloadurl: displayDetails[k].downloadurl,
-  //                 downloadurlLogo: displayDetails[k].downloadurlLogo,
-  //                 email: displayDetails[k].email,
-  //                 freeWifi: displayDetails[k].freeWifi,
-  //                 name: displayDetails[k].name,
-  //                 lat: displayDetails[k].lat,
-  //                 long: displayDetails[k].long,
-  //                 id: k,
-  //                 region: displayDetails[k].region,
-  //                 website: displayDetails[k].website,
-  //                 wifi: displayDetails[k].wifi,
-  //                 wifiRange: displayDetails[k].wifiRange,
-  //               }
-  //               this.storeOrgNames(displayDetails[k].programCategory);
-  //               this.orgArray.push(orgObject)
-  //               console.log(this.orgArray)
+                let k = keys2[x]
+                // console.log(k)
+                let orgObject = {
+                  address: displayDetails[k].address,
+                  background: displayDetails[k].background,
+                  category: displayDetails[k].category,
+                  contact: displayDetails[k].contact,
+                  downloadurl: displayDetails[k].downloadurl,
+                  downloadurlLogo: displayDetails[k].downloadurlLogo,
+                  email: displayDetails[k].email,
+                  freeWifi: displayDetails[k].freeWifi,
+                  name: displayDetails[k].name,
+                  lat: displayDetails[k].lat,
+                  long: displayDetails[k].long,
+                  id: k,
+                  region: displayDetails[k].region,
+                  website: displayDetails[k].website,
+                  wifi: displayDetails[k].wifi,
+                  wifiRange: displayDetails[k].wifiRange,
+                }
+                this.storeOrgNames(displayDetails[k].programCategory);
+                this.orgArray.push(orgObject)
+                console.log(this.orgArray)
               
-  //             })
-  //             resolve(this.orgArray)
-  //           }
-  //         }
-  //       })
-  //     })
-  //   })
-  // }
+              })
+              resolve(this.orgArray)
+            }
+          }
+        })
+      })
+    })
+  }
 
 
     //retrieve userProfile

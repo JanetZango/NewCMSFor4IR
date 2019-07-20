@@ -58,10 +58,10 @@ export class HomePage implements OnInit {
 
 
 
-    // this.hubs.displayOnMAP().then((data:any) => {
-    //   this.displayOrg = data
-    //   console.log(data)
-    // })
+    this.hubs.displayOnMAP().then((data:any) => {
+      this.displayOrg = data
+      console.log(data)
+    })
 
 
 
@@ -79,21 +79,21 @@ export class HomePage implements OnInit {
   getallorg() {
     this.hubs.getAllOrganizations().then((data: any) => {
       this.getOrgArry = data
-      console.log(this.getOrgArry)
-      var names = this.hubs.getOrgNames()
-      this.storeOrgNames(names)
-      this.name = this.getOrgArry[0].name
-      this.address = this.getOrgArry[0].address
-      this.lat = this.getOrgArry[0].lat;
-      this.background = this.getOrgArry[0].background
-      this.category = this.getOrgArry[0].category;
-      this.downloadurl = this.getOrgArry[0].downloadurl;
-      this.downloadurlLogo = this.getOrgArry[0].downloadurlLogo;
-      this.wifi = this.getOrgArry[0].wifi;
-      this.long = this.getOrgArry[0].long;
-      this.email = this.getOrgArry[0].email;
-      this.contact = this.getOrgArry[0].contact
-      this.key = this.getOrgArry[0].id
+      // console.log(this.getOrgArry)
+      // var names = this.hubs.getOrgNames()
+      // this.storeOrgNames(names)
+      // this.name = this.getOrgArry[0].name
+      // this.address = this.getOrgArry[0].address
+      // this.lat = this.getOrgArry[0].lat;
+      // this.background = this.getOrgArry[0].background
+      // this.category = this.getOrgArry[0].category;
+      // this.downloadurl = this.getOrgArry[0].downloadurl;
+      // this.downloadurlLogo = this.getOrgArry[0].downloadurlLogo;
+      // this.wifi = this.getOrgArry[0].wifi;
+      // this.long = this.getOrgArry[0].long;
+      // this.email = this.getOrgArry[0].email;
+      // this.contact = this.getOrgArry[0].contact
+      // this.key = this.getOrgArry[0].id
     })
   }
 
@@ -318,15 +318,15 @@ export class HomePage implements OnInit {
 
   //markers for the map
   markers() {
-    console.log(this.displayOrg);
-    for (let index = 0; index < this.displayOrg.length; index++) {
+    console.log(this.getOrgArry);
+    for (let index = 0; index < this.getOrgArry.length; index++) {
       var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/'
       let showMultipleMarker = new google.maps.Marker({
         map: this.map,
         icon: this.icon,
-        title: this.displayOrg[index].orgName,
+        title: this.getOrgArry[index].orgName,
         size: { width: 5, height: 5 },
-        position: { lat: parseFloat(this.displayOrg[index].lat), lng: parseFloat(this.displayOrg[index].long) },
+        position: { lat: parseFloat(this.getOrgArry[index].lat), lng: parseFloat(this.getOrgArry[index].long) },
         label: name,
         zoom: 15,
         styles: this.mapStyles
