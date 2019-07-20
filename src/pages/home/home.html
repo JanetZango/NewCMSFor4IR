@@ -72,10 +72,10 @@
           </button>
           <ion-searchbar placeholder="Search" (ionInput)="getItems($event)"></ion-searchbar>
           <div id="results">
-
-            <ion-item no-lines>
-              <p>Name</p>
-            </ion-item>
+            
+            <!-- <ion-item no-lines *ngFor="let item of items; let i=index">
+              <p>{{item}}</p>
+            </ion-item> -->
           </div>
         </div>
         <div class="right">
