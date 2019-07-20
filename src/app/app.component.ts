@@ -21,7 +21,7 @@ export class MyApp {
 
       hubs.checkOrgAuthState().then((data: any) => {
         if (data == 1) {
-          this.rootPage = HomePage
+          this.rootPage = FormsPage
         }
         else {
           this.rootPage = LoginRegisterPage
