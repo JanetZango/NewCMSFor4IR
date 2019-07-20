@@ -46,7 +46,7 @@ export class FormsPage {
   downloadurlLogo;
   email = this.navParams.get("email")
   userName;
-  userSurname ;
+  userSurname;
   userPosition;
   userEmail;
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public hubs: HubsProvider) {
@@ -88,7 +88,7 @@ export class FormsPage {
     else {
       this.websiteV = 1;
       this.websiteValidation = 1
-      alert("wrong website");
+      console.log("wrong website");
       //return false;
     }
   }
@@ -96,7 +96,6 @@ export class FormsPage {
   moveToPage2() {
     // this.phonenumberValidatin();
     var progBar = document.getElementById("theDot");
-    this.is_urlValidation(this.orgWebsite);
     if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
       // this.alert("Please complete all details ")
       const alert = this.alertCtrl.create({
@@ -142,9 +141,22 @@ export class FormsPage {
       // alert("Enter Address  ")
       alert.present();
     } else {
-      var toSlide = document.getElementById("page1");
-      toSlide.style.marginLeft = "-25%";
-      progBar.style.width = "50%";
+      this.is_urlValidation(this.orgWebsite)
+      if (this.websiteV == 0) {
+        var toSlide = document.getElementById("page1");
+        toSlide.style.marginLeft = "-25%";
+        progBar.style.width = "50%";
+      }
+      else {
+
+        const alert = this.alertCtrl.create({
+          title: 'Error',
+          subTitle: "Please check your website, something is not right",
+          buttons: ['OK']
+        });
+        // alert("Enter Address  ")
+        alert.present();
+      }
     }
   }
   moveToPage3() {
@@ -185,7 +197,11 @@ export class FormsPage {
   moveToPage4() {
     var toSlide = document.getElementById("page1");
     var progBar = document.getElementById("theDot");
+    var orgDescription = document.getElementById("orgDescription");
     console.log(this.category);
+    if (this.CatDesc == "" || this.CatDesc == null) {
+      orgDescription.style.display = "none";
+    }
     if (this.category == null || this.category == undefined || this.category == " ") {
       const alert = this.alertCtrl.create({
         title: 'Error',
@@ -226,20 +242,20 @@ export class FormsPage {
       message: "Please fill in your personal details to get started.",
       inputs: [
         {
-          name:this.userName,
-          placeholder: 'userName',
+          name: this.userName,
+          placeholder: 'Your name',
         },
         {
           name: this.userSurname,
-          placeholder: 'userSurname',
+          placeholder: 'Your surname',
         },
         {
           name: this.userEmail,
-          placeholder: 'userEmail',
+          placeholder: 'Your email',
         },
         {
           name: this.userPosition,
-          placeholder: 'userPosition'
+          placeholder: 'Occupation'
         },
       ],
       buttons: [
@@ -257,7 +273,7 @@ export class FormsPage {
             // getStarted.style.display = "none"
 
             console.log('Saved clicked');
-            this.hubs.getUserProfile1(data.userName,data.userSurname,data.userEmail,data.userPosition).then((data)=>{
+            this.hubs.getUserProfile1(data.userName, data.userSurname, data.userEmail, data.userPosition).then((data) => {
               console.log(data)
             })
           }
@@ -273,7 +289,7 @@ export class FormsPage {
   saveToDB() {
     console.log(this.wifi)
     let b = window.innerHeight;
-    this.hubs.addOrganisation(this.email, this.orgAddressObject.lat, this.orgAddressObject.lng,this.orgAddressObject.city,this.orgPhone, this.category,this.orgName ,this.orgDescription, this.orgAdress,this.wifi, this.offerWifi, this.chooseWifiRange, this.orgWebsite).then(() => {
+    this.hubs.addOrganisation(this.email, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgPhone, this.category, this.orgName, this.orgDescription, this.orgAdress, this.wifi, this.offerWifi, this.chooseWifiRange, this.orgWebsite).then(() => {
       const Toast = Swal.mixin({
         toast: true,
         position: "top-end",

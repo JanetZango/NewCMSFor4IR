@@ -20,7 +20,7 @@
             <div class="theSlider">
               <div class="slideShow" id="page1">
                 <p>Kindly fill in your communication details and please dont leave out anything.</p>
-                <input type="text" class="inputText" placeholder="Name" [(ngModel)]="orgName" required>
+                <input type="text" class="inputText" placeholder="Organisation Name" [(ngModel)]="orgName" required>
                 <input type="text" class="inputText" placeholder="Address" [(ngModel)]="orgAdress"
                   (change)="setAddress()">
                 <input type="tel" class="inputText" placeholder="Phone"
@@ -49,7 +49,7 @@
                   </select>
                   <br>
                   <div *ngIf="ShowChooseRange">
-                    <p>What is your pricing?</p>
+                    <p>What is your free range?</p>
                     <select class="select-css" [(ngModel)]="chooseWifiRange">
                       <option value="Choose Range" disabled>Choose Range</option>
                       <option value="200MB Free">200MB Free</option>
@@ -106,7 +106,7 @@
                       <b>WiFi Range:</b> {{chooseWifiRange}}</p>
                     <p>
                       <b>Business Category:</b> {{category}}</p>
-                      <p>
+                      <p id="orgDescription">
                         <b>Cat Description:</b> {{CatDesc}}</p>
                       
                   </div>

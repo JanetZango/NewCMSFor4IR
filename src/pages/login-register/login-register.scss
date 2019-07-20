@@ -98,6 +98,7 @@ page-login-register {
         //margin-top: 10%;
         margin-left: auto;
         margin-right: auto;
+        object-fit: contain;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -215,7 +216,7 @@ page-login-register {
                 will-change: scroll-position;
                 contain: size style layout;
             }
-          @media only screen and (max-width: 414px) {
+          @media only screen and (max-width: 800px) {
             .background{
                 position: fixed;
                 display: flex;
@@ -257,6 +258,7 @@ page-login-register {
                 justify-content: center;
                 align-items: center;
                 display: block;
+                object-fit: contain;
             }
             .logininputdiv{
                 width: 100%; 
