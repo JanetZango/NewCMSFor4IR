@@ -37,7 +37,7 @@ export class HomePage implements OnInit {
   wifiRange;
   userLocation: String;
   map;
-
+  alertMessage;
   toggleList = "ios-arrow-back";
   icon = 'assets/imgs/wifi2.svg'
   locIcon = 'assets/imgs/loc-user.svg'
@@ -419,14 +419,11 @@ export class HomePage implements OnInit {
 
   updateOrg() {
     this.cancelSettings();
-    this.hubs.update(this.name, this.downloadurlLogo, this.contact, this.background, this.key).then((data) => {
+    this.hubs.update(this.name, this.downloadurlLogo, this.contact, this.background).then((data) => {
       this.getallorg();
     });
-    const alert = this.alertCtrl.create({
-      subTitle: 'Your Information has been updated',
-      buttons: ['OK']
-    });
-    alert.present();
+    this.alertMessage ="Your Information has been updated";
+    swal(this.alertMessage);
   }
 
 
