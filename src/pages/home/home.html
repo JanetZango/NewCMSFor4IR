@@ -1,7 +1,7 @@
 <ion-content>
-    <div class="container">
-      <!-- this is the side panel -->
-      <div class="side-pane">
+  <div class="container">
+    <!-- this is the side panel -->
+    <div class="side-pane">
         <button ion-button clear id="ifSmall" class="float-right" color="light" (click)="showSidePane()">
           <ion-icon name="close"></ion-icon>
         </button>
@@ -46,502 +46,134 @@
             <div (click)="showJobsPage()" id="btn4">Job Opportunities</div>
           </div>
           <!-- <div class="about-org">
-            <div id="misc">
-              <div class="more" (click)="showMoreDetails()">{{more}}</div>
-              <b id="label">About</b> <br><br>
-              <b>Address:</b> <br>
-              {{address}} <br><br>
-              <b>Phone:</b>
-              <br>
-           {{contact}} <br><br>
-              <b>Email:</b> <br>
-             {{email}} <br><br>
-              <b>Description:</b> <br>
-              {{background}}
-            </div>
-          </div> -->
+              <div id="misc">
+                <div class="more" (click)="showMoreDetails()">{{more}}</div>
+                <b id="label">About</b> <br><br>
+                <b>Address:</b> <br>
+                {{address}} <br><br>
+                <b>Phone:</b>
+                <br>
+             {{contact}} <br><br>
+                <b>Email:</b> <br>
+               {{email}} <br><br>
+                <b>Description:</b> <br>
+                {{background}}
+              </div>
+            </div> -->
         </div>
       </div>
-      <!-- this is the main view -->
-      <div class="view-pane">
-        <!-- top navigation pane -->
-        <div class="nav-pane">
-          <div class="left">
-            <button id="ifSmall" ion-button clear color="light" (click)="showSidePane()">
-              <ion-icon name="menu"></ion-icon>
-            </button>
-              <ion-searchbar placeholder="Search" (ionInput)="getItems($event)"></ion-searchbar>
-          </div>
-          <div class="right">
-            <div class="person-info">
-              
+    <!-- this is the main view -->
+    <div class="view-pane">
+      <!-- top navigation pane -->
+      <div class="nav-pane">
+        <div class="left">
+          <button id="ifSmall" ion-button clear color="light" (click)="showSidePane()">
+            <ion-icon name="menu"></ion-icon>
+          </button>
+          <ion-searchbar placeholder="Search" (ionInput)="getItems($event)"></ion-searchbar>
+        </div>
+        <div class="right">
+          <div class="person-info">
+
             <img src="{{downloadurlPic}}" alt="" id="userimage">
-              <!-- <img src="../../assets/imgs/logo.png" alt=""> -->
-              <!-- <h4>4IR Resources Hub</h4> -->
-              <div class="user-details">
-                
+            <!-- <img src="../../assets/imgs/logo.png" alt=""> -->
+            <!-- <h4>4IR Resources Hub</h4> -->
+            <div class="user-details">
+
               <p>{{userName}}</p>
               <p id="subStatement">{{userPosition}}</p>
-              </div>
             </div>
-          </div>
-          <div class="results">
           </div>
         </div>
-          <div id="org-list-view">
-            <div class="toggle-list" (click)="toggleOrgList()">
-              <ion-icon name="{{toggleList}}"></ion-icon>
+        <div class="results">
+        </div>
+      </div>
+      <div id="org-list-view">
+        <div class="toggle-list" (click)="toggleOrgList()">
+          <ion-icon name="{{toggleList}}"></ion-icon>
+        </div>
+        <div class="list-head">
+          Fellow Organisations
+        </div>
+        <div class="list-view-cotainer">
+          <div class="listed-item">
+            <div>
+              <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
             </div>
-            <div class="list-head">
-              Fellow Organisations
-            </div>
-            <div class="list-view-cotainer">
-                <div class="listed-item">
-                  <div>
-                    <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
-                  </div>
-                  <div>
-                    <p><b>Department of Science and Technology</b></p>
-                    <p>Multimedia Services</p>
-                  </div>
-                </div>
+            <div>
+              <p><b>Department of Science and Technology</b></p>
+              <p>Multimedia Services</p>
             </div>
           </div>
-        <!-- content switch case box -->
-        <div class="switch-box">
-          <div class="view" id="pg1">
-            <div #map id="map"></div>
-          </div>
-          <div class="view" id="pg2">
-            <ion-fab bottom right>
-              <button ion-fab color="btn">
-                <ion-icon name="add"></ion-icon>
-              </button>
-            </ion-fab>
-            <div class="card-container">
-              <div class="card">
-                <div class="image-image">
-                  <div class="action-buttons">
-                    <button ion-button clear color="light">Hide</button>
-                    <button ion-button clear color="light">Delete</button>
-                    <button ion-button clear color="light">Edit</button>
+        </div>
+      </div>
+      <!-- content switch case box -->
+      <div class="switch-box">
+        <div class="view" id="pg1">
+          <div #map id="map"></div>
+        </div>
+        <div class="view" id="pg2">
+          <ion-fab bottom right>
+            <button ion-fab color="btn">
+              <ion-icon name="add"></ion-icon>
+            </button>
+          </ion-fab>
+          <div class="card-container">
+            <div class="card">
+              <div class="image-image">
+                <div class="action-buttons">
+                  <button ion-button clear color="light">Hide</button>
+                  <button ion-button clear color="light">Delete</button>
+                  <button ion-button clear color="light">Edit</button>
+                </div>
+                <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
+              </div>
+              <div class="more-details" id="pg1-cont">
+                <!-- <p id="heading">Service Name</p>
+                <p id="sub-head">Description</p>
+                <p id="bg-desc">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                  perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                  suscipit, temporibus laborum illoLorem ipsum dolor sit
+                </p>
+                <p id="sub-head">Address</p>
+                <p id="bg-desc">4877 ugago Street Protea Glen Ext 3</p>
+                <p id="sub-head">Contact Details</p>
+                <p id="subSub-head">Phone</p>
+                <p id="bg-desc">0813917127</p>
+                <p id="subSub-head">Email</p>
+                <p id="bg-desc-email">Me@email.com</p> -->
+                <div class="content-container">
+                  <div>
+                    
+                <p id="heading">Service Name</p>
+                <p id="sub-head">Description</p>
+                <p id="bg-desc">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                  perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                  suscipit, temporibus laborum illoLorem ipsum dolor sit
+                </p>
+                <p id="sub-head">Address</p>
+                <p id="bg-desc">4877 ugago Street Protea Glen Ext 3</p>
+                <p id="sub-head">Contact Details</p>
+                <p id="subSub-head">Phone</p>
+                <p id="bg-desc">0813917127</p>
+                <p id="subSub-head">Email</p>
+                <p id="bg-desc-email">Me@email.com</p>
                   </div>
-                  <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
                 </div>
-                <div class="more-details">
-                  <p id="heading">Service Name</p>
-                  <p id="sub-head">Description</p>
-                  <p id="bg-desc">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio harum adipisci fugit ex porro aperiam
-                    ea consectetur pariatur aspernatur commodi laboriosam consequuntur quia sunt natus, ab quae, quos
-                    molestias asperiores ipsam, deserunt illo laborum dolores! Consequatur natus in rerum voluptas ut,
-                    similique delectus, quos, perspiciatis nam nesciunt qui nihil atque obcaecati minus. Deleniti
-                    reiciendis quod cum nulla saepe nisi ratione.
-                  </p>
-                  <p id="sub-head">Address</p>
-                  <p id="bg-desc">4877 ugago Street Protea Glen Ext 3</p>
-                  <p id="sub-head">Contact Details</p>
-                  <p id="subSub-head">Phone</p>
-                  <p id="bg-desc">0813917127</p>
-                  <p id="subSub-head">Email</p>
-                  <p id="bg-desc-email">Me@email.com</p>
-  
-                </div>
+
               </div>
             </div>
           </div>
-          <div class="view" id="pg3">
-            <ion-fab bottom right>
-              <button ion-fab color="btn">
-                <ion-icon name="add"></ion-icon>
-              </button>
-            </ion-fab>
-            <div class="card-container">
-                <div class="card">
-                  <div class="image-image">
-                    <div class="action-buttons">
-                      <button ion-button clear color="light">Hide</button>
-                      <button ion-button clear color="light">Delete</button>
-                      <button ion-button clear color="light">Edit</button>
-                    </div>
-                    <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
-                  </div>
-                  <div class="more-details">
-                    <p id="heading">Programme Name</p>
-                    <p id="sub-head">Background</p>
-                    <p id="bg-desc">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe totam culpa quisquam molestias
-                      blanditiis voluptatem necessitatibus id natus, consequuntur beatae tempore sunt vel. Recusandae
-                      necessitatibus quos aspernatur, qui nesciunt nihil.
-                    </p>
-                    <p id="sub-head">Description</p>
-                    <p id="bg-desc">
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio harum adipisci fugit ex porro aperiam
-                      ea consectetur pariatur aspernatur commodi laboriosam consequuntur quia sunt natus, ab quae, quos
-                      molestias asperiores ipsam, deserunt illo laborum dolores! Consequatur natus in rerum voluptas ut,
-                      similique delectus, quos, perspiciatis nam nesciunt qui nihil atque obcaecati minus. Deleniti
-                      reiciendis quod cum nulla saepe nisi ratione.
-                    </p>
-                    <div class="dates">
-                      <div class="open">
-                        <p id="sub-head" class="theSub-head">Application Open Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                      <div class="close">
-                        <p id="sub-head" class="theSub-head">Application Close Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                    </div>
-                    <div class="dates">
-                      <div class="open">
-                        <p id="sub-head" class="theSub-head">Application Open Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                      <div class="close">
-                        <p id="sub-head" class="theSub-head">Application Close Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="image-image">
-                    <div class="action-buttons">
-                      <button ion-button clear color="light">Hide</button>
-                      <button ion-button clear color="light">Delete</button>
-                      <button ion-button clear color="light">Edit</button>
-                    </div>
-                    <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
-                  </div>
-                  <div class="more-details">
-                    <p id="heading">Programme Name</p>
-                    <p id="sub-head">Background</p>
-                    <p id="bg-desc">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe totam culpa quisquam molestias
-                      blanditiis voluptatem necessitatibus id natus, consequuntur beatae tempore sunt vel. Recusandae
-                      necessitatibus quos aspernatur, qui nesciunt nihil.
-                    </p>
-                    <p id="sub-head">Description</p>
-                    <p id="bg-desc">
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio harum adipisci fugit ex porro aperiam
-                      ea consectetur pariatur aspernatur commodi laboriosam consequuntur quia sunt natus, ab quae, quos
-                      molestias asperiores ipsam, deserunt illo laborum dolores! Consequatur natus in rerum voluptas ut,
-                      similique delectus, quos, perspiciatis nam nesciunt qui nihil atque obcaecati minus. Deleniti
-                      reiciendis quod cum nulla saepe nisi ratione.
-                    </p>
-                    <div class="dates">
-                      <div class="open">
-                        <p id="sub-head" class="theSub-head">Application Open Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                      <div class="close">
-                        <p id="sub-head" class="theSub-head">Application Close Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                    </div>
-                    <div class="dates">
-                      <div class="open">
-                        <p id="sub-head" class="theSub-head">Application Open Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                      <div class="close">
-                        <p id="sub-head" class="theSub-head">Application Close Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="image-image">
-                    <div class="action-buttons">
-                      <button ion-button clear color="light">Hide</button>
-                      <button ion-button clear color="light">Delete</button>
-                      <button ion-button clear color="light">Edit</button>
-                    </div>
-                    <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
-                  </div>
-                  <div class="more-details">
-                    <p id="heading">Programme Name</p>
-                    <p id="sub-head">Background</p>
-                    <p id="bg-desc">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe totam culpa quisquam molestias
-                      blanditiis voluptatem necessitatibus id natus, consequuntur beatae tempore sunt vel. Recusandae
-                      necessitatibus quos aspernatur, qui nesciunt nihil.
-                    </p>
-                    <p id="sub-head">Description</p>
-                    <p id="bg-desc">
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio harum adipisci fugit ex porro aperiam
-                      ea consectetur pariatur aspernatur commodi laboriosam consequuntur quia sunt natus, ab quae, quos
-                      molestias asperiores ipsam, deserunt illo laborum dolores! Consequatur natus in rerum voluptas ut,
-                      similique delectus, quos, perspiciatis nam nesciunt qui nihil atque obcaecati minus. Deleniti
-                      reiciendis quod cum nulla saepe nisi ratione.
-                    </p>
-                    <div class="dates">
-                      <div class="open">
-                        <p id="sub-head" class="theSub-head">Application Open Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                      <div class="close">
-                        <p id="sub-head" class="theSub-head">Application Close Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                    </div>
-                    <div class="dates">
-                      <div class="open">
-                        <p id="sub-head" class="theSub-head">Application Open Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                      <div class="close">
-                        <p id="sub-head" class="theSub-head">Application Close Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="image-image">
-                    <div class="action-buttons">
-                      <button ion-button clear color="light">Hide</button>
-                      <button ion-button clear color="light">Delete</button>
-                      <button ion-button clear color="light">Edit</button>
-                    </div>
-                    <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
-                  </div>
-                  <div class="more-details">
-                    <p id="heading">Programme Name</p>
-                    <p id="sub-head">Background</p>
-                    <p id="bg-desc">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe totam culpa quisquam molestias
-                      blanditiis voluptatem necessitatibus id natus, consequuntur beatae tempore sunt vel. Recusandae
-                      necessitatibus quos aspernatur, qui nesciunt nihil.
-                    </p>
-                    <p id="sub-head">Description</p>
-                    <p id="bg-desc">
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio harum adipisci fugit ex porro aperiam
-                      ea consectetur pariatur aspernatur commodi laboriosam consequuntur quia sunt natus, ab quae, quos
-                      molestias asperiores ipsam, deserunt illo laborum dolores! Consequatur natus in rerum voluptas ut,
-                      similique delectus, quos, perspiciatis nam nesciunt qui nihil atque obcaecati minus. Deleniti
-                      reiciendis quod cum nulla saepe nisi ratione.
-                    </p>
-                    <div class="dates">
-                      <div class="open">
-                        <p id="sub-head" class="theSub-head">Application Open Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                      <div class="close">
-                        <p id="sub-head" class="theSub-head">Application Close Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                    </div>
-                    <div class="dates">
-                      <div class="open">
-                        <p id="sub-head" class="theSub-head">Application Open Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                      <div class="close">
-                        <p id="sub-head" class="theSub-head">Application Close Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="image-image">
-                    <div class="action-buttons">
-                      <button ion-button clear color="light">Hide</button>
-                      <button ion-button clear color="light">Delete</button>
-                      <button ion-button clear color="light">Edit</button>
-                    </div>
-                    <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
-                  </div>
-                  <div class="more-details">
-                    <p id="heading">Programme Name</p>
-                    <p id="sub-head">Background</p>
-                    <p id="bg-desc">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe totam culpa quisquam molestias
-                      blanditiis voluptatem necessitatibus id natus, consequuntur beatae tempore sunt vel. Recusandae
-                      necessitatibus quos aspernatur, qui nesciunt nihil.
-                    </p>
-                    <p id="sub-head">Description</p>
-                    <p id="bg-desc">
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio harum adipisci fugit ex porro aperiam
-                      ea consectetur pariatur aspernatur commodi laboriosam consequuntur quia sunt natus, ab quae, quos
-                      molestias asperiores ipsam, deserunt illo laborum dolores! Consequatur natus in rerum voluptas ut,
-                      similique delectus, quos, perspiciatis nam nesciunt qui nihil atque obcaecati minus. Deleniti
-                      reiciendis quod cum nulla saepe nisi ratione.
-                    </p>
-                    <div class="dates">
-                      <div class="open">
-                        <p id="sub-head" class="theSub-head">Application Open Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                      <div class="close">
-                        <p id="sub-head" class="theSub-head">Application Close Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                    </div>
-                    <div class="dates">
-                      <div class="open">
-                        <p id="sub-head" class="theSub-head">Application Open Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                      <div class="close">
-                        <p id="sub-head" class="theSub-head">Application Close Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="image-image">
-                    <div class="action-buttons">
-                      <button ion-button clear color="light">Hide</button>
-                      <button ion-button clear color="light">Delete</button>
-                      <button ion-button clear color="light">Edit</button>
-                    </div>
-                    <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
-                  </div>
-                  <div class="more-details">
-                    <p id="heading">Programme Name</p>
-                    <p id="sub-head">Background</p>
-                    <p id="bg-desc">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe totam culpa quisquam molestias
-                      blanditiis voluptatem necessitatibus id natus, consequuntur beatae tempore sunt vel. Recusandae
-                      necessitatibus quos aspernatur, qui nesciunt nihil.
-                    </p>
-                    <p id="sub-head">Description</p>
-                    <p id="bg-desc">
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio harum adipisci fugit ex porro aperiam
-                      ea consectetur pariatur aspernatur commodi laboriosam consequuntur quia sunt natus, ab quae, quos
-                      molestias asperiores ipsam, deserunt illo laborum dolores! Consequatur natus in rerum voluptas ut,
-                      similique delectus, quos, perspiciatis nam nesciunt qui nihil atque obcaecati minus. Deleniti
-                      reiciendis quod cum nulla saepe nisi ratione.
-                    </p>
-                    <div class="dates">
-                      <div class="open">
-                        <p id="sub-head" class="theSub-head">Application Open Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                      <div class="close">
-                        <p id="sub-head" class="theSub-head">Application Close Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                    </div>
-                    <div class="dates">
-                      <div class="open">
-                        <p id="sub-head" class="theSub-head">Application Open Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                      <div class="close">
-                        <p id="sub-head" class="theSub-head">Application Close Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="image-image">
-                    <div class="action-buttons">
-                      <button ion-button clear color="light">Hide</button>
-                      <button ion-button clear color="light">Delete</button>
-                      <button ion-button clear color="light">Edit</button>
-                    </div>
-                    <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
-                  </div>
-                  <div class="more-details">
-                    <p id="heading">Programme Name</p>
-                    <p id="sub-head">Background</p>
-                    <p id="bg-desc">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe totam culpa quisquam molestias
-                      blanditiis voluptatem necessitatibus id natus, consequuntur beatae tempore sunt vel. Recusandae
-                      necessitatibus quos aspernatur, qui nesciunt nihil.
-                    </p>
-                    <p id="sub-head">Description</p>
-                    <p id="bg-desc">
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio harum adipisci fugit ex porro aperiam
-                      ea consectetur pariatur aspernatur commodi laboriosam consequuntur quia sunt natus, ab quae, quos
-                      molestias asperiores ipsam, deserunt illo laborum dolores! Consequatur natus in rerum voluptas ut,
-                      similique delectus, quos, perspiciatis nam nesciunt qui nihil atque obcaecati minus. Deleniti
-                      reiciendis quod cum nulla saepe nisi ratione.
-                    </p>
-                    <div class="dates">
-                      <div class="open">
-                        <p id="sub-head" class="theSub-head">Application Open Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                      <div class="close">
-                        <p id="sub-head" class="theSub-head">Application Close Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                    </div>
-                    <div class="dates">
-                      <div class="open">
-                        <p id="sub-head" class="theSub-head">Application Open Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                      <div class="close">
-                        <p id="sub-head" class="theSub-head">Application Close Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="image-image">
-                    <div class="action-buttons">
-                      <button ion-button clear color="light">Hide</button>
-                      <button ion-button clear color="light">Delete</button>
-                      <button ion-button clear color="light">Edit</button>
-                    </div>
-                    <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
-                  </div>
-                  <div class="more-details">
-                    <p id="heading">Programme Name</p>
-                    <p id="sub-head">Background</p>
-                    <p id="bg-desc">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe totam culpa quisquam molestias
-                      blanditiis voluptatem necessitatibus id natus, consequuntur beatae tempore sunt vel. Recusandae
-                      necessitatibus quos aspernatur, qui nesciunt nihil.
-                    </p>
-                    <p id="sub-head">Description</p>
-                    <p id="bg-desc">
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio harum adipisci fugit ex porro aperiam
-                      ea consectetur pariatur aspernatur commodi laboriosam consequuntur quia sunt natus, ab quae, quos
-                      molestias asperiores ipsam, deserunt illo laborum dolores! Consequatur natus in rerum voluptas ut,
-                      similique delectus, quos, perspiciatis nam nesciunt qui nihil atque obcaecati minus. Deleniti
-                      reiciendis quod cum nulla saepe nisi ratione.
-                    </p>
-                    <div class="dates">
-                      <div class="open">
-                        <p id="sub-head" class="theSub-head">Application Open Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                      <div class="close">
-                        <p id="sub-head" class="theSub-head">Application Close Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                    </div>
-                    <div class="dates">
-                      <div class="open">
-                        <p id="sub-head" class="theSub-head">Application Open Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                      <div class="close">
-                        <p id="sub-head" class="theSub-head">Application Close Date</p>
-                        <p id="bg-desc">99/99/1999</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-          </div>
-          <div class="view" id="pg4">
-            <ion-fab bottom right>
-              <button ion-fab color="btn">
-                <ion-icon name="add"></ion-icon>
-              </button>
-            </ion-fab>
-            <div class="card-container">
+        </div>
+        <div class="view" id="pg3">
+          <ion-fab bottom right>
+            <button ion-fab color="btn">
+              <ion-icon name="add"></ion-icon>
+            </button>
+          </ion-fab>
+          <div class="card-container">
               <div class="card">
                 <div class="image-image">
                   <div class="action-buttons">
@@ -552,28 +184,19 @@
                   <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
                 </div>
                 <div class="more-details">
-                  <p id="heading">Job Name</p>
+                  <!-- <p id="heading">Programme Name</p>
                   <p id="sub-head">Background</p>
                   <p id="bg-desc">
-                    lore ipsum, dolor sit amet consectetur adipisicing elit. Saepe totam culpa quisquam molestias
-                    blanditiis voluptatem necessitatibus id natus, consequuntur beatae tempore sunt vel. Recusandae
-                    necessitatibus quos aspernatur, qui nesciunt nihil.
-                  </p>
-                  <p id="sub-head">Address</p>
-                  <p id="bg-desc">
-                    4877 Ugago Street Protea Glen Ext 3
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                    perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                    suscipit, temporibus laborum illoLorem ipsum dolor sit
                   </p>
                   <p id="sub-head">Description</p>
                   <p id="bg-desc">
-                    lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio harum adipisci fugit ex porro aperiam
-                    ea consectetur pariatur aspernatur commodi laboriosam consequuntur quia sunt natus, ab quae, quos
-                    molestias asperiores ipsam, deserunt illo laborum dolores! Consequatur natus in rerum voluptas ut,
-                    similique delectus, quos, perspiciatis nam nesciunt qui nihil atque obcaecati minus. Deleniti
-                    reiciendis quod cum nulla saepe nisi ratione.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                    perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                    suscipit, temporibus laborum illoLorem ipsum dolor sit
                   </p>
-                  <p id="sub-head">Job Type</p>
-                  <p id="bg-desc">Permanent</p>
-                  <p id="sub-head">Dates</p>
                   <div class="dates">
                     <div class="open">
                       <p id="sub-head" class="theSub-head">Application Open Date</p>
@@ -586,57 +209,1095 @@
                   </div>
                   <div class="dates">
                     <div class="open">
-                      <p id="sub-head" class="theSub-head">Job Start Date</p>
+                      <p id="sub-head" class="theSub-head">Application Open Date</p>
                       <p id="bg-desc">99/99/1999</p>
                     </div>
                     <div class="close">
-                      <p id="sub-head" class="theSub-head">Job Close Date</p>
+                      <p id="sub-head" class="theSub-head">Application Close Date</p>
                       <p id="bg-desc">99/99/1999</p>
                     </div>
+                  </div> -->
+                  <div class="content-container">
+                    <div>
+                      <p id="heading">Programme Name</p>
+                      <p id="sub-head">Background</p>
+                      <p id="bg-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                        perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                        suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      </p>
+                      <p id="sub-head">Address</p>
+                      <p id="bg-desc">
+                        4877 Ugago Street Protea Glen Ext 3
+                      </p>
+                      <p id="sub-head">Description</p>
+                      <p id="bg-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                        perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                        suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      </p>
+                    </div>
+                    <div>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                      </div>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="image-image">
+                  <div class="action-buttons">
+                    <button ion-button clear color="light">Hide</button>
+                    <button ion-button clear color="light">Delete</button>
+                    <button ion-button clear color="light">Edit</button>
+                  </div>
+                  <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
+                </div>
+                <div class="more-details">
+                  <!-- <p id="heading">Programme Name</p>
+                  <p id="sub-head">Background</p>
+                  <p id="bg-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                    perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                    suscipit, temporibus laborum illoLorem ipsum dolor sit
+                  </p>
+                  <p id="sub-head">Description</p>
+                  <p id="bg-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                    perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                    suscipit, temporibus laborum illoLorem ipsum dolor sit
+                  </p>
+                  <div class="dates">
+                    <div class="open">
+                      <p id="sub-head" class="theSub-head">Application Open Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                    <div class="close">
+                      <p id="sub-head" class="theSub-head">Application Close Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                  </div>
+                  <div class="dates">
+                    <div class="open">
+                      <p id="sub-head" class="theSub-head">Application Open Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                    <div class="close">
+                      <p id="sub-head" class="theSub-head">Application Close Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                  </div> -->
+                  <div class="content-container">
+                    <div>
+                      <p id="heading">Programme Name</p>
+                      <p id="sub-head">Background</p>
+                      <p id="bg-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                        perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                        suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      </p>
+                      <p id="sub-head">Address</p>
+                      <p id="bg-desc">
+                        4877 Ugago Street Protea Glen Ext 3
+                      </p>
+                      <p id="sub-head">Description</p>
+                      <p id="bg-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                        perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                        suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      </p>
+                    </div>
+                    <div>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                      </div>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="image-image">
+                  <div class="action-buttons">
+                    <button ion-button clear color="light">Hide</button>
+                    <button ion-button clear color="light">Delete</button>
+                    <button ion-button clear color="light">Edit</button>
+                  </div>
+                  <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
+                </div>
+                <div class="more-details">
+                  <!-- <p id="heading">Programme Name</p>
+                  <p id="sub-head">Background</p>
+                  <p id="bg-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                    perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                    suscipit, temporibus laborum illoLorem ipsum dolor sit
+                  </p>
+                  <p id="sub-head">Description</p>
+                  <p id="bg-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                    perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                    suscipit, temporibus laborum illoLorem ipsum dolor sit
+                  </p>
+                  <div class="dates">
+                    <div class="open">
+                      <p id="sub-head" class="theSub-head">Application Open Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                    <div class="close">
+                      <p id="sub-head" class="theSub-head">Application Close Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                  </div>
+                  <div class="dates">
+                    <div class="open">
+                      <p id="sub-head" class="theSub-head">Application Open Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                    <div class="close">
+                      <p id="sub-head" class="theSub-head">Application Close Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                  </div> -->
+                  <div class="content-container">
+                    <div>
+                      <p id="heading">Programme Name</p>
+                      <p id="sub-head">Background</p>
+                      <p id="bg-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                        perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                        suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      </p>
+                      <p id="sub-head">Address</p>
+                      <p id="bg-desc">
+                        4877 Ugago Street Protea Glen Ext 3
+                      </p>
+                      <p id="sub-head">Description</p>
+                      <p id="bg-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                        perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                        suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      </p>
+                    </div>
+                    <div>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                      </div>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="image-image">
+                  <div class="action-buttons">
+                    <button ion-button clear color="light">Hide</button>
+                    <button ion-button clear color="light">Delete</button>
+                    <button ion-button clear color="light">Edit</button>
+                  </div>
+                  <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
+                </div>
+                <div class="more-details">
+                  <!-- <p id="heading">Programme Name</p>
+                  <p id="sub-head">Background</p>
+                  <p id="bg-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                    perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                    suscipit, temporibus laborum illoLorem ipsum dolor sit
+                  </p>
+                  <p id="sub-head">Description</p>
+                  <p id="bg-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                    perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                    suscipit, temporibus laborum illoLorem ipsum dolor sit
+                  </p>
+                  <div class="dates">
+                    <div class="open">
+                      <p id="sub-head" class="theSub-head">Application Open Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                    <div class="close">
+                      <p id="sub-head" class="theSub-head">Application Close Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                  </div>
+                  <div class="dates">
+                    <div class="open">
+                      <p id="sub-head" class="theSub-head">Application Open Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                    <div class="close">
+                      <p id="sub-head" class="theSub-head">Application Close Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                  </div> -->
+                  <div class="content-container">
+                    <div>
+                      <p id="heading">Programme Name</p>
+                      <p id="sub-head">Background</p>
+                      <p id="bg-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                        perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                        suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      </p>
+                      <p id="sub-head">Address</p>
+                      <p id="bg-desc">
+                        4877 Ugago Street Protea Glen Ext 3
+                      </p>
+                      <p id="sub-head">Description</p>
+                      <p id="bg-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                        perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                        suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      </p>
+                    </div>
+                    <div>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                      </div>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="image-image">
+                  <div class="action-buttons">
+                    <button ion-button clear color="light">Hide</button>
+                    <button ion-button clear color="light">Delete</button>
+                    <button ion-button clear color="light">Edit</button>
+                  </div>
+                  <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
+                </div>
+                <div class="more-details">
+                  <!-- <p id="heading">Programme Name</p>
+                  <p id="sub-head">Background</p>
+                  <p id="bg-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                    perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                    suscipit, temporibus laborum illoLorem ipsum dolor sit
+                  </p>
+                  <p id="sub-head">Description</p>
+                  <p id="bg-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                    perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                    suscipit, temporibus laborum illoLorem ipsum dolor sit
+                  </p>
+                  <div class="dates">
+                    <div class="open">
+                      <p id="sub-head" class="theSub-head">Application Open Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                    <div class="close">
+                      <p id="sub-head" class="theSub-head">Application Close Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                  </div>
+                  <div class="dates">
+                    <div class="open">
+                      <p id="sub-head" class="theSub-head">Application Open Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                    <div class="close">
+                      <p id="sub-head" class="theSub-head">Application Close Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                  </div> -->
+                  <div class="content-container">
+                    <div>
+                      <p id="heading">Programme Name</p>
+                      <p id="sub-head">Background</p>
+                      <p id="bg-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                        perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                        suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      </p>
+                      <p id="sub-head">Address</p>
+                      <p id="bg-desc">
+                        4877 Ugago Street Protea Glen Ext 3
+                      </p>
+                      <p id="sub-head">Description</p>
+                      <p id="bg-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                        perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                        suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      </p>
+                    </div>
+                    <div>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                      </div>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="image-image">
+                  <div class="action-buttons">
+                    <button ion-button clear color="light">Hide</button>
+                    <button ion-button clear color="light">Delete</button>
+                    <button ion-button clear color="light">Edit</button>
+                  </div>
+                  <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
+                </div>
+                <div class="more-details">
+                  <!-- <p id="heading">Programme Name</p>
+                  <p id="sub-head">Background</p>
+                  <p id="bg-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                    perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                    suscipit, temporibus laborum illoLorem ipsum dolor sit
+                  </p>
+                  <p id="sub-head">Description</p>
+                  <p id="bg-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                    perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                    suscipit, temporibus laborum illoLorem ipsum dolor sit
+                  </p>
+                  <div class="dates">
+                    <div class="open">
+                      <p id="sub-head" class="theSub-head">Application Open Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                    <div class="close">
+                      <p id="sub-head" class="theSub-head">Application Close Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                  </div>
+                  <div class="dates">
+                    <div class="open">
+                      <p id="sub-head" class="theSub-head">Application Open Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                    <div class="close">
+                      <p id="sub-head" class="theSub-head">Application Close Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                  </div> -->
+                  <div class="content-container">
+                    <div>
+                      <p id="heading">Programme Name</p>
+                      <p id="sub-head">Background</p>
+                      <p id="bg-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                        perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                        suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      </p>
+                      <p id="sub-head">Address</p>
+                      <p id="bg-desc">
+                        4877 Ugago Street Protea Glen Ext 3
+                      </p>
+                      <p id="sub-head">Description</p>
+                      <p id="bg-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                        perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                        suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      </p>
+                    </div>
+                    <div>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                      </div>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="image-image">
+                  <div class="action-buttons">
+                    <button ion-button clear color="light">Hide</button>
+                    <button ion-button clear color="light">Delete</button>
+                    <button ion-button clear color="light">Edit</button>
+                  </div>
+                  <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
+                </div>
+                <div class="more-details">
+                  <!-- <p id="heading">Programme Name</p>
+                  <p id="sub-head">Background</p>
+                  <p id="bg-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                    perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                    suscipit, temporibus laborum illoLorem ipsum dolor sit
+                  </p>
+                  <p id="sub-head">Description</p>
+                  <p id="bg-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                    perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                    suscipit, temporibus laborum illoLorem ipsum dolor sit
+                  </p>
+                  <div class="dates">
+                    <div class="open">
+                      <p id="sub-head" class="theSub-head">Application Open Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                    <div class="close">
+                      <p id="sub-head" class="theSub-head">Application Close Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                  </div>
+                  <div class="dates">
+                    <div class="open">
+                      <p id="sub-head" class="theSub-head">Application Open Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                    <div class="close">
+                      <p id="sub-head" class="theSub-head">Application Close Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                  </div> -->
+                  <div class="content-container">
+                    <div>
+                      <p id="heading">Programme Name</p>
+                      <p id="sub-head">Background</p>
+                      <p id="bg-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                        perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                        suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      </p>
+                      <p id="sub-head">Address</p>
+                      <p id="bg-desc">
+                        4877 Ugago Street Protea Glen Ext 3
+                      </p>
+                      <p id="sub-head">Description</p>
+                      <p id="bg-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                        perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                        suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      </p>
+                    </div>
+                    <div>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                      </div>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="image-image">
+                  <div class="action-buttons">
+                    <button ion-button clear color="light">Hide</button>
+                    <button ion-button clear color="light">Delete</button>
+                    <button ion-button clear color="light">Edit</button>
+                  </div>
+                  <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
+                </div>
+                <div class="more-details">
+                  <!-- <p id="heading">Programme Name</p>
+                  <p id="sub-head">Background</p>
+                  <p id="bg-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                    perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                    suscipit, temporibus laborum illoLorem ipsum dolor sit
+                  </p>
+                  <p id="sub-head">Description</p>
+                  <p id="bg-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                    perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                    suscipit, temporibus laborum illoLorem ipsum dolor sit
+                  </p>
+                  <div class="dates">
+                    <div class="open">
+                      <p id="sub-head" class="theSub-head">Application Open Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                    <div class="close">
+                      <p id="sub-head" class="theSub-head">Application Close Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                  </div>
+                  <div class="dates">
+                    <div class="open">
+                      <p id="sub-head" class="theSub-head">Application Open Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                    <div class="close">
+                      <p id="sub-head" class="theSub-head">Application Close Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                  </div> -->
+                  <div class="content-container">
+                    <div>
+                      <p id="heading">Programme Name</p>
+                      <p id="sub-head">Background</p>
+                      <p id="bg-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                        perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                        suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      </p>
+                      <p id="sub-head">Address</p>
+                      <p id="bg-desc">
+                        4877 Ugago Street Protea Glen Ext 3
+                      </p>
+                      <p id="sub-head">Description</p>
+                      <p id="bg-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                        perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                        suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      </p>
+                    </div>
+                    <div>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                      </div>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="image-image">
+                  <div class="action-buttons">
+                    <button ion-button clear color="light">Hide</button>
+                    <button ion-button clear color="light">Delete</button>
+                    <button ion-button clear color="light">Edit</button>
+                  </div>
+                  <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
+                </div>
+                <div class="more-details">
+                  <!-- <p id="heading">Programme Name</p>
+                  <p id="sub-head">Background</p>
+                  <p id="bg-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                    perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                    suscipit, temporibus laborum illoLorem ipsum dolor sit
+                  </p>
+                  <p id="sub-head">Description</p>
+                  <p id="bg-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                    perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                    suscipit, temporibus laborum illoLorem ipsum dolor sit
+                  </p>
+                  <div class="dates">
+                    <div class="open">
+                      <p id="sub-head" class="theSub-head">Application Open Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                    <div class="close">
+                      <p id="sub-head" class="theSub-head">Application Close Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                  </div>
+                  <div class="dates">
+                    <div class="open">
+                      <p id="sub-head" class="theSub-head">Application Open Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                    <div class="close">
+                      <p id="sub-head" class="theSub-head">Application Close Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                  </div> -->
+                  <div class="content-container">
+                    <div>
+                      <p id="heading">Programme Name</p>
+                      <p id="sub-head">Background</p>
+                      <p id="bg-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                        perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                        suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      </p>
+                      <p id="sub-head">Address</p>
+                      <p id="bg-desc">
+                        4877 Ugago Street Protea Glen Ext 3
+                      </p>
+                      <p id="sub-head">Description</p>
+                      <p id="bg-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                        perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                        suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      </p>
+                    </div>
+                    <div>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                      </div>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="image-image">
+                  <div class="action-buttons">
+                    <button ion-button clear color="light">Hide</button>
+                    <button ion-button clear color="light">Delete</button>
+                    <button ion-button clear color="light">Edit</button>
+                  </div>
+                  <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
+                </div>
+                <div class="more-details">
+                  <!-- <p id="heading">Programme Name</p>
+                  <p id="sub-head">Background</p>
+                  <p id="bg-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                    perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                    suscipit, temporibus laborum illoLorem ipsum dolor sit
+                  </p>
+                  <p id="sub-head">Description</p>
+                  <p id="bg-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                    perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                    suscipit, temporibus laborum illoLorem ipsum dolor sit
+                  </p>
+                  <div class="dates">
+                    <div class="open">
+                      <p id="sub-head" class="theSub-head">Application Open Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                    <div class="close">
+                      <p id="sub-head" class="theSub-head">Application Close Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                  </div>
+                  <div class="dates">
+                    <div class="open">
+                      <p id="sub-head" class="theSub-head">Application Open Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                    <div class="close">
+                      <p id="sub-head" class="theSub-head">Application Close Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                  </div> -->
+                  <div class="content-container">
+                    <div>
+                      <p id="heading">Programme Name</p>
+                      <p id="sub-head">Background</p>
+                      <p id="bg-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                        perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                        suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      </p>
+                      <p id="sub-head">Address</p>
+                      <p id="bg-desc">
+                        4877 Ugago Street Protea Glen Ext 3
+                      </p>
+                      <p id="sub-head">Description</p>
+                      <p id="bg-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                        perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                        suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      </p>
+                    </div>
+                    <div>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                      </div>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="image-image">
+                  <div class="action-buttons">
+                    <button ion-button clear color="light">Hide</button>
+                    <button ion-button clear color="light">Delete</button>
+                    <button ion-button clear color="light">Edit</button>
+                  </div>
+                  <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
+                </div>
+                <div class="more-details">
+                  <!-- <p id="heading">Programme Name</p>
+                  <p id="sub-head">Background</p>
+                  <p id="bg-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                    perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                    suscipit, temporibus laborum illoLorem ipsum dolor sit
+                  </p>
+                  <p id="sub-head">Description</p>
+                  <p id="bg-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                    perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                    suscipit, temporibus laborum illoLorem ipsum dolor sit
+                  </p>
+                  <div class="dates">
+                    <div class="open">
+                      <p id="sub-head" class="theSub-head">Application Open Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                    <div class="close">
+                      <p id="sub-head" class="theSub-head">Application Close Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                  </div>
+                  <div class="dates">
+                    <div class="open">
+                      <p id="sub-head" class="theSub-head">Application Open Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                    <div class="close">
+                      <p id="sub-head" class="theSub-head">Application Close Date</p>
+                      <p id="bg-desc">99/99/1999</p>
+                    </div>
+                  </div> -->
+                  <div class="content-container">
+                    <div>
+                      <p id="heading">Programme Name</p>
+                      <p id="sub-head">Background</p>
+                      <p id="bg-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                        perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                        suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      </p>
+                      <p id="sub-head">Address</p>
+                      <p id="bg-desc">
+                        4877 Ugago Street Protea Glen Ext 3
+                      </p>
+                      <p id="sub-head">Description</p>
+                      <p id="bg-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
+                        perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
+                        suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      </p>
+                    </div>
+                    <div>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                      </div>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">99/99/1999</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="view" id="pg4">
+          <ion-fab bottom right>
+            <button ion-fab color="btn">
+              <ion-icon name="add"></ion-icon>
+            </button>
+          </ion-fab>
+          <div class="card-container">
+            <div class="card">
+              <div class="image-image">
+                <div class="action-buttons">
+                  <button ion-button clear color="light">Hide</button>
+                  <button ion-button clear color="light">Delete</button>
+                  <button ion-button clear color="light">Edit</button>
+                </div>
+                <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
+              </div>
+              <div class="more-details">
+                <!-- <p id="heading">Job Name</p>
+                <p id="sub-head">Background</p>
+                <p id="bg-desc">
+                  lore ipsum, dolor sit amet consectetur adipisicing elit. Saepe totam culpa quisquam molestias
+                  blanditiis voluptatem necessitatibus id natus, consequuntur beatae tempore sunt vel. Recusandae
+                  necessitatibus quos aspernatur, qui nesciunt nihil.
+                </p>
+                <p id="sub-head">Address</p>
+                <p id="bg-desc">
+                  4877 Ugago Street Protea Glen Ext 3
+                </p>
+                <p id="sub-head">Description</p>
+                <p id="bg-desc">
+                  lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio harum adipisci fugit ex porro aperiam
+                  ea consectetur pariatur aspernatur commodi laboriosam consequuntur quia sunt natus, ab quae, quos
+                  molestias asperiores ipsam, deserunt illo laborum dolores! Consequatur natus in rerum voluptas ut,
+                  similique delectus, quos, perspiciatis nam nesciunt qui nihil atque obcaecati minus. Deleniti
+                  reiciendis quod cum nulla saepe nisi ratione.
+                </p>
+                <p id="sub-head">Job Type</p>
+                <p id="bg-desc">Permanent</p>
+                <p id="sub-head">Dates</p>
+                <div class="dates">
+                  <div class="open">
+                    <p id="sub-head" class="theSub-head">Application Open Date</p>
+                    <p id="bg-desc">99/99/1999</p>
+                  </div>
+                  <div class="close">
+                    <p id="sub-head" class="theSub-head">Application Close Date</p>
+                    <p id="bg-desc">99/99/1999</p>
+                  </div>
+                </div>
+                <div class="dates">
+                  <div class="open">
+                    <p id="sub-head" class="theSub-head">Job Start Date</p>
+                    <p id="bg-desc">99/99/1999</p>
+                  </div>
+                  <div class="close">
+                    <p id="sub-head" class="theSub-head">Job Close Date</p>
+                    <p id="bg-desc">99/99/1999</p>
+                  </div>
+                </div> -->
+                <div class="content-container">
+                  <div>
+                    <p id="heading">Job Name</p>
+                    <p id="sub-head">Background</p>
+                    <p id="bg-desc">
+                      lore ipsum, dolor sit amet consectetur adipisicing elit. Saepe totam culpa quisquam molestias
+                      blanditiis voluptatem necessitatibus id natus, consequuntur beatae tempore sunt vel. Recusandae
+                      necessitatibus quos aspernatur, qui nesciunt nihil.
+                    </p>
+                    <p id="sub-head">Address</p>
+                    <p id="bg-desc">
+                      4877 Ugago Street Protea Glen Ext 3
+                    </p>
+                    <p id="sub-head">Description</p>
+                    <p id="bg-desc">
+                      lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio harum adipisci fugit ex porro
+                      aperiam
+                      ea consectetur pariatur aspernatur commodi laboriosam consequuntur quia sunt natus, ab quae, quos
+                      molestias asperiores ipsam, deserunt illo laborum dolores! Consequatur natus in rerum voluptas ut,
+                      similique delectus, quos.
+                    </p>
+                  </div>
+                  <div>
+                    <p id="sub-head">Job Type</p>
+                    <p id="bg-desc">Permanent</p>
+                    <p id="sub-head">Dates</p>
+                    <div class="dates">
+                      <div class="open">
+                        <p id="sub-head" class="theSub-head">Application Open Date</p>
+                        <p id="bg-desc">99/99/1999</p>
+                      </div>
+                      <div class="close">
+                        <p id="sub-head" class="theSub-head">Application Close Date</p>
+                        <p id="bg-desc">99/99/1999</p>
+                      </div>
+                    </div>
+                    <div class="dates">
+                      <div class="open">
+                        <p id="sub-head" class="theSub-head">Job Start Date</p>
+                        <p id="bg-desc">99/99/1999</p>
+                      </div>
+                      <div class="close">
+                        <p id="sub-head" class="theSub-head">Job Close Date</p>
+                        <p id="bg-desc">99/99/1999</p>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </div>
             </div>
           </div>
-  
         </div>
-  
+
+      </div>
+
+    </div>
+  </div>
+  <div id="container-overlay">
+    <div class="toDismiss" (click)="cancelSettings()">
+
+    </div>
+    <div class="editing-data-inputs">
+      <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
+      <div id="theLogo-update">
+
+        <label for="logoUpdate">
+          <div>Logo</div>
+          <img id="click-upload" src="{{downloadurlLogo}}" alt="">
+        </label>
+      </div>
+      <div id="update-inputs">
+        <p>Update organisation profile</p>
+        <ion-input type="text" class="text-field" placeholder="Organisation Name" value="{{name}}" [(ngModel)]="name">
+        </ion-input>
+        <!-- <ion-input type="text" class="text-field" placeholder="Physical Address"  [(ngModel)]="address"></ion-input> -->
+        <ion-input type="tel" class="text-field" placeholder="Phone" [(ngModel)]="contact"></ion-input>
+        <ion-input type="email" class="text-field" placeholder="Email Address" [(ngModel)]="email" disabled></ion-input>
+        <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="10"
+          [(ngModel)]="background"></textarea>
+        <div id="update-buttons">
+          <button ion-button outline color="danger" (click)="cancelSettings()">Cancel</button>
+          <button ion-button (click)="updateOrg()">Update</button>
+        </div>
       </div>
     </div>
-    <div id="container-overlay">
-      <div class="toDismiss" (click)="cancelSettings()">
-  
-      </div>
-      <div class="editing-data-inputs">
-          <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
-          <div id="theLogo-update">
-            
-            <label for="logoUpdate">
-              <div>Logo</div>
-              <img id="click-upload" src="{{downloadurlLogo}}" alt=""></label>
-          </div>
-          <div id="update-inputs">
-            <p>Update organisation profile</p>
-              <ion-input type="text" class="text-field" placeholder="Organisation Name" value="{{name}}"  [(ngModel)]="name"></ion-input>
-              <!-- <ion-input type="text" class="text-field" placeholder="Physical Address"  [(ngModel)]="address"></ion-input> -->
-              <ion-input type="tel" class="text-field" placeholder="Phone"  [(ngModel)]="contact"></ion-input>
-              <ion-input type="email" class="text-field" placeholder="Email Address"  [(ngModel)]="email" disabled></ion-input>
-              <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="10" [(ngModel)]="background"></textarea>
-              <div id="update-buttons">
-                <button ion-button outline color="danger" (click)="cancelSettings()">Cancel</button>
-                <button ion-button (click)="updateOrg()">Update</button>
-              </div>
-          </div>
-      </div>
-    </div>
-  
-  
-  
-  
-  
-  
-  
-  
+  </div>
+
+
+
+
+
+
+
+
   <!-- 
     <div class="list">
         <input id="file" type="file" accept="image/*" (change)="insertpic($event)">
@@ -672,4 +1333,4 @@
       <br>
       <button ion-button (click)="updateOrg()">Update Organization</button>
     </div> -->
-  </ion-content>
+</ion-content>

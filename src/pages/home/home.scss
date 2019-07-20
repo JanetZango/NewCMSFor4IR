@@ -28,6 +28,9 @@ page-home {
     margin: 0 auto;
     margin-top: -50px;
     height: 100px;
+    background: white;
+    border-radius: 50px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.171);
   }
   #theLogo-update > label div{
     position: absolute;
@@ -79,7 +82,7 @@ page-home {
   #click-upload{
     width: 100px;
     height: 100px;
-    background: black;
+    background: white;
     border-radius: 50px;
     object-fit: contain;
   }
@@ -470,7 +473,7 @@ page-home {
     height: 100%;
   }
   .card {
-    width: 29%;
+    width: calc(20% - 10px);
     min-width: 300px;
     height: 80%;
     border: 0.5px solid rgba(0, 0, 0, 0.384);
@@ -496,9 +499,31 @@ page-home {
   .more-details {
     height: 70%;
     width: 100%;
-    padding: 10px;
+    padding: 0px;
     background: white;
-    overflow-y: scroll;
+    overflow-y: hidden;
+    overflow-x: scroll;
+  }
+  .content-container{
+    width: 200%;
+    height: 100%;
+    background: pink;
+    // padding: 5px;
+    display: flex;
+    flex-wrap: wrap
+  }
+  .content-container > div{
+    padding: 10px;
+    width: 50%;
+    height: 100%;
+  }
+  .content-container > div:nth-child(1){
+    background: white;
+    border-right: .2px solid rgba(0, 0, 0, 0.4);
+  }
+  .content-container > div:nth-child(2){
+    background: white;
+    border-left: .2px solid rgba(0, 0, 0, 0.4);
   }
   .dates {
     display: flex;
@@ -572,6 +597,13 @@ page-home {
     }
     100% {
       opacity: 1;
+    }
+  }
+
+  #pg1-cont{
+    overflow: hidden;
+    div{
+      width: 100%;
     }
   }
 }
