@@ -58,20 +58,12 @@ export class HomePage implements OnInit {
 
 
 
-    this.hubs.displayOnMAP().then((data:any) => {
-      this.displayOrg = data
-      console.log(data)
-    })
+    // this.hubs.displayOnMAP().then((data:any) => {
+    //   this.displayOrg = data
+    //   console.log(data)
+    // })
 
 
-
-    this.hubs.getUserProfile().then((data: any) => {
-      console.log(this.downloadurl)
-      this.downloadurlPic = data[0].downloadurl;
-      this.userName = data[0].userName;
-      this.userPosition = data[0].userPosition;
-      this.userSurname = data[0].userSurname
-    })
 
     this.hubs.getCurrentLocation(this.lat, this.long).then((radius: any) => {
     })

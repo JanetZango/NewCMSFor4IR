@@ -131,7 +131,7 @@ export class HubsProvider {
       firebase
         .database()
         .ref("Organizations/" + user.uid)
-        .push({
+        .set({
           name: Orgname,
           email: email,
           contact: cell,
@@ -175,96 +175,94 @@ export class HubsProvider {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser;
-        firebase.database().ref("Organizations").on("value", (data: any) => {
-          if (data.val() != null || data.val() !=undefined) {
-            let details = data.val();
-            console.log(details)
-            let keys = Object.keys(details);
+        firebase.database().ref("Organizations/" + user.uid).on("value", (data: any) => {
+          if (data.val() != null) {
+            let displayDetails = data.val();
+            console.log(displayDetails)
+            let keys = Object.keys(displayDetails);
+            console.log(keys)
             for (var x = 0; x < keys.length; x++) {
-              firebase.database().ref("Organizations/" + user.uid).on("value", (data2: any) => {
-                let displayDetails = data2.val();
-                console.log(keys[x])
-                console.log(displayDetails)
-                let keys2 = Object.keys(displayDetails);
-                console.log(keys2)
-                let k = keys2[x]
-                let orgObject = {
-                  address: displayDetails[k].address,
-                  background: displayDetails[k].background,
-                  category: displayDetails[k].category,
-                  contact: displayDetails[k].contact,
-                  downloadurl: displayDetails[k].downloadurl,
-                  downloadurlLogo: displayDetails[k].downloadurlLogo,
-                  email: displayDetails[k].email,
-                  freeWifi: displayDetails[k].freeWifi,
-                  name: displayDetails[k].name,
-                  lat: displayDetails[k].lat,
-                  long: displayDetails[k].long,
-                  id: k,
-                  region: displayDetails[k].region,
-                  website: displayDetails[k].website,
-                  wifi: displayDetails[k].wifi,
-                  wifiRange: displayDetails[k].wifiRange,
-                }
-                this.storeOrgNames(displayDetails[k].programCategory);
-                this.orgArray.push(orgObject)
-                console.log(this.orgArray)
-              })
-              resolve(this.orgArray)
+              let orgObject = {
+                address: displayDetails[keys[x]].address,
+                background: displayDetails[keys[x]].background,
+                category: displayDetails[keys[x]].category,
+                contact: displayDetails[keys[x]].contact,
+                downloadurl: displayDetails[keys[x]].downloadurl,
+                downloadurlLogo: displayDetails[keys[x]].downloadurlLogo,
+                email: displayDetails[keys[x]].email,
+                freeWifi: displayDetails[keys[x]].freeWifi,
+                name: displayDetails[keys[x]].name,
+                lat: displayDetails[keys[x]].lat,
+                long: displayDetails[keys[x]].long,
+                id: keys[x],
+                region: displayDetails[keys[x]].region,
+                website: displayDetails[keys[x]].website,
+                wifi: displayDetails[keys[x]].wifi,
+                wifiRange: displayDetails[keys[x]].wifiRange,
+            
+              }
+              this.storeOrgNames(displayDetails[keys[x]].category);
+              this.orgArray.push(orgObject)
+              console.log(this.orgArray)
             }
+            resolve(this.orgArray)
           }
-        })
+        });
       })
     })
   }
 
 
-  displayOnMAP() {
-    return new Promise((resolve, reject) => {
-      this.ngzone.run(() => {
-        var user = firebase.auth().currentUser;
-        firebase.database().ref("Organizations").on("value", (data: any) => {
-          if (data.val() != null || data.val() !=undefined) {
-            let details = data.val();
-            console.log(details)
-            let keys = Object.keys(details);
-            for (var x = 0; x < keys.length; x++) {
-              firebase.database().ref("Organizations/" + keys[x]).on("value", (data2: any) => {
-                let displayDetails = data2.val();
-                console.log(keys[x])
-                console.log(displayDetails)
-                let keys2 = Object.keys(displayDetails);
-                console.log(keys2)
-                let k = keys2[x]
-                let orgObject = {
-                  address: displayDetails[k].address,
-                  background: displayDetails[k].background,
-                  category: displayDetails[k].category,
-                  contact: displayDetails[k].contact,
-                  downloadurl: displayDetails[k].downloadurl,
-                  downloadurlLogo: displayDetails[k].downloadurlLogo,
-                  email: displayDetails[k].email,
-                  freeWifi: displayDetails[k].freeWifi,
-                  name: displayDetails[k].name,
-                  lat: displayDetails[k].lat,
-                  long: displayDetails[k].long,
-                  id: k,
-                  region: displayDetails[k].region,
-                  website: displayDetails[k].website,
-                  wifi: displayDetails[k].wifi,
-                  wifiRange: displayDetails[k].wifiRange,
-                }
-                this.storeOrgNames(displayDetails[k].programCategory);
-                this.orgArray.push(orgObject)
-                console.log(this.orgArray)
-              })
-              resolve(this.orgArray)
-            }
-          }
-        })
-      })
-    })
-  }
+
+  // displayOnMAP() {
+  //   return new Promise((resolve, reject) => {
+  //     this.ngzone.run(() => {
+  //       var user = firebase.auth().currentUser;
+  //       firebase.database().ref("Organizations").on("value", (data: any) => {
+  //         if (data.val() != null || data.val() !=undefined) {
+  //           let details = data.val();
+  //           console.log(details)
+  //           let keys = Object.keys(details);
+  //           for (var x = 0; x < keys.length; x++) {
+  //             firebase.database().ref("Organizations/" + keys[x]).on("value", (data2: any) => {
+  //               console.log(keys[x])
+  //               let displayDetails = data2.val();       
+  //               console.log(displayDetails)
+  //               let keys2 = Object.keys(displayDetails);
+  //               console.log(keys2)
+
+  //               let k = keys2[x]
+  //               // console.log(k)
+  //               let orgObject = {
+  //                 address: displayDetails[k].address,
+  //                 background: displayDetails[k].background,
+  //                 category: displayDetails[k].category,
+  //                 contact: displayDetails[k].contact,
+  //                 downloadurl: displayDetails[k].downloadurl,
+  //                 downloadurlLogo: displayDetails[k].downloadurlLogo,
+  //                 email: displayDetails[k].email,
+  //                 freeWifi: displayDetails[k].freeWifi,
+  //                 name: displayDetails[k].name,
+  //                 lat: displayDetails[k].lat,
+  //                 long: displayDetails[k].long,
+  //                 id: k,
+  //                 region: displayDetails[k].region,
+  //                 website: displayDetails[k].website,
+  //                 wifi: displayDetails[k].wifi,
+  //                 wifiRange: displayDetails[k].wifiRange,
+  //               }
+  //               this.storeOrgNames(displayDetails[k].programCategory);
+  //               this.orgArray.push(orgObject)
+  //               console.log(this.orgArray)
+              
+  //             })
+  //             resolve(this.orgArray)
+  //           }
+  //         }
+  //       })
+  //     })
+  //   })
+  // }
 
 
     //retrieve userProfile

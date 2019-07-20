@@ -50,6 +50,7 @@ export class FormsPage {
   userSurname;
   userPosition;
   userEmail;
+ 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public hubs: HubsProvider) {
     // this.showPrompt()
     console.log(this.email)
@@ -57,6 +58,7 @@ export class FormsPage {
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad FormsPage');
+    this.is_urlValidation("www.youtube.com");
   }
   checkWifi() {
     console.log("testing");
@@ -95,8 +97,10 @@ export class FormsPage {
   }
   errMessage
   moveToPage2() {
+    this.phonenumberValidatin();
     let b = window.innerHeight;
     var progBar = document.getElementById("theDot");
+    this.is_urlValidation(this.orgWebsite);
     if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
       this.alertMessage =
         "Please insert the organisation's details";
@@ -127,6 +131,18 @@ export class FormsPage {
         toSlide.style.marginLeft = "-25%";
         progBar.style.width = "50%";
       }
+      else if (this.contactValidation == 1) {
+        this.alertMessage ="The phone numbers you have entered is invalid, please enter a valid phone numbers  ";
+        swal(this.alertMessage);
+      }
+      else if(this.websiteValidation == 1) {
+        this.alertMessage ="The website address you have entered is invalid, please enter a valid website address ";
+        swal(this.alertMessage);
+      }
+      else if (this.checkAddress == 1) {
+        this.alertMessage ="The address you have entered is invalid, please enter a valid address ";
+        swal(this.alertMessage);
+      }
       else {
         this.alertMessage =
           "Please check your website, something is not right";
@@ -134,6 +150,28 @@ export class FormsPage {
       }
     }
   }
+
+ 
+  phonenumberValidatin() {
+    if (this.orgPhone == undefined) {
+
+    } else {
+      var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+      if (this.orgPhone.match(phoneno)) {
+        console.log(this.orgPhone.match(phoneno));
+        this.contactValidation = 0;
+      }
+      else {
+        this.contactValidation = 1;
+        console.log(this.orgPhone.match(phoneno));
+        console.log("wrong");
+
+      }
+
+    }
+
+  }
+
   moveToPage3() {
     var progBar = document.getElementById("theDot");
     if (this.offerWifi == "No") {
@@ -247,12 +285,12 @@ export class FormsPage {
       this.getcoo(this.orgAdress).then((data: any) => {
         this.orgAddressObject = data;
         this.checkAddress = 0
-
         console.log(this.orgAddressObject);
       }, Error => {
         this.checkAddress = 1;
-
         console.log(this.checkAddress);
+        this.alertMessage ="The address you have entered is invalid, please enter a valid address";
+        swal(this.alertMessage);
       })
     }
 
