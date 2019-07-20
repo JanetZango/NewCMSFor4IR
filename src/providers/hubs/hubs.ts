@@ -203,7 +203,7 @@ export class HubsProvider {
                 wifiRange: displayDetails[keys[x]].wifiRange,
             
               }
-              this.storeOrgNames(displayDetails[keys[x]].category);
+              // this.storeOrgNames(displayDetails[keys[x]].category);
               this.orgArray.push(orgObject)
               console.log(this.orgArray)
             }
@@ -220,89 +220,19 @@ export class HubsProvider {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser;
-        firebase.database().ref("Organizations").on("value", (data: any) => {
-          if (data.val() != null || data.val() !=undefined) {
-            let details = data.val();
-            console.log(details)
-            let keys = Object.keys(details);
-            for (var x = 0; x < keys.length; x++) {
-              firebase.database().ref("Organizations/" + keys[x]).on("value", (data2: any) => {
-                console.log(keys[x])
-                let displayDetails = data2.val();       
-                console.log(displayDetails)
-                let keys2 = Object.keys(displayDetails);
-                console.log(keys2)
-
-                let k = keys2[x]
-                // console.log(k)
-                let orgObject = {
-                  address: displayDetails[k].address,
-                  background: displayDetails[k].background,
-                  category: displayDetails[k].category,
-                  contact: displayDetails[k].contact,
-                  downloadurl: displayDetails[k].downloadurl,
-                  downloadurlLogo: displayDetails[k].downloadurlLogo,
-                  email: displayDetails[k].email,
-                  freeWifi: displayDetails[k].freeWifi,
-                  name: displayDetails[k].name,
-                  lat: displayDetails[k].lat,
-                  long: displayDetails[k].long,
-                  id: k,
-                  region: displayDetails[k].region,
-                  website: displayDetails[k].website,
-                  wifi: displayDetails[k].wifi,
-                  wifiRange: displayDetails[k].wifiRange,
-                }
-                this.storeOrgNames(displayDetails[k].programCategory);
-                this.orgArray.push(orgObject)
-                console.log(this.orgArray)
-              
-              })
-              resolve(this.orgArray)
-            }
+        firebase.database().ref("Organizations/" + user.uid).on("value", (data: any) => {
+          if (data.val() != null) {
+            this.orgArray.length = 0;
+            this.orgNames.length = 0;
+            let displayDetails = data.val();
+            console.log(displayDetails)
+            resolve(displayDetails)
           }
-        })
+        });
       })
     })
   }
 
-
-    //retrieve userProfile
-    getUserProfile() {
-      return new Promise((resolve, reject) => {
-        this.ngzone.run(() => {
-          var user = firebase.auth().currentUser;
-          firebase.database().ref("UserProfileForOrg").on("value", (data: any) => {
-            if (data.val() != null || data.val()) {
-              let details = data.val();
-              let keys = Object.keys(details);
-              for (var x = 0; x < keys.length; x++) {
-                firebase.database().ref("UserProfileForOrg/" + user.uid).on("value", (data2: any) => {
-                  let displayDetails = data2.val();
-                  console.log(displayDetails)
-                  if(data2.val() !=null || data2.val() !=undefined){
-                    let keys2 = Object.keys(displayDetails);
-                    console.log(keys2)
-                    let k = keys2[x]
-                    let orgObject = {
-                      downloadurl: displayDetails[k].downloadurl,
-                      userEmail: displayDetails[k].userEmail,
-                      userName: displayDetails[k].userName,
-                      userPosition: displayDetails[k].userPosition,
-                      userSurname: displayDetails[k].userSurname,
-                    
-                    }
-                    this.orgProfile.push(orgObject)
-                    console.log(this.orgProfile)
-                  }
-                })
-                resolve(this.orgProfile)
-              }
-            }
-          })
-        })
-      })
-    }
 
 
   //getcurrentProfile
