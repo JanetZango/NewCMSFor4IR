@@ -262,14 +262,20 @@ page-home {
   .person-info{
     // border: 1px solid red;
     display: flex;
+    position: absolute;
+    right: 0;
+    top: 5px;
   }
   #userimage{
     width: 50px;
     height: 50px;
     border-radius: 50px;
-    position: absolute;
-    right: 80px;
-    top: 5px;
+    margin-right: 10px;
+    object-fit: contain;
+    background: white;
+  }
+  .user-details{
+    text-align: left !important;
   }
   @media screen and (max-width: 1000px){
     #ifSmall{
@@ -328,10 +334,10 @@ page-home {
     width: 50%;
     text-align: right;
     // border: 1px solid green;
-    div {
-      width: 50%;
-      margin-left: 50%;
-    }
+    // div {
+    //   width: 50%;
+    //   margin-left: 50%;
+    // }
     p {
       width: 100%;
       padding-right: 10px;
