@@ -236,20 +236,20 @@ export class HubsProvider {
 
 
   //getcurrentProfile
-  retrieve(key) {
+  retrieve() {
     let userID = firebase.auth().currentUser;
-    return firebase.database().ref("Organizations/" + userID.uid + "/" + key)
+    return firebase.database().ref("Organizations/" + userID.uid)
   }
   storeOrgNames(cat) {
     this.orgNames.push(cat);
   }
 
   //updateOrganization
-  update(name,downloadurlLogo,contact,background,key) {
+  update(name,downloadurlLogo,contact,background) {
     return new Promise((pass, fail) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser
-        firebase.database().ref("Organizations/" + user.uid + "/" + key).update({
+        firebase.database().ref("Organizations/" + user.uid).update({
           name: name,
           downloadurlLogo: downloadurlLogo,
           contact: contact,
