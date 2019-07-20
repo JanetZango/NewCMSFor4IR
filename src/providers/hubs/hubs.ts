@@ -203,7 +203,7 @@ export class HubsProvider {
                 wifiRange: displayDetails[keys[x]].wifiRange,
             
               }
-              // this.storeOrgNames(displayDetails[keys[x]].category);
+              this.storeOrgNames(displayDetails[keys[x]].category);
               this.orgArray.push(orgObject)
               console.log(this.orgArray)
             }

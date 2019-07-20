@@ -3,6 +3,7 @@ import { NavController, LoadingController, AlertController, ToastController } fr
 import { HubsProvider } from '../../providers/hubs/hubs'
 import swal from "sweetalert";
 import Swal from "sweetalert2";
+import { log } from 'util';
 
 //global declaration
 declare var google;
@@ -37,7 +38,7 @@ export class HomePage implements OnInit {
   wifiRange;
   userLocation: String;
   map;
-  alertMessage;
+
   toggleList = "ios-arrow-back";
   icon = 'assets/imgs/wifi2.svg'
   locIcon = 'assets/imgs/loc-user.svg'
@@ -93,8 +94,8 @@ export class HomePage implements OnInit {
     this.hubs.getAllOrganizations().then((data: any) => {
       this.getOrgArry = data
       // console.log(this.getOrgArry)
-      // var names = this.hubs.getOrgNames()
-      // this.storeOrgNames(names)
+      var names = this.hubs.getOrgNames()
+      this.storeOrgNames(names)
       // this.name = this.getOrgArry[0].name
       // this.address = this.getOrgArry[0].address
       // this.lat = this.getOrgArry[0].lat;
@@ -375,6 +376,7 @@ export class HomePage implements OnInit {
     this.items = this.orgNames
     console.log(this.items)
   }
+
   filterItems(val) {
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
@@ -414,16 +416,20 @@ export class HomePage implements OnInit {
     else if (val == "" || val == null) {
       this.items = [];
     }
-    // console.log(this.items);
+    console.log(this.items);
   }
 
   updateOrg() {
     this.cancelSettings();
+    // this.key
     this.hubs.update(this.name, this.downloadurlLogo, this.contact, this.background).then((data) => {
       this.getallorg();
     });
-    this.alertMessage ="Your Information has been updated";
-    swal(this.alertMessage);
+    const alert = this.alertCtrl.create({
+      subTitle: 'Your Information has been updated',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
 
