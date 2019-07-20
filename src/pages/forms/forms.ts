@@ -4,6 +4,7 @@ import { HubsProvider } from '../../providers/hubs/hubs'
 import { HomePage } from '../home/home';
 import swal from "sweetalert";
 import Swal from "sweetalert2";
+import { OnboardingPage } from '../onboarding/onboarding';
 /**
  * Generated class for the FormsPage page.
  *
@@ -50,7 +51,7 @@ export class FormsPage {
   userPosition;
   userEmail;
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public hubs: HubsProvider) {
-    this.showPrompt()
+    // this.showPrompt()
     console.log(this.email)
 
   }
@@ -94,52 +95,31 @@ export class FormsPage {
   }
   errMessage
   moveToPage2() {
-    // this.phonenumberValidatin();
+    let b = window.innerHeight;
     var progBar = document.getElementById("theDot");
     if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
-      // this.alert("Please complete all details ")
-      const alert = this.alertCtrl.create({
-        title: 'Error',
-        subTitle: "Please insert the organisation's details",
-        buttons: ['OK']
-      });
-      alert.present();
+      this.alertMessage =
+        "Please insert the organisation's details";
+      swal(this.alertMessage);
     } else if (this.orgName == undefined) {
-      const alert = this.alertCtrl.create({
-        title: 'Error',
-        subTitle: "Please insert the organisation's name",
-        buttons: ['OK']
-      });
-      alert.present();
-      // alert("Enter organisation Name ")
-    } else if (this.orgAdress == undefined) {
-      const alert = this.alertCtrl.create({
-        title: 'Error',
-        subTitle: "Please insert the organisation's address",
-        buttons: ['OK']
-      });
-      // alert("Enter Address  ")
-      alert.present();
-    }
 
+      this.alertMessage =
+        "Please insert the organisation's name";
+      swal(this.alertMessage);
+    } else if (this.orgAdress == undefined) {
+      this.alertMessage =
+        "Please insert the organisation's address";
+      swal(this.alertMessage);
+    }
     else if (this.orgPhone == undefined) {
-      // alert("Enter Phone numbers  ")
-      const alert = this.alertCtrl.create({
-        title: 'Error',
-        subTitle: "Please insert the organisation's phone numbers",
-        buttons: ['OK']
-      });
-      // alert("Enter Address  ")
-      alert.present();
+
+      this.alertMessage =
+        "Please insert the organisation's phone numbers";
+      swal(this.alertMessage);
     } else if (this.orgDescription == undefined) {
-      // alert("Enter Phone numbers  ")
-      const alert = this.alertCtrl.create({
-        title: 'Error',
-        subTitle: "Please insert the organisation's description.",
-        buttons: ['OK']
-      });
-      // alert("Enter Address  ")
-      alert.present();
+      this.alertMessage =
+        "Please insert the organisation's description.";
+      swal(this.alertMessage);
     } else {
       this.is_urlValidation(this.orgWebsite)
       if (this.websiteV == 0) {
@@ -148,14 +128,9 @@ export class FormsPage {
         progBar.style.width = "50%";
       }
       else {
-
-        const alert = this.alertCtrl.create({
-          title: 'Error',
-          subTitle: "Please check your website, something is not right",
-          buttons: ['OK']
-        });
-        // alert("Enter Address  ")
-        alert.present();
+        this.alertMessage =
+          "Please check your website, something is not right";
+        swal(this.alertMessage);
       }
     }
   }
@@ -175,22 +150,15 @@ export class FormsPage {
         // this.progressBar = this.progressBar + 25;
         progBar.style.width = "75%";
       } else {
-        // alert("")
-        const alert = this.alertCtrl.create({
-          title: 'Error',
-          subTitle: "Please complete all details.",
-          buttons: ['OK']
-        });
-        alert.present();
+        this.alertMessage =
+        "Please complete all details.";
+        swal(this.alertMessage);
       }
     }
     else {
-      const alert = this.alertCtrl.create({
-        title: 'Error',
-        subTitle: "Please choose an option.",
-        buttons: ['OK']
-      });
-      alert.present();
+      this.alertMessage =
+      "Please choose an option.";
+      swal(this.alertMessage);
     }
   }
   CatDesc
@@ -203,20 +171,14 @@ export class FormsPage {
       orgDescription.style.display = "none";
     }
     if (this.category == null || this.category == undefined || this.category == " ") {
-      const alert = this.alertCtrl.create({
-        title: 'Error',
-        subTitle: "Please insert a category for the organisation.",
-        buttons: ['OK']
-      });
-      alert.present();
+      this.alertMessage =
+      "Please insert a category for the organisation.";
+      swal(this.alertMessage);
     }
     else {
       toSlide.style.marginLeft = "-75%";
       progBar.style.width = "100%";
     }
-    // if (this.category != undefined || this.category != " " || this.category != null || this.category != "" || this.category.length != 0) {
-    // } else {
-    // }
   }
   backToPage3() {
     var progressBar = document.getElementById("theDot");
@@ -236,55 +198,7 @@ export class FormsPage {
     toSlide.style.marginLeft = "0%";
     progressBar.style.width = "25%"
   }
-  showPrompt() {
-    const prompt = this.alertCtrl.create({
-      title: 'Registration',
-      message: "Please fill in your personal details to get started.",
-      inputs: [
-        {
-          name: this.userName,
-          placeholder: 'Your name',
-        },
-        {
-          name: this.userSurname,
-          placeholder: 'Your surname',
-        },
-        {
-          name: this.userEmail,
-          placeholder: 'Your email',
-        },
-        {
-          name: this.userPosition,
-          placeholder: 'Occupation'
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-            this.getStarted()
-          }
-        },
-        {
-          text: 'Continue',
-          handler: data => {
-            // var getStarted = document.getElementById("getStarted1");
-            // getStarted.style.display = "none"
 
-            console.log('Saved clicked');
-            this.hubs.getUserProfile1(data.userName, data.userSurname, data.userEmail, data.userPosition).then((data) => {
-              console.log(data)
-            })
-          }
-        }
-      ]
-    });
-    prompt.present();
-  }
-  getStarted() {
-    this.showPrompt()
-  }
 
   saveToDB() {
     console.log(this.wifi)
@@ -301,7 +215,7 @@ export class FormsPage {
         type: "success",
         title: "Successfuly registered an Organization"
       });
-      this.navCtrl.setRoot(HomePage)
+      this.navCtrl.setRoot(OnboardingPage)
     });
   }
   getcoo(address) {

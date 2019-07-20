@@ -258,7 +258,7 @@ export class LoginRegisterPage {
       this.alertMessage = "Signing up...";
       if (this.signUpEmail != "" && this.signUpPassword != "") {
         this.hubs.signUp(this.signUpEmail, this.signUpPassword).then(() => {
-          this.navCtrl.push(OnboardingPage, { email: this.signUpEmail })
+          this.navCtrl.push(FormsPage, { email: this.signUpEmail })
           const Toast = Swal.mixin({
             toast: true,
             position: "top-end",

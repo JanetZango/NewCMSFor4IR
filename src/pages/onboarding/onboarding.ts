@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginRegisterPage } from '../login-register/login-register';
 import { FormsPage } from '../forms/forms';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the LandingPage page.
@@ -169,7 +170,6 @@ export class OnboardingPage {
     progressBar.style.marginLeft = "0%"
   }
   getStarted(){
-
-    this.navCtrl.setRoot(FormsPage, { email: this.email}) 
+    this.navCtrl.setRoot(HomePage) 
   }
 }
