@@ -60,7 +60,20 @@ export class HomePage implements OnInit {
 
     this.hubs.displayOnMAP().then((data:any) => {
       this.displayOrg = data
-      console.log(data)
+
+      this.name = data.name
+      this.address = data.address
+      this.lat = data.lat;
+      this.background = data.background
+      this.category = data.category;
+      this.downloadurl =data.downloadurl;
+      this.downloadurlLogo = data.downloadurlLogo;
+      this.wifi = data.wifi;
+      this.long = data.long;
+      this.email = data.email;
+      this.contact = data.contact
+      this.key = data.id
+      console.log(this.name)
     })
 
 
