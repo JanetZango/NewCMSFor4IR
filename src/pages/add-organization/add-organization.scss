@@ -1,10 +1,11 @@
 page-add-organization {
   .everything {
-    width : 100%;
-    height: 100%;
-    background-image: white;
+    width            : 100%;
+    height           : 100%;
+    background-image : white;
     background-size  : cover;
     background-repeat: no-repeat;
+    overflow: hidden;
   }
 
   .content-container {
@@ -19,23 +20,25 @@ page-add-organization {
     transform    : translate(-50%, -50%);
     position     : relative;
     display      : flex;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.445);
+    box-shadow   : 0 0 10px rgba(0, 0, 0, 0.445);
   }
-  #boxA{
-    width: 1500px;
-    height: 1500px;
-    transform: rotateZ(45DEG);
-    background: rgb(0, 100, 172);
-    margin: 10px;
-    position: absolute;
-    right: -50%;
-    top: -10px;
+
+  #boxA {
+    width        : 1500px;
+    height       : 1500px;
+    transform    : rotateZ(45DEG);
+    background   : rgb(0, 100, 172);
+    margin       : 10px;
+    position     : absolute;
+    right        : -50%;
+    top          : -10px;
     border-radius: 100px;
   }
-  #boxB{
-    background: rgba(64, 137, 189, 0.432);
-    width: 1500px;
-    height: 1500px;
+
+  #boxB {
+    background : rgba(64, 137, 189, 0.432);
+    width      : 1500px;
+    height     : 1500px;
     margin-left: -100px;
 
   }
@@ -55,6 +58,35 @@ page-add-organization {
     overflow  : hidden;
   }
 
+  @media screen and (max-width: 800px) {
+    .left-tab {
+      display: none;
+    }
+
+    .right-tab {
+      width: 100%;
+    }
+
+    #bar {
+      width        : 60px;
+      height       : 10px;
+      border       : 1px solid rgb(0, 100, 172);
+      border-radius: 10px;
+      position     : absolute;
+      background   : white;
+      bottom       : 5px;
+      left         : 50%;
+      transform    : translateX(-50%);
+      z-index      : 100;
+    }
+
+    .content-container {
+      width : 100%;
+      height: 100%;
+      border-radius: 0;
+    }
+  }
+
   textarea {
     resize: none;
   }
@@ -65,8 +97,8 @@ page-add-organization {
   }
 
   #Programmes {
-    background: peachpuff;
-    position  : relative;
+    background   : peachpuff;
+    position     : relative;
     display   : none;
   }
 
@@ -81,14 +113,17 @@ page-add-organization {
     position  : relative;
     display   : none;
   }
-.about-wifi{
-  p{
-    font-size: 2rem
+
+  .about-wifi {
+    p {
+      font-size: 2rem
+    }
   }
-}
+
   #Wifi {
     background: blue;
     position  : relative;
+    display   : none;
   }
 
   .view {
@@ -97,7 +132,7 @@ page-add-organization {
     display   : flex;
     transition: 300ms;
 
-      }
+  }
 
   // .pages{
   //     width : 400%;
@@ -138,7 +173,7 @@ page-add-organization {
 
   #coverImage {
     width : 100%;
-    border: 2px solid green;
+    // border: 2px solid green;
     height: 250px;
   }
 
@@ -160,11 +195,16 @@ page-add-organization {
   #coverImage img {
     width : 100%;
     height: 250px !important;
+    object-fit: cover;
   }
 
   #logoImage {
+    transition: 700ms;
     width : 80px;
     height: 80px;
+    border-radius: 80px;
+    position: relative;
+    overflow: hidden;
   }
 
   #myCover {
@@ -254,7 +294,8 @@ page-add-organization {
   #coverImage img {
     width     : 100%;
     // height : 50px;
-    object-fit: contain;
+    object-fit: cover;
+    z-index: 1;
   }
 
   .view>div {
@@ -353,11 +394,11 @@ page-add-organization {
   #bar {
     width        : 300px;
     height       : 10px;
-    border       : 1px solid green;
+    border       : 1px solid rgb(0, 100, 172);
     border-radius: 10px;
     position     : absolute;
     background   : white;
-    bottom       : 5px;
+    top          : 5px;
     left         : 50%;
     transform    : translateX(-50%);
     z-index      : 100;
@@ -366,7 +407,7 @@ page-add-organization {
   #barSlide {
     width     : 25%;
     height    : 100%;
-    background: green;
+    background: rgb(0, 100, 172);
     transition: 300ms;
   }
 
@@ -383,12 +424,12 @@ page-add-organization {
     // height       : 100%;
     // padding      : 10px;
     text-align      : center;
+    position: relative;
     // background   : red;
     // border       : 2px solid black;
     // margin-top   : 50%;
     // transform    : translateY(-40%);
   }
-
   #input-field {
     border       : 1px solid black;
     width        : 80%;
@@ -413,15 +454,15 @@ page-add-organization {
   }
 
   .buttons {
-    width     : 100%;
-    height    : 70px;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.144));
-    // position  : relative;
-    position  : absolute;
-    bottom    : 0;
+    width         : 100%;
+    height        : 70px;
+    background    : linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.144));
+    // position   : relative;
+    position      : absolute;
+    bottom        : 0;
     padding-bottom: 10px;
-    left: 0;
-    z-index   : 10;
+    left          : 0;
+    z-index       : 10;
   }
 
   #forward {
@@ -462,7 +503,14 @@ page-add-organization {
     text-align: center;
   }
 
-  #coverImage {}
+  #coverImage {
+    position: relative;
+    transition: 700ms;
+  }
+  #coverImage:hover, #logoImage:hover{
+    filter: blur(5px);
+    cursor: pointer;
+  }
 
   #confirm-logo,
   #confirm-logo img {
@@ -492,5 +540,11 @@ page-add-organization {
   #confirm-logo img {
     width     : 80px;
     object-fit: cover;
+  }
+  #confirm-logo{
+    // border: 2px solid red;
+    position: absolute !important;
+    top: 200px;
+    left: 5px;
   }
 }
