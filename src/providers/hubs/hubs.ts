@@ -1,4 +1,3 @@
-
 import { Injectable, NgZone } from '@angular/core';
 import { LoadingController, AlertController, Alert } from "ionic-angular";
 
@@ -423,7 +422,7 @@ export class HubsProvider {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser
-        firebase.database().ref("programmes/" + user.uid).set({
+        firebase.database().ref("programmes/" + user.uid).push({
           openDate: openDate,
           closeDate: closeDate,
           progName: progName,
@@ -478,11 +477,11 @@ export class HubsProvider {
   }
 
 
-  addJob(openDate, closeDate, address, desc, benefits, jobStartdate, jobEndDate, contact, img) {
+  addJob(name,openDate, closeDate, address, desc, benefits, jobStartdate, jobEndDate, contact, img) {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser
-        firebase.database().ref("jobs/" + user.uid).set({
+        firebase.database().ref("jobs/" + user.uid).push({
           openDate: openDate,
           closeDate: closeDate,
           address: address,
@@ -491,7 +490,8 @@ export class HubsProvider {
           jobStartdate: jobStartdate,
           jobEndDate: jobEndDate,
           img: img,
-          contact: contact
+          contact: contact,
+          name : name
         })
         resolve();
       })
@@ -520,6 +520,7 @@ export class HubsProvider {
                 address: details[k].address,
                 contacts: details[k].contacts,
                 img: details[k].img,
+                name : details[k].name
               }
               jobs.push(jobObject)
             }
@@ -531,17 +532,19 @@ export class HubsProvider {
   }
 
 
-  addService(openDate, closeDate, address, serviceName, contact, desc, img) {
+  addService(email,openDate, closeDate, address, serviceName, contact, desc, img) {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser
-        firebase.database().ref("services/" + user.uid).set({
+        firebase.database().ref("services/" + user.uid).push({
           openDate: openDate,
+          email:email,
           closeDate: closeDate,
           address: address,
           desc: desc,
           img: img,
-          contact: contact
+          contact: contact,
+          name : serviceName
         })
         resolve();
       })
@@ -564,9 +567,10 @@ export class HubsProvider {
                 closeDate: details[k].closeDate,
                 desc: details[k].desc,
                 address: details[k].address,
-                contacts: details[k].contacts,
+                contacts: details[k].contact,
                 img: details[k].img,
-                serviceName: details[k].serviceName
+                serviceName: details[k].name,
+                email: details[k].email
               }
               services.push(serviceObject)
             }

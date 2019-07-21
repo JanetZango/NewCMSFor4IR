@@ -72,11 +72,10 @@
           </button>
           <ion-searchbar placeholder="Search" (ionInput)="getItems($event)"></ion-searchbar>
           <div id="results">
-            
+
             <ion-item no-lines *ngFor="let item of items; let i=index">
               <p>{{item}}</p>
             </ion-item>
-            y
           </div>
         </div>
         <div class="right">
@@ -97,13 +96,13 @@
           Fellow Organisations
         </div>
         <div class="list-view-cotainer">
-          <div class="listed-item">
+          <div class="listed-item" *ngFor="let q of orgNames">
             <div>
               <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
             </div>
             <div>
-              <p><b>Department of Science and Technology</b></p>
-              <p>Multimedia Services</p>
+              <p><b>{{q.name}}</b></p>
+              <p>{{category}}</p>
             </div>
           </div>
         </div>
@@ -118,7 +117,7 @@
               <ion-icon name="add"></ion-icon>
             </button>
           </ion-fab>
-          <div class="card-container">
+          <div class="card-container" *ngFor="let i of servArray">
             <div class="card">
               <div class="image-image">
                 <div class="action-buttons">
@@ -126,7 +125,7 @@
                   <button ion-button clear color="light">Delete</button>
                   <button ion-button clear color="light">Edit</button>
                 </div>
-                <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
+                <img src="{{i.img}}" alt="" class="image-actual">
               </div>
               <div class="more-details" id="pg1-cont">
                 <!-- <p id="heading">Service Name</p>
@@ -146,20 +145,18 @@
                 <div class="content-container">
                   <div>
 
-                    <p id="heading">Service Name</p>
+                    <p id="heading">{{i.serviceName}}</p>
                     <p id="sub-head">Description</p>
                     <p id="bg-desc">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
-                      perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
-                      suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      {{i.desc}}
                     </p>
                     <p id="sub-head">Address</p>
-                    <p id="bg-desc">4877 ugago Street Protea Glen Ext 3</p>
+                    <p id="bg-desc">{{i.address}}</p>
                     <p id="sub-head">Contact Details</p>
-                    <p id="subSub-head">Phone</p>
+                    <p id="subSub-head">{{i.contacts}}</p>
                     <p id="bg-desc">0813917127</p>
                     <p id="subSub-head">Email</p>
-                    <p id="bg-desc-email">Me@email.com</p>
+                    <p id="bg-desc-email">{{i.email}}</p>
                   </div>
                 </div>
 
@@ -174,14 +171,14 @@
             </button>
           </ion-fab>
           <div class="card-container">
-            <div class="card">
+            <div class="card" *ngFor="let i of progArray">
               <div class="image-image">
                 <div class="action-buttons">
                   <button ion-button clear color="light">Hide</button>
                   <button ion-button clear color="light">Delete</button>
                   <button ion-button clear color="light">Edit</button>
                 </div>
-                <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
+                <img src="{{i.img}}" alt="" class="image-actual">
               </div>
               <div class="more-details">
                 <!-- <p id="heading">Programme Name</p>
@@ -219,22 +216,18 @@
                   </div> -->
                 <div class="content-container">
                   <div>
-                    <p id="heading">Programme Name</p>
+                    <p id="heading">{{i.name}}</p>
                     <p id="sub-head">Background</p>
                     <p id="bg-desc">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
-                      perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
-                      suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      {{i.progBackround}}
                     </p>
                     <p id="sub-head">Address</p>
                     <p id="bg-desc">
-                      4877 Ugago Street Protea Glen Ext 3
+                      {{i.address}}
                     </p>
                     <p id="sub-head">Description</p>
                     <p id="bg-desc">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sit perferendis, porro cumque
-                      perspiciatis consequatur eius in modi a saepe, harum nihil soluta architecto id ad autem eligendi
-                      suscipit, temporibus laborum illoLorem ipsum dolor sit
+                      {{i.desc}}
                     </p>
                   </div>
                   <div>
@@ -242,21 +235,21 @@
                     <div class="dates">
                       <div class="open">
                         <p id="sub-head" class="theSub-head">Application Open Date</p>
-                        <p id="bg-desc">99/99/1999</p>
+                        <p id="bg-desc">{{i.openDate}}</p>
                       </div>
                       <div class="close">
                         <p id="sub-head" class="theSub-head">Application Close Date</p>
-                        <p id="bg-desc">99/99/1999</p>
+                        <p id="bg-desc">{{i.closeDate}}</p>
                       </div>
                     </div>
                     <div class="dates">
                       <div class="open">
                         <p id="sub-head" class="theSub-head">Programme Start</p>
-                        <p id="bg-desc">99/99/1999</p>
+                        <p id="bg-desc">{{i.progStartDate}}</p>
                       </div>
                       <div class="close">
                         <p id="sub-head" class="theSub-head">Programme End</p>
-                        <p id="bg-desc">99/99/1999</p>
+                        <p id="bg-desc">{{i.progEndDate}}</p>
                       </div>
                     </div>
                   </div>
@@ -271,7 +264,7 @@
               <ion-icon name="add"></ion-icon>
             </button>
           </ion-fab>
-          <div class="card-container">
+          <div class="card-container" *ngFor="let i of jobsArry">
             <div class="card">
               <div class="image-image">
                 <div class="action-buttons">
@@ -279,7 +272,7 @@
                   <button ion-button clear color="light">Delete</button>
                   <button ion-button clear color="light">Edit</button>
                 </div>
-                <img src="../../assets/imgs/logo.png" alt="" class="image-actual">
+                <img src="{{i.img}}" alt="" class="image-actual">
               </div>
               <div class="more-details">
                 <!-- <p id="heading">Job Name</p>
@@ -326,48 +319,42 @@
                 </div> -->
                 <div class="content-container">
                   <div>
-                    <p id="heading">Job Name</p>
+                    <p id="heading">{{i.name}}</p>
                     <p id="sub-head">Background</p>
                     <p id="bg-desc">
-                      lore ipsum, dolor sit amet consectetur adipisicing elit. Saepe totam culpa quisquam molestias
-                      blanditiis voluptatem necessitatibus id natus, consequuntur beatae tempore sunt vel. Recusandae
-                      necessitatibus quos aspernatur, qui nesciunt nihil.
+                      {{i.benefits}}
                     </p>
                     <p id="sub-head">Address</p>
                     <p id="bg-desc">
-                      4877 Ugago Street Protea Glen Ext 3
+                      {{i.address}}
                     </p>
                     <p id="sub-head">Description</p>
                     <p id="bg-desc">
-                      lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio harum adipisci fugit ex porro
-                      aperiam
-                      ea consectetur pariatur aspernatur commodi laboriosam consequuntur quia sunt natus, ab quae, quos
-                      molestias asperiores ipsam, deserunt illo laborum dolores! Consequatur natus in rerum voluptas ut,
-                      similique delectus, quos.
+                      {{i.desc}}
                     </p>
                   </div>
                   <div>
                     <p id="sub-head">Job Type</p>
-                    <p id="bg-desc">Permanent</p>
+                    <p id="bg-desc">{{i.contacts}}</p>
                     <p id="sub-head">Dates</p>
                     <div class="dates">
                       <div class="open">
                         <p id="sub-head" class="theSub-head">Application Open Date</p>
-                        <p id="bg-desc">99/99/1999</p>
+                        <p id="bg-desc">{{i.openDate}}</p>
                       </div>
                       <div class="close">
                         <p id="sub-head" class="theSub-head">Application Close Date</p>
-                        <p id="bg-desc">99/99/1999</p>
+                        <p id="bg-desc">{{i.closeDate}}</p>
                       </div>
                     </div>
                     <div class="dates">
                       <div class="open">
                         <p id="sub-head" class="theSub-head">Job Start Date</p>
-                        <p id="bg-desc">99/99/1999</p>
+                        <p id="bg-desc">{{i.jobStartdate}}</p>
                       </div>
                       <div class="close">
                         <p id="sub-head" class="theSub-head">Job End Date</p>
-                        <p id="bg-desc">99/99/1999</p>
+                        <p id="bg-desc">{{i.jobEndDate}}</p>
                       </div>
                     </div>
 

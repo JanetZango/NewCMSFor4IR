@@ -239,7 +239,12 @@ export class HomePage implements OnInit {
     var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0)";
   }
+  servArray =  new Array();
   showServicesPage() {
+    this.hubs.getServices().then((data:any) =>{
+      console.log(data)
+      this.servArray  = data;
+    })
     // this will show the services
     var theMap = document.getElementById("pg1").style.display = "none";
     var theServices = document.getElementById("pg2").style.display = "block";
@@ -251,7 +256,15 @@ export class HomePage implements OnInit {
     var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0)";
   }
+
+ 
+
+  progArray =  new Array();
   showProgrammesPage() {
+    this.hubs.getPrograme().then((data:any) =>{
+      this.progArray = data;
+      console.log(data)
+    })
     // this will show programmes
     var theMap = document.getElementById("pg1").style.display = "none";
     var theServices = document.getElementById("pg2").style.display = "none";
@@ -263,7 +276,11 @@ export class HomePage implements OnInit {
     var btn1 = document.getElementById("btn3").style.background = "rgba(255, 255, 255, 0.1)";
     var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0)";
   }
+  jobsArry =  new Array();
   showJobsPage() {
+    this.hubs.getJobs().then((data:any) =>{
+      this.jobsArry = data;
+    })
     // this will show jobs
     var theMap = document.getElementById("pg1").style.display = "none";
     var theServices = document.getElementById("pg2").style.display = "none";
@@ -329,7 +346,10 @@ export class HomePage implements OnInit {
 
   }
 
-
+  add(type){
+    this.navCtrl.push(AddOrganizationPage, {type:type})
+    
+  }
 
   //markers for the map
   markers() {
@@ -431,11 +451,6 @@ export class HomePage implements OnInit {
       buttons: ['OK']
     });
     alert.present();
-  }
-
-  add(type){
-    this.navCtrl.push(AddOrganizationPage, {type:type})
-    
   }
 
 

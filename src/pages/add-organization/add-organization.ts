@@ -294,8 +294,88 @@ export class AddOrganizationPage {
     }
   }
 
+  jobName;
+  jobType;
+  odate;
+  cdate;
+  req;
+  res;
+  add;
+  link;
+  cell;
+  mail;
+  
+
+  addJob(){
+    this.hubs.addJob(this.jobName,this.odate,this.cdate,this.add,this.res,'',this.odate,this.cdate,this.jobType,this.downloadurl3).then(()=>{
+      alert('job added');
+      this.navCtrl.pop();
+    })
+  }
+
+  sname;
+  sabout;
+  sadd;
+  semail;;
+  sphone
+
+  adds(){
+    this.hubs.addService('','','',this.sadd,this.sname,this.sphone,this.sabout,this.downloadurl6).then(()=>{
+      alert('service added');
+      this.navCtrl.pop()
+    })
+  }
+  downloadurl5 = "../../assets/imgs/Cover Image.jpg";
+  insert6(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+        reader.onload = (event: any) => {
+          this.downloadurl5 = event.target.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
+
+    }
 
 
+    downloadurl6 = "../../assets/imgs/Cover Image.jpg";
+    insert7(event: any) {
+      if (event.target.files && event.target.files[0]) {
+        let reader = new FileReader();
+          reader.onload = (event: any) => {
+            this.downloadurl6 = event.target.result;
+          }
+          reader.readAsDataURL(event.target.files[0]);
+        }
+  
+      }
+  
+
+
+  downloadurl3 = "../../assets/imgs/Cover Image.jpg";
+  insert(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+        reader.onload = (event: any) => {
+          this.downloadurl3 = event.target.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
+
+    }
+
+    downloadurl4 = "../../assets/imgs/Cover Image.jpg";
+    insert2(event: any) {
+      if (event.target.files && event.target.files[0]) {
+        let reader = new FileReader();
+          reader.onload = (event: any) => {
+            this.downloadurl4 = event.target.result;
+          }
+          reader.readAsDataURL(event.target.files[0]);
+        }
+  
+      }
+  
   showServices() {
 
     console.log(this.category);
@@ -507,6 +587,38 @@ export class AddOrganizationPage {
   //   toSlide.style.marginLeft = "0%";
   //   progressBar.style.width ="25%"
   // }
+  downloadurl = "../../assets/imgs/Cover Image.jpg";
+  insertpic(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+        reader.onload = (event: any) => {
+          this.downloadurl = event.target.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
+
+    }
+
+    downloadurl2 = "../../assets/imgs/Logo Image.jpg";
+    insertpic2(event: any) {
+      if (event.target.files && event.target.files[0]) {
+        let reader = new FileReader();
+          reader.onload = (event: any) => {
+            this.downloadurl2 = event.target.result;
+          }
+          reader.readAsDataURL(event.target.files[0]);
+        }
+  
+      }
+  
+
+
+  addProg(){
+    this.hubs.addPrograme(this.progApplicationOpen,this.progApplicationClose,this.progName,this.progOptions,this.progbackground,this.progBenfits,this.progDescription,this.progStartDate,this.progEndDate,this.progAddress,this.progPhone,this.downloadurl).then(()=>{
+      alert('prog added')
+      this.navCtrl.pop();
+    })
+  }
 
   click() {
     alert("clicked")
