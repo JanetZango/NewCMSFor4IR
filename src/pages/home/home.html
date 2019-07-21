@@ -96,13 +96,13 @@
           Fellow Organisations
         </div>
         <div class="list-view-cotainer">
-          <div class="listed-item" *ngFor="let q of orgNames">
+          <div class="listed-item" *ngFor="let q of getOrgArry">
             <div>
-              <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+              <img src="{{q.downloadurlLogo}}" alt="">
             </div>
             <div>
               <p><b>{{q.name}}</b></p>
-              <p>{{category}}</p>
+              <p>{{q.category}}</p>
             </div>
           </div>
         </div>
