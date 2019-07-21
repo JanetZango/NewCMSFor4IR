@@ -12,7 +12,7 @@
       </div>
       <div class="right-tab">
         <ion-fab top right>
-          <button ion-fab mini>
+          <button ion-fab mini (click)="goBack()">
             <ion-icon name="close"></ion-icon>
           </button>
         </ion-fab>
@@ -34,20 +34,20 @@
               <br>
               <ion-list class="programme-options">
                 <ion-item>
-                  <ion-label>Category</ion-label>
+                  <ion-label>Programme Type</ion-label>
                   <ion-select [(ngModel)]="progOptions">
-                    <ion-option value="nes">NES</ion-option>
-                    <ion-option value="n64">Nintendo64</ion-option>
-                    <ion-option value="ps">PlayStation</ion-option>
-                    <ion-option value="genesis">Sega Genesis</ion-option>
-                    <ion-option value="saturn">Sega Saturn</ion-option>
-                    <ion-option value="snes">SNES</ion-option>
+                    <ion-option value="nes">Learnership</ion-option>
+                    <ion-option value="n64">Internship</ion-option>
+                    <ion-option value="ps">Skills Development</ion-option>
+                    <ion-option value="genesis">Training</ion-option>
+                    <ion-option value="saturn">Bootcamp</ion-option>
+                    <ion-option value="snes">Apprenticeship</ion-option>
                   </ion-select>
                 </ion-item>
               </ion-list>
               <textarea name="" id="text-field" cols="30" [(ngModel)]="progbackground" rows="10"
                 placeholder="Programme Background"></textarea>
-              <textarea name="" id="text-field" cols="30" rows="10" placeholder="Programme Background"></textarea>
+              <textarea name="" id="text-field" cols="30" rows="10" [(ngModel)]="progDescription" placeholder="Programme Description"></textarea>
             </div>
           </div>
           <div class="pageProgrammes">
@@ -58,11 +58,11 @@
             <div class="inputs">
               Please complete the form to continue
               <br>
-              <textarea name="" id="text-field" cols="30" rows="10" placeholder="Programme Description"></textarea>
-              <textarea name="" id="text-field" cols="30" rows="10" placeholder="Programme Background"></textarea>
+              <textarea name="" id="text-field" cols="30" rows="10" [(ngModel)]="progBenfits" placeholder="Benefits"></textarea>
+              <ion-input type="text" id="input-field" placeholder="Address" [(ngModel)]="progAddress"></ion-input>
               <div class="Contacts">
-                <ion-input type="text" id="input-field" placeholder="Programme Name"></ion-input>
-                <ion-input type="text" id="input-field" placeholder="Programme Name"></ion-input>
+                <ion-input type="text" id="input-field" placeholder="Phone" [(ngModel)]="progPhone"></ion-input>
+                <ion-input type="text" id="input-field" placeholder="Email" [(ngModel)]="progEmail"></ion-input>
               </div>
             </div>
           </div>
@@ -79,8 +79,8 @@
                 <p>Please enter the dates for the applications.</p>
 
                 <div class="Contacts">
-                  <ion-input type="date" id="input-field"></ion-input>
-                  <ion-input type="date" id="input-field"></ion-input>
+                  <ion-input type="date" id="input-field" [(ngModel)]="progApplicationOpen"></ion-input>
+                  <ion-input type="date" id="input-field" [(ngModel)]="progApplicationClose"></ion-input>
                 </div>
               </div>
 
@@ -89,12 +89,12 @@
                 <p>Please enter the dates for the commencement and ending of the programme.</p>
 
                 <div class="Contacts">
-                  <ion-input type="date" id="input-field"></ion-input>
-                  <ion-input type="date" id="input-field"></ion-input>
+                  <ion-input type="date" id="input-field" [(ngModel)]="progStartDate"></ion-input>
+                  <ion-input type="date" id="input-field" [(ngModel)]="progEndDate"></ion-input>
                 </div>
               </div>
               <div class="Contacts">
-                <ion-input type="link" id="input-field" placeholder="Website link to online application"></ion-input>
+                <ion-input type="link" id="input-field" placeholder="Website link to online application" [(ngModel)]="progLink"></ion-input>
               </div>
             </div>
           </div>

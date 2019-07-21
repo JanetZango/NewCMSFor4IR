@@ -1,61 +1,62 @@
 page-add-organization {
   .everything {
-    width            : 100%;
-    height           : 100%;
-    background-image : white;
-    background-size  : cover;
+    width: 100%;
+    height: 100%;
+    background-image: white;
+    background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
   }
 
   .content-container {
-    width        : 60%;
-    height       : 80%;
-    background   : white;
-    overflow     : hidden;
+  transition-duration: 700ms;
+  transition-delay: 300ms;
+    width: 60%;
+    height: 80%;
+    background: white;
+    overflow: hidden;
     border-radius: 15px;
     // position  : absolute;
-    left         : 50%;
-    top          : 50%;
-    transform    : translate(-50%, -50%);
-    position     : relative;
-    display      : flex;
-    box-shadow   : 0 0 10px rgba(0, 0, 0, 0.445);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: relative;
+    display: flex;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.445);
   }
 
   #boxA {
-    width        : 1500px;
-    height       : 1500px;
-    transform    : rotateZ(45DEG);
-    background   : rgb(0, 100, 172);
-    margin       : 10px;
-    position     : absolute;
-    right        : -50%;
-    top          : -10px;
+    width: 1500px;
+    height: 1500px;
+    transform: rotateZ(45deg);
+    background: rgb(0, 100, 172);
+    margin: 10px;
+    position: absolute;
+    right: -50%;
+    top: -10px;
     border-radius: 100px;
   }
 
   #boxB {
-    background : rgba(64, 137, 189, 0.432);
-    width      : 1500px;
-    height     : 1500px;
+    background: rgba(64, 137, 189, 0.432);
+    width: 1500px;
+    height: 1500px;
     margin-left: -100px;
-
   }
 
   .left-tab {
-    width     : 25%;
-    height    : 100%;
+    width: 25%;
+    height: 100%;
     background: whitesmoke;
-    position  : relative;
+    position: relative;
   }
 
   .right-tab {
-    width     : 75%;
-    height    : 100%;
+    width: 75%;
+    height: 100%;
     background: rgb(228, 228, 228);
-    position  : relative;
-    overflow  : hidden;
+    position: relative;
+    overflow: hidden;
   }
 
   @media screen and (max-width: 800px) {
@@ -68,20 +69,28 @@ page-add-organization {
     }
 
     #bar {
-      width        : 60px;
-      height       : 10px;
-      border       : 1px solid rgb(0, 100, 172);
+      width: 60px;
+      height: 10px;
+      border: 1px solid rgb(0, 100, 172);
       border-radius: 10px;
-      position     : absolute;
-      background   : white;
-      bottom       : 5px;
-      left         : 50%;
-      transform    : translateX(-50%);
-      z-index      : 100;
+      position: absolute;
+      background: white;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
     }
 
     .content-container {
-      width : 100%;
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+    }
+  }
+  @media screen and (max-height: 670px){
+    
+    .content-container {
+      width: 100%;
       height: 100%;
       border-radius: 0;
     }
@@ -93,45 +102,44 @@ page-add-organization {
 
   #placeholder {
     background: pink;
-    display   : none;
+    display: none;
   }
 
   #Programmes {
-    background   : peachpuff;
-    position     : relative;
-    display   : none;
+    background: peachpuff;
+    position: relative;
+    display: none;
   }
 
   #Jobs {
     background: green;
-    position  : relative;
-    display   : none;
+    position: relative;
+    display: none;
   }
 
   #Services {
     background: teal;
-    position  : relative;
-    display   : none;
+    position: relative;
+    display: none;
   }
 
   .about-wifi {
     p {
-      font-size: 2rem
+      font-size: 2rem;
     }
   }
 
   #Wifi {
     background: blue;
-    position  : relative;
-    display   : none;
+    position: relative;
+    display: none;
   }
 
   .view {
-    width     : 400%;
-    height    : 100%;
-    display   : flex;
+    width: 400%;
+    height: 100%;
+    display: flex;
     transition: 300ms;
-
   }
 
   // .pages{
@@ -140,14 +148,14 @@ page-add-organization {
   // }
 
   .Contacts {
-    width  : calc(80% + 10px);
-    margin : 10px auto;
+    width: calc(80% + 10px);
+    margin: 10px auto;
     display: flex;
 
     // border: 1px solid red;
     #input-field {
       margin: 5px;
-      width : 50% !important;
+      width: 50% !important;
     }
   }
 
@@ -156,12 +164,12 @@ page-add-organization {
   }
 
   .instructions {
-    width     : 80%;
-    margin    : 0 auto;
+    width: 80%;
+    margin: 0 auto;
     text-align: center;
 
     p {
-      font-size  : 20px;
+      font-size: 20px;
       font-weight: bolder;
     }
   }
@@ -172,7 +180,7 @@ page-add-organization {
   }
 
   #coverImage {
-    width : 100%;
+    width: 100%;
     // border: 2px solid green;
     height: 250px;
   }
@@ -182,25 +190,25 @@ page-add-organization {
 
     //   border: 2px solid red;
     #coverImage {
-      width : 100%;
+      width: 100%;
       height: 100%;
 
       #myImgCover {
-        width : 100% !important;
+        width: 100% !important;
         height: 250px;
       }
     }
   }
 
   #coverImage img {
-    width : 100%;
+    width: 100%;
     height: 250px !important;
     object-fit: cover;
   }
 
   #logoImage {
     transition: 700ms;
-    width : 80px;
+    width: 80px;
     height: 80px;
     border-radius: 80px;
     position: relative;
@@ -208,8 +216,8 @@ page-add-organization {
   }
 
   #myCover {
-    width   : 100%;
-    height  : 250px;
+    width: 100%;
+    height: 250px;
     position: relative;
   }
 
@@ -222,10 +230,11 @@ page-add-organization {
   }
 
   #myLogo {
-    width   : 80px;
-    height  : 80px;
-    margin  : 5px;
-    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+    top: 200px;
+    position: absolute;
   }
 
   #myLogo:hover {
@@ -237,193 +246,193 @@ page-add-organization {
   }
 
   .myLabel2 {
-    color        : white;
-    text-align   : center;
-    transition   : 300ms;
-    background   : rgba(0, 0, 0, 0.336);
-    width        : 80px;
+    color: white;
+    text-align: center;
+    transition: 300ms;
+    background: rgba(0, 0, 0, 0.336);
+    width: 80px;
     border-radius: 80px;
-    height       : 80px;
-    position     : absolute;
-    line-height  : 80px;
-    opacity      : 0;
-    z-index      : 100;
+    height: 80px;
+    position: absolute;
+    line-height: 80px;
+    opacity: 0;
+    z-index: 100;
   }
 
   .myLabel {
-    color      : white;
-    transition : 300ms;
-    background : rgba(0, 0, 0, 0.336);
-    width      : 100%;
-    height     : 250px;
-    text-align : center;
-    position   : absolute;
+    color: white;
+    transition: 300ms;
+    background: rgba(0, 0, 0, 0.336);
+    width: 100%;
+    height: 250px;
+    text-align: center;
+    position: absolute;
     line-height: 250px;
-    opacity    : 0;
-    z-index    : 100;
+    opacity: 0;
+    z-index: 100;
   }
 
   #myLogo img {
-    width         : 80px;
-    height        : 80px;
-    object-fit    : cover;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
     // margin-left: 0;
-    border-radius : 80px;
+    border-radius: 80px;
   }
 
   .images-container {
     text-align: left;
-    width     : 100%;
-    position  : relative;
+    width: 100%;
+    position: relative;
     // height : 250px;
   }
 
   #myCover img {
-    height    : 250px;
-    width     : 100%;
+    height: 250px;
+    width: 100%;
     object-fit: cover;
   }
 
   #logoImage img {
-    width        : 80px;
-    height       : 80px;
+    width: 80px;
+    height: 80px;
     border-radius: 80px;
-    object-fit   : contain;
+    object-fit: contain;
   }
 
   #coverImage img {
-    width     : 100%;
+    width: 100%;
     // height : 50px;
     object-fit: cover;
     z-index: 1;
   }
 
-  .view>div {
-    display        : flex;
-    flex-direction : column;
+  .view > div {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    position       : relative;
-    width          : 25%;
-    height         : 100%;
+    position: relative;
+    width: 25%;
+    height: 100%;
   }
 
-  .view>div:nth-child(1) {
-    background     : white;
-    width          : 25%;
+  .view > div:nth-child(1) {
+    background: white;
+    width: 25%;
     // border      : 2px solid red;
-    display        : flex;
-    flex-direction : column;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    position       : relative;
-    padding        : 10px;
-    width          : 25%;
-    height         : 100%;
+    position: relative;
+    padding: 10px;
+    width: 25%;
+    height: 100%;
     // display     : none;
   }
 
-  .view>div:nth-child(2) {
-    background     : white;
-    padding        : 10px;
+  .view > div:nth-child(2) {
+    background: white;
+    padding: 10px;
     // border      : 2px solid blue;
-    display        : flex;
-    flex-direction : column;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    position       : relative;
-    width          : 25%;
-    height         : 100%;
+    position: relative;
+    width: 25%;
+    height: 100%;
     // display     : none;
   }
 
-  .view>div:nth-child(3) {
-    padding        : 10px;
-    background     : white;
+  .view > div:nth-child(3) {
+    padding: 10px;
+    background: white;
     // border      : 2px solid green;
-    display        : flex;
-    flex-direction : column;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    position       : relative;
-    width          : 25%;
-    height         : 100%;
+    position: relative;
+    width: 25%;
+    height: 100%;
     // display     : none;
   }
 
-  .view>div:nth-child(4) {
-    padding        : 10px;
-    background     : white;
+  .view > div:nth-child(4) {
+    padding: 10px;
+    background: white;
     // border      : 2px solid plum;
-    display        : flex;
-    flex-direction : column;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    position       : relative;
-    width          : 25%;
-    height         : 100%;
+    position: relative;
+    width: 25%;
+    height: 100%;
     // display     : none;
   }
 
   .pageProgrammes {
     // width       : 25%;
-    transition     : 300ms;
-    height         : 100%;
-    position       : relative;
-    display        : flex;
-    flex-direction : column;
+    transition: 300ms;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
   }
 
   .pageJobs {
     transition: 300ms;
-    width     : 25%;
-    height    : 100%;
-    position  : relative;
+    width: 25%;
+    height: 100%;
+    position: relative;
   }
 
   .pageServices {
     transition: 300ms;
-    width     : 25%;
-    height    : 100%;
-    position  : relative;
+    width: 25%;
+    height: 100%;
+    position: relative;
   }
 
   .pageWifi {
     transition: 300ms;
-    width     : 25%;
-    height    : 100%;
-    position  : relative;
+    width: 25%;
+    height: 100%;
+    position: relative;
   }
 
   #bar {
-    width        : 300px;
-    height       : 10px;
-    border       : 1px solid rgb(0, 100, 172);
+    width: 300px;
+    height: 10px;
+    border: 1px solid rgb(0, 100, 172);
     border-radius: 10px;
-    position     : absolute;
-    background   : white;
-    top          : 5px;
-    left         : 50%;
-    transform    : translateX(-50%);
-    z-index      : 100;
+    position: absolute;
+    background: white;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
   }
 
   #barSlide {
-    width     : 25%;
-    height    : 100%;
+    width: 25%;
+    height: 100%;
     background: rgb(0, 100, 172);
     transition: 300ms;
   }
 
   .programme-options {
-    border       : 1px solid black;
-    width        : 80%;
-    margin       : 10px auto;
+    border: 1px solid black;
+    width: 80%;
+    margin: 10px auto;
     border-radius: 10px;
-    overflow     : hidden;
+    overflow: hidden;
   }
 
   .inputs {
-    width           : 100%;
+    width: 100%;
     // height       : 100%;
     // padding      : 10px;
-    text-align      : center;
+    text-align: center;
     position: relative;
     // background   : red;
     // border       : 2px solid black;
@@ -431,21 +440,21 @@ page-add-organization {
     // transform    : translateY(-40%);
   }
   #input-field {
-    border       : 1px solid black;
-    width        : 80%;
-    height       : 50px;
-    margin       : 10px auto;
+    border: 1px solid black;
+    width: 80%;
+    height: 50px;
+    margin: 10px auto;
     border-radius: 10px;
-    background   : white;
+    background: white;
   }
 
   #text-field {
-    border       : 1px solid black;
-    height       : 90px;
-    width        : 80%;
-    padding      : 5px;
-    resize       : none;
-    margin-top   : 15px;
+    border: 1px solid black;
+    height: 90px;
+    width: 80%;
+    padding: 5px;
+    resize: none;
+    margin-top: 15px;
     border-radius: 10px;
   }
 
@@ -454,52 +463,52 @@ page-add-organization {
   }
 
   .buttons {
-    width         : 100%;
-    height        : 70px;
-    background    : linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.144));
+    width: 100%;
+    height: 70px;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.144));
     // position   : relative;
-    position      : absolute;
-    bottom        : 0;
+    position: absolute;
+    bottom: 0;
     padding-bottom: 10px;
-    left          : 0;
-    z-index       : 10;
+    left: 0;
+    z-index: 10;
   }
 
   #forward {
     //   float  : right;
-    margin      : 20px;
-    width       : 130px;
-    position    : absolute;
-    right       : 0px;
+    margin: 20px;
+    width: 130px;
+    position: absolute;
+    right: 0px;
     //   z-index: inherit;
   }
 
   #backward {
     margin: 20px;
-    width : 130px;
+    width: 130px;
   }
 
   .infor-left {
-    width          : 100%;
-    height         : 100%;
-    display        : flex;
-    flex-direction : column;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
   }
 
   .bg {
-    width              : 50%;
-    margin             : 0 auto;
-    height             : 150px;
+    width: 50%;
+    margin: 0 auto;
+    height: 150px;
     // border          : 1px solid black;
-    background         : url("../../assets/imgs/4IR\ logo.png");
-    background-size    : contain;
-    background-repeat  : no-repeat;
+    background: url("../../assets/imgs/4IR\ logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
   }
 
   .statement {
-    padding   : 10px;
+    padding: 10px;
     text-align: center;
   }
 
@@ -507,23 +516,24 @@ page-add-organization {
     position: relative;
     transition: 700ms;
   }
-  #coverImage:hover, #logoImage:hover{
-    filter: blur(5px);
+  #coverImage:hover,
+  #logoImage:hover {
+    filter: brightness(50%);
     cursor: pointer;
   }
 
   #confirm-logo,
   #confirm-logo img {
-    width        : 80px;
-    height       : 80px;
+    width: 80px;
+    height: 80px;
     border-radius: 80px;
-    object-fit   : cover;
+    object-fit: cover;
   }
 
   #confirm-cover {
-    width    : 100%;
+    width: 100%;
     // border: 2px solid;
-    height   : 200px;
+    height: 200px;
   }
 
   #confirm-cover img,
@@ -532,16 +542,16 @@ page-add-organization {
   }
 
   #confirm-cover img {
-    width     : 100%;
-    height    : 200px;
+    width: 100%;
+    height: 200px;
     object-fit: cover;
   }
 
   #confirm-logo img {
-    width     : 80px;
+    width: 80px;
     object-fit: cover;
   }
-  #confirm-logo{
+  #confirm-logo {
     // border: 2px solid red;
     position: absolute !important;
     top: 200px;

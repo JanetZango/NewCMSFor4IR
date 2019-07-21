@@ -10,10 +10,10 @@ page-home {
     // background: red;
     display: flex;
   }
-  #logoUpdate{
+  #logoUpdate {
     display: none;
   }
-  .editing-data-inputs{
+  .editing-data-inputs {
     width: 320px;
     height: 560px;
     background: white;
@@ -23,7 +23,7 @@ page-home {
     z-index: 1;
     padding: 10px;
   }
-  #theLogo-update{
+  #theLogo-update {
     width: 100px;
     margin: 0 auto;
     margin-top: -50px;
@@ -32,7 +32,7 @@ page-home {
     border-radius: 50px;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.171);
   }
-  #theLogo-update > label div{
+  #theLogo-update > label div {
     position: absolute;
     width: 100px;
     height: 100px;
@@ -44,13 +44,13 @@ page-home {
     border-radius: 10px;
     opacity: 0;
   }
-  #theLogo-update:hover{
+  #theLogo-update:hover {
     label > div {
       opacity: 1;
       border-radius: 50px;
     }
   }
-  #textarea-update{
+  #textarea-update {
     width: 100%;
     resize: none;
     padding: 10px;
@@ -58,35 +58,35 @@ page-home {
     // height: 40px;
     border: 1px solid rgba(0, 0, 0, 0.39);
   }
-  .text-field{
+  .text-field {
     width: 100%;
     // height: 40px;
     border: 1px solid rgba(0, 0, 0, 0.39);
     margin: 10px auto;
-    border-radius: 5px
+    border-radius: 5px;
   }
-  #update-buttons{
+  #update-buttons {
     display: flex;
-    button{
+    button {
       width: 100%;
       margin: 2px;
       border-radius: 5px;
       font-weight: bold;
     }
   }
-  #update-inputs{
+  #update-inputs {
     width: 90%;
-    margin: 10px auto; 
+    margin: 10px auto;
     text-align: center;
   }
-  #click-upload{
+  #click-upload {
     width: 100px;
     height: 100px;
     background: white;
     border-radius: 50px;
     object-fit: contain;
   }
-  #container-overlay{
+  #container-overlay {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.438);
@@ -99,14 +99,14 @@ page-home {
     justify-content: center;
     display: none;
   }
-  .toDismiss{
+  .toDismiss {
     width: 100%;
     height: 100%;
     position: absolute;
     z-index: 0;
     background: transparent;
   }
-  
+
   .side-pane {
     width: 300px;
     height: 100%;
@@ -121,26 +121,26 @@ page-home {
     position: relative;
     object-fit: cover;
   }
-  #actions{
-      width: 90%;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 35px;
-      border-top: 1px solid rgba(255, 255, 255, 0.822);
-      background: transparent;
-      position: absolute;
-      bottom: 0;
-      display: flex;
-      p{
-          width: 100%;
-          text-align: center;
-          margin: 0;
-          height: 100%;
-          line-height: 35px;
-      }
-      p:hover{
-          background: rgba(19, 19, 19, 0.342);
-      }
+  #actions {
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 35px;
+    border-top: 1px solid rgba(255, 255, 255, 0.822);
+    background: transparent;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    p {
+      width: 100%;
+      text-align: center;
+      margin: 0;
+      height: 100%;
+      line-height: 35px;
+    }
+    p:hover {
+      background: rgba(19, 19, 19, 0.342);
+    }
   }
   .cover-image-cover {
     width: 90%;
@@ -195,7 +195,6 @@ page-home {
     position: relative;
     display: none;
     animation: 1s faderIn;
-    
   }
   @keyframes faderIn {
     0% {
@@ -252,21 +251,21 @@ page-home {
   .nav-pane {
     width: 100%;
     height: 60px;
-    background: rgb(10,132,218);
+    background: rgb(10, 132, 218);
     display: flex;
-    position: relative
+    position: relative;
   }
-  #ifSmall{
+  #ifSmall {
     display: none;
   }
-  .person-info{
+  .person-info {
     // border: 1px solid red;
     display: flex;
     position: absolute;
     right: 0;
     top: 5px;
   }
-  #userimage{
+  #userimage {
     width: 50px;
     height: 50px;
     border-radius: 50px;
@@ -274,11 +273,11 @@ page-home {
     object-fit: contain;
     background: white;
   }
-  .user-details{
+  .user-details {
     text-align: left !important;
   }
-  @media screen and (max-width: 1000px){
-    #ifSmall{
+  @media screen and (max-width: 1000px) {
+    #ifSmall {
       z-index: 10;
       display: block;
     }
@@ -287,16 +286,16 @@ page-home {
       min-width: 225px;
       position: absolute;
       left: 50vw;
-      top: .0vh;
-      transform: translateX(-50%)
+      top: 0vh;
+      transform: translateX(-50%);
     }
-    #userimage{
+    #userimage {
       right: 10px;
     }
-    .user-details{
+    .user-details {
       display: none;
     }
-    .float-right{
+    .float-right {
       position: absolute;
       right: 0;
       font-size: 20px;
@@ -315,7 +314,7 @@ page-home {
       width: 100%;
     }
   }
-  .left{
+  .left {
     padding: 5px;
     width: 50%;
     height: 100%;
@@ -335,7 +334,7 @@ page-home {
       position: absolute;
       top: 60px;
       z-index: 10000000000000000;
-      ion-item:hover{
+      ion-item:hover {
         background: whitesmoke;
         cursor: pointer;
       }
@@ -362,8 +361,10 @@ page-home {
       color: whitesmoke;
       margin-top: -15px;
     }
-    .scroll-content, .content, .content-md{
-        overflow: hidden
+    .scroll-content,
+    .content,
+    .content-md {
+      overflow: hidden;
     }
     h4 {
       margin-left: 10px;
@@ -385,7 +386,7 @@ page-home {
     width: 30px;
     transition: 300ms;
     line-height: 80px;
-    background: rgb(10,132,218);
+    background: rgb(10, 132, 218);
     text-align: center;
     color: white;
     position: absolute;
@@ -416,7 +417,7 @@ page-home {
       object-fit: cover;
     }
   }
-  .listed-item:hover{
+  .listed-item:hover {
     -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
     filter: grayscale(0%);
   }
@@ -428,8 +429,8 @@ page-home {
     width: calc(100% - 100px);
     height: 100%;
     padding: 5px;
-    p{
-        line-height: 15px;
+    p {
+      line-height: 15px;
     }
   }
   #org-list-view {
@@ -522,26 +523,26 @@ page-home {
     overflow-y: hidden;
     overflow-x: scroll;
   }
-  .content-container{
+  .content-container {
     width: 200%;
     height: 100%;
     background: pink;
     // padding: 5px;
     display: flex;
-    flex-wrap: wrap
+    flex-wrap: wrap;
   }
-  .content-container > div{
+  .content-container > div {
     padding: 10px;
     width: 50%;
     height: 100%;
   }
-  .content-container > div:nth-child(1){
+  .content-container > div:nth-child(1) {
     background: white;
-    border-right: .2px solid rgba(0, 0, 0, 0.4);
+    border-right: 0.2px solid rgba(0, 0, 0, 0.4);
   }
-  .content-container > div:nth-child(2){
+  .content-container > div:nth-child(2) {
     background: white;
-    border-left: .2px solid rgba(0, 0, 0, 0.4);
+    border-left: 0.2px solid rgba(0, 0, 0, 0.4);
   }
   .dates {
     display: flex;
@@ -618,15 +619,15 @@ page-home {
     }
   }
 
-  #pg1-cont{
+  #pg1-cont {
     overflow: hidden;
-    div{
+    div {
       width: 100%;
     }
   }
 }
 
-.searchbar-ios{
+.searchbar-ios {
   // border: 2px solid red;
   height: 100%;
   background: transparent;

@@ -173,7 +173,7 @@ export class AddOrganizationPage {
   showProgramcategory: boolean = true;
 
   pushid = this.navParams.get('pushid')
-
+  type = this.navParams.get('type');
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public hubs: HubsProvider, public ngzone: NgZone, public alertCtrl: AlertController) {
     console.log(this.email)
@@ -182,7 +182,11 @@ export class AddOrganizationPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddOrganizationPage');
   }
+  ionViewDidEnter() {
+    var x = document.getElementById(this.type).style.display = 'flex';
+    console.log(x);
 
+  }
   //Add org Method
   saveToDB() {
     if (this.offerWifi == "No") {
@@ -507,24 +511,81 @@ export class AddOrganizationPage {
   click() {
     alert("clicked")
   }
-
+  progName;
+  progOptions;
+  progbackground;
+  progDescription;
   toPage2Progs() {
-    var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-25%";
-    var thebar = document.getElementById("barSlide");
-    thebar.style.width = "50%"
+    if (this.progName == null || this.progName == "") {
+      alert()
+    }
+    else if (this.progOptions == null || this.progOptions == "") {
+      alert()
+    }
+    else if (this.progbackground == null || this.progbackground == "") {
+      alert()
+    }
+    else if (this.progDescription == null || this.progDescription == "") {
+      alert()
+    }
+    else {
+      var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
+      pager[0].style.marginLeft = "-25%";
+      var thebar = document.getElementById("barSlide");
+      thebar.style.width = "50%"
+    }
   }
+  progBenfits;
+  progAddress;
+  progPhone;
+  progEmail;
   toPage3Progs() {
-    var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-50%"
-    var thebar = document.getElementById("barSlide");
-    thebar.style.width = "75%"
+    if (this.progBenfits == null || this.progBenfits == "") {
+      alert()
+    }
+    else if (this.progAddress == null || this.progAddress == "") {
+      alert()
+    }
+    else if (this.progPhone == null || this.progPhone == "") {
+      alert()
+    }
+    else if (this.progEmail == null || this.progEmail == "") {
+      alert()
+    }
+    else {
+      var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
+      pager[0].style.marginLeft = "-50%"
+      var thebar = document.getElementById("barSlide");
+      thebar.style.width = "75%"
+    }
   }
+  progApplicationOpen;
+  progApplicationClose;
+  progStartDate;
+  progEndDate;
+  progLink;
   toPage4Progs() {
-    var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-75%"
-    var thebar = document.getElementById("barSlide");
-    thebar.style.width = "100%"
+    if (this.progApplicationOpen == null || this.progApplicationOpen == "") {
+      alert()
+    }
+    else if (this.progApplicationClose == null || this.progApplicationClose == "") {
+      alert()
+    }
+    else if (this.progStartDate == null || this.progStartDate == "") {
+      alert()
+    }
+    else if (this.progEndDate == null || this.progEndDate == "") {
+      alert()
+    }
+    else if (this.progLink == null || this.progLink == "") {
+      alert()
+    }
+    else {
+      var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
+      pager[0].style.marginLeft = "-75%"
+      var thebar = document.getElementById("barSlide");
+      thebar.style.width = "100%"
+    }
   }
   backToPage3Progs() {
     var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
@@ -609,7 +670,7 @@ export class AddOrganizationPage {
       pager[0].style.marginLeft = "-25%"
       var thebar = document.getElementById("barSlide");
       thebar.style.width = "50%"
-      
+
     }
     else if (this.WiFiAvailability == "No") {
       var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
@@ -633,8 +694,8 @@ export class AddOrganizationPage {
       var thebar = document.getElementById("barSlide");
       thebar.style.width = "75%"
     }
-    else if(this.freeOrPaidWiFi == "" || this.freeOrPaidWiFi == null || this.freeOrPaidWiFi == undefined){
-      
+    else if (this.freeOrPaidWiFi == "" || this.freeOrPaidWiFi == null || this.freeOrPaidWiFi == undefined) {
+
       const alert = this.alertCtrl.create({
         title: 'Choose One Option',
         subTitle: "Please choose one of the options provided.",
@@ -675,7 +736,7 @@ export class AddOrganizationPage {
   }
   backToPage3WiFi() {
     // alert(this.freeOrPaidWiFi)
-    if(this.WiFiAvailability == "No"){
+    if (this.WiFiAvailability == "No") {
       this.backToPage1WiFi()
     }
     if (this.freeOrPaidWiFi == "Paid") {
@@ -717,6 +778,9 @@ export class AddOrganizationPage {
   toggleRange() {
   }
 
+  goBack(){
+    this.navCtrl.pop()
+  }
 
 
 

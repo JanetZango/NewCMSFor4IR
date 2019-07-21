@@ -4,6 +4,7 @@ import { HubsProvider } from '../../providers/hubs/hubs'
 import swal from "sweetalert";
 import Swal from "sweetalert2";
 import { log } from 'util';
+import { AddOrganizationPage } from '../add-organization/add-organization';
 
 //global declaration
 declare var google;
@@ -430,6 +431,11 @@ export class HomePage implements OnInit {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  add(type){
+    this.navCtrl.push(AddOrganizationPage, {type:type})
+    
   }
 
 

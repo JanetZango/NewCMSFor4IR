@@ -73,9 +73,10 @@
           <ion-searchbar placeholder="Search" (ionInput)="getItems($event)"></ion-searchbar>
           <div id="results">
             
-            <!-- <ion-item no-lines *ngFor="let item of items; let i=index">
+            <ion-item no-lines *ngFor="let item of items; let i=index">
               <p>{{item}}</p>
-            </ion-item> -->
+            </ion-item>
+            y
           </div>
         </div>
         <div class="right">
@@ -112,7 +113,7 @@
           <div #map id="map"></div>
         </div>
         <div class="view" id="pg2">
-          <ion-fab bottom right>
+          <ion-fab bottom right (click)="add('Services')">
             <button ion-fab color="btn">
               <ion-icon name="add"></ion-icon>
             </button>
@@ -167,7 +168,7 @@
           </div>
         </div>
         <div class="view" id="pg3">
-          <ion-fab bottom right>
+          <ion-fab bottom right (click)="add('Programmes')">
             <button ion-fab color="btn">
               <ion-icon name="add"></ion-icon>
             </button>
@@ -265,7 +266,7 @@
           </div>
         </div>
         <div class="view" id="pg4">
-          <ion-fab bottom right>
+          <ion-fab bottom right (click)="add('Jobs')">
             <button ion-fab color="btn">
               <ion-icon name="add"></ion-icon>
             </button>
