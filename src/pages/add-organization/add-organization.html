@@ -126,7 +126,7 @@
               <p>Please fill in the form to add a job requirement</p>
             </div>
             <div class="inputs">
-              <input type="text" [(ngModel)]="jobName" id="input-field" placeholder="Job Name"> 
+              <input type="text" [(ngModel)]="jobName" id="input-field" placeholder="Job Name"> <br>
               <b>Applications</b>
               <div class="Contacts">
                 <input type="date" [(ngModel)]="odate" id="input-field" placeholder="Application Open Date"> 
@@ -164,8 +164,8 @@
             </div>
             <div class="inputs">
               <!-- User clicks here to upload logo and cover for Jobs -->
-              <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image" (change)="insert($event)">
-              <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image" (change)="insert2($event)">
+              <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image" (change)="insertpic($event)">
+              <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image" (change)="insertpic($event)">
               <div class="instructions">
                 <p>Please choose a cover photo and a logo (if any).
                 </p>
@@ -175,13 +175,13 @@
                   <div class="myLabel">
                     <!-- Upload cover image -->
                   </div>
-                  <img src="{{downloadurl3}}" alt="">
+                  <img src="{{downloadurl}}" alt="">
                 </label>
                 <label for="logo-image" id="myLogo">
                   <!-- <div class="myLabel2">
                     Logo
                   </div> -->
-                  <img src="{{downloadurl4}}" alt="">
+                  <img src="{{downloadurl2}}" alt="">
                 </label>
               </div>
               <!-- <label for="cover-image" id="coverImage">
@@ -202,12 +202,12 @@
               <button id="forward" ion-button (click)="addJob()">done</button>
             </div>
             <div class="inputs">
-              <p>Please confirm your details then click Done to continue.</p>
+              <p>Please confirm your details then click DONE to continue.</p>
               <div id="confirm-cover">
-                <img src="{{downloadurl3}}" alt="">
+                <img src="{{downloadurl}}" alt="">
               </div>
               <div id="confirm-logo">
-                <img src="{{downloadurl4}}" alt="">
+                <img src="{{downloadurl2}}" alt="">
               </div>
               <p><b>Job Name:</b>{{jobName}}</p>
               <p><b>Employment Type:</b> {{jobType}}</p>
@@ -264,8 +264,8 @@
             <div class="inputs">
               <h4>Graphical Content</h4>
               <!-- User clicks here to upload logo and cover for Jobs -->
-              <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insert6($event)"  id="logo-image">
-              <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insert7($event)" id="cover-image">
+              <input type="file" accept="image/x-png,image/gif,image/jpeg"   id="logo-image" (change)="insertpic($event)">
+              <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="cover-image">
               <div id="uploadPage">
 
                 <div class="images-container">
@@ -273,13 +273,13 @@
                     <div class="myLabel">
                       <!-- Upload cover image -->
                     </div>
-                    <img src="{{downloadurl5}}" alt="">
+                    <img src="{{downloadurl}}" alt="">
                   </label>
                   <label for="logo-image" id="myLogo">
                     <div class="myLabel2">
                       <!-- Logo -->
                     </div>
-                    <img src="{{downloadurl6}}" alt="">
+                    <img src="{{downloadurl2}}" alt="">
                   </label>
                 </div>
               </div>
@@ -291,12 +291,12 @@
               <button id="forward" ion-button  (click)="adds()">Done</button>
             </div>
             <div class="inputs">
-              <p>Please confirm your details then click Done</p>
+              <p>Please confirm your details then click DONE</p>
               <div id="confirm-cover">
-                <img src="{{downloadurl5}}" alt="">
+                <img src="{{downloadurl}}" alt="">
               </div>
               <div id="confirm-logo">
-                <img src="{{downloadurl6}}" alt="">
+                <img src="{{downloadurl2}}" alt="">
               </div>
               
               <p><b>Service Name:</b> {{sname}}</p>

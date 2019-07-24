@@ -183,7 +183,7 @@ export class AddOrganizationPage {
     console.log('ionViewDidLoad AddOrganizationPage');
   }
   ionViewDidEnter() {
-    var x = document.getElementById(this.type).style.display = 'flex';
+    var x = document.getElementById("Jobs").style.display = 'flex';
     console.log(x);
 
   }

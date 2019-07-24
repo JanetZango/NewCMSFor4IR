@@ -21,10 +21,10 @@ export class MyApp {
 
       hubs.checkOrgAuthState().then((data: any) => {
         if (data == 1) {
-          this.rootPage = HomePage
+          this.rootPage = AddOrganizationPage
         }
         else {
-          this.rootPage = LoginRegisterPage
+          this.rootPage = AddOrganizationPage
         }
        })
       // Okay, so the platform is ready and our plugins are available.
