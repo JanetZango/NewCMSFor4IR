@@ -322,11 +322,11 @@ page-onboarding {
     max-width: 500px;
     min-width: 130px;
     position: absolute;
-    bottom: 10px;
+    bottom: 10%;
     right: 10px;
     border-radius: 50px;
     right: 10px;
-    bottom: 10px;
+    bottom: 5%;
     // transform: translateX(-50%);
   }
   
@@ -335,11 +335,11 @@ page-onboarding {
     max-width: 500px;
     min-width: 130px;
     position: absolute;
-    bottom: 10px;
+    
     right: 10px;
     border-radius: 50px;
     left: 50%;
-    bottom: 10px;
+    bottom: 5%;
     transform: translateX(-50%);
   }
   #skipper{
@@ -372,7 +372,7 @@ page-onboarding {
     max-width: 500px;
     min-width: 130px;
     position: absolute;
-    bottom: 10px;
+    bottom: 5%;
     left: 10px;
     border-radius: 50px;
   }
