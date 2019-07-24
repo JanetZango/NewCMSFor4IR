@@ -178,9 +178,9 @@ page-login-register {
         will-change: scroll-position;
         contain: size style layout;
     }
-    .list-md {
-        margin: -1px 0 26px;
-    }
+    // .list-md {
+    //     margin: -1px 0 26px;
+    // }
     // .inputs{
         //border-radius: 100px;
         //border: 5xp solid rgb(119, 0, 255) !important
@@ -199,8 +199,7 @@ page-login-register {
     }
     .list-md .item-input:last-child {
         border-bottom: 1px solid #dedede;
-        width: 97%;
-        left: 3%;
+       
     }
          .scroll-content {
                 left: 0;
@@ -211,7 +210,7 @@ page-login-register {
                 z-index: 1;
                 display: block;
                 overflow-x: hidden;
-                overflow-y: scroll;
+                overflow-y: hidden;
                 -webkit-overflow-scrolling: touch;
                 will-change: scroll-position;
                 contain: size style layout;
@@ -318,7 +317,7 @@ page-login-register {
                 z-index: 1;
                 display: block;
                 overflow-x: hidden;
-                overflow-y: scroll;
+                overflow-y: hidden;
                 -webkit-overflow-scrolling: touch;
                 will-change: scroll-position;
                 contain: size style layout;
