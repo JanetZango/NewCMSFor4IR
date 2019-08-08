@@ -45,7 +45,7 @@ export class OnboardingPage {
       console.log(`else`);
       slide1[0].style.display = "none"
       slide2[0].style.display = "block"
-      wave[0].style.transform = 'translate(-150px,0px)';
+      wave[0].style.transform = 'translate(-250px,0px)';
     }
   }
   nextpage2() {
@@ -66,7 +66,7 @@ export class OnboardingPage {
       console.log(`else`);
       slide2[0].style.display = "none"
       slide3[0].style.display = "block"
-      wave[0].style.transform = 'translate(-300px,0px)';
+      wave[0].style.transform = 'translate(-400px,0px)';
     }
   }
   prevpage() {
@@ -87,7 +87,7 @@ export class OnboardingPage {
       console.log(`else`);
       slide2[0].style.display = "none"
       slide1[0].style.display = "block"
-      wave[0].style.transform = 'translate(300px,0px)';
+      wave[0].style.transform = 'translate(400px,0px)';
     }
   }
   prevpage2() {
@@ -105,13 +105,13 @@ export class OnboardingPage {
       console.log(`else if`);
       slide3[0].style.display = "none"
       slide2[0].style.display = "block"
-      wave[0].style.transform = 'translate(150px,0px)';
+      wave[0].style.transform = 'translate(250px,0px)';
     }
     else {
       console.log(`else`);
       slide3[0].style.display = "none"
       slide2[0].style.display = "block"
-      wave[0].style.transform = 'translate(-300px,0px)';
+      wave[0].style.transform = 'translate(-400px,0px)';
     }
   }
 

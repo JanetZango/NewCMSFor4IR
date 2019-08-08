@@ -1,4 +1,29 @@
 page-home {
+  .topofmap{
+    height: 50%;
+    width: 100%
+  }
+  .cardoveride{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    background-image: linear-gradient(169deg, rgba(61, 61, 61, 0.06) 0%, rgba(61, 61, 61, 0.06) 50%,rgba(54, 54, 54, 0.06) 50%, rgba(54, 54, 54, 0.06) 100%),linear-gradient(70deg, rgba(64, 64, 64, 0.05) 0%, rgba(64, 64, 64, 0.05) 50%,rgba(178, 178, 178, 0.05) 50%, rgba(178, 178, 178, 0.05) 100%),linear-gradient(212deg, rgba(123, 123, 123, 0.06) 0%, rgba(123, 123, 123, 0.06) 50%,rgba(177, 177, 177, 0.06) 50%, rgba(177, 177, 177, 0.06) 100%),linear-gradient(83deg, rgba(4, 4, 4, 0.06) 0%, rgba(4, 4, 4, 0.06) 50%,rgba(202, 202, 202, 0.06) 50%, rgba(202, 202, 202, 0.06) 100%),linear-gradient(323deg, rgba(154, 154, 154, 0.01) 0%, rgba(154, 154, 154, 0.01) 50%,rgba(135, 135, 135, 0.01) 50%, rgba(135, 135, 135, 0.01) 100%),linear-gradient(346deg, rgba(41, 41, 41, 0.04) 0%, rgba(41, 41, 41, 0.04) 50%,rgba(190, 190, 190, 0.04) 50%, rgba(190, 190, 190, 0.04) 100%),linear-gradient(257deg, rgba(177, 177, 177, 0.04) 0%, rgba(177, 177, 177, 0.04) 50%,rgba(239, 239, 239, 0.04) 50%, rgba(239, 239, 239, 0.04) 100%),linear-gradient(135deg, #3dcf10,#19b250,#3a4f37);  
+    //background-color: #54894a;
+    box-shadow: 0px 15px 30px -15px rgb(0, 0, 0); 
+  }
+  .icontopnum{
+    font-size: 6em;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white
+  }
+h1{
+  font-size: 3em;
+  color: white
+}
+
   .searchbar-input-container {
     border-radius: 100px;
     overflow: hidden;
@@ -110,10 +135,15 @@ page-home {
   .side-pane {
     width: 300px;
     height: 100%;
-    background: rgb(0, 100, 172);
+    //background: #1a761e;
+    //background-image: linear-gradient(135deg, rgb(18, 88, 19),rgb(40, 226, 59));
     color: white;
     position: relative;
     left: 0;
+    background-image: linear-gradient(135deg, rgb(138, 229, 83) 0%, rgb(138, 229, 83) 22%,rgb(110, 203, 71) 22%, rgb(110, 203, 71) 28%,rgb(83, 176, 59) 28%, rgb(83, 176, 59) 72%,rgb(55, 150, 47) 72%, rgb(55, 150, 47) 100%);
+    //background-image: linear-gradient(135deg, rgb(26, 118, 30) 0%, rgb(26, 118, 30) 23%,rgb(72, 215, 80) 23%, rgb(72, 215, 80) 28%,rgb(34, 176, 39) 28%, rgb(34, 176, 39) 35%,rgb(42, 126, 41) 35%, rgb(42, 126, 41) 100%);
+    //background-image: linear-gradient(169deg, rgba(61, 61, 61, 0.06) 0%, rgba(61, 61, 61, 0.06) 50%,rgba(54, 54, 54, 0.06) 50%, rgba(54, 54, 54, 0.06) 100%),linear-gradient(70deg, rgba(64, 64, 64, 0.05) 0%, rgba(64, 64, 64, 0.05) 50%,rgba(178, 178, 178, 0.05) 50%, rgba(178, 178, 178, 0.05) 100%),linear-gradient(212deg, rgba(123, 123, 123, 0.06) 0%, rgba(123, 123, 123, 0.06) 50%,rgba(177, 177, 177, 0.06) 50%, rgba(177, 177, 177, 0.06) 100%),linear-gradient(83deg, rgba(4, 4, 4, 0.06) 0%, rgba(4, 4, 4, 0.06) 50%,rgba(202, 202, 202, 0.06) 50%, rgba(202, 202, 202, 0.06) 100%),linear-gradient(323deg, rgba(154, 154, 154, 0.01) 0%, rgba(154, 154, 154, 0.01) 50%,rgba(135, 135, 135, 0.01) 50%, rgba(135, 135, 135, 0.01) 100%),linear-gradient(346deg, rgba(41, 41, 41, 0.04) 0%, rgba(41, 41, 41, 0.04) 50%,rgba(190, 190, 190, 0.04) 50%, rgba(190, 190, 190, 0.04) 100%),linear-gradient(257deg, rgba(177, 177, 177, 0.04) 0%, rgba(177, 177, 177, 0.04) 50%,rgba(239, 239, 239, 0.04) 50%, rgba(239, 239, 239, 0.04) 100%),linear-gradient(135deg, #3dcf10,#19b250,#3a4f37);
+
   }
   .cover-image {
     width: 100%;
@@ -251,9 +281,10 @@ page-home {
   .nav-pane {
     width: 100%;
     height: 60px;
-    background: rgb(10, 132, 218);
+    //background: #54894a;
     display: flex;
     position: relative;
+    background-image: linear-gradient(135deg, rgb(26, 118, 30) 0%, rgb(26, 118, 30) 23%,rgb(72, 215, 80) 23%, rgb(72, 215, 80) 28%,rgb(34, 176, 39) 28%, rgb(34, 176, 39) 35%,rgb(42, 126, 41) 35%, rgb(42, 126, 41) 100%);
   }
   #ifSmall {
     display: none;
@@ -307,12 +338,13 @@ page-home {
     .side-pane {
       width: 300px;
       height: 100%;
-      background: rgb(0, 100, 172);
+      //background: #1a761e;
       color: white;
       z-index: 1000000000000000;
       transition: 300ms;
       position: absolute;
       left: -300px;
+     background-image: linear-gradient(135deg, rgb(138, 229, 83) 0%, rgb(138, 229, 83) 22%,rgb(110, 203, 71) 22%, rgb(110, 203, 71) 28%,rgb(83, 176, 59) 28%, rgb(83, 176, 59) 72%,rgb(55, 150, 47) 72%, rgb(55, 150, 47) 100%);
     }
     .view-pane {
       width: 100%;
@@ -390,7 +422,7 @@ page-home {
     width: 30px;
     transition: 300ms;
     line-height: 80px;
-    background: rgb(10, 132, 218);
+    background: #54894a;
     text-align: center;
     color: white;
     position: absolute;
@@ -492,8 +524,17 @@ page-home {
     padding: 15px;
   }
   #map {
+    // margin-bottom: 100px;
+    // margin-right: 16px;
+    // margin-left: 16px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: 100%;
+    height: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.288);
+    //border-radius: 20px
   }
   .card {
     width: calc(20% - 10px);

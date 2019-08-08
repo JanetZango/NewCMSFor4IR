@@ -5,6 +5,7 @@ import swal from "sweetalert";
 import Swal from "sweetalert2";
 import { log } from 'util';
 import { AddOrganizationPage } from '../add-organization/add-organization';
+import { animation } from '@angular/core/src/animation/dsl';
 
 //global declaration
 declare var google;
@@ -39,7 +40,21 @@ export class HomePage implements OnInit {
   wifiRange;
   userLocation: String;
   map;
-
+  icons = [
+    { image: 'ios-wifi',
+    name: 'Wi-Fi Hotspot '
+  },
+    {
+      image: 'ios-briefcase',
+      name: 'Jobs'
+    },
+    { image: 'pie' ,
+    name: 'Programes'
+  },
+    { image: 'ios-people', 
+    name: 'Services'
+  },
+  ]
   toggleList = "ios-arrow-back";
   icon = 'assets/imgs/wifi2.svg'
   locIcon = 'assets/imgs/loc-user.svg'
@@ -477,7 +492,7 @@ export class HomePage implements OnInit {
       "elementType": "labels.text.fill",
       "stylers": [
         {
-          "color": "#0064AC"
+          "color": "#616161"
         }
       ]
     },
@@ -495,6 +510,114 @@ export class HomePage implements OnInit {
       "stylers": [
         {
           "color": "#bdbdbd"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "visibility": "on"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural",
+      "elementType": "labels.text",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural",
+      "elementType": "labels.text.fill",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural",
+      "elementType": "labels.text.stroke",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural.landcover",
+      "elementType": "geometry",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural.landcover",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural.landcover",
+      "elementType": "geometry.stroke",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural.landcover",
+      "elementType": "labels.text",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural.landcover",
+      "elementType": "labels.text.fill",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural.landcover",
+      "elementType": "labels.text.stroke",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural.terrain",
+      "elementType": "geometry",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural.terrain",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "color": "#93b039"
         }
       ]
     },
@@ -517,6 +640,15 @@ export class HomePage implements OnInit {
       ]
     },
     {
+      "featureType": "poi.attraction",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
       "featureType": "poi.park",
       "elementType": "geometry",
       "stylers": [
@@ -527,10 +659,46 @@ export class HomePage implements OnInit {
     },
     {
       "featureType": "poi.park",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.park",
+      "elementType": "geometry.stroke",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.park",
       "elementType": "labels.text.fill",
       "stylers": [
         {
           "color": "#9e9e9e"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.sports_complex",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.sports_complex",
+      "elementType": "geometry.stroke",
+      "stylers": [
+        {
+          "color": "#93b039"
         }
       ]
     },
@@ -557,7 +725,7 @@ export class HomePage implements OnInit {
       "elementType": "geometry",
       "stylers": [
         {
-          "color": "#dadada"
+          "color": "#d1e2d1"
         }
       ]
     },
@@ -602,7 +770,7 @@ export class HomePage implements OnInit {
       "elementType": "geometry",
       "stylers": [
         {
-          "color": "#c9c9c9"
+          "color": "#99e4fd"
         }
       ]
     },
@@ -615,5 +783,25 @@ export class HomePage implements OnInit {
         }
       ]
     }
+
   ]
+
+
+
+  animation(){
+    const img = document.querySelectorAll('.anim');
+
+  //   observer = new IntersectionObserver((entries)=>{
+  //     entries.forEach(entry =>{
+  //     if (entry.intersectionRation > 0) {
+  //       entry.target.style.animation ='anim1 2s forwards ease-out';
+  //     } else {
+  //       entry.target.style.animation = 'none'
+  //     }
+  //   })
+  // })
+  // img.forEach(img =>{
+  //   observer.observer(img)
+  // })
+   }
 }
