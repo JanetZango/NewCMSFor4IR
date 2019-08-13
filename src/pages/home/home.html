@@ -110,44 +110,34 @@
       <div class="switch-box">
         <div class="view" id="pg1">
             <div #map id="map"></div>
+            <!-- <div style="display: flex">
           <div class="topofmap">
             <ion-grid>
               <ion-row>
-                <ion-col col-3>
-                    <div class="cardoveride">
+                <ion-col col-6 align-self-center *ngFor="let a of icons">
+                    <div padding class="cardoveride">
                       <ion-row>
-                          <ion-col>
-                              <ion-icon class="icontopnum" name="add-circle"></ion-icon>
+                          <ion-col col-6 align-self-center>
+                              <ion-icon class="icontopnum" name="{{a.image}}"></ion-icon>
                             </ion-col>
-                            <ion-col>
-<h1>45</h1>
+                            <ion-col col-6 text-center align-self-center>
+                              <h1 >45</h1>
                               </ion-col>
-                      </ion-row>
-                    <ion-col>
-
-                    </ion-col>
-                      </div>
-                </ion-col>
-                <ion-col col-3> 
-                    <div class="cardoveride">
-                    
-                      </div>
-                  </ion-col>
-                  <ion-col col-3>
-                      <div class="cardoveride">
-                    
-                        </div>
-                    </ion-col >
-                    <ion-col col-3>
-                        <div class="cardoveride">
-                    
-                        </div>
+                              <hr>
+                      <ion-col text-center col-12 align-self-center>
+                        <h1>{{a.name}}</h1>
                       </ion-col>
-              </ion-row>
+                      </ion-row>
+                      </div>
+                    </ion-col>
+                    </ion-row>
             </ion-grid>
 
           </div>
-          
+          <div class="leftside">
+sdfsdfsdf dfsdfsdfs
+          </div>
+        </div> -->
         </div>
         <div class="view" id="pg2">
           <ion-fab bottom right (click)="add('Services')">

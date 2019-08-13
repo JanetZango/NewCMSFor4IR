@@ -1,7 +1,14 @@
 page-home {
+  .leftside{
+    height: 50%;
+    width: 50%;
+    background-color: #f7b71d;
+    margin: 16px;
+    border-radius: 15px;
+  }
   .topofmap{
     height: 50%;
-    width: 100%
+    width: 50%
   }
   .cardoveride{
     width: 100%;
@@ -12,7 +19,7 @@ page-home {
     box-shadow: 0px 15px 30px -15px rgb(0, 0, 0); 
   }
   .icontopnum{
-    font-size: 6em;
+    font-size: 5em;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -20,7 +27,7 @@ page-home {
     color: white
   }
 h1{
-  font-size: 3em;
+  font-size: 2.3em;
   color: white
 }
 
@@ -532,7 +539,7 @@ h1{
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 50%;
+    height: 100%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.288);
     //border-radius: 20px
   }
