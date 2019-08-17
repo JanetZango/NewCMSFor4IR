@@ -1,5 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { LoadingController, AlertController, Alert } from "ionic-angular";
+import { LAZY_LOADED_TOKEN } from 'ionic-angular/umd/util/module-loader';
 
 declare var firebase;
 declare var google;
@@ -201,6 +202,7 @@ export class HubsProvider {
                 website: displayDetails[keys[x]].website,
                 wifi: displayDetails[keys[x]].wifi,
                 wifiRange: displayDetails[keys[x]].wifiRange,
+                user:user.uid
             
               }
               this.storeOrgNames(displayDetails[keys[x]].category);
@@ -220,15 +222,19 @@ export class HubsProvider {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser;
-        firebase.database().ref("Organizations/" + user.uid).on("value", (data: any) => {
-          if (data.val() != null) {
-            this.orgArray.length = 0;
-            this.orgNames.length = 0;
-            let displayDetails = data.val();
-            console.log(displayDetails)
-            resolve(displayDetails)
+          firebase.database().ref("Organizations" + user.uid).on("value", (data: any) => {
+            if( user == user.uid){
+            if (data.val() != null) {
+              this.orgArray.length = 0;
+              this.orgNames.length = 0;
+              let displayDetails = data.val();
+              console.log(displayDetails)
+              resolve(displayDetails)
+            }
           }
-        });
+          });
+        
+      
       })
     })
   }
@@ -419,7 +425,7 @@ export class HubsProvider {
   }
 
 
-  addPrograme(openDate, closeDate, progName, progType, progBackround, benefits, desc, progStartDate, progEndDate, address, contacts, img) {
+  addPrograme(openDate, closeDate, progName, progType, background, benefits, desc, progStartDate, progEndDate, address, contact, downloadurlLogo,lat,long) {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser
@@ -429,15 +435,18 @@ export class HubsProvider {
           progName: progName,
           category:"programmes",
           progType: progType,
-          progBackround: progBackround,
+          background: background,
           benefits: benefits,
           desc: desc,
           progStartDate: progStartDate,
           progEndDate: progEndDate,
           address: address,
-          contacts: contacts,
-          img: img,
-          user:user.uid
+          contact: contact,
+          downloadurlLogo: downloadurlLogo,
+          user:user.uid,
+          lat:lat,
+          long:long,
+
         })
         resolve();
       })
@@ -449,7 +458,7 @@ export class HubsProvider {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser;
-        firebase.database().ref("programmes/" + user.uid).on("value", (data: any) => {
+        firebase.database().ref("Organizations").on("value", (data: any) => {
           if (data.val() != undefined) {
             var progs = new Array();
             var details = data.val();
@@ -469,8 +478,10 @@ export class HubsProvider {
                 address: details[k].address,
                 contacts: details[k].contacts,
                 img: details[k].img,
+                user:user.uid
               }
               progs.push(progObject)
+              console.log(progs)
             }
             resolve(progs);
           }

@@ -77,20 +77,21 @@ export class HomePage implements OnInit {
 
     this.hubs.displayOnMAP().then((data:any) => {
       this.displayOrg = data
+      console.log(this.displayOrg)
 
-      this.name = data.name
-      this.address = data.address
-      this.lat = data.lat;
-      this.background = data.background
-      this.category = data.category;
-      this.downloadurl =data.downloadurl;
-      this.downloadurlLogo = data.downloadurlLogo;
-      this.wifi = data.wifi;
-      this.long = data.long;
-      this.email = data.email;
-      this.contact = data.contact
-      this.key = data.id
-      console.log(this.name)
+      // this.name = data.name
+      // this.address = data.address
+      // this.lat = data.lat;
+      // this.background = data.background
+      // this.category = data.category;
+      // this.downloadurl =data.downloadurl;
+      // this.downloadurlLogo = data.downloadurlLogo;
+      // this.wifi = data.wifi;
+      // this.long = data.long;
+      // this.email = data.email;
+      // this.contact = data.contact
+      // this.key = data.id
+      // console.log(this.name)
     })
 
 
@@ -109,21 +110,15 @@ export class HomePage implements OnInit {
   getallorg() {
     this.hubs.getAllOrganizations().then((data: any) => {
       this.getOrgArry = data
-      // console.log(this.getOrgArry)
+      console.log(this.getOrgArry)
       var names = this.hubs.getOrgNames()
       this.storeOrgNames(names)
-      // this.name = this.getOrgArry[0].name
-      // this.address = this.getOrgArry[0].address
-      // this.lat = this.getOrgArry[0].lat;
-      // this.background = this.getOrgArry[0].background
-      // this.category = this.getOrgArry[0].category;
-      // this.downloadurl = this.getOrgArry[0].downloadurl;
-      // this.downloadurlLogo = this.getOrgArry[0].downloadurlLogo;
-      // this.wifi = this.getOrgArry[0].wifi;
-      // this.long = this.getOrgArry[0].long;
-      // this.email = this.getOrgArry[0].email;
-      // this.contact = this.getOrgArry[0].contact
-      // this.key = this.getOrgArry[0].id
+    })
+  }
+
+  getallProg(){
+    this.hubs.getPrograme().then((data)=>{
+      console.log(data)
     })
   }
 

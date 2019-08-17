@@ -24,6 +24,7 @@ export class AddOrganizationPage {
   // first slider varables
   orgName;
   orgAdress;
+  // progAddress;
   orgPhone;
   orgWebsite;
   orgDescription;
@@ -229,53 +230,15 @@ export class AddOrganizationPage {
 
       // this.alert("Please complete all details")
     }
-    this.hubs.addOrganisation(this.email, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgPhone, this.category, this.orgName, this.orgDescription, this.orgAdress, this.offerWifi, this.wifi, this.chooseWifiRange, this.orgWebsite).then(() => {
+    this.hubs.addOrganisation(this.email, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgPhone, this.category, this.orgName, this.orgDescription, this.progAddress, this.offerWifi, this.wifi, this.chooseWifiRange, this.orgWebsite).then(() => {
       console.log("added ");
       this.navCtrl.push(HomePage);
     })
   }
 
-  //getaddress
-  setAddress(event) {
-    if (this.orgAdress != undefined) {
-      this.getcoo(this.orgAdress).then((data: any) => {
-        this.orgAddressObject = data;
-        this.checkAddress = 0
+  
 
-        console.log(this.orgAddressObject);
-      }, Error => {
-        this.checkAddress = 1;
-        console.log(this.checkAddress);
-      })
-    }
-  }
-
-  //getCoordinates
-  getcoo(address) {
-    return new Promise((accpt, rej) => {
-      this.ngzone.run(() => {
-        let geocoder = new google.maps.Geocoder();
-        geocoder.geocode({ address: address }, function (results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            var arr = results[0].address_components;
-            var arr2 = arr[3];
-            this.latitude = results[0].geometry.location.lat();
-            this.longitude = results[0].geometry.location.lng();
-            let position = {
-              lat: results[0].geometry.location.lat(),
-              lng: results[0].geometry.location.lng(),
-              city: arr2.long_name
-            };
-            accpt(position);
-            console.log(position)
-          }
-          else {
-            rej('')
-          }
-        });
-      });
-    });
-  }
+  
 
   //check wifi state
   checkWifi() {
@@ -433,39 +396,12 @@ export class AddOrganizationPage {
       this.showMallServices = false;
       this.showOther = false;
     }
-    // } else if (this.category == "Other") {
-    //   this.showCoffeeShopServices = false;
-    //   this.showlearningCenterServices = false;
-    //   this.showinternetCafeServices = false;
-    //   this.showLibaryServices = false;
-    //   this.showheiServices = false;
-    //   this.showheiServices = false;
-    //   this.showMallServices = false;
-    //   this.showOther = true;
-    // }
+ 
   }
 
   RegistrationType() {
     alert(this.program)
-    // if(this.program != undefined){
-    //   var decider = document.getElementsByClassName("decider") as HTMLCollectionOf <HTMLElement>
-
-    //   decider[0].style.display = "none"
-    // }
-    // if (this.program == undefined) {
-    //   if (this.pushid == "1") {
-    //     this.showRegistionProgs = false;
-    //     this.showRegistionOrgs = true;
-    //     this.hideRegisterAs = true
-    //     thePlaceholder.style.display = "none"
-    //   } else {
-    //     this.showRegistionProgs = false;
-    //     this.showRegistionOrgs = true;
-    //     this.hideRegisterAs = true
-    //     thePlaceholder.style.display = "none"
-
-    //   }
-    // }
+ 
 
     var thePlaceholder = document.getElementById("placeholderDiv");
     if (this.program == "Organisation") {
@@ -488,109 +424,7 @@ export class AddOrganizationPage {
     }
   }
 
-  // moveToPage2() {
 
-  //   // this.phonenumberValidatin();
-  //   var progBar = document.getElementById("theDot");
-  //   // this.is_urlValidation(this.orgWebsite);
-  //   // if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
-  //   //   this.alert("Please complete all details ")
-  //   // } else if (this.orgName == undefined) {
-  //   //   this.alert("Enter organisation Name ")
-  //   // } else if (this.orgAdress == undefined) {
-  //   //   this.alert("Enter Address  ")
-  //   // } else if (this.contactValidation == 1) {
-  //   //   this.alert("The phone numbers you have entered is invalid, please enter a valid phone numbers  ")
-  //   // } else if (this.websiteValidation == 1) {
-  //   //   this.alert("The website address you have entered is invalid, please enter a valid website address ")
-  //   // } else if (this.checkAddress == 1) {
-  //   //   this.alert("The address you have entered is invalid, please enter a valid address ")
-  //   // }
-  //   // else if (this.orgPhone == undefined) {
-  //   //   this.alert("Enter Phone numbers  ")
-  //   // } else if (this.orgDescription == undefined) {
-  //   //   this.alert("Enter Phone numbers  ")
-
-  //   // } else {
-
-  //     var toSlide = document.getElementById("page1");
-  //     toSlide.style.marginLeft = "-25%";
-  //     // this.progressBar = this.progressBar + 25
-  //     progBar.style.width = "50%";
-  //   }
-
-  // moveToPage3() {
-
-
-  //   var progBar = document.getElementById("theDot");
-
-
-  //   if (this.offerWifi == "No") {
-  //     if (this.wifi == undefined) {
-  //       this.wifi = "No"
-  //     } if (this.chooseWifiRange == undefined) {
-  //       this.chooseWifiRange = "No"
-  //     }
-
-  //   }
-
-  //   if (this.offerWifi != undefined) {
-  //     if (this.wifi != undefined && this.chooseWifiRange != undefined) {
-  //       var toSlide = document.getElementById("page1");
-  //       toSlide.style.marginLeft = "-50%";
-  //       this.progressBar = this.progressBar + 25;
-  //       progBar.style.width = "75%";
-  //     } else {
-  //       alert("Please complete all details")
-  //     }
-
-  //   }
-
-  //   else {
-
-  //     alert("Please complete all details")
-  //   }
-
-
-
-  // }
-
-
-  // moveToPage4() {
-
-  //   var progBar = document.getElementById("theDot");
-  //   // if (this.category != undefined && this.catService.length != 0) {
-  //     console.log(this.catService);
-
-
-  //     var toSlide = document.getElementById("page1");
-  //     toSlide.style.marginLeft = "-75%";
-  //     this.progressBar = this.progressBar + 25;
-  //     progBar.style.width = "100%";
-  //   // } else {
-  //   //   alert("Complete all the Details ")
-  //   // }
-
-  // }
-
-  // backToPage3() {
-  //   var progressBar = document.getElementById("theDot");
-  //   var toSlide = document.getElementById("page1");
-  //   toSlide.style.marginLeft = "-50%";
-  //   progressBar.style.width = "75%"
-  // }
-  // backToPage2() {
-  //   var progressBar = document.getElementById("theDot");
-  //   var toSlide = document.getElementById("page1");
-  //   toSlide.style.marginLeft = "-25%";
-  //   progressBar.style.width ="50%"
-  // }
-  // backToPage1() {
-  //   var progressBar = document.getElementById("theDot");
-  //   var toSlide = document.getElementById("page1");
-  //   toSlide.style.marginLeft = "0%";
-  //   progressBar.style.width ="25%"
-  // }
   downloadurl = "../../assets/imgs/Cover Image.jpg";
   insertpic(event: any) {
     if (event.target.files && event.target.files[0]) {
@@ -616,9 +450,51 @@ export class AddOrganizationPage {
       }
   
 
+//getaddress
+setAddress(event) {
+  if (this.progAddress != undefined) {
+    this.getcoo(this.progAddress).then((data: any) => {
+      this.orgAddressObject = data;
+      this.checkAddress = 0
+
+      console.log(this.orgAddressObject);
+    }, Error => {
+      this.checkAddress = 1;
+      console.log(this.checkAddress);
+    })
+  }
+}
+
+//getCoordinates
+getcoo(address) {
+  return new Promise((accpt, rej) => {
+    this.ngzone.run(() => {
+      let geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ address: address }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          var arr = results[0].address_components;
+          var arr2 = arr[3];
+          this.latitude = results[0].geometry.location.lat();
+          this.longitude = results[0].geometry.location.lng();
+          let position = {
+            lat: results[0].geometry.location.lat(),
+            lng: results[0].geometry.location.lng(),
+            city: arr2.long_name
+          };
+          accpt(position);
+          console.log(position)
+        }
+        else {
+          rej('')
+        }
+      });
+    });
+  });
+}
+
 
   addProg(){
-    this.hubs.addPrograme(this.progApplicationOpen,this.progApplicationClose,this.progName,this.progOptions,this.progbackground,this.progBenfits,this.progDescription,this.progStartDate,this.progEndDate,this.progAddress,this.progPhone,this.downloadurl).then(()=>{
+    this.hubs.addPrograme(this.progApplicationOpen,this.progApplicationClose,this.progName,this.progOptions,this.progbackground,this.progBenfits,this.progDescription,this.progStartDate,this.progEndDate,this.progAddress,this.progPhone,this.downloadurl,this.orgAddressObject.lat, this.orgAddressObject.lng).then(()=>{
       alert('prog added')
       this.navCtrl.pop();
     })
