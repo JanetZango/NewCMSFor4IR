@@ -153,7 +153,7 @@ export class HubsProvider {
     })
   }
 
-  getUserProfile1(userName,userSurname,userEmail,userPosition){
+  getUserProfile(userName,userSurname,userEmail,userPosition){
     var user = firebase.auth().currentUser;
     return new Promise((resolve, reject) => {
       firebase
