@@ -1,6 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
 import { LoadingController, AlertController, Alert } from "ionic-angular";
-import { LAZY_LOADED_TOKEN } from 'ionic-angular/umd/util/module-loader';
 
 declare var firebase;
 declare var google;
@@ -19,6 +18,8 @@ export class HubsProvider {
   orgArray = new Array();
   orgNames = new Array();
   orgProfile = new Array();
+  getprog = new Array();
+  getallhub = new Array();
   constructor(public ngzone: NgZone, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
     console.log('Hello HubsProvider Provider');
   }
@@ -130,8 +131,8 @@ export class HubsProvider {
     return new Promise((resolve, reject) => {
       firebase
         .database()
-        .ref("Organizations/")
-        .push({
+        .ref("Organizations/" + user.uid)
+        .set({
           name: Orgname,
           email: email,
           contact: cell,
@@ -147,7 +148,6 @@ export class HubsProvider {
           downloadurl: "assets/download.png",
           downloadurlLogo: "assets/download.png",
           address: address,
-          user:user.uid
         });
       resolve()
     })
@@ -171,12 +171,12 @@ export class HubsProvider {
     })
   }
 
-  //retrieve organization
+
   getAllOrganizations() {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser;
-        firebase.database().ref("Organizations").on("value", (data: any) => {
+        firebase.database().ref("Organizations/" + user.uid).on("value", (data: any) => {
           if (data.val() != null) {
             this.orgArray.length = 0;
             this.orgNames.length = 0;
@@ -184,33 +184,32 @@ export class HubsProvider {
             console.log(displayDetails)
             let keys = Object.keys(displayDetails);
             console.log(keys)
-            for (var x = 0; x < keys.length; x++) {
+              var k = keys[0];
               let orgObject = {
-                address: displayDetails[keys[x]].address,
-                background: displayDetails[keys[x]].background,
-                category: displayDetails[keys[x]].category,
-                contact: displayDetails[keys[x]].contact,
-                downloadurl: displayDetails[keys[x]].downloadurl,
-                downloadurlLogo: displayDetails[keys[x]].downloadurlLogo,
-                email: displayDetails[keys[x]].email,
-                freeWifi: displayDetails[keys[x]].freeWifi,
-                name: displayDetails[keys[x]].name,
-                lat: displayDetails[keys[x]].lat,
-                long: displayDetails[keys[x]].long,
-                id: keys[x],
-                region: displayDetails[keys[x]].region,
-                website: displayDetails[keys[x]].website,
-                wifi: displayDetails[keys[x]].wifi,
-                wifiRange: displayDetails[keys[x]].wifiRange,
-                user:user.uid
+                address: displayDetails.address,
+                background: displayDetails.background,
+                category: displayDetails.category,
+                contact: displayDetails.contact,
+                downloadurl: displayDetails.downloadurl,
+                downloadurlLogo: displayDetails.downloadurlLogo,
+                email: displayDetails.email,
+                freeWifi: displayDetails.freeWifi,
+                name: displayDetails.name,
+                lat: displayDetails.lat,
+                long: displayDetails.long,
+                region: displayDetails.region,
+                website: displayDetails.website,
+                wifi: displayDetails.wifi,
+                wifiRange: displayDetails.wifiRange,
             
               }
-              this.storeOrgNames(displayDetails[keys[x]].category);
+              console.log(orgObject)
+              this.storeOrgNames(displayDetails.category);
               this.orgArray.push(orgObject)
               console.log(this.orgArray)
             }
             resolve(this.orgArray)
-          }
+          // }
         });
       })
     })
@@ -219,25 +218,61 @@ export class HubsProvider {
 
 
   displayOnMAP() {
-    return new Promise((resolve, reject) => {
-      this.ngzone.run(() => {
-        var user = firebase.auth().currentUser;
-          firebase.database().ref("Organizations" + user.uid).on("value", (data: any) => {
-            if( user == user.uid){
-            if (data.val() != null) {
-              this.orgArray.length = 0;
-              this.orgNames.length = 0;
-              let displayDetails = data.val();
-              console.log(displayDetails)
-              resolve(displayDetails)
-            }
-          }
-          });
-        
-      
-      })
-    })
+		return new Promise((resolve, reject) => {
+			this.ngzone.run(() => {
+			// this.getTruckArray.length =0;
+			var user = firebase.auth().currentUser.uid;
+			firebase.database().ref('4IRHubs/').on('value', (data: any) => {
+				this.getprog.length =0;
+				var UploadDetails = data.val();
+				console.log(UploadDetails);
+				var k2 = Object.keys(UploadDetails);
+				for(var i =0 ;i<k2.length;i++){
+					var key2 = k2[i];
+					if (UploadDetails[key2].uid == user.uid) {
+						let obj = {
+							img: UploadDetails[key2].img,
+							progName: UploadDetails[key2].progName,
+							uid: UploadDetails[key2].user
+						};
+						console.log(obj);
+						this.getprog.push(obj);
+						console.log(this.getprog);
+					}
+				}
+			});
+			resolve(this.getprog);
+		});
+		});
   }
+
+  
+  getallhubs() {
+		return new Promise((resolve, reject) => {
+			this.ngzone.run(() => {
+			var user = firebase.auth().currentUser.uid;
+			firebase.database().ref("4IRHubs/").on('value', (data: any) => {
+				this.getprog.length =0;
+				var UploadDetails = data.val();
+				console.log(UploadDetails);
+				var k2 = Object.keys(UploadDetails);
+				for(var i =0 ;i<k2.length;i++){
+					var key2 = k2[i];
+						let obj = {
+							img: UploadDetails[key2].img,
+							name: UploadDetails[key2].name,
+							uid: UploadDetails[key2].user
+						};
+						console.log(obj);
+						this.getallhub.push(obj);
+						console.log(this.getallhub);		
+				}
+			});
+			resolve(this.getallhub);
+		});
+		});
+  }
+
 
 
 
@@ -425,15 +460,14 @@ export class HubsProvider {
   }
 
 
-  addPrograme(openDate, closeDate, progName, progType, background, benefits, desc, progStartDate, progEndDate, address, contact, downloadurlLogo,lat,long) {
+  addPrograme(openDate, closeDate, name, progType, background, benefits, desc, progStartDate, progEndDate, address, contacts, img,lat,long) {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser
-        firebase.database().ref("Organizations/").push({
+        firebase.database().ref("4IRHubs").push({
           openDate: openDate,
           closeDate: closeDate,
-          progName: progName,
-          category:"programmes",
+          name: name,
           progType: progType,
           background: background,
           benefits: benefits,
@@ -441,12 +475,11 @@ export class HubsProvider {
           progStartDate: progStartDate,
           progEndDate: progEndDate,
           address: address,
-          contact: contact,
-          downloadurlLogo: downloadurlLogo,
-          user:user.uid,
+          contacts: contacts,
+          img: img,
           lat:lat,
           long:long,
-
+          user : user.uid
         })
         resolve();
       })
@@ -458,7 +491,7 @@ export class HubsProvider {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser;
-        firebase.database().ref("Organizations").on("value", (data: any) => {
+        firebase.database().ref("programmes/" + user.uid).on("value", (data: any) => {
           if (data.val() != undefined) {
             var progs = new Array();
             var details = data.val();
@@ -478,10 +511,8 @@ export class HubsProvider {
                 address: details[k].address,
                 contacts: details[k].contacts,
                 img: details[k].img,
-                user:user.uid
               }
               progs.push(progObject)
-              console.log(progs)
             }
             resolve(progs);
           }
