@@ -14,7 +14,7 @@ import { OnboardingPage } from '../pages/onboarding/onboarding';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any ;
+  rootPage:any;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public hubs: HubsProvider) {
     platform.ready().then(() => {

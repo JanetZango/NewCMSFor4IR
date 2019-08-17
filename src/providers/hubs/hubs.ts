@@ -1,4 +1,3 @@
-
 import { Injectable, NgZone } from '@angular/core';
 import { LoadingController, AlertController, Alert } from "ionic-angular";
 
@@ -130,7 +129,7 @@ export class HubsProvider {
     return new Promise((resolve, reject) => {
       firebase
         .database()
-        .ref("Organizations/" + user.uid)
+        .ref("Organizations/")
         .push({
           name: Orgname,
           email: email,
@@ -147,12 +146,29 @@ export class HubsProvider {
           downloadurl: "assets/download.png",
           downloadurlLogo: "assets/download.png",
           address: address,
+          user:user.uid
         });
       resolve()
     })
   }
 
- 
+  getUserProfile1(userName,userSurname,userEmail,userPosition){
+    var user = firebase.auth().currentUser;
+    return new Promise((resolve, reject) => {
+      firebase
+        .database()
+        .ref("UserProfileForOrg/" + user.uid)
+        .push({
+          userName: userName,
+          userSurname: userSurname,
+          userEmail: userEmail,
+          userPosition:userPosition,
+          downloadurl: "assets/download.png",
+      
+        });
+      resolve()
+    })
+  }
 
   //retrieve organization
   getAllOrganizations() {
@@ -161,80 +177,62 @@ export class HubsProvider {
         var user = firebase.auth().currentUser;
         firebase.database().ref("Organizations").on("value", (data: any) => {
           if (data.val() != null) {
-            let details = data.val();
-            let keys = Object.keys(details);
+            this.orgArray.length = 0;
+            this.orgNames.length = 0;
+            let displayDetails = data.val();
+            console.log(displayDetails)
+            let keys = Object.keys(displayDetails);
+            console.log(keys)
             for (var x = 0; x < keys.length; x++) {
-              firebase.database().ref("Organizations/" + keys[x]).on("value", (data2: any) => {
-                let displayDetails = data2.val();
-                console.log(displayDetails)
-                let keys2 = Object.keys(displayDetails);
-                console.log(keys2)
-                let k = keys2[x]
-                let orgObject = {
-                  address: displayDetails[k].address,
-                  background: displayDetails[k].background,
-                  category: displayDetails[k].category,
-                  contact: displayDetails[k].contact,
-                  downloadurl: displayDetails[k].downloadurl,
-                  downloadurlLogo: displayDetails[k].downloadurlLogo,
-                  email: displayDetails[k].email,
-                  freeWifi: displayDetails[k].freeWifi,
-                  name: displayDetails[k].name,
-                  lat: displayDetails[k].lat,
-                  long: displayDetails[k].long,
-                  id: k,
-                  region: displayDetails[k].region,
-                  website: displayDetails[k].website,
-                  wifi: displayDetails[k].wifi,
-                  wifiRange: displayDetails[k].wifiRange,
-                }
-                this.storeOrgNames(displayDetails[k].programCategory);
-                this.orgArray.push(orgObject)
-                console.log(this.orgArray)
-              })
-              resolve(this.orgArray)
+              let orgObject = {
+                address: displayDetails[keys[x]].address,
+                background: displayDetails[keys[x]].background,
+                category: displayDetails[keys[x]].category,
+                contact: displayDetails[keys[x]].contact,
+                downloadurl: displayDetails[keys[x]].downloadurl,
+                downloadurlLogo: displayDetails[keys[x]].downloadurlLogo,
+                email: displayDetails[keys[x]].email,
+                freeWifi: displayDetails[keys[x]].freeWifi,
+                name: displayDetails[keys[x]].name,
+                lat: displayDetails[keys[x]].lat,
+                long: displayDetails[keys[x]].long,
+                id: keys[x],
+                region: displayDetails[keys[x]].region,
+                website: displayDetails[keys[x]].website,
+                wifi: displayDetails[keys[x]].wifi,
+                wifiRange: displayDetails[keys[x]].wifiRange,
+            
+              }
+              this.storeOrgNames(displayDetails[keys[x]].category);
+              this.orgArray.push(orgObject)
+              console.log(this.orgArray)
             }
+            resolve(this.orgArray)
           }
-        })
+        });
       })
     })
   }
 
 
-    //retrieve userProfile
-    getUserProfile() {
-      return new Promise((resolve, reject) => {
-        this.ngzone.run(() => {
-          var user = firebase.auth().currentUser;
-          firebase.database().ref("UserProfileForOrg").on("value", (data: any) => {
-            if (data.val() != null) {
-              let details = data.val();
-              let keys = Object.keys(details);
-              for (var x = 0; x < keys.length; x++) {
-                firebase.database().ref("UserProfileForOrg/" + keys[x]).on("value", (data2: any) => {
-                  let displayDetails = data2.val();
-                  console.log(displayDetails)
-                  let keys2 = Object.keys(displayDetails);
-                  console.log(keys2)
-                  let k = keys2[x]
-                  let orgObject = {
-                    downloadurl: displayDetails[k].downloadurl,
-                    userEmail: displayDetails[k].userEmail,
-                    userName: displayDetails[k].userName,
-                    userPosition: displayDetails[k].userPosition,
-                    userSurname: displayDetails[k].userSurname,
-                   
-                  }
-                  this.orgProfile.push(orgObject)
-                  console.log(this.orgProfile)
-                })
-                resolve(this.orgProfile)
-              }
-            }
-          })
-        })
+
+  displayOnMAP() {
+    return new Promise((resolve, reject) => {
+      this.ngzone.run(() => {
+        var user = firebase.auth().currentUser;
+        firebase.database().ref("Organizations/" + user.uid).on("value", (data: any) => {
+          if (data.val() != null) {
+            this.orgArray.length = 0;
+            this.orgNames.length = 0;
+            let displayDetails = data.val();
+            console.log(displayDetails)
+            resolve(displayDetails)
+          }
+        });
       })
-    }
+    })
+  }
+
 
 
   //getcurrentProfile
@@ -247,15 +245,13 @@ export class HubsProvider {
   }
 
   //updateOrganization
-  update(name,email,downloadurlLogo,address,contact,background,key) {
+  update(name,downloadurlLogo,contact,background) {
     return new Promise((pass, fail) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser
-        firebase.database().ref("Organizations/" + user.uid + "/" + key).update({
+        firebase.database().ref("Organizations/" + user.uid).update({
           name: name,
-          email: email,
           downloadurlLogo: downloadurlLogo,
-          address: address,
           contact: contact,
           background:background
         });
@@ -274,18 +270,6 @@ export class HubsProvider {
   }
 
 
-  //forgotpassword
-  // forgetPassword(email) {
-  //   return new Promise((resolve, reject) => {
-  //     firebase.auth().sendPasswordResetEmail(email).then(() => {
-  //       resolve();
-  //     }, (error) => {
-  //       reject(error)
-  //     })
-
-  //   })
-
-  // }
 
   //createradius
   createPositionRadius(latitude, longitude) {
@@ -439,10 +423,11 @@ export class HubsProvider {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser
-        firebase.database().ref("programmes/" + user.uid).set({
+        firebase.database().ref("Organizations/").push({
           openDate: openDate,
           closeDate: closeDate,
           progName: progName,
+          category:"programmes",
           progType: progType,
           progBackround: progBackround,
           benefits: benefits,
@@ -451,7 +436,8 @@ export class HubsProvider {
           progEndDate: progEndDate,
           address: address,
           contacts: contacts,
-          img: img
+          img: img,
+          user:user.uid
         })
         resolve();
       })
@@ -494,11 +480,11 @@ export class HubsProvider {
   }
 
 
-  addJob(openDate, closeDate, address, desc, benefits, jobStartdate, jobEndDate, contact, img) {
+  addJob(name,openDate, closeDate, address, desc, benefits, jobStartdate, jobEndDate, contact, img) {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser
-        firebase.database().ref("jobs/" + user.uid).set({
+        firebase.database().ref("jobs/" + user.uid).push({
           openDate: openDate,
           closeDate: closeDate,
           address: address,
@@ -507,7 +493,8 @@ export class HubsProvider {
           jobStartdate: jobStartdate,
           jobEndDate: jobEndDate,
           img: img,
-          contact: contact
+          contact: contact,
+          name : name
         })
         resolve();
       })
@@ -536,6 +523,7 @@ export class HubsProvider {
                 address: details[k].address,
                 contacts: details[k].contacts,
                 img: details[k].img,
+                name : details[k].name
               }
               jobs.push(jobObject)
             }
@@ -547,17 +535,19 @@ export class HubsProvider {
   }
 
 
-  addService(openDate, closeDate, address, serviceName, contact, desc, img) {
+  addService(email,openDate, closeDate, address, serviceName, contact, desc, img) {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser
-        firebase.database().ref("services/" + user.uid).set({
+        firebase.database().ref("services/" + user.uid).push({
           openDate: openDate,
+          email:email,
           closeDate: closeDate,
           address: address,
           desc: desc,
           img: img,
-          contact: contact
+          contact: contact,
+          name : serviceName
         })
         resolve();
       })
@@ -580,9 +570,10 @@ export class HubsProvider {
                 closeDate: details[k].closeDate,
                 desc: details[k].desc,
                 address: details[k].address,
-                contacts: details[k].contacts,
+                contacts: details[k].contact,
                 img: details[k].img,
-                serviceName: details[k].serviceName
+                serviceName: details[k].name,
+                email: details[k].email
               }
               services.push(serviceObject)
             }

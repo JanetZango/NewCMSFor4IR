@@ -282,7 +282,7 @@ page-forms {
   
       .dots {
         width        : 30%;
-        height       : 14px;
+        height       : 8px;
         position     : absolute;
         z-index      : 999;
         border-radius: 20px;
@@ -294,7 +294,7 @@ page-forms {
   
         #theDot {
           width        : 25%;
-          height       : 10px;
+          height       : 4px;
           border-radius: 20px;
           background   : rgb(0, 100, 172);
           transition   :300ms;
@@ -775,7 +775,7 @@ page-forms {
 
     .dots {
       width: 30%;
-      height: 14px;
+      height: 8px;
       position: absolute;
       z-index: 999;
       border-radius: 20px;
@@ -787,7 +787,7 @@ page-forms {
 
       #theDot {
         width: 25%;
-        height: 10px;
+        height: 4px;
         border-radius: 20px;
         background: rgb(14, 142, 233);
         transition:300ms;
@@ -883,12 +883,15 @@ page-forms {
     resize: none;
     width: 80%;
     height: 80px;
-    margin-top: 20px;
+    margin-top: -10px;
     margin-left: 50%;
     transform: translateX(-50%);
     background: whitesmoke;
     border-radius: 20px;
     padding: 10px;
+  }
+  #orgDescription{
+    display: block
   }
 
   #orgDesc1 {
@@ -1294,12 +1297,12 @@ page-forms {
     #movetopage2 {
       position: absolute;
       right: 5px;
-      bottom: 15px;
+      bottom: 8px;
     }
     .theButtonBack{
       position: absolute;
       left: 5px;
-      bottom: 15px;
+      bottom: 8px;
     }
   }
   input[type="email"] {
@@ -1316,6 +1319,13 @@ page-forms {
     position: absolute;
     bottom: 30px;
     right: 20px;
+  }
+  #pleaseConfirm{
+    font-weight: bold;
+  }
+  #kindly-fill{
+    font-weight: bold;
+    font-size: 16px;
   }
 
   .inputText,

@@ -3,6 +3,9 @@ import { NavController, LoadingController, AlertController, ToastController } fr
 import { HubsProvider } from '../../providers/hubs/hubs'
 import swal from "sweetalert";
 import Swal from "sweetalert2";
+import { log } from 'util';
+import { AddOrganizationPage } from '../add-organization/add-organization';
+import { animation } from '@angular/core/src/animation/dsl';
 
 //global declaration
 declare var google;
@@ -18,7 +21,7 @@ export class HomePage implements OnInit {
   orgNames = new Array();
   updateOrganization = new Array();
   getUserProfile = new Array();
-
+  displayOrg = new Array();
   //variables
   lat = -26.2620;
   name;
@@ -37,7 +40,21 @@ export class HomePage implements OnInit {
   wifiRange;
   userLocation: String;
   map;
-
+  icons = [
+    { image: 'ios-wifi',
+    name: 'Wi-Fi Hotspot '
+  },
+    {
+      image: 'ios-briefcase',
+      name: 'Jobs'
+    },
+    { image: 'pie' ,
+    name: 'Programes'
+  },
+    { image: 'ios-people', 
+    name: 'Services'
+  },
+  ]
   toggleList = "ios-arrow-back";
   icon = 'assets/imgs/wifi2.svg'
   locIcon = 'assets/imgs/loc-user.svg'
@@ -48,37 +65,35 @@ export class HomePage implements OnInit {
   userPosition;
   userSurname;
   d = 1;
+  mm = 0;
+  mySide = 0
   key;
   downloadurlPic;
-  constructor(public navCtrl: NavController, public hubs: HubsProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public hubs: HubsProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController, public alertCtrl: AlertController) {
 
-    this.hubs.getAllOrganizations().then((data: any) => {
-      this.getOrgArry = data
-      console.log(this.getOrgArry)
-      var names = this.hubs.getOrgNames()
-      this.storeOrgNames(names)
-      this.name = this.getOrgArry[0].name
-      this.address = this.getOrgArry[0].address
-      this.lat = this.getOrgArry[0].lat;
-      this.background = this.getOrgArry[0].background
-      this.category = this.getOrgArry[0].category;
-      this.downloadurl = this.getOrgArry[0].downloadurl;
-      this.downloadurlLogo = this.getOrgArry[0].downloadurlLogo;
-      this.wifi = this.getOrgArry[0].wifi;
-      this.long = this.getOrgArry[0].long;
-      this.email = this.getOrgArry[0].email;
-      this.contact = this.getOrgArry[0].contact
-      this.key = this.getOrgArry[0].id
+    this.getallorg();
+
+
+
+    this.hubs.displayOnMAP().then((data:any) => {
+      this.displayOrg = data
+
+      this.name = data.name
+      this.address = data.address
+      this.lat = data.lat;
+      this.background = data.background
+      this.category = data.category;
+      this.downloadurl =data.downloadurl;
+      this.downloadurlLogo = data.downloadurlLogo;
+      this.wifi = data.wifi;
+      this.long = data.long;
+      this.email = data.email;
+      this.contact = data.contact
+      this.key = data.id
+      console.log(this.name)
     })
 
 
-    this.hubs.getUserProfile().then((data: any) => {
-      console.log(this.downloadurl)
-      this.downloadurlPic = data[0].downloadurl;
-      this.userName = data[0].userName;
-      this.userPosition = data[0].userPosition;
-      this.userSurname = data[0].userSurname
-    })
 
     this.hubs.getCurrentLocation(this.lat, this.long).then((radius: any) => {
     })
@@ -91,27 +106,32 @@ export class HomePage implements OnInit {
   }
 
 
+  getallorg() {
+    this.hubs.getAllOrganizations().then((data: any) => {
+      this.getOrgArry = data
+      // console.log(this.getOrgArry)
+      var names = this.hubs.getOrgNames()
+      this.storeOrgNames(names)
+      // this.name = this.getOrgArry[0].name
+      // this.address = this.getOrgArry[0].address
+      // this.lat = this.getOrgArry[0].lat;
+      // this.background = this.getOrgArry[0].background
+      // this.category = this.getOrgArry[0].category;
+      // this.downloadurl = this.getOrgArry[0].downloadurl;
+      // this.downloadurlLogo = this.getOrgArry[0].downloadurlLogo;
+      // this.wifi = this.getOrgArry[0].wifi;
+      // this.long = this.getOrgArry[0].long;
+      // this.email = this.getOrgArry[0].email;
+      // this.contact = this.getOrgArry[0].contact
+      // this.key = this.getOrgArry[0].id
+    })
+  }
 
 
-  
   ngOnInit() {
     this.initMap();
 
-    this.hubs.retrieve().on('value', (data: any) => {
-      let details = data.val();
-      this.name = details.name
-      this.address = details.address
-      this.lat = details.lat;
-      this.background = details.background
-      this.category = details.category;
-      this.downloadurl = details.downloadurl;
-      this.downloadurlLogo = details.downloadurlLogo;
-      this.wifi = details.wifi;
-      this.long = details.long;
-      this.email = details.email;
-      this.contact = details.contact
-      console.log(this.name)
-    })
+
   }
 
   //updateLogo
@@ -183,18 +203,43 @@ export class HomePage implements OnInit {
       this.more = "ios-arrow-down"
     }
   }
-  mm = 0;
-  toggleOrgList() {
-    var orgListView = document.getElementById("org-list-view");
-    if (this.mm == 0) {
-      this.mm = 1;
-      this.toggleList = "ios-arrow-forward"
-      orgListView.style.right = "0"
+  showSidePane() {
+    var sidePane = document.getElementsByClassName("side-pane") as HTMLCollectionOf<HTMLElement>;
+    if (this.mySide == 0) {
+      this.mySide = 1
+      sidePane[0].style.left = "0";
+      if (this.mm == 1) {
+        this.mm = 0
+        var orgListView = document.getElementById("org-list-view").style.right = "-300px";
+        console.log("closing organisations list");
+        this.toggleList = "ios-arrow-back"
+      }
+
     }
     else {
-      this.mm = 0;
-      this.toggleList = "ios-arrow-back"
-      orgListView.style.right = "-300px"
+      this.mySide = 0
+      sidePane[0].style.left = "-300px";
+    }
+
+
+  }
+  toggleOrgList() {
+    var orgListView = document.getElementById("org-list-view");
+    if (this.mySide == 1) {
+      console.log("Not going to open when the side pane is open");
+
+    }
+    else if (this.mySide == 0) {
+      if (this.mm == 0) {
+        this.mm = 1;
+        this.toggleList = "ios-arrow-forward"
+        orgListView.style.right = "0"
+      }
+      else {
+        this.mm = 0;
+        this.toggleList = "ios-arrow-back"
+        orgListView.style.right = "-300px"
+      }
     }
   }
   showMapPage() {
@@ -209,7 +254,12 @@ export class HomePage implements OnInit {
     var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0)";
   }
+  servArray =  new Array();
   showServicesPage() {
+    this.hubs.getServices().then((data:any) =>{
+      console.log(data)
+      this.servArray  = data;
+    })
     // this will show the services
     var theMap = document.getElementById("pg1").style.display = "none";
     var theServices = document.getElementById("pg2").style.display = "block";
@@ -221,7 +271,15 @@ export class HomePage implements OnInit {
     var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0)";
   }
+
+ 
+
+  progArray =  new Array();
   showProgrammesPage() {
+    this.hubs.getPrograme().then((data:any) =>{
+      this.progArray = data;
+      console.log(data)
+    })
     // this will show programmes
     var theMap = document.getElementById("pg1").style.display = "none";
     var theServices = document.getElementById("pg2").style.display = "none";
@@ -233,7 +291,11 @@ export class HomePage implements OnInit {
     var btn1 = document.getElementById("btn3").style.background = "rgba(255, 255, 255, 0.1)";
     var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0)";
   }
+  jobsArry =  new Array();
   showJobsPage() {
+    this.hubs.getJobs().then((data:any) =>{
+      this.jobsArry = data;
+    })
     // this will show jobs
     var theMap = document.getElementById("pg1").style.display = "none";
     var theServices = document.getElementById("pg2").style.display = "none";
@@ -245,40 +307,20 @@ export class HomePage implements OnInit {
     var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn4").style.background = "rgba(255, 255, 255, 0.1)";
   }
-  mySide = 0
-  showSidePane() {
-    var sidePane = document.getElementsByClassName("side-pane") as HTMLCollectionOf<HTMLElement>;
-    if (this.mySide == 0) {
-      this.mySide = 1
-      sidePane[0].style.left = "0";
-    }
-    else {
-      this.mySide = 0
-      sidePane[0].style.left = "-300px";
-    }
-
-
-  }
 
   //show map
   initMap() {
-
     setTimeout(() => {
       this.hubs.getLocation(this.lat, this.long).then((data: any) => {
-        // console.log(data);
         this.userLocation = data;
-        // console.log(this.userLocation);
+        console.log(this.userLocation)
       })
-
     }, 1000);
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
       content: 'Please wait...',
       duration: 15000
     });
-    // loading.present();
-
-    // console.log(this.lng)
     const options = {
       center: { lat: this.lat, lng: this.long },
       zoom: 10,
@@ -288,7 +330,6 @@ export class HomePage implements OnInit {
     }
     var map = new google.maps.Map(this.mapRef.nativeElement, options);
     this.map = new google.maps.Map(this.mapRef.nativeElement, options);
-    // adding user marker to the map 
     var marker = new google.maps.Marker({
       map: this.map,
       zoom: 10,
@@ -296,24 +337,12 @@ export class HomePage implements OnInit {
       title: 'Your Location',
       position: this.map.getCenter(),
       styles: this.mapStyles
-      //animation: google.maps.Animation.DROP,
     });
-
-    // console.log();
-
-
     setTimeout(() => {
-      // console.log("show markers");
-
       this.markers();
-      // console.log("show markerzzzzzzzzzzzzzzzzzzzzzzz");
     }, 16000)
-    // console.log( this.userLocation);
     setTimeout(() => {
       var contentString = '<div id="content">' +
-
-
-
         '</div>' +
         this.userLocation
       '</div>';
@@ -332,13 +361,14 @@ export class HomePage implements OnInit {
 
   }
 
-
-  click() {
-    alert("clicked")
+  add(type){
+    this.navCtrl.push(AddOrganizationPage, {type:type})
+    
   }
+
   //markers for the map
   markers() {
-    // console.log(this.orgArray);
+    console.log(this.getOrgArry);
     for (let index = 0; index < this.getOrgArry.length; index++) {
       var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/'
       let showMultipleMarker = new google.maps.Marker({
@@ -358,7 +388,7 @@ export class HomePage implements OnInit {
           this.getOrgArry[index].category +
           '</b><div style="display: flex; padding-top: 10px;">' +
           '<img style="height: 100px; width: 100px; object-fit: cober; border-radius: 50px;" src=' +
-          this.getOrgArry[index].downloadurl +
+          this.getOrgArry[index].downloadurlLogo +
           ">" +
           '<div style="padding-left: 10px;padding-right: 10px">' +
           this.getOrgArry[index].background +
@@ -368,9 +398,8 @@ export class HomePage implements OnInit {
       showMultipleMarker.addListener('click', () => {
         this.map.setZoom(14);
         this.map.setCenter(showMultipleMarker.getPosition());
-        // console.log(index);
         infowindow.open(showMultipleMarker.get(this.map), showMultipleMarker);
-        // console.log(index);
+
 
       });
 
@@ -383,6 +412,7 @@ export class HomePage implements OnInit {
     this.items = this.orgNames
     console.log(this.items)
   }
+
   filterItems(val) {
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
@@ -400,11 +430,9 @@ export class HomePage implements OnInit {
     settingsUpdate.style.display = "flex";
   }
   cancelSettings() {
+    
     var settingsUpdate = document.getElementById("container-overlay");
-    // settingsUpdate.style.opacity = "0";
-    // setTimeout(() => {
     settingsUpdate.style.display = "none";
-    // }, 510);
   }
   updateDetails() {
     this.cancelSettings()
@@ -424,13 +452,20 @@ export class HomePage implements OnInit {
     else if (val == "" || val == null) {
       this.items = [];
     }
-    // console.log(this.items);
+    console.log(this.items);
   }
 
   updateOrg() {
     this.cancelSettings();
-    this.hubs.update(this.name, this.email, this.downloadurlLogo, this.address, this.contact, this.background,this.key).then((data) => {
+    // this.key
+    this.hubs.update(this.name, this.downloadurlLogo, this.contact, this.background).then((data) => {
+      this.getallorg();
     });
+    const alert = this.alertCtrl.create({
+      subTitle: 'Your Information has been updated',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
 
@@ -457,7 +492,7 @@ export class HomePage implements OnInit {
       "elementType": "labels.text.fill",
       "stylers": [
         {
-          "color": "#0064AC"
+          "color": "#616161"
         }
       ]
     },
@@ -475,6 +510,114 @@ export class HomePage implements OnInit {
       "stylers": [
         {
           "color": "#bdbdbd"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "visibility": "on"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural",
+      "elementType": "labels.text",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural",
+      "elementType": "labels.text.fill",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural",
+      "elementType": "labels.text.stroke",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural.landcover",
+      "elementType": "geometry",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural.landcover",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural.landcover",
+      "elementType": "geometry.stroke",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural.landcover",
+      "elementType": "labels.text",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural.landcover",
+      "elementType": "labels.text.fill",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural.landcover",
+      "elementType": "labels.text.stroke",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural.terrain",
+      "elementType": "geometry",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural.terrain",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "color": "#93b039"
         }
       ]
     },
@@ -497,6 +640,15 @@ export class HomePage implements OnInit {
       ]
     },
     {
+      "featureType": "poi.attraction",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
       "featureType": "poi.park",
       "elementType": "geometry",
       "stylers": [
@@ -507,10 +659,46 @@ export class HomePage implements OnInit {
     },
     {
       "featureType": "poi.park",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.park",
+      "elementType": "geometry.stroke",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.park",
       "elementType": "labels.text.fill",
       "stylers": [
         {
           "color": "#9e9e9e"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.sports_complex",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "color": "#93b039"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.sports_complex",
+      "elementType": "geometry.stroke",
+      "stylers": [
+        {
+          "color": "#93b039"
         }
       ]
     },
@@ -537,7 +725,7 @@ export class HomePage implements OnInit {
       "elementType": "geometry",
       "stylers": [
         {
-          "color": "#dadada"
+          "color": "#d1e2d1"
         }
       ]
     },
@@ -582,7 +770,7 @@ export class HomePage implements OnInit {
       "elementType": "geometry",
       "stylers": [
         {
-          "color": "#c9c9c9"
+          "color": "#99e4fd"
         }
       ]
     },
@@ -595,5 +783,25 @@ export class HomePage implements OnInit {
         }
       ]
     }
+
   ]
+
+
+
+  animation(){
+    const img = document.querySelectorAll('.anim');
+
+  //   observer = new IntersectionObserver((entries)=>{
+  //     entries.forEach(entry =>{
+  //     if (entry.intersectionRation > 0) {
+  //       entry.target.style.animation ='anim1 2s forwards ease-out';
+  //     } else {
+  //       entry.target.style.animation = 'none'
+  //     }
+  //   })
+  // })
+  // img.forEach(img =>{
+  //   observer.observer(img)
+  // })
+   }
 }

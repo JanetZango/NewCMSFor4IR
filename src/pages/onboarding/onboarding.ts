@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginRegisterPage } from '../login-register/login-register';
 import { FormsPage } from '../forms/forms';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the LandingPage page.
@@ -44,7 +45,7 @@ export class OnboardingPage {
       console.log(`else`);
       slide1[0].style.display = "none"
       slide2[0].style.display = "block"
-      wave[0].style.transform = 'translate(-150px,0px)';
+      wave[0].style.transform = 'translate(-350px,0px)';
     }
   }
   nextpage2() {
@@ -65,7 +66,7 @@ export class OnboardingPage {
       console.log(`else`);
       slide2[0].style.display = "none"
       slide3[0].style.display = "block"
-      wave[0].style.transform = 'translate(-300px,0px)';
+      wave[0].style.transform = 'translate(-500px,0px)';
     }
   }
   prevpage() {
@@ -86,7 +87,7 @@ export class OnboardingPage {
       console.log(`else`);
       slide2[0].style.display = "none"
       slide1[0].style.display = "block"
-      wave[0].style.transform = 'translate(300px,0px)';
+      wave[0].style.transform = 'translate(500px,0px)';
     }
   }
   prevpage2() {
@@ -104,13 +105,13 @@ export class OnboardingPage {
       console.log(`else if`);
       slide3[0].style.display = "none"
       slide2[0].style.display = "block"
-      wave[0].style.transform = 'translate(150px,0px)';
+      wave[0].style.transform = 'translate(350px,0px)';
     }
     else {
       console.log(`else`);
       slide3[0].style.display = "none"
       slide2[0].style.display = "block"
-      wave[0].style.transform = 'translate(-300px,0px)';
+      wave[0].style.transform = 'translate(-500px,0px)';
     }
   }
 
@@ -128,7 +129,7 @@ export class OnboardingPage {
     var skipper = document.getElementById("skipper").style.display = "block";
     progDot.style.height = "10px"
     toSlide.style.marginLeft = "-100%";
-    progBar.style.marginLeft = "-10%"
+    progBar.style.marginLeft = "-20%"
   }
   moveToPage3() {
     var progBar = document.getElementById("wave");
@@ -136,19 +137,19 @@ export class OnboardingPage {
     var progDot = document.getElementById("dot3");
     progDot.style.height = "10px"
     toSlide.style.marginLeft = "-200%";
-    progBar.style.marginLeft = "-20%"
+    progBar.style.marginLeft = "-30%"
   }
   moveToPage4() {
     var toSlide = document.getElementById("box-cont");
     var progBar = document.getElementById("wave");
     toSlide.style.marginLeft = "-300%";
-    progBar.style.marginLeft = "-30%"
+    progBar.style.marginLeft = "-40%"
   }
   backToPage3() {
     var progressBar = document.getElementById("wave");
     var toSlide = document.getElementById("box-cont");
     toSlide.style.marginLeft = "-200%";
-    progressBar.style.marginLeft = "-20%"
+    progressBar.style.marginLeft = "-30%"
   }
   backToPage2() {
     var progressBar = document.getElementById("wave");
@@ -157,7 +158,7 @@ export class OnboardingPage {
     var skipper = document.getElementById("skipper").style.display = "block";
     progDot.style.height = "0px"
     toSlide.style.marginLeft = "-100%";
-    progressBar.style.marginLeft = "-10%"
+    progressBar.style.marginLeft = "-20%"
   }
   backToPage1() {
     var progressBar = document.getElementById("wave");
@@ -169,7 +170,6 @@ export class OnboardingPage {
     progressBar.style.marginLeft = "0%"
   }
   getStarted(){
-
-    this.navCtrl.setRoot(FormsPage, { email: this.email}) 
+    this.navCtrl.setRoot(HomePage) 
   }
 }

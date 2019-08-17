@@ -1,8 +1,5 @@
 <ion-content>
   <div class="everything">
-    <div id="boxA">
-      <div id="boxB"></div>
-    </div>
     <div class="content-container">
       <div class="left-tab">
         <div class="infor-left">
@@ -15,7 +12,7 @@
       </div>
       <div class="right-tab">
         <ion-fab top right>
-          <button ion-fab mini>
+          <button ion-fab mini (click)="goBack()">
             <ion-icon name="close"></ion-icon>
           </button>
         </ion-fab>
@@ -28,50 +25,51 @@
         <div class="view" id="Programmes">
           <div class="pageProgrammes">
             <div class="buttons">
-              <button id="forward" ion-button (click)="toPage2Progs()">Next1</button>
+              <button id="forward" ion-button (click)="toPage2Progs()">Next</button>
             </div>
             <div class="inputs">
               Please complete the form to continue
               <br>
-              <ion-input type="text" id="input-field"  [(ngModel)]="progName" placeholder="Programme Name"></ion-input>
+              <input type="text" id="input-field" [(ngModel)]="progName" placeholder="Programme Name">
               <br>
               <ion-list class="programme-options">
                 <ion-item>
-                  <ion-label>Gaming</ion-label>
+                  <ion-label>Programme Type</ion-label>
                   <ion-select [(ngModel)]="progOptions">
-                    <ion-option value="nes">NES</ion-option>
-                    <ion-option value="n64">Nintendo64</ion-option>
-                    <ion-option value="ps">PlayStation</ion-option>
-                    <ion-option value="genesis">Sega Genesis</ion-option>
-                    <ion-option value="saturn">Sega Saturn</ion-option>
-                    <ion-option value="snes">SNES</ion-option>
+                    <ion-option value="nes">Learnership</ion-option>
+                    <ion-option value="n64">Internship</ion-option>
+                    <ion-option value="ps">Skills Development</ion-option>
+                    <ion-option value="genesis">Training</ion-option>
+                    <ion-option value="saturn">Bootcamp</ion-option>
+                    <ion-option value="snes">Apprenticeship</ion-option>
                   </ion-select>
                 </ion-item>
               </ion-list>
-              <textarea name="" id="text-field" cols="30"  [(ngModel)]="progbackground" rows="10" placeholder="Programme Background"></textarea>
-              <textarea name="" id="text-field" cols="30" rows="10" placeholder="Programme Background"></textarea>
+              <textarea name="" id="text-field" cols="30" [(ngModel)]="progbackground" rows="10"
+                placeholder="Programme Background"></textarea>
+              <textarea name="" id="text-field" cols="30" rows="10" [(ngModel)]="progDescription" placeholder="Programme Description"></textarea>
             </div>
           </div>
           <div class="pageProgrammes">
             <div class="buttons">
-              <button id="backward" ion-button>Back</button>
-              <button id="forward" ion-button (click)="toPage3Progs()">Next2</button>
+              <button id="backward" ion-button (click)="backToPage1Progs()">Back</button>
+              <button id="forward" ion-button (click)="toPage3Progs()">Next</button>
             </div>
             <div class="inputs">
               Please complete the form to continue
               <br>
-              <textarea name="" id="text-field" cols="30" rows="10" placeholder="Programme Background"></textarea>
-              <textarea name="" id="text-field" cols="30" rows="10" placeholder="Programme Background"></textarea>
+              <textarea name="" id="text-field" cols="30" rows="10" [(ngModel)]="progBenfits" placeholder="Benefits"></textarea>
+              <input type="text" id="input-field" placeholder="Address" [(ngModel)]="progAddress">
               <div class="Contacts">
-                <ion-input type="text" id="input-field" placeholder="Programme Name"></ion-input>
-                <ion-input type="text" id="input-field" placeholder="Programme Name"></ion-input>
+                <input type="text" id="input-field" placeholder="Phone" [(ngModel)]="progPhone"> 
+                <input type="text" id="input-field" placeholder="Email" [(ngModel)]="progEmail"> 
               </div>
             </div>
           </div>
           <div class="pageProgrammes">
             <div class="buttons">
-              <button id="backward" ion-button>Back</button>
-              <button id="forward" ion-button (click)="toPage4Progs()">Next3</button>
+              <button id="backward" ion-button (click)="backToPage2Progs()">Back</button>
+              <button id="forward" ion-button (click)="toPage4Progs()">Next</button>
             </div>
             <div class="inputs">
               Please complete the form to continue
@@ -81,8 +79,8 @@
                 <p>Please enter the dates for the applications.</p>
 
                 <div class="Contacts">
-                  <ion-input type="date" id="input-field"></ion-input>
-                  <ion-input type="date" id="input-field"></ion-input>
+                  <input type="date" id="input-field" [(ngModel)]="progApplicationOpen"> 
+                  <input type="date" id="input-field" [(ngModel)]="progApplicationClose"> 
                 </div>
               </div>
 
@@ -91,34 +89,34 @@
                 <p>Please enter the dates for the commencement and ending of the programme.</p>
 
                 <div class="Contacts">
-                  <ion-input type="date" id="input-field"></ion-input>
-                  <ion-input type="date" id="input-field"></ion-input>
+                  <input type="date" id="input-field" [(ngModel)]="progStartDate"> 
+                  <input type="date" id="input-field" [(ngModel)]="progEndDate"> 
                 </div>
               </div>
               <div class="Contacts">
-                <ion-input type="link" id="input-field" placeholder="Website link to online application"></ion-input>
+                <input type="link" id="input-field" placeholder="Website link to online application" [(ngModel)]="progLink"> 
               </div>
             </div>
           </div>
           <div class="pageProgrammes">
             <div class="buttons">
-              <button id="backward" ion-button>Back</button>
-              <button id="forward" ion-button>Done4</button>
+              <button id="backward" ion-button (click)="backToPage3Progs()">Back</button>
+              <button id="forward" ion-button (click)="addProg()">Done</button>
             </div>
 
-            <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image">
-            <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image">
-            <div class="inputs">
+            <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image" (change)="insertpic($event)">
+            <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image" (change)="insertpic2($event)">
+            <div class="inputs">c
               <label for="cover-image" id="coverImage">
-
-                <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+                <img src="{{downloadurl}}" alt="">
               </label>
               <label for="cover-image" id="logoImage">
-                <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+                <img src="../../assets/imgs/Logo Image.jpg" alt="">
               </label>
             </div>
           </div>
         </div>
+        
         <div class="view" id="Jobs">
           <div class="pageJobs">
             <div class="buttons">
@@ -128,16 +126,16 @@
               <p>Please fill in the form to add a job requirement</p>
             </div>
             <div class="inputs">
-              <ion-input type="text" id="input-field" placeholder="Job Name"></ion-input>
+              <input type="text" [(ngModel)]="jobName" id="input-field" placeholder="Job Name"> <br>
               <b>Applications</b>
               <div class="Contacts">
-              <ion-input type="date" id="input-field" placeholder="Application Open Date"></ion-input>
-              <ion-input type="date" id="input-field" placeholder="Application Close Date"></ion-input>
+                <input type="date" [(ngModel)]="odate" id="input-field" placeholder="Application Open Date"> 
+                <input type="date"  [(ngModel)]="cdate"id="input-field" placeholder="Application Close Date"> 
               </div>
               <ion-list class="programme-options">
                 <ion-item>
                   <ion-label>Job Type</ion-label>
-                  <ion-select [(ngModel)]="gaming">
+                  <ion-select [(ngModel)]="jobType">
                     <ion-option value="nes">Part-time</ion-option>
                     <ion-option value="n64">Full-time</ion-option>
                     <ion-option value="ps">Contract</ion-option>
@@ -149,14 +147,14 @@
           <div class="pageJobs">
             <div class="buttons">
               <button id="backward" ion-button (click)="backToPage1Jobs()">Back</button>
-              <button id="forward" ion-button  (click)="toPage3Jobs()">Next</button>
+              <button id="forward" ion-button (click)="toPage3Jobs()">Next</button>
             </div>
             <div class="inputs">
-              <textarea name="" id="text-field" cols="30" rows="10" placeholder="Requirements"></textarea>
-              <textarea name="" id="text-field" cols="30" rows="10" placeholder="Responsibilities"></textarea>
-              <ion-input type="text" id="input-field" placeholder="Address"></ion-input>
-              <ion-input type="tel" id="input-field" placeholder="Phone"></ion-input>
-              <ion-input type="email" id="input-field" placeholder="Email"></ion-input>
+              <textarea name="" [(ngModel)]="req" id="text-field" cols="30" rows="10" placeholder="Requirements"></textarea>
+              <textarea name=""  [(ngModel)]="res" id="text-field" cols="30" rows="10" placeholder="Responsibilities"></textarea>
+              <input type="text" [(ngModel)]="add" id="input-field" placeholder="Address"> 
+              <input type="tel" [(ngModel)]="cell" id="input-field" placeholder="Phone"> 
+              <input type="email" [(ngModel)]="mail" id="input-field" placeholder="Email"> 
             </div>
           </div>
           <div class="pageJobs">
@@ -166,24 +164,24 @@
             </div>
             <div class="inputs">
               <!-- User clicks here to upload logo and cover for Jobs -->
-              <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image">
-              <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image">
+              <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image" (change)="insertpic($event)">
+              <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image" (change)="insertpic($event)">
               <div class="instructions">
                 <p>Please choose a cover photo and a logo (if any).
-</p>
+                </p>
               </div>
               <div class="images-container">
                 <label for="cover-image" id="myCover">
                   <div class="myLabel">
-                    Upload cover image
+                    <!-- Upload cover image -->
                   </div>
-                  <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+                  <img src="{{downloadurl}}" alt="">
                 </label>
                 <label for="logo-image" id="myLogo">
-                    <div class="myLabel2">
-                      Logo
-                    </div>
-                  <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+                  <!-- <div class="myLabel2">
+                    Logo
+                  </div> -->
+                  <img src="{{downloadurl2}}" alt="">
                 </label>
               </div>
               <!-- <label for="cover-image" id="coverImage">
@@ -195,40 +193,38 @@
               <div class="instructions">
                 <p> add a link to the online application form</p>
               </div>
-              <ion-input type="text" id="input-field" placeholder="Link to online application form"></ion-input>
+              <input type="text" id="input-field" [(ngModel)]="link" placeholder="Link to online application form"> 
             </div>
           </div>
           <div class="pageJobs">
             <div class="buttons">
               <button id="backward" ion-button (click)="backToPage3Jobs()">Back</button>
-              <button id="forward" ion-button>done</button>
+              <button id="forward" ion-button (click)="addJob()">done</button>
             </div>
             <div class="inputs">
+              <p>Please confirm your details then click DONE to continue.</p>
               <div id="confirm-cover">
-                <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+                <img src="{{downloadurl}}" alt="">
               </div>
               <div id="confirm-logo">
-                <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+                <img src="{{downloadurl2}}" alt="">
               </div>
-              <p><b>Job Name:</b> My Job</p>
-              <p><b>Employment Type:</b> Part-Time</p>
-              <p><b>Applications Open:</b> 01/01/2019</p>
-              <p><b>Applications Close: </b> 01/02/2019</p>
+              <p><b>Job Name:</b>{{jobName}}</p>
+              <p><b>Employment Type:</b> {{jobType}}</p>
+              <p><b>Applications Open:</b>{{odate}}</p>
+              <p><b>Applications Close: </b> {{cdate}}</p>
               <p><b>Requirements:</b><br>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur assumenda
-                accusamus velit? Rem ducimus vitae pariatur. Possimus reprehenderit accusantium quia.</p>
-              <p><b>Responsiblities:</b><br>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, animi. Nostrum ipsa nisi dolorum
-                temporibus est distinctio eaque tempora adipisci, ratione facilis, dignissimos neque? Perferendis
-                adipisci tempora vel cupiditate dolorum.</p>
+                {{req}}</p>
+              <p><b>Responsibilities:</b><br>
+               {{res}}</p>
               <p><b>Address:</b><br>
-                4877 Ugago Street Protea Glen Ext 3 Johannesburg 1819</p>
+                {{add}}</p>
               <p><b>Contact Details:</b><br>
-                <b>Email:</b> spazgrafficz@outlook.com <br>
-                <b>Phone:</b> 081 391 7127
+                <b>Email:</b> {{mail}}<br>
+                <b>Phone:</b>{{cell}}
               </p>
               <p><b>Application Link:</b>
-                <a href="google.com">google.com</a></p>
+                <a href="google.com">{{link}}</a></p>
             </div>
           </div>
         </div>
@@ -240,9 +236,9 @@
             <div class="inputs">
               Please complete the form to continue
               <br>
-              <ion-input type="text" id="input-field" placeholder="Service Name"></ion-input>
+              <input type="text" id="input-field" [(ngModel)]="sname" placeholder="Service Name"> 
               <br>
-              <textarea name="" id="text-field" cols="30" rows="10" placeholder="About Servie"></textarea>
+              <textarea name="" id="text-field" cols="30" [(ngModel)]="sabout"  rows="10" placeholder="About Servie"></textarea>
             </div>
           </div>
           <div class="pageServices">
@@ -253,10 +249,10 @@
             <div class="inputs">
               Please complete your contact details to continue
               <br>
-              <ion-input type="text" id="input-field" placeholder="Address"></ion-input>
+              <input type="text" id="input-field" [(ngModel)]="sadd" placeholder="Address"> 
               <div class="contacts">
-                <ion-input type="email" id="input-field" placeholder="Email"></ion-input>
-                <ion-input type="number" id="input-field" placeholder="Phone"></ion-input>
+                <input type="email" id="input-field" [(ngModel)]="semail" placeholder="Email"> 
+                <input type="number" id="input-field" [(ngModel)]="sphone" placeholder="Phone"> 
               </div>
             </div>
           </div>
@@ -266,23 +262,24 @@
               <button id="forward" ion-button (click)="toPage4Services()">Next</button>
             </div>
             <div class="inputs">
+              <h4>Graphical Content</h4>
               <!-- User clicks here to upload logo and cover for Jobs -->
-              <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image">
-              <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image">
+              <input type="file" accept="image/x-png,image/gif,image/jpeg"   id="logo-image" (change)="insertpic($event)">
+              <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="cover-image">
               <div id="uploadPage">
-                
-              <div class="images-container">
+
+                <div class="images-container">
                   <label for="cover-image" id="myCover">
                     <div class="myLabel">
-                      Upload cover image
+                      <!-- Upload cover image -->
                     </div>
-                    <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+                    <img src="{{downloadurl}}" alt="">
                   </label>
                   <label for="logo-image" id="myLogo">
-                      <div class="myLabel2">
-                        Logo
-                      </div>
-                    <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
+                    <div class="myLabel2">
+                      <!-- Logo -->
+                    </div>
+                    <img src="{{downloadurl2}}" alt="">
                   </label>
                 </div>
               </div>
@@ -291,26 +288,27 @@
           <div class="pageServices">
             <div class="buttons">
               <button id="backward" ion-button (click)="backToPage3Services()">Back</button>
-              <button id="forward" ion-button>Done</button>
+              <button id="forward" ion-button  (click)="adds()">Done</button>
             </div>
             <div class="inputs">
+              <p>Please confirm your details then click DONE</p>
               <div id="confirm-cover">
-                <img src="../../assets/imgs/logo.png" alt="">
+                <img src="{{downloadurl}}" alt="">
               </div>
               <div id="confirm-logo">
-                <img src="../../assets/imgs/logo.png" alt="">
+                <img src="{{downloadurl2}}" alt="">
               </div>
-              <p><b>Service Name:</b> Photography</p>
+              
+              <p><b>Service Name:</b> {{sname}}</p>
               <p><b>Description:</b><br>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima reprehenderit architecto fugit sed, unde
-                molestiae odit ipsum sit minus quas.
+             {{sabout}}
               </p>
               <p><b>Address: </b>
-                4877 Ugago Street Protea Glen Ext 3 Johannesburg 1819
+               {{sadd}}
               </p>
               <p><b>Contact Details:</b><br>
-                <b>Email: </b> spaz@me.com <br>
-                <b>Phone: </b> 0813917127
+                <b>Email: </b> {{semail}} <br>
+                <b>Phone: </b> {{sphone}}
               </p>
             </div>
           </div>
@@ -322,15 +320,15 @@
             </div>
             <div class="inputs">
               1
-                <ion-list class="programme-options">
-                    <ion-item>
-                      <ion-label>do you offer WiFi</ion-label>
-                      <ion-select [(ngModel)]="WiFiAvailability" (ionChange)="togglePrice()">
-                        <ion-option value="Yes">Yes</ion-option>
-                        <ion-option value="No">No</ion-option>
-                      </ion-select>
-                    </ion-item>
-                  </ion-list>
+              <ion-list class="programme-options">
+                <ion-item>
+                  <ion-label>do you offer WiFi</ion-label>
+                  <ion-select [(ngModel)]="WiFiAvailability" (ionChange)="togglePrice()">
+                    <ion-option value="Yes">Yes</ion-option>
+                    <ion-option value="No">No</ion-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
             </div>
           </div>
           <div class="pageWifi" id="page2Wifi">
@@ -340,15 +338,15 @@
             </div>
             <div class="inputs" *ngIf="showChargeWiFi">
               2
-                <ion-list class="programme-options">
-                    <ion-item>
-                      <ion-label>Is it free or paid</ion-label>
-                      <ion-select [(ngModel)]="freeOrPaidWiFi" (ionChange)="togglePayment()">
-                        <ion-option value="Free">Free</ion-option>
-                        <ion-option value="Paid">Paid</ion-option>
-                      </ion-select>
-                    </ion-item>
-                  </ion-list>
+              <ion-list class="programme-options">
+                <ion-item>
+                  <ion-label>Is it free or paid</ion-label>
+                  <ion-select [(ngModel)]="freeOrPaidWiFi" (ionChange)="togglePayment()">
+                    <ion-option value="Free">Free</ion-option>
+                    <ion-option value="Paid">Paid</ion-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
             </div>
           </div>
           <div class="pageWifi" id="page3Wifi">
@@ -358,17 +356,17 @@
             </div>
             <div class="inputs" *ngIf="showPricing">
               3
-                <ion-list class="programme-options">
-                    <ion-item>
-                      <ion-label>Select data range</ion-label>
-                      <ion-select [(ngModel)]="priceWiFi" (ionChange)="toggleRange()">
-                        <ion-option value="1GB">1GB</ion-option>
-                        <ion-option value="2GB">2GB</ion-option>
-                        <ion-option value="5GB">5GB</ion-option>
-                        <ion-option value="Unlimited">Unlimited</ion-option>
-                      </ion-select>
-                    </ion-item>
-                  </ion-list>
+              <ion-list class="programme-options">
+                <ion-item>
+                  <ion-label>Select data range</ion-label>
+                  <ion-select [(ngModel)]="priceWiFi" (ionChange)="toggleRange()">
+                    <ion-option value="1GB">1GB</ion-option>
+                    <ion-option value="2GB">2GB</ion-option>
+                    <ion-option value="5GB">5GB</ion-option>
+                    <ion-option value="Unlimited">Unlimited</ion-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
             </div>
           </div>
           <div class="pageWifi" id="page4Wifi">

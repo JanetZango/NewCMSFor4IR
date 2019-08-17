@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { HubsProvider } from '../../providers/hubs/hubs'
+import { HomePage } from '../home/home';
+import swal from "sweetalert";
+import Swal from "sweetalert2";
+import { OnboardingPage } from '../onboarding/onboarding';
 /**
  * Generated class for the FormsPage page.
  *
@@ -39,19 +43,22 @@ export class FormsPage {
   showMallServices;
   background;
   downloadurl;
+  alertMessage;
   downloadurlLogo;
   email = this.navParams.get("email")
   userName;
-  userSurname ;
+  userSurname;
   userPosition;
   userEmail;
+ 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public hubs: HubsProvider) {
-    this.showPrompt()
+    // this.showPrompt()
     console.log(this.email)
 
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad FormsPage');
+    this.is_urlValidation("www.youtube.com");
   }
   checkWifi() {
     console.log("testing");
@@ -84,65 +91,87 @@ export class FormsPage {
     else {
       this.websiteV = 1;
       this.websiteValidation = 1
-      alert("wrong website");
+      console.log("wrong website");
       //return false;
     }
   }
   errMessage
   moveToPage2() {
-    // this.phonenumberValidatin();
+    this.phonenumberValidatin();
+    let b = window.innerHeight;
     var progBar = document.getElementById("theDot");
     this.is_urlValidation(this.orgWebsite);
     if (this.orgName == undefined && this.orgAdress == undefined && this.orgPhone == undefined && this.orgWebsite == undefined && this.orgDescription == undefined) {
-      // this.alert("Please complete all details ")
-      const alert = this.alertCtrl.create({
-        title: 'Error',
-        subTitle: "Please insert the organisation's details",
-        buttons: ['OK']
-      });
-      alert.present();
+      this.alertMessage =
+        "Please insert the organisation's details";
+      swal(this.alertMessage);
     } else if (this.orgName == undefined) {
-      const alert = this.alertCtrl.create({
-        title: 'Error',
-        subTitle: "Please insert the organisation's name",
-        buttons: ['OK']
-      });
-      alert.present();
-      // alert("Enter organisation Name ")
-    } else if (this.orgAdress == undefined) {
-      const alert = this.alertCtrl.create({
-        title: 'Error',
-        subTitle: "Please insert the organisation's address",
-        buttons: ['OK']
-      });
-      // alert("Enter Address  ")
-      alert.present();
-    }
 
+      this.alertMessage =
+        "Please insert the organisation's name";
+      swal(this.alertMessage);
+    } else if (this.orgAdress == undefined) {
+      this.alertMessage =
+        "Please insert the organisation's address";
+      swal(this.alertMessage);
+    }
     else if (this.orgPhone == undefined) {
-      // alert("Enter Phone numbers  ")
-      const alert = this.alertCtrl.create({
-        title: 'Error',
-        subTitle: "Please insert the organisation's phone numbers",
-        buttons: ['OK']
-      });
-      // alert("Enter Address  ")
-      alert.present();
+
+      this.alertMessage =
+        "Please insert the organisation's phone numbers";
+      swal(this.alertMessage);
     } else if (this.orgDescription == undefined) {
-      // alert("Enter Phone numbers  ")
-      const alert = this.alertCtrl.create({
-        title: 'Error',
-        subTitle: "Please insert the organisation's description.",
-        buttons: ['OK']
-      });
-      // alert("Enter Address  ")
-      alert.present();
+      this.alertMessage =
+        "Please insert the organisation's description.";
+      swal(this.alertMessage);
     } else {
-      var toSlide = document.getElementById("page1");
-      toSlide.style.marginLeft = "-25%";
-      progBar.style.width = "50%";
+      this.is_urlValidation(this.orgWebsite)
+      if (this.websiteV == 0) {
+        var toSlide = document.getElementById("page1");
+        toSlide.style.marginLeft = "-25%";
+        progBar.style.width = "50%";
+      }
+      else if (this.contactValidation == 1) {
+        this.alertMessage ="The phone numbers you have entered is invalid, please enter a valid phone numbers  ";
+        swal(this.alertMessage);
+      }
+      else if(this.websiteValidation == 1) {
+        this.alertMessage ="The website address you have entered is invalid, please enter a valid website address ";
+        swal(this.alertMessage);
+      }
+      else if (this.checkAddress == 1) {
+        this.alertMessage ="The address you have entered is invalid, please enter a valid address ";
+        swal(this.alertMessage);
+      }
+      else {
+        this.alertMessage =
+          "Please check your website, something is not right";
+        swal(this.alertMessage);
+      }
     }
   }
+
+ 
+  phonenumberValidatin() {
+    if (this.orgPhone == undefined) {
+
+    } else {
+      var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+      if (this.orgPhone.match(phoneno)) {
+        console.log(this.orgPhone.match(phoneno));
+        this.contactValidation = 0;
+      }
+      else {
+        this.contactValidation = 1;
+        console.log(this.orgPhone.match(phoneno));
+        console.log("wrong");
+
+      }
+
+    }
+
+  }
+
   moveToPage3() {
     var progBar = document.getElementById("theDot");
     if (this.offerWifi == "No") {
@@ -159,44 +188,35 @@ export class FormsPage {
         // this.progressBar = this.progressBar + 25;
         progBar.style.width = "75%";
       } else {
-        // alert("")
-        const alert = this.alertCtrl.create({
-          title: 'Error',
-          subTitle: "Please complete all details.",
-          buttons: ['OK']
-        });
-        alert.present();
+        this.alertMessage =
+        "Please complete all details.";
+        swal(this.alertMessage);
       }
     }
     else {
-      const alert = this.alertCtrl.create({
-        title: 'Error',
-        subTitle: "Please choose an option.",
-        buttons: ['OK']
-      });
-      alert.present();
+      this.alertMessage =
+      "Please choose an option.";
+      swal(this.alertMessage);
     }
   }
   CatDesc
   moveToPage4() {
     var toSlide = document.getElementById("page1");
     var progBar = document.getElementById("theDot");
+    var orgDescription = document.getElementById("orgDescription");
     console.log(this.category);
+    if (this.CatDesc == "" || this.CatDesc == null) {
+      orgDescription.style.display = "none";
+    }
     if (this.category == null || this.category == undefined || this.category == " ") {
-      const alert = this.alertCtrl.create({
-        title: 'Error',
-        subTitle: "Please insert a category for the organisation.",
-        buttons: ['OK']
-      });
-      alert.present();
+      this.alertMessage =
+      "Please insert a category for the organisation.";
+      swal(this.alertMessage);
     }
     else {
       toSlide.style.marginLeft = "-75%";
       progBar.style.width = "100%";
     }
-    // if (this.category != undefined || this.category != " " || this.category != null || this.category != "" || this.category.length != 0) {
-    // } else {
-    // }
   }
   backToPage3() {
     var progressBar = document.getElementById("theDot");
@@ -264,10 +284,23 @@ export class FormsPage {
     this.showPrompt()
   }
 
+
   saveToDB() {
     console.log(this.wifi)
-    this.hubs.addOrganisation(this.email, this.orgAddressObject.lat, this.orgAddressObject.lng,this.orgAddressObject.city,this.orgPhone, this.category,this.orgName ,this.orgDescription, this.orgAdress,this.wifi, this.offerWifi, this.chooseWifiRange, this.orgWebsite).then(() => {
-      alert("added ");
+    let b = window.innerHeight;
+    this.hubs.addOrganisation(this.email, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city, this.orgPhone, this.category, this.orgName, this.orgDescription, this.orgAdress, this.wifi, this.offerWifi, this.chooseWifiRange, this.orgWebsite).then(() => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000
+      });
+
+      Toast.fire({
+        type: "success",
+        title: "Successfuly registered an Organization"
+      });
+      this.navCtrl.setRoot(OnboardingPage)
     });
   }
   getcoo(address) {
@@ -299,11 +332,12 @@ export class FormsPage {
       this.getcoo(this.orgAdress).then((data: any) => {
         this.orgAddressObject = data;
         this.checkAddress = 0
-
         console.log(this.orgAddressObject);
       }, Error => {
         this.checkAddress = 1;
         console.log(this.checkAddress);
+        this.alertMessage ="The address you have entered is invalid, please enter a valid address";
+        swal(this.alertMessage);
       })
     }
 

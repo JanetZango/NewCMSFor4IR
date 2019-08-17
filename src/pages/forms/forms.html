@@ -9,7 +9,7 @@
           <br>
           <br>
           <p>
-            Kindly fill in the following details and please dont leave out anything.
+            The digital world of connecting South Africa to the digital world.
           </p>
         </div>
         <div class="step2">
@@ -19,15 +19,15 @@
             </div>
             <div class="theSlider">
               <div class="slideShow" id="page1">
-                <p>Kindly fill in your communication details and please dont leave out anything.</p>
-                <input type="text" class="inputText" placeholder="Name" [(ngModel)]="orgName" required>
+                <p id="kindly-fill">Kindly fill in your communication details and please dont leave out anything.</p>
+                <input type="text" class="inputText" placeholder="Organisation Name" [(ngModel)]="orgName" required>
                 <input type="text" class="inputText" placeholder="Address" [(ngModel)]="orgAdress"
                   (change)="setAddress()">
                 <input type="tel" class="inputText" placeholder="Phone"
                   onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" [(ngModel)]="orgPhone">
                 <input type="url" class="inputText" id="web" placeholder="Website" [(ngModel)]="orgWebsite">
                 <br>
-                <textarea name="" id="orgDesc"  maxLength="250" placeholder="Organisation Description" cols="4"
+                <textarea name="" id="orgDesc" maxLength="250" placeholder="Organisation Description" cols="4"
                   [(ngModel)]="orgDescription"></textarea>
                 <br>
                 <button ion-button id="movetopage2" color="blue" class="theButton" (click)="moveToPage2()">NEXT</button>
@@ -49,7 +49,7 @@
                   </select>
                   <br>
                   <div *ngIf="ShowChooseRange">
-                    <p>What is your pricing?</p>
+                    <p>What is your free range?</p>
                     <select class="select-css" [(ngModel)]="chooseWifiRange">
                       <option value="Choose Range" disabled>Choose Range</option>
                       <option value="200MB Free">200MB Free</option>
@@ -76,15 +76,15 @@
                 <div>
                 </div>
                 <br>
-                <textarea name="" id="orgDesc" placeholder="Provide clarity if any" cols="4"
-                  [(ngModel)]="CatDesc" maxLength="250"></textarea>
+                <textarea name="" id="orgDesc" placeholder="Provide clarity if any" cols="4" [(ngModel)]="CatDesc"
+                  maxLength="250"></textarea>
                 <button ion-button id="movetopage2" color="blue" class="theButton" (click)="moveToPage4()">NEXT</button>
                 <button ion-button class="theButtonBack" color="blue" (click)="backToPage2()">BACK</button>
               </div>
               <div class="slideShow" id="page4">
                 <div class="confirm">
-                  <p>
-                    Please confirm all the information you have inserted on the form, if everything is correct, please
+                  <p id="pleaseConfirm">
+                    Please confirm all the information you have inserted on the form, if everything is correct <br> Please
                     click "Done" to continue.</p>
                   <div class="description" padding>
                     <h3>{{orgName}}</h3>
@@ -106,9 +106,9 @@
                       <b>WiFi Range:</b> {{chooseWifiRange}}</p>
                     <p>
                       <b>Business Category:</b> {{category}}</p>
-                      <p>
-                        <b>Cat Description:</b> {{CatDesc}}</p>
-                      
+                    <p id="orgDescription">
+                      <b>Category Description:</b> <br>{{CatDesc}}</p>
+
                   </div>
                 </div>
                 <button ion-button class="theButton" color="blue" id="movetopage2" (click)="saveToDB()">Done</button>
