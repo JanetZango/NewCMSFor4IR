@@ -6,12 +6,18 @@
         <ion-icon name="close"></ion-icon>
       </button>
       <div id="actions">
-        <p (click)="goToSettings()">Settings</p>
-        <p (click)="logUserOut()">Logout</p>
+        <p text-center>Version 0.0.1</p>
+        <!-- <p (click)="goToSettings()">Settings</p>
+        <p (click)="logUserOut()">Logout</p> -->
+        
       </div>
+      
       <div class="cover-image">
         <!-- <img src="{{downloadurl}}" alt="" class="cover-image-cover"> -->
         <img src="{{downloadurlLogo}}" alt="" class="logo-image">
+        <div class="editinfor">
+            <ion-icon class="penedit" name="ios-create" (click)="goToSettings()"></ion-icon>
+        </div>
       </div>
       <div class="buttons">
         <div class="org-name">
@@ -42,8 +48,10 @@
         <div class="btns">
           <div (click)="showMapPage()" id="btn1">Home</div>
           <div (click)="showServicesPage()" id="btn2">Services</div>
+          <div (click)="showwifiPage()" id="btn4">WiFi Hotspot</div>
           <div (click)="showProgrammesPage()" id="btn3">Programmes</div>
           <div (click)="showJobsPage()" id="btn4">Job Opportunities</div>
+          
         </div>
       </div>
     </div>
@@ -303,6 +311,7 @@
           <button ion-button outline color="danger" (click)="cancelSettings()">Cancel</button>
           <button ion-button (click)="updateOrg()">Update</button>
         </div>
+        <button ion-button block  color="secondary" (click)="logUserOut()">Logout</button>
       </div>
     </div>
   </div>
@@ -407,7 +416,9 @@
             <div id="update-buttons">
               <button ion-button outline color="danger" (click)="cancelservice()">Cancel</button>
               <button ion-button (click)="updateOrg()">Update</button>
+              
             </div>
+            
           </div>
         </div>
       </div>

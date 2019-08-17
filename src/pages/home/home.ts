@@ -23,6 +23,7 @@ export class HomePage implements OnInit {
   updateOrganization = new Array();
   getUserProfile = new Array();
   displayOrg = new Array();
+  displayuser = new Array();
   //variables
   lat = -26.2620;
   name;
@@ -74,7 +75,7 @@ export class HomePage implements OnInit {
 
     this.getallorg();
     this.getallhubs();
-
+    this.displayProfile();
 
 
     this.hubs.displayOnMAP().then((data:any) => {
@@ -94,10 +95,18 @@ export class HomePage implements OnInit {
     console.log(this.orgNames);
   }
 
+  displayProfile(){
+    this.hubs.geOrgtUser().then((data)=>{
+      console.log(data)
+  
+    })
+  }
+
 
   getallorg() {
     this.hubs.getAllOrganizations().then((data: any) => {
       this.getOrgArry = data
+      console.log(this.getOrgArry)
       var names = this.hubs.getOrgNames()
       this.storeOrgNames(names)
       this.name = this.getOrgArry[0].name
@@ -126,7 +135,7 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.initMap();
-
+   
 
   }
 
@@ -249,6 +258,10 @@ export class HomePage implements OnInit {
     var btn1 = document.getElementById("btn2").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0)";
+    
+    var settingsUpdate = document.getElementById("org-list-view");
+    settingsUpdate.style.display = "block";
+     
   }
   servArray =  new Array();
   showServicesPage() {
@@ -266,6 +279,10 @@ export class HomePage implements OnInit {
     var btn1 = document.getElementById("btn2").style.background = "rgba(255, 255, 255, 0.1)";
     var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0)";
+    
+    var settingsUpdate = document.getElementById("org-list-view");
+    settingsUpdate.style.display = "none";
+     
   }
 
  
@@ -286,6 +303,10 @@ export class HomePage implements OnInit {
     var btn1 = document.getElementById("btn2").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn3").style.background = "rgba(255, 255, 255, 0.1)";
     var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0)";
+    
+    var settingsUpdate = document.getElementById("org-list-view");
+    settingsUpdate.style.display = "none";
+     
   }
   jobsArry =  new Array();
   showJobsPage() {
@@ -302,6 +323,10 @@ export class HomePage implements OnInit {
     var btn1 = document.getElementById("btn2").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn4").style.background = "rgba(255, 255, 255, 0.1)";
+    
+    var settingsUpdate = document.getElementById("org-list-view");
+    settingsUpdate.style.display = "none";
+     
   }
 
   //show map
@@ -359,7 +384,6 @@ export class HomePage implements OnInit {
 
   add(type){
     this.navCtrl.push(AddOrganizationPage, {type:type})
-    
   }
 
   //markers for the map
@@ -800,4 +824,44 @@ export class HomePage implements OnInit {
   //   observer.observer(img)
   // })
    }
+
+
+   editprogram(){
+     console.log(`hi`);
+     
+    var settingsUpdate = document.getElementById("program-overlay");
+    settingsUpdate.style.display = "block";
+    settingsUpdate.style.display = "flex";
+   }
+   cancelprogramm() {
+    
+    var settingsUpdate = document.getElementById("program-overlay");
+    settingsUpdate.style.display = "none";
+  }
+
+  editservice(){
+    console.log(`hi`);
+    
+   var settingsUpdate = document.getElementById("service-overlay");
+   settingsUpdate.style.display = "block";
+   settingsUpdate.style.display = "flex";
+  }
+  cancelservice() {
+   
+   var settingsUpdate = document.getElementById("service-overlay");
+   settingsUpdate.style.display = "none";
+ }
+
+ editjob(){
+  console.log(`hi`);
+  
+ var settingsUpdate = document.getElementById("job-overlay");
+ settingsUpdate.style.display = "block";
+ settingsUpdate.style.display = "flex";
+}
+canceljob() {
+ 
+ var settingsUpdate = document.getElementById("job-overlay");
+ settingsUpdate.style.display = "none";
+}
 }

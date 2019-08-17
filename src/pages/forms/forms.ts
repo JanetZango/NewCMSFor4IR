@@ -236,53 +236,6 @@ export class FormsPage {
     toSlide.style.marginLeft = "0%";
     progressBar.style.width = "25%"
   }
-  showPrompt() {
-    const prompt = this.alertCtrl.create({
-      title: 'Registration',
-      message: "Please fill in your personal details to get started.",
-      inputs: [
-        {
-          name: 'userName',
-          placeholder: this.userName,
-        },
-        {
-          name: 'userSurname',
-          placeholder: this.userSurname,
-        },
-        {
-          name: 'userEmail',
-          placeholder: this.userEmail,
-        },
-        {
-          name: 'userPosition',
-          placeholder: this.userPosition
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-            this.getStarted()
-          }
-        },
-        {
-          text: 'Continue',
-          handler: data => {
-
-            console.log('Saved clicked');
-            // this.hubs.getUserProfile(data.userName,data.downloadurl,data.userSurname,data.userEmail,data.userPosition).then((data)=>{
-            //   console.log(data)
-            // })
-          }
-        }
-      ]
-    });
-    prompt.present();
-  }
-  getStarted() {
-    this.showPrompt()
-  }
 
 
   saveToDB() {

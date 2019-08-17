@@ -141,7 +141,7 @@ h1{
     background: white;
     border-radius: 50px;
     object-fit: contain;
-    
+
   }
   #container-overlay {
     width: 100%;
@@ -252,8 +252,8 @@ h1{
     object-fit: cover;
   }
   .logo-image {
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
     border-radius: 100px;
     object-fit: contain;
     position: absolute;
@@ -261,6 +261,28 @@ h1{
     left: 50%;
     transform: translateX(-50%);
     background: white;
+  }
+  .editinfor {
+    border-radius: 100px;
+  height: 40px;
+  width: 40px;
+    position: absolute;
+   top: 98%;
+    left: 62%;
+    transform: translateX(-50% -50%);
+    background: rgb(251, 210, 4);
+    box-shadow: 10px 15px 20px -15px rgb(0, 0, 0); 
+  }
+  .penedit{
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16% auto
+    // position: absolute;
+    // top: 50%;
+    //  left: 50%;
+    //  transform: translateX(-50% -50%);
   }
   .buttons {
     width: 100%;
@@ -493,7 +515,7 @@ h1{
     width: 30px;
     transition: 300ms;
     line-height: 80px;
-    background: #54894a;
+    background: #00a50b;
     text-align: center;
     color: white;
     position: absolute;
@@ -504,7 +526,7 @@ h1{
     transform: translateY(-50%);
   }
   .toggle-list:hover {
-    background: rgb(0, 56, 53);
+    background: rgb(28, 84, 0);
   }
   .listed-item {
     width: 90%;

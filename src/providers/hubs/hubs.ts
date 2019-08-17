@@ -20,6 +20,7 @@ export class HubsProvider {
   orgProfile = new Array();
   getprog = new Array();
   getallhub = new Array();
+  userProg = new Array();
   constructor(public ngzone: NgZone, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
     console.log('Hello HubsProvider Provider');
   }
@@ -153,22 +154,24 @@ export class HubsProvider {
     })
   }
 
-  getUserProfile(userName,userSurname,userEmail,userPosition){
+  getUserProfile(userName,contact,Postion,postiondesc,userImage){
     var user = firebase.auth().currentUser;
     return new Promise((resolve, reject) => {
       firebase
         .database()
         .ref("UserProfileForOrg/" + user.uid)
-        .push({
+        .set({
           userName: userName,
-          userSurname: userSurname,
-          userEmail: userEmail,
-          userPosition:userPosition,
-          downloadurl: "assets/download.png",
+          userContract: contact,
+          userPosition: Postion,
+          userPostiondesc:postiondesc,
+          userImage:userImage
       
         });
       resolve()
     })
+
+    
   }
 
 
@@ -269,6 +272,29 @@ export class HubsProvider {
 				}
 			});
 			resolve(this.getallhub);
+		});
+		});
+  }
+
+  geOrgtUser() {
+		return new Promise((resolve, reject) => {
+			this.ngzone.run(() => {
+			var user = firebase.auth().currentUser.uid;
+			firebase.database().ref("UserProfileForOrg/" + user).on('value', (data: any) => {
+       let details = data.val();
+       console.log(details)
+       let obj ={
+        userContract: details.userContract,
+        userImage:details.userImage,
+        userName:details.userName,
+        userPosition:details.userPosition,
+        userPostiondesc:details.userPostiondesc
+       }
+       console.log(obj)
+       this.userProg.push(obj)
+       console.log(this.userProg)
+			});
+			resolve(this.userProg);
 		});
 		});
   }

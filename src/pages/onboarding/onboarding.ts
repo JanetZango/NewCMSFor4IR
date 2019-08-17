@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginRegisterPage } from '../login-register/login-register';
 import { FormsPage } from '../forms/forms';
 import { HomePage } from '../home/home';
-
+import { HubsProvider } from '../../providers/hubs/hubs'
 /**
  * Generated class for the LandingPage page.
  *
@@ -17,8 +17,14 @@ import { HomePage } from '../home/home';
   templateUrl: 'onboarding.html',
 })
 export class OnboardingPage {
+
+  Username;
+  contact;
+  postiondesc;
+  downloadurl ="../../assets/user.png";
+  Postion;
   email = this.navParams.get("email")
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public hubs :HubsProvider ) {
     console.log(this.email)
   }
 
@@ -128,7 +134,23 @@ export class OnboardingPage {
     progDot.style.height = "10px"
     toSlide.style.marginLeft = "-100%";
     progBar.style.marginLeft = "-20%"
+
+
+    this.hubs.getUserProfile(this.Username,this.contact,this.Postion,this.postiondesc,this.downloadurl).then((data)=>{
+      console.log(data)
+    })
   }
+  insertpic(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+        reader.onload = (event: any) => {
+          this.downloadurl = event.target.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
+
+    }
+
 
   moveToPage2() {
     var progBar = document.getElementById("wave");
