@@ -129,8 +129,8 @@ export class HubsProvider {
     return new Promise((resolve, reject) => {
       firebase
         .database()
-        .ref("Organizations/" + user.uid)
-        .set({
+        .ref("Organizations/")
+        .push({
           name: Orgname,
           email: email,
           contact: cell,
@@ -146,6 +146,7 @@ export class HubsProvider {
           downloadurl: "assets/download.png",
           downloadurlLogo: "assets/download.png",
           address: address,
+          user:user.uid
         });
       resolve()
     })
@@ -422,10 +423,11 @@ export class HubsProvider {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser
-        firebase.database().ref("programmes/" + user.uid).push({
+        firebase.database().ref("Organizations/").push({
           openDate: openDate,
           closeDate: closeDate,
           progName: progName,
+          category:"programmes",
           progType: progType,
           progBackround: progBackround,
           benefits: benefits,
@@ -434,7 +436,8 @@ export class HubsProvider {
           progEndDate: progEndDate,
           address: address,
           contacts: contacts,
-          img: img
+          img: img,
+          user:user.uid
         })
         resolve();
       })

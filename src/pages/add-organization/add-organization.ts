@@ -177,6 +177,7 @@ export class AddOrganizationPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public hubs: HubsProvider, public ngzone: NgZone, public alertCtrl: AlertController) {
     console.log(this.email)
+    console.log(this.type)
   }
 
   ionViewDidLoad() {
@@ -185,7 +186,10 @@ export class AddOrganizationPage {
   ionViewDidEnter() {
     var x = document.getElementById("Jobs").style.display = 'flex';
     console.log(x);
-
+    var x = document.getElementById("Programmes").style.display = 'flex';
+    console.log(x);
+    var x = document.getElementById("Services").style.display = 'flex';
+    console.log(x);
   }
   //Add org Method
   saveToDB() {
