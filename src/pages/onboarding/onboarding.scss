@@ -1,216 +1,4 @@
-// page-onboarding {
-//     .background {
-//       background-image: linear-gradient(#2f007b, #8e2dfd);
-//       display: flex;
-//       justify-content: center;
-//       align-items: center;
-//       //    flex-direction: column;
-//       height: 100%;
-//       width: 100%;
-//     }
-//     .wave {
-//       transition: 700ms;
-//       position: absolute;
-//       height: 100%;
-//       width: 300%;
-//       background-image: url("../../assets/icon/waves.png");
-//       background-position: center;
-//       background-repeat: no-repeat;
-//       background-size: cover;
-//       // z-index: 1;
-//     }
 
-//   .background {
-//     background-image: linear-gradient(#2f007b, #8e2dfd);
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     //    flex-direction: column;
-//     height: 100%;
-//     width: 100%;
-//   }
-//   .wave {
-//     position: absolute;
-//     height: 100%;
-//     width: 300%;
-//     background-image: url("../../assets/icon/waves.png");
-//     background-position: center;
-//     background-repeat: no-repeat;
-//     background-size: cover;
-//     // z-index: 1;
-//   }
- 
-// .background {
-//   background-image: linear-gradient(#2f007b, #8e2dfd);
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   //    flex-direction: column;
-//   height: 100%;
-//   width: 100%;
-// }
-// .wave {
-//   position: absolute;
-//   height: 100%;
-//   width: 300%;
-//   background-image: url("../../assets/icon/waves.png");
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   background-size: cover;
-//   // z-index: 1;
-// }
-// .cardcenter {
-//   height: 70vh;
-//   width: 70%;
-//   // display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   margin: 0 auto;
-//   border-radius: 15px;
-//   box-shadow: 0px 15px 20px -15px #000;
-//   z-index: 2;
-// }
-// .cardimg {
-//   //height: 30em;
-//   // width: 100%;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   margin: 0 auto;
-//   z-index: 2;
-// }
-// .cardcontent {
-//   height: 50%;
-//   width: 100%;
-//   z-index: 2;
-// }
-// .slide1 {
-//   z-index: 2;
-// }
-// .slide2 {
-//   display: none;
-//   z-index: 2;
-// }
-// .slide3 {
-//   display: none;
-//   z-index: 2;
-// }
-// .button-round-md {
-//   border-radius: 64px;
-//   padding: 0 2.6rem;
-//   margin: 0 auto;
-//   display: flex;
-// }
-// .button-round-ios {
-//   border-radius: 64px;
-//   padding: 0 2.6rem;
-//   margin: 0 auto;
-//   display: flex;
-// }
-// .nextflex {
-//   display: flex;
-// }
-// .pager {
-//   display: flex;
-// }
-// .endbtn {
-//   border-radius: 64px;
-//   padding: 0 2.6rem;
-//   margin: 0 auto;
-//   display: -webkit-box;
-//   display: -webkit-flex;
-//   display: -ms-flexbox;
-//   display: flex;
-//   width: 7em;
-// }
-
-// @media only screen and (max-width: 414px) {
-//   .cardcenter {
-//     height: 78vh;
-//     width: 90%;
-
-//     // display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     margin: 0 auto;
-//     border-radius: 15px;
-//     box-shadow: 0px 15px 20px -15px #000;
-
-//     z-index: 2;
-//   }
-//   .cardimg {
-//     //height: 30em;
-//     // width: 100%;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     margin: 0 auto;
-//     z-index: 2;
-//   }
-//   .cardcontent {
-//     height: 50%;
-//     width: 100%;
-//     z-index: 2;
-//   }
-//   .slide1 {
-//     z-index: 2;
-//   }
-//   .slide2 {
-//     display: none;
-//     z-index: 2;
-//   }
-//   .slide3 {
-//     display: none;
-//     z-index: 2;
-//   }
-//   .button-round-md {
-//     border-radius: 64px;
-//     padding: 0 2.6rem;
-//     margin: 0 auto;
-//     display: flex;
-//   }
-//   .button-round-ios {
-//     border-radius: 64px;
-//     padding: 0 2.6rem;
-//     margin: 0 auto;
-//     display: flex;
-//   }
-//   .nextflex {
-//     display: flex;
-//   }
-//   .pager {
-//     display: flex;
-//   }
-//   .endbtn {
-//     border-radius: 64px;
-//     padding: 0 2.6rem;
-//     margin: 0 auto;
-//     display: -webkit-box;
-//     display: -webkit-flex;
-//     display: -ms-flexbox;
-//     display: flex;
-//     width: 7em;
-//   }
-
-//   @media only screen and (max-width: 414px) {
-//     .cardcenter {
-//       height: 78vh;
-//       width: 90%;
-//       // display: flex;
-//       justify-content: center;
-//       align-items: center;
-//       margin: 0 auto;
-//       border-radius: 15px;
-//       box-shadow: 0px 15px 20px -15px #000;
-//     }
-//   }
-  
-// }
-    
-
-
-  
-// }
 
 page-onboarding {
   .myBody {
@@ -247,7 +35,7 @@ page-onboarding {
     }
   }
   #box-cont {
-    width: 300%;
+    width: 400%;
     height: 100%;
     display: flex;
     flex-wrap: nowrap;
@@ -311,9 +99,14 @@ page-onboarding {
   #box-cont > div:nth-child(2) {
     width: 100%;
     height: 100%;
-    // background: blue;
+    // background: red;
   }
   #box-cont > div:nth-child(3) {
+    width: 100%;
+    height: 100%;
+    // background: blue;
+  }
+  #box-cont > div:nth-child(4) {
     width: 100%;
     height: 100%;
     // background: green;
@@ -403,7 +196,7 @@ page-onboarding {
     margin: 0 auto;
     height: 10px;
     border-radius: 10px;
-    background: #003e21
+    background: gray
   }
   #dot2 {
     transition: 700ms;
@@ -411,7 +204,7 @@ page-onboarding {
     margin: 0 auto;
     height: 0px;
     border-radius: 10px;
-    background: #003e21
+    background: gray
   }
   #dot3 {
     transition: 700ms;
@@ -419,6 +212,84 @@ page-onboarding {
     margin: 0 auto;
     height: 0px;
     border-radius: 10px;
-    background:#003e21
+    background: gray
+  }
+  #dot4 {
+    transition: 700ms;
+    width: 10px;
+    margin: 0 auto;
+    height: 0px;
+    border-radius: 10px;
+    background: gray
+  }
+
+  #logoUpdate {
+    display: none;
+  }
+  .editing-data-inputs {
+   width: 100%;
+   // height: 560px;
+    background: white;
+   margin: 0 auto;
+    transition: 300ms;
+    border-radius: 15px;
+    z-index: 1;
+    //padding: 10px;
+  }
+  #theLogo-update {
+    width: 100px;
+    margin: 0 auto;
+    margin-top: -50px;
+    height: 100px;
+    background: white;
+    border-radius: 50px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.171);
+  }
+  #theLogo-update > label div {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+    line-height: 100px;
+    transition: 300ms;
+    border-radius: 10px;
+    opacity: 0;
+  }
+  #theLogo-update:hover {
+    label > div {
+      opacity: 1;
+      border-radius: 50px;
+    }
+  }
+  #textarea-update {
+    width: 100%;
+    resize: none;
+    padding: 10px;
+    border-radius: 5px;
+    // height: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.39);
+  }
+  .text-field {
+    width: 100%;
+    // height: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.39);
+    margin: 10px auto;
+    border-radius: 5px;
+  }
+
+  #update-inputs {
+    width: 100%;
+   margin: 0 auto;
+    text-align: center;
+  }
+  #click-upload {
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-radius: 50px;
+    object-fit: contain;
+    
   }
 }

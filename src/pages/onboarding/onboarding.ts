@@ -120,9 +120,7 @@ export class OnboardingPage {
   // =====================================================================================================================================================================
 
 
-
-
-  moveToPage2() {
+  moveToPage1() {
     var progBar = document.getElementById("wave");
     var toSlide = document.getElementById("box-cont");
     var progDot = document.getElementById("dot2");
@@ -131,25 +129,41 @@ export class OnboardingPage {
     toSlide.style.marginLeft = "-100%";
     progBar.style.marginLeft = "-20%"
   }
-  moveToPage3() {
+
+  moveToPage2() {
     var progBar = document.getElementById("wave");
     var toSlide = document.getElementById("box-cont");
     var progDot = document.getElementById("dot3");
+    var skipper = document.getElementById("skipper").style.display = "block";
     progDot.style.height = "10px"
     toSlide.style.marginLeft = "-200%";
     progBar.style.marginLeft = "-30%"
   }
+  moveToPage3() {
+    var progBar = document.getElementById("wave");
+    var toSlide = document.getElementById("box-cont");
+    var progDot = document.getElementById("dot4");
+    var skipper = document.getElementById("skipper").style.display = "none";
+    progDot.style.height = "10px"
+    toSlide.style.marginLeft = "-300%";
+    progBar.style.marginLeft = "-40%"
+  }
   moveToPage4() {
     var toSlide = document.getElementById("box-cont");
     var progBar = document.getElementById("wave");
-    toSlide.style.marginLeft = "-300%";
-    progBar.style.marginLeft = "-40%"
+    var skipper = document.getElementById("skipper").style.display = "none";
+    toSlide.style.marginLeft = "-400%";
+    progBar.style.marginLeft = "-50%";
+    
   }
   backToPage3() {
     var progressBar = document.getElementById("wave");
     var toSlide = document.getElementById("box-cont");
+    var progDot = document.getElementById("dot4");
+    var skipper = document.getElementById("skipper").style.display = "block";
     toSlide.style.marginLeft = "-200%";
-    progressBar.style.marginLeft = "-30%"
+    progressBar.style.marginLeft = "-30%";
+    progDot.style.height = "0px"
   }
   backToPage2() {
     var progressBar = document.getElementById("wave");
