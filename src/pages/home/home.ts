@@ -19,6 +19,7 @@ export class HomePage implements OnInit {
   getOrgArry = new Array();
   items = new Array()
   orgNames = new Array();
+  displayAllhubs = new Array();
   updateOrganization = new Array();
   getUserProfile = new Array();
   displayOrg = new Array();
@@ -72,25 +73,13 @@ export class HomePage implements OnInit {
   constructor(public navCtrl: NavController, public hubs: HubsProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController, public alertCtrl: AlertController) {
 
     this.getallorg();
+    this.getallhubs();
 
 
 
     this.hubs.displayOnMAP().then((data:any) => {
       this.displayOrg = data
-
-      this.name = data.name
-      this.address = data.address
-      this.lat = data.lat;
-      this.background = data.background
-      this.category = data.category;
-      this.downloadurl =data.downloadurl;
-      this.downloadurlLogo = data.downloadurlLogo;
-      this.wifi = data.wifi;
-      this.long = data.long;
-      this.email = data.email;
-      this.contact = data.contact
-      this.key = data.id
-      console.log(this.name)
+      console.log(this.displayOrg)
     })
 
 
@@ -109,21 +98,28 @@ export class HomePage implements OnInit {
   getallorg() {
     this.hubs.getAllOrganizations().then((data: any) => {
       this.getOrgArry = data
-      // console.log(this.getOrgArry)
       var names = this.hubs.getOrgNames()
       this.storeOrgNames(names)
-      // this.name = this.getOrgArry[0].name
-      // this.address = this.getOrgArry[0].address
-      // this.lat = this.getOrgArry[0].lat;
-      // this.background = this.getOrgArry[0].background
-      // this.category = this.getOrgArry[0].category;
-      // this.downloadurl = this.getOrgArry[0].downloadurl;
-      // this.downloadurlLogo = this.getOrgArry[0].downloadurlLogo;
-      // this.wifi = this.getOrgArry[0].wifi;
-      // this.long = this.getOrgArry[0].long;
-      // this.email = this.getOrgArry[0].email;
-      // this.contact = this.getOrgArry[0].contact
-      // this.key = this.getOrgArry[0].id
+      this.name = this.getOrgArry[0].name
+      this.address = this.getOrgArry[0].address
+      this.lat = this.getOrgArry[0].lat;
+      this.background = this.getOrgArry[0].background
+      this.category = this.getOrgArry[0].category;
+      this.downloadurl = this.getOrgArry[0].downloadurl;
+      this.downloadurlLogo = this.getOrgArry[0].downloadurlLogo;
+      this.wifi = this.getOrgArry[0].wifi;
+      this.long = this.getOrgArry[0].long;
+      this.email = this.getOrgArry[0].email;
+      this.contact = this.getOrgArry[0].contact
+      this.key = this.getOrgArry[0].id
+    })
+  }
+
+  getallhubs(){
+    this.hubs.getallhubs().then((data:any)=>{
+      console.log(data)
+      this.displayAllhubs = data
+     console.log(this.displayAllhubs)
     })
   }
 
@@ -383,15 +379,15 @@ export class HomePage implements OnInit {
 
   //markers for the map
   markers() {
-    console.log(this.getOrgArry);
-    for (let index = 0; index < this.getOrgArry.length; index++) {
+    console.log(this.displayAllhubs);
+    for (let index = 0; index < this.displayAllhubs.length; index++) {
       var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/'
       let showMultipleMarker = new google.maps.Marker({
         map: this.map,
         icon: this.icon,
-        title: this.getOrgArry[index].orgName,
+        title: this.displayAllhubs[index].name,
         size: { width: 5, height: 5 },
-        position: { lat: parseFloat(this.getOrgArry[index].lat), lng: parseFloat(this.getOrgArry[index].long) },
+        position: { lat: parseFloat(this.displayAllhubs[index].lat), lng: parseFloat(this.displayAllhubs[index].long) },
         label: name,
         zoom: 15,
         styles: this.mapStyles
@@ -400,13 +396,13 @@ export class HomePage implements OnInit {
       let infowindow = new google.maps.InfoWindow({
         content:
           '<div style="width: 400px; transition: 300ms;"><b>' +
-          this.getOrgArry[index].category +
+          this.displayAllhubs[index].name +
           '</b><div style="display: flex; padding-top: 10px;">' +
           '<img style="height: 100px; width: 100px; object-fit: cober; border-radius: 50px;" src=' +
-          this.getOrgArry[index].downloadurlLogo +
+          this.displayAllhubs[index].img +
           ">" +
           '<div style="padding-left: 10px;padding-right: 10px">' +
-          this.getOrgArry[index].background +
+          this.displayAllhubs[index].uid +
           "</div><br>" +
           "</div>"
       });

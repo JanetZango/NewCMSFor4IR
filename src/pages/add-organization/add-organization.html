@@ -59,7 +59,7 @@
               Please complete the form to continue
               <br>
               <textarea name="" id="text-field" cols="30" rows="10" [(ngModel)]="progBenfits" placeholder="Benefits"></textarea>
-              <input type="text" id="input-field" placeholder="Address" [(ngModel)]="progAddress">
+              <input type="text" id="input-field" placeholder="Address" [(ngModel)]="progAddress"  (change)="setAddress()">
               <div class="Contacts">
                 <input type="text" id="input-field" placeholder="Phone" [(ngModel)]="progPhone"> 
                 <input type="text" id="input-field" placeholder="Email" [(ngModel)]="progEmail"> 
