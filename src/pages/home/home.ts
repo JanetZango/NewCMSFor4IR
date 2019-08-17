@@ -253,6 +253,10 @@ export class HomePage implements OnInit {
     var btn1 = document.getElementById("btn2").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0)";
+    
+    var settingsUpdate = document.getElementById("org-list-view");
+    settingsUpdate.style.display = "block";
+     
   }
   servArray =  new Array();
   showServicesPage() {
@@ -270,6 +274,10 @@ export class HomePage implements OnInit {
     var btn1 = document.getElementById("btn2").style.background = "rgba(255, 255, 255, 0.1)";
     var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0)";
+    
+    var settingsUpdate = document.getElementById("org-list-view");
+    settingsUpdate.style.display = "none";
+     
   }
 
  
@@ -290,6 +298,10 @@ export class HomePage implements OnInit {
     var btn1 = document.getElementById("btn2").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn3").style.background = "rgba(255, 255, 255, 0.1)";
     var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0)";
+    
+    var settingsUpdate = document.getElementById("org-list-view");
+    settingsUpdate.style.display = "none";
+     
   }
   jobsArry =  new Array();
   showJobsPage() {
@@ -306,6 +318,10 @@ export class HomePage implements OnInit {
     var btn1 = document.getElementById("btn2").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn4").style.background = "rgba(255, 255, 255, 0.1)";
+    
+    var settingsUpdate = document.getElementById("org-list-view");
+    settingsUpdate.style.display = "none";
+     
   }
 
   //show map
@@ -363,7 +379,6 @@ export class HomePage implements OnInit {
 
   add(type){
     this.navCtrl.push(AddOrganizationPage, {type:type})
-    
   }
 
   //markers for the map
@@ -831,7 +846,7 @@ export class HomePage implements OnInit {
    var settingsUpdate = document.getElementById("service-overlay");
    settingsUpdate.style.display = "none";
  }
- 
+
  editjob(){
   console.log(`hi`);
   
