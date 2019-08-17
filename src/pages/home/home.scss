@@ -1,4 +1,28 @@
 page-home {
+  .datetime-text {
+    overflow: visible;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    min-width: 16px;
+    min-height: 1.2em;
+    font-size: inherit;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+  .grid,.row,.col{
+    margin: 0px;
+    padding: 0px
+  }
+  .h2{
+    color: black ! important;
+  }
   .leftside{
     height: 50%;
     width: 50%;
@@ -47,7 +71,7 @@ h1{
   }
   .editing-data-inputs {
     width: 320px;
-    height: 560px;
+   // height: 560px;
     background: white;
     margin: 0 auto;
     transition: 300ms;
@@ -119,6 +143,45 @@ h1{
     object-fit: contain;
   }
   #container-overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.438);
+    position: absolute;
+    top: 0;
+    animation: faderIn 500ms;
+    z-index: 100000000000000000000000000000000000000000000000000000000000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    display: none;
+  }
+  #program-overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.438);
+    position: absolute;
+    top: 0;
+    animation: faderIn 500ms;
+    z-index: 100000000000000000000000000000000000000000000000000000000000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    display: none;
+  }
+  #service-overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.438);
+    position: absolute;
+    top: 0;
+    animation: faderIn 500ms;
+    z-index: 100000000000000000000000000000000000000000000000000000000000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    display: none;
+  }
+  #job-overlay {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.438);
@@ -546,7 +609,7 @@ h1{
   .card {
     width: calc(20% - 10px);
     min-width: 300px;
-    height: 80%;
+    height: 50%;
     border: 0.5px solid rgba(0, 0, 0, 0.384);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.288);
     margin: 5px;
@@ -562,49 +625,58 @@ h1{
   }
   .image-image {
     width: 100%;
-    height: 30%;
+    height: 40%;
     // border: 1px solid red;
     position: relative;
     z-index: 1;
   }
   .more-details {
-    height: 70%;
+    height: 60%;
     width: 100%;
     padding: 0px;
     background: white;
-    overflow-y: hidden;
     overflow-x: scroll;
+    overflow-x: hidden;
   }
-  .content-container {
-    width: 200%;
-    height: 100%;
-    background: pink;
-    // padding: 5px;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .content-container > div {
-    padding: 10px;
-    width: 50%;
-    height: 100%;
-  }
-  .content-container > div:nth-child(1) {
-    background: white;
-    border-right: 0.2px solid rgba(0, 0, 0, 0.4);
-  }
-  .content-container > div:nth-child(2) {
-    background: white;
-    border-left: 0.2px solid rgba(0, 0, 0, 0.4);
-  }
+  // .content-container {
+  //   width: 200%;
+  //   height: 100%;
+  //   background: pink;
+  //   // padding: 5px;
+  //   display: flex;
+  //   flex-wrap: wrap;
+  // }
+  // .content-container > div {
+  //   padding: 10px;
+  //   width: 50%;
+  //   height: 100%;
+  // }
+  // .content-container > div:nth-child(1) {
+  //   background: white;
+  //   border-right: 0.2px solid rgba(0, 0, 0, 0.4);
+  // }
+  // .content-container > div:nth-child(2) {
+  //   background: white;
+  //   border-left: 0.2px solid rgba(0, 0, 0, 0.4);
+  // }
   .dates {
     display: flex;
     width: 100%;
     text-align: center;
+    background-color: #f4f4f4;
+    border-radius: 10px
   }
+  .line{
+    margin: 0 auto;
+    width: 100%;
+    border-bottom-color: rgb(156, 156, 156);
+    border-bottom-width: 1px;
+    border-bottom-style: solid
+}
   .open,
   .close {
     width: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.171);
+   // border: 1px solid rgba(0, 0, 0, 0.171);
     margin: 5px;
     border-radius: 5px;
   }
@@ -615,7 +687,7 @@ h1{
   }
   .action-buttons {
     transition: 700ms;
-    opacity: 0;
+    opacity: 1;
     height: 30px;
     background: rgba(0, 0, 0, 0.486);
     position: absolute;
@@ -647,14 +719,14 @@ h1{
   .theSub-head {
     text-align: center !important;
   }
-  .card:hover .action-buttons {
-    opacity: 1;
-  }
+  // .card:hover .action-buttons {
+  //   opacity: 1;
+  // }
   #bg-desc::first-letter {
     text-transform: capitalize;
   }
   #bg-desc {
-    padding-left: 5px;
+    padding-left: 0px;
   }
   #bg-desc-email {
     text-transform: lowercase;
@@ -675,6 +747,19 @@ h1{
     overflow: hidden;
     div {
       width: 100%;
+    }
+  }
+  @media only screen and (max-width: 800px) {
+    .card {
+      width: calc(20% - 10px);
+      min-width: 300px;
+      height: 98%;
+      border: 0.5px solid rgba(0, 0, 0, 0.384);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.288);
+      margin: 5px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: white;
     }
   }
 }
