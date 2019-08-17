@@ -249,16 +249,11 @@ export class FormsPage {
         {
           text: 'Continue',
           handler: data => {
-<<<<<<< HEAD
-=======
-            // var getStarted = document.getElementById("getStarted1");
-            // getStarted.style.display = "none"
 
->>>>>>> 26b2e1f4d1b17b61f29406cea94b20edc982451d
             console.log('Saved clicked');
-            this.hubs.getUserProfile(data.userName,data.downloadurl,data.userSurname,data.userEmail,data.userPosition).then((data)=>{
-              console.log(data)
-            })
+            // this.hubs.getUserProfile(data.userName,data.downloadurl,data.userSurname,data.userEmail,data.userPosition).then((data)=>{
+            //   console.log(data)
+            // })
           }
         }
       ]
@@ -308,7 +303,6 @@ export class FormsPage {
         console.log(this.orgAddressObject);
       }, Error => {
         this.checkAddress = 1;
-
         console.log(this.checkAddress);
       })
     }
