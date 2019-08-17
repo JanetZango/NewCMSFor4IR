@@ -799,4 +799,44 @@ export class HomePage implements OnInit {
   //   observer.observer(img)
   // })
    }
+
+
+   editprogram(){
+     console.log(`hi`);
+     
+    var settingsUpdate = document.getElementById("program-overlay");
+    settingsUpdate.style.display = "block";
+    settingsUpdate.style.display = "flex";
+   }
+   cancelprogramm() {
+    
+    var settingsUpdate = document.getElementById("program-overlay");
+    settingsUpdate.style.display = "none";
+  }
+
+  editservice(){
+    console.log(`hi`);
+    
+   var settingsUpdate = document.getElementById("service-overlay");
+   settingsUpdate.style.display = "block";
+   settingsUpdate.style.display = "flex";
+  }
+  cancelservice() {
+   
+   var settingsUpdate = document.getElementById("service-overlay");
+   settingsUpdate.style.display = "none";
+ }
+ 
+ editjob(){
+  console.log(`hi`);
+  
+ var settingsUpdate = document.getElementById("job-overlay");
+ settingsUpdate.style.display = "block";
+ settingsUpdate.style.display = "flex";
+}
+canceljob() {
+ 
+ var settingsUpdate = document.getElementById("job-overlay");
+ settingsUpdate.style.display = "none";
+}
 }

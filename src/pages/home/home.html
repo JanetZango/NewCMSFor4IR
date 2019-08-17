@@ -139,6 +139,7 @@ sdfsdfsdf dfsdfsdfs
           </div>
         </div> -->
         </div>
+        <!-- editservice -->
         <div class="view" id="pg2">
           <ion-fab bottom right (click)="add('Services')">
             <button ion-fab color="btn">
@@ -151,7 +152,7 @@ sdfsdfsdf dfsdfsdfs
                 <div class="action-buttons">
                   <button ion-button clear color="light">Hide</button>
                   <button ion-button clear color="light">Delete</button>
-                  <button ion-button clear color="light">Edit</button>
+                  <button ion-button clear color="light" (click)='editservice()'>Edit</button>
                 </div>
                 <img src="{{i.img}}" alt="" class="image-actual">
               </div>
@@ -170,7 +171,8 @@ sdfsdfsdf dfsdfsdfs
                 <p id="bg-desc">0813917127</p>
                 <p id="subSub-head">Email</p>
                 <p id="bg-desc-email">Me@email.com</p> -->
-                <div class="content-container">
+                <div padding class="content-container">
+                    <h2>Details</h2>
                   <div>
 
                     <p id="heading">{{i.serviceName}}</p>
@@ -204,7 +206,7 @@ sdfsdfsdf dfsdfsdfs
                 <div class="action-buttons">
                   <button ion-button clear color="light">Hide</button>
                   <button ion-button clear color="light">Delete</button>
-                  <button ion-button clear color="light">Edit</button>
+                  <button ion-button clear color="light" (click)='editprogram()'>Edit</button>
                 </div>
                 <img src="{{i.img}}" alt="" class="image-actual">
               </div>
@@ -242,7 +244,9 @@ sdfsdfsdf dfsdfsdfs
                       <p id="bg-desc">99/99/1999</p>
                     </div>
                   </div> -->
-                <div class="content-container">
+                <div padding class="content-container">
+                    <h2>Details</h2>
+                    <div class="line"></div>
                   <div>
                     <p id="heading">{{i.name}}</p>
                     <p id="sub-head">Background</p>
@@ -259,7 +263,8 @@ sdfsdfsdf dfsdfsdfs
                     </p>
                   </div>
                   <div>
-                    <p id="sub-head">Dates</p>
+                      <h2>Application </h2>
+                    <!-- <p id="sub-head">Dates</p> -->
                     <div class="dates">
                       <div class="open">
                         <p id="sub-head" class="theSub-head">Application Open Date</p>
@@ -270,6 +275,7 @@ sdfsdfsdf dfsdfsdfs
                         <p id="bg-desc">{{i.closeDate}}</p>
                       </div>
                     </div>
+                    <h2>Programmes</h2>
                     <div class="dates">
                       <div class="open">
                         <p id="sub-head" class="theSub-head">Programme Start</p>
@@ -298,7 +304,7 @@ sdfsdfsdf dfsdfsdfs
                 <div class="action-buttons">
                   <button ion-button clear color="light">Hide</button>
                   <button ion-button clear color="light">Delete</button>
-                  <button ion-button clear color="light">Edit</button>
+                  <button ion-button clear color="light" (click)='editjob()'>Edit</button>
                 </div>
                 <img src="{{i.img}}" alt="" class="image-actual">
               </div>
@@ -345,7 +351,10 @@ sdfsdfsdf dfsdfsdfs
                     <p id="bg-desc">99/99/1999</p>
                   </div>
                 </div> -->
-                <div class="content-container">
+               
+                <div padding class="content-container">
+                    <h2>Details</h2>
+                    <div class="line"></div>
                   <div>
                     <p id="heading">{{i.name}}</p>
                     <p id="sub-head">Background</p>
@@ -364,7 +373,9 @@ sdfsdfsdf dfsdfsdfs
                   <div>
                     <p id="sub-head">Job Type</p>
                     <p id="bg-desc">{{i.contacts}}</p>
-                    <p id="sub-head">Dates</p>
+                    <!-- <p id="sub-head">Dates</p> -->
+                    <h2>Application</h2>
+                    <!-- <div class="line"></div> -->
                     <div class="dates">
                       <div class="open">
                         <p id="sub-head" class="theSub-head">Application Open Date</p>
@@ -375,6 +386,7 @@ sdfsdfsdf dfsdfsdfs
                         <p id="bg-desc">{{i.closeDate}}</p>
                       </div>
                     </div>
+                    <h2>Programmes</h2>
                     <div class="dates">
                       <div class="open">
                         <p id="sub-head" class="theSub-head">Job Start Date</p>
@@ -426,4 +438,213 @@ sdfsdfsdf dfsdfsdfs
       </div>
     </div>
   </div>
+  
+
+
+  <div id="program-overlay">
+      <div class="toDismiss" (click)="cancelSettings()">
+  
+      </div>
+      <div class="editing-data-inputs">
+        <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
+        <div id="theLogo-update">
+  
+          <label for="logoUpdate">
+            <div>Logo</div>
+            <img id="click-upload" src="{{downloadurlLogo}}" alt="">
+          </label>
+        </div>
+        <div id="update-inputs">
+          <p>Update organisation profile</p>
+          <ion-input type="text" class="text-field" placeholder="Background" value="{{name}}" [(ngModel)]="name">
+          </ion-input>
+          <!-- <ion-input type="text" class="text-field" placeholder="Physical Address"  [(ngModel)]="address"></ion-input> -->
+          <ion-input type="tel" class="text-field" placeholder="Address" [(ngModel)]="contact"></ion-input>
+
+          <ion-grid>
+          <ion-row>
+              
+              <ion-row col-12>
+                  <p text-center>Application</p>
+              </ion-row>
+              <ion-col col-6>
+               
+                  <ion-item>
+                      <ion-label>Start </ion-label>
+                      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+                    </ion-item>
+              </ion-col>
+              <ion-col col-6>
+                  <ion-item>
+                      <ion-label>End</ion-label>
+                      <ion-datetime text-center displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+                    </ion-item>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-row col-12>
+                  <p>Program</p>
+              </ion-row>
+             
+              <ion-col col-6>
+                  <ion-item>
+                      <ion-label>Start</ion-label>
+                      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+                    </ion-item>
+              </ion-col>
+              <ion-col col-6>
+                  <ion-item>
+                      <ion-label>End</ion-label>
+                      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+                    </ion-item>
+              </ion-col>
+          </ion-row>
+          </ion-grid>
+        
+          <!-- <ion-input type="email" class="text-field" placeholder="Email Address" [(ngModel)]="email" disabled></ion-input> -->
+          <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="5"
+            [(ngModel)]="background"></textarea>
+       
+          <div id="update-buttons">
+            <button ion-button outline color="danger" (click)="cancelprogramm()">Cancel</button>
+            <button ion-button (click)="updateOrg()">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="service-overlay">
+        <div class="toDismiss" (click)="cancelSettings()">
+    
+        </div>
+        <div class="editing-data-inputs">
+          <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
+          <div id="theLogo-update">
+    
+            <label for="logoUpdate">
+              <div>Logo</div>
+              <img id="click-upload" src="{{downloadurlLogo}}" alt="">
+            </label>
+          </div>
+          <div id="update-inputs">
+            <p>Update organisation service</p>
+            <!-- <ion-input type="text" class="text-field" placeholder="Background" value="{{name}}" [(ngModel)]="name">
+            </ion-input> -->
+            <ion-input type="text" class="text-field" placeholder="Physical Address"  [(ngModel)]="address"></ion-input>
+            <ion-input type="tel" class="text-field" placeholder="contact details" [(ngModel)]="contact"></ion-input>
+            <ion-input type="email" class="text-field" placeholder="Email Address" [(ngModel)]="email" disabled></ion-input>
+            <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="10"
+              [(ngModel)]="background"></textarea>
+            <div id="update-buttons">
+              <button ion-button outline color="danger" (click)="cancelservice()">Cancel</button>
+              <button ion-button (click)="updateOrg()">Update</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="job-overlay">
+          <div class="toDismiss" (click)="cancelSettings()">
+  
+            </div>
+            <div class="editing-data-inputs">
+              <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
+              <div id="theLogo-update">
+        
+                <label for="logoUpdate">
+                  <div>Logo</div>
+                  <img id="click-upload" src="{{downloadurlLogo}}" alt="">
+                </label>
+              </div>
+              <div id="update-inputs">
+                <p>Update organisation Jobs</p>
+                <ion-input type="text" class="text-field" placeholder="Background" value="{{name}}" [(ngModel)]="name">
+                </ion-input>
+                <ion-input type="text" class="text-field" placeholder="Job type"  [(ngModel)]="address"></ion-input>
+                <ion-input type="tel" class="text-field" placeholder="Address" [(ngModel)]="contact"></ion-input>
+      
+                <ion-grid>
+                <ion-row>
+                    
+                    <ion-row col-12>
+                        <p text-center>Application</p>
+                    </ion-row>
+                    <ion-col col-6>
+                     
+                        <ion-item>
+                            <ion-label>Start </ion-label>
+                            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+                          </ion-item>
+                    </ion-col>
+                    <ion-col col-6>
+                        <ion-item>
+                            <ion-label>End</ion-label>
+                            <ion-datetime text-center displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+                          </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-row col-12>
+                        <p>Program</p>
+                    </ion-row>
+                   
+                    <ion-col col-6>
+                        <ion-item>
+                            <ion-label>Start</ion-label>
+                            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+                          </ion-item>
+                    </ion-col>
+                    <ion-col col-6>
+                        <ion-item>
+                            <ion-label>End</ion-label>
+                            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+                          </ion-item>
+                    </ion-col>
+                </ion-row>
+                </ion-grid>
+              
+                <!-- <ion-input type="email" class="text-field" placeholder="Email Address" [(ngModel)]="email" disabled></ion-input> -->
+                <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="5"
+                  [(ngModel)]="background"></textarea>
+             
+                <div id="update-buttons">
+                  <button ion-button outline color="danger" (click)="canceljob()">Cancel</button>
+                  <button ion-button (click)="updateOrg()">Update</button>
+                </div>
+              </div>
+            </div>
+          
+
+
+        <!-- </div>  <div id="wifi-overlay">
+            <div class="toDismiss" (click)="cancelSettings()">
+        
+            </div>
+            <div class="editing-data-inputs">
+              <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
+              <div id="theLogo-update">
+        
+                <label for="logoUpdate">
+                  <div>Logo</div>
+                  <img id="click-upload" src="{{downloadurlLogo}}" alt="">
+                </label>
+              </div>
+              <div id="update-inputs">
+                <p>Update organisation profile</p>
+                <ion-input type="text" class="text-field" placeholder="Background" value="{{name}}" [(ngModel)]="name">
+                </ion-input> -->
+                <!-- <ion-input type="text" class="text-field" placeholder="Physical Address"  [(ngModel)]="address"></ion-input> -->
+                <!-- <ion-input type="tel" class="text-field" placeholder="Address" [(ngModel)]="contact"></ion-input> -->
+                <!-- <ion-input type="email" class="text-field" placeholder="Email Address" [(ngModel)]="email" disabled></ion-input> -->
+                <!-- <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="10"
+                  [(ngModel)]="background"></textarea>
+                <div id="update-buttons">
+                  <button ion-button outline color="danger" (click)="cancelprogramm()">Cancel</button>
+                  <button ion-button (click)="updateOrg()">Update</button>
+                </div>
+              </div>
+            </div>-->
+          </div> 
 </ion-content>
