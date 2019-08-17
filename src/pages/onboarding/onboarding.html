@@ -1,102 +1,4 @@
-<!-- 
-<ion-content>
-  <div pager class="background">
-    <div  class="wave"></div>
-    <div class="slide1" padding>
-      <ion-card class="cardcenter">
-        <div text-center class="cardimg">
-          <img style="height: 40%; width: 40%;margin-top: 10%" src="../../assets/imgs/407893.png" />
-        </div>
-        <ion-card-content class="cardcontent">
-          <ion-card-title text-center>
-            Nine Inch Nails Live 1
-          </ion-card-title>
-          <p text-center>
-            The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.
-          </p>
-          <br>
-          <br>
-          <button ion-button round color="btn"  (click)="nextpage()">start
-          </button>
-          <br>
-          <br>
-          <br>
-         
-          
-        </ion-card-content>
-      </ion-card>
-    </div>
 
-    <div class="slide2" style="display: none;">
-      <ion-card class="cardcenter">
-        <div text-center class="cardimg">
-          <img style="height: 40%; width: 40%; margin-top: 10%" src="../../assets/imgs/407893.png" />
-        </div>
-        <ion-card-content class="cardcontent">
-          <ion-card-title text-center>
-            Nine Inch Nails Live 2
-          </ion-card-title>
-          <p text-center>
-            The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.
-          </p>
-          <br>
-          <br>
-          <button ion-button round color="btn"  (click)="nextpage()">Skip</button>
-          <br>
-          
-         
-          <ion-grid class="nextflex">
-            <ion-row>
-              <ion-col item-left>
-                  <button ion-button outline round color="btn" class="endbtn" (click)="prevpage()">previous</button>
-              </ion-col >
-              <ion-col text-end>
-                <button ion-button round outline color="btn" class="endbtn" (click)="nextpage2()">next
-                </button>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-card-content>
-      </ion-card>
-    </div>
-
-    <div class="slide3" style="display: none;">
-      <ion-card class="cardcenter">
-        <div text-center class="cardimg">
-          <img style="height: 40%; width: 40%; margin-top: 10%" src="../../assets/imgs/407893.png" />
-        </div>
-        <ion-card-content class="cardcontent">
-          <ion-card-title text-center>
-            Nine Inch Nails Live 3
-          </ion-card-title>
-          <p text-center>
-            The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.
-          </p>
-          <br>
-          <br>
-          <button  ion-button round color="btn"  (click)="nextpage()">Skip</button>
-          <br>
-          
-         
-
-          <ion-grid class="nextflex">
-            <ion-row>
-              <ion-col col-6 text-end>
-                  <button ion-button outline round color="btn" class="endbtn" (click)="prevpage2()">previous</button>
-              </ion-col>
-              <ion-col col-6 text-end item-end>
-                <button item-end ion-button outline round color="btn" class="endbtn" (click)="nextpage()">next
-                </button>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-
-        </ion-card-content>
-      </ion-card>
-    </div>
-
-  </div>
-</ion-content> -->
 
 <ion-content>
     <div class="myBody">
@@ -107,15 +9,43 @@
           <div id="dot1"></div>
           <div id="dot2"></div>
           <div id="dot3"></div>
+          <div id="dot4"></div>
         </div>
         <div id="box-cont">
+            <div id="page0">
+                <ion-card padding>
+                    <div class="editing-data-inputs">
+                        <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
+                        <div id="theLogo-update">
+                  
+                          <label for="logoUpdate">
+                            <div>Logo</div>
+                            <img id="click-upload" src="../../assets/user.png" alt="">
+                          </label>
+                        </div>
+                        <div id="update-inputs">
+                          <p>Organisation representative</p>
+                          <!-- <ion-input type="text" class="text-field" placeholder="Background" value="{{name}}" [(ngModel)]="name">
+                          </ion-input> -->
+                          <ion-input type="text" class="text-field" placeholder="Username"  [(ngModel)]="address"></ion-input>
+                          <ion-input type="tel" class="text-field" placeholder="Phone number" [(ngModel)]="contact"></ion-input>
+                          <ion-input type="text" class="text-field" placeholder="Postion" [(ngModel)]="email" ></ion-input>
+                          <textarea name="" id="textarea-update" placeholder="Description Postion" cols="30" rows="8"
+                            [(ngModel)]="background"></textarea>
+                        
+                        </div>
+                      </div>
+                </ion-card>
+                <button ion-button id="direction-forwardStart" color="blue" (click)="moveToPage1()">Start</button>
+              </div>
           <div id="page1">
             <ion-card padding>
               <img id="logo" src="../../assets/imgs/4IR logo.png" />
               <div class="card-title">Welcome to the [Insert name here] Dashboard</div>
               <div class="card-subtitle">All organisations, private or public, big, medium or small, this CMS(Content Management System) is made for you. Take this chance to read more about what the CMS offers and embark on this journey with us and the magnitude of other businesses that want their services and offers to be available in our app.</div>
             </ion-card>
-            <button ion-button id="direction-forwardStart" color="blue" (click)="moveToPage2()">Start</button>
+            <button ion-button id="direction-back" color="blue" (click)="backToPage1()">Back</button>
+            <button ion-button  id="direction-forward" color="blue" (click)="moveToPage2()">Start</button>
           </div>
           <div id="page2">
               <ion-card padding>
@@ -123,7 +53,7 @@
                 <div class="card-title">Welcome to the [Insert name here] Dashboard</div>
                 <div class="card-subtitle">All organisations, private or public, big, medium or small, this CMS(Content Management System) is made for you. Take this chance to read more about what the CMS offers and embark on this journey with us and the magnitude of other businesses that want their services and offers to be available in our app.</div>
               </ion-card>
-            <button ion-button id="direction-back" color="blue" (click)="backToPage1()">Back</button>
+            <button ion-button id="direction-back" color="blue" (click)="backToPage2()">Back</button>
             <button ion-button id="direction-forward" color="blue" (click)="moveToPage3()">Next</button>
           </div>
           <div id="page3">
@@ -132,7 +62,7 @@
                 <div class="card-title">Welcome to the [Insert name here] Dashboard</div>
                 <div class="card-subtitle">All organisations, private or public, big, medium or small, this CMS(Content Management System) is made for you. Take this chance to read more about what the CMS offers and embark on this journey with us and the magnitude of other businesses that want their services and offers to be available in our app.</div>
               </ion-card>
-            <button ion-button id="direction-back" color="blue" (click)="backToPage2()">Back</button>
+            <button ion-button id="direction-back" color="blue" (click)="backToPage3()">Back</button>
             <button ion-button id="direction-forward" color="blue" (click)="getStarted()">Get Started</button></div>
         </div>
       </div>

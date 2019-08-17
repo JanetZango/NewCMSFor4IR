@@ -286,7 +286,7 @@ page-forms {
         position     : absolute;
         z-index      : 999;
         border-radius: 20px;
-        border       : 2px solid rgb(0, 100, 172);
+        border       : 2px solid #169946;
         left         : 50%;
         padding      : 0;
         bottom       : 0;
@@ -296,7 +296,7 @@ page-forms {
           width        : 25%;
           height       : 4px;
           border-radius: 20px;
-          background   : rgb(0, 100, 172);
+          background   : #169946;
           transition   :300ms;
          
         }
@@ -779,7 +779,7 @@ page-forms {
       position: absolute;
       z-index: 999;
       border-radius: 20px;
-      border: 2px solid rgb(0, 100, 172);
+      border: 2px solid #169946;
       left: 50%;
       padding: 0;
       bottom: 0;
@@ -789,7 +789,7 @@ page-forms {
         width: 25%;
         height: 4px;
         border-radius: 20px;
-        background: rgb(14, 142, 233);
+        background:#169946;
         transition:300ms;
       }
     }
