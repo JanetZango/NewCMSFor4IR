@@ -73,10 +73,10 @@
         </div>
         <div class="right">
           <div class="person-info" (click)="goToSettings()">
-            <img src="{{downloadurlLogo}}" alt="" id="userimage">
+            <img src="{{userImage}}" alt="" id="userimage">
             <div class="user-details">
-              <p>{{name}}</p>
-              <p id="subStatement">{{category}}</p>
+              <p>{{userName}}</p>
+              <p id="subStatement">{{userPosition}}</p>
             </div>
           </div>
         </div>
@@ -170,7 +170,7 @@
                     <p id="heading">{{i.name}}</p>
                     <p id="sub-head">Background</p>
                     <p id="bg-desc">
-                      {{i.progBackround}}
+                      {{i.background}}
                     </p>
                     <p id="sub-head">Address</p>
                     <p id="bg-desc">
@@ -333,7 +333,7 @@
         </div>
         <div id="update-inputs">
           <p>Update organisation profile</p>
-          <ion-input type="text" class="text-field" placeholder="Background" value="{{name}}" [(ngModel)]="name">
+          <ion-input type="text" class="text-field" placeholder="Background" value="{{progname}}" [(ngModel)]="name">
           </ion-input>
           <!-- <ion-input type="text" class="text-field" placeholder="Physical Address"  [(ngModel)]="address"></ion-input> -->
           <ion-input type="tel" class="text-field" placeholder="Address" [(ngModel)]="contact"></ion-input>

@@ -2,7 +2,8 @@ import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { HubsProvider } from '../../providers/hubs/hubs'
 import { HomePage } from '../home/home';
-
+import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 //global variables
 declare var google;
@@ -29,7 +30,7 @@ export class AddOrganizationPage {
   orgWebsite;
   orgDescription;
   category;
-
+  jobAddress;
   ShowWifi: boolean = false;
   ShowChooseRange: boolean = false;
   // Second  slider varables
@@ -175,6 +176,7 @@ export class AddOrganizationPage {
 
   pushid = this.navParams.get('pushid')
   type = this.navParams.get('type');
+  alertMessage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public hubs: HubsProvider, public ngzone: NgZone, public alertCtrl: AlertController) {
     console.log(this.email)
@@ -183,14 +185,32 @@ export class AddOrganizationPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddOrganizationPage');
+    this.is_urlValidation("www.youtube.com");
   }
+  websiteV;
+  is_urlValidation(str) {
+    var regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+    if (regexp.test(str)) {
+      this.websiteValidation = 0
+      this.websiteV = 0
+      // return true;
+      console.log("correct website");
+    }
+    else {
+      this.websiteV = 1;
+      this.websiteValidation = 1
+      console.log("wrong website");
+      //return false;
+    }
+  }
+  err
   ionViewDidEnter() {
     var x = document.getElementById("Jobs").style.display = 'flex';
     console.log(x);
-    var x = document.getElementById("Programmes").style.display = 'flex';
-    console.log(x);
-    var x = document.getElementById("Services").style.display = 'flex';
-    console.log(x);
+    // var x = document.getElementById("Programmes").style.display = 'flex';
+    // console.log(x);
+    // var x = document.getElementById("Services").style.display = 'flex';
+    // console.log(x);
   }
   //Add org Method
   saveToDB() {
@@ -236,9 +256,9 @@ export class AddOrganizationPage {
     })
   }
 
-  
 
-  
+
+
 
   //check wifi state
   checkWifi() {
@@ -271,11 +291,21 @@ export class AddOrganizationPage {
   link;
   cell;
   mail;
-  
 
-  addJob(){
-    this.hubs.addJob(this.jobName,this.odate,this.cdate,this.add,this.res,'',this.odate,this.cdate,this.jobType,this.downloadurl3).then(()=>{
-      alert('job added');
+
+  addJob() {
+    this.hubs.addJob(this.jobName, this.odate, this.cdate, this.jobAddress, this.res, '', this.odate, this.cdate, this.jobType, this.downloadurl3, this.orgAddressObject.lat, this.orgAddressObject.lng).then(() => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000
+      });
+
+      Toast.fire({
+        type: "success",
+        title: "Your Advert was succesfullt added"
+      });
       this.navCtrl.pop();
     })
   }
@@ -286,8 +316,8 @@ export class AddOrganizationPage {
   semail;;
   sphone
 
-  adds(){
-    this.hubs.addService('','','',this.sadd,this.sname,this.sphone,this.sabout,this.downloadurl6).then(()=>{
+  adds() {
+    this.hubs.addService('', '', '', this.sadd, this.sname, this.sphone, this.sabout, this.downloadurl6).then(() => {
       alert('service added');
       this.navCtrl.pop()
     })
@@ -296,53 +326,53 @@ export class AddOrganizationPage {
   insert6(event: any) {
     if (event.target.files && event.target.files[0]) {
       let reader = new FileReader();
-        reader.onload = (event: any) => {
-          this.downloadurl5 = event.target.result;
-        }
-        reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (event: any) => {
+        this.downloadurl5 = event.target.result;
       }
-
+      reader.readAsDataURL(event.target.files[0]);
     }
 
+  }
 
-    downloadurl6 = "../../assets/imgs/Cover Image.jpg";
-    insert7(event: any) {
-      if (event.target.files && event.target.files[0]) {
-        let reader = new FileReader();
-          reader.onload = (event: any) => {
-            this.downloadurl6 = event.target.result;
-          }
-          reader.readAsDataURL(event.target.files[0]);
-        }
-  
+
+  downloadurl6 = "../../assets/imgs/Cover Image.jpg";
+  insert7(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.downloadurl6 = event.target.result;
       }
-  
+      reader.readAsDataURL(event.target.files[0]);
+    }
+
+  }
+
 
 
   downloadurl3 = "../../assets/imgs/Cover Image.jpg";
   insert(event: any) {
     if (event.target.files && event.target.files[0]) {
       let reader = new FileReader();
-        reader.onload = (event: any) => {
-          this.downloadurl3 = event.target.result;
-        }
-        reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (event: any) => {
+        this.downloadurl3 = event.target.result;
       }
-
+      reader.readAsDataURL(event.target.files[0]);
     }
 
-    downloadurl4 = "../../assets/imgs/Cover Image.jpg";
-    insert2(event: any) {
-      if (event.target.files && event.target.files[0]) {
-        let reader = new FileReader();
-          reader.onload = (event: any) => {
-            this.downloadurl4 = event.target.result;
-          }
-          reader.readAsDataURL(event.target.files[0]);
-        }
-  
+  }
+
+  downloadurl4 = "../../assets/imgs/Cover Image.jpg";
+  insert2(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.downloadurl4 = event.target.result;
       }
-  
+      reader.readAsDataURL(event.target.files[0]);
+    }
+
+  }
+
   showServices() {
 
     console.log(this.category);
@@ -396,12 +426,12 @@ export class AddOrganizationPage {
       this.showMallServices = false;
       this.showOther = false;
     }
- 
+
   }
 
   RegistrationType() {
     alert(this.program)
- 
+
 
     var thePlaceholder = document.getElementById("placeholderDiv");
     if (this.program == "Organisation") {
@@ -429,73 +459,100 @@ export class AddOrganizationPage {
   insertpic(event: any) {
     if (event.target.files && event.target.files[0]) {
       let reader = new FileReader();
-        reader.onload = (event: any) => {
-          this.downloadurl = event.target.result;
-        }
-        reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (event: any) => {
+        this.downloadurl = event.target.result;
       }
-
+      reader.readAsDataURL(event.target.files[0]);
     }
 
-    downloadurl2 = "../../assets/imgs/Logo Image.jpg";
-    insertpic2(event: any) {
-      if (event.target.files && event.target.files[0]) {
-        let reader = new FileReader();
-          reader.onload = (event: any) => {
-            this.downloadurl2 = event.target.result;
-          }
-          reader.readAsDataURL(event.target.files[0]);
-        }
-  
-      }
-  
-
-//getaddress
-setAddress(event) {
-  if (this.progAddress != undefined) {
-    this.getcoo(this.progAddress).then((data: any) => {
-      this.orgAddressObject = data;
-      this.checkAddress = 0
-
-      console.log(this.orgAddressObject);
-    }, Error => {
-      this.checkAddress = 1;
-      console.log(this.checkAddress);
-    })
   }
-}
 
-//getCoordinates
-getcoo(address) {
-  return new Promise((accpt, rej) => {
-    this.ngzone.run(() => {
-      let geocoder = new google.maps.Geocoder();
-      geocoder.geocode({ address: address }, function (results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-          var arr = results[0].address_components;
-          var arr2 = arr[3];
-          this.latitude = results[0].geometry.location.lat();
-          this.longitude = results[0].geometry.location.lng();
-          let position = {
-            lat: results[0].geometry.location.lat(),
-            lng: results[0].geometry.location.lng(),
-            city: arr2.long_name
-          };
-          accpt(position);
-          console.log(position)
-        }
-        else {
-          rej('')
-        }
+  downloadurl2 = "../../assets/imgs/Logo Image.jpg";
+  insertpic2(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.downloadurl2 = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+
+  }
+
+
+  //getaddress
+  setAddress(event) {
+    if (this.progAddress != undefined) {
+      this.getcoo(this.progAddress).then((data: any) => {
+        this.orgAddressObject = data;
+        this.checkAddress = 0
+      }, Error => {
+        this.checkAddress = 1;
+        this.alertMessage = "The address you have entered is invalid, please enter a valid address";
+        swal(this.alertMessage);
+      })
+    }
+  }
+
+  //jobs
+  setAddressJobs(event) {
+    if (this.jobAddress != undefined) {
+      this.getcoo(this.jobAddress).then((data: any) => {
+        this.orgAddressObject = data;
+        this.checkAddress = 0
+      }, Error => {
+        this.checkAddress = 1;
+        this.alertMessage = "The address you have entered is invalid, please enter a valid address";
+        swal(this.alertMessage);
+      })
+    }
+  }
+
+
+
+
+  //getCoordinates
+  getcoo(address) {
+    return new Promise((accpt, rej) => {
+      this.ngzone.run(() => {
+        let geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ address: address }, function (results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            var arr = results[0].address_components;
+            var arr2 = arr[3];
+            this.latitude = results[0].geometry.location.lat();
+            this.longitude = results[0].geometry.location.lng();
+            let position = {
+              lat: results[0].geometry.location.lat(),
+              lng: results[0].geometry.location.lng(),
+              city: arr2.long_name
+            };
+            accpt(position);
+            console.log(position)
+          }
+          else {
+            rej('')
+          }
+        });
       });
     });
-  });
-}
+  }
 
 
-  addProg(){
-    this.hubs.addPrograme(this.progApplicationOpen,this.progApplicationClose,this.progName,this.progOptions,this.progbackground,this.progBenfits,this.progDescription,this.progStartDate,this.progEndDate,this.progAddress,this.progPhone,this.downloadurl,this.orgAddressObject.lat, this.orgAddressObject.lng).then(()=>{
-      alert('prog added')
+  addProg() {
+    let b = window.innerHeight;
+    this.hubs.addPrograme(this.progApplicationOpen, this.progApplicationClose, this.progName, this.progOptions, this.progbackground, this.progBenfits, this.progDescription, this.progStartDate, this.progEndDate, this.progAddress, this.progPhone, this.downloadurl, this.orgAddressObject.lat, this.orgAddressObject.lng).then(() => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000
+      });
+
+      Toast.fire({
+        type: "success",
+        title: "Your programme was succesfully added"
+      });
       this.navCtrl.pop();
     })
   }
@@ -508,17 +565,27 @@ getcoo(address) {
   progbackground;
   progDescription;
   toPage2Progs() {
-    if (this.progName == null || this.progName == "") {
-      alert()
+    let b = window.innerHeight;
+    if (this.progName == undefined && this.progbackground == undefined && this.progDescription == undefined && this.progOptions == undefined) {
+      this.alertMessage =
+        "Please insert the organisation's details";
+      swal(this.alertMessage);
     }
-    else if (this.progOptions == null || this.progOptions == "") {
-      alert()
+    else if (this.progName == null || this.progName == "") {
+      this.alertMessage = "Please enter th name of the programme ";
+      swal(this.alertMessage);
     }
     else if (this.progbackground == null || this.progbackground == "") {
-      alert()
+      this.alertMessage = " Please insert the programme's background";
+      swal(this.alertMessage);
     }
     else if (this.progDescription == null || this.progDescription == "") {
-      alert()
+      this.alertMessage = "Please insert the organisation's description";
+      swal(this.alertMessage);
+    }
+    else if (this.progOptions == null || this.progOptions == "") {
+      this.alertMessage = "Please enter the correct email address ";
+      swal(this.alertMessage);
     }
     else {
       var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
@@ -532,17 +599,36 @@ getcoo(address) {
   progPhone;
   progEmail;
   toPage3Progs() {
-    if (this.progBenfits == null || this.progBenfits == "") {
-      alert()
+    this.phonenumberValidatin();
+    let b = window.innerHeight;
+    if (this.progBenfits == undefined && this.progBenfits == undefined && this.progPhone == undefined && this.progEmail == undefined) {
+      this.alertMessage =
+        "Please insert the organisation's details";
+      swal(this.alertMessage);
     }
-    else if (this.progAddress == null || this.progAddress == "") {
-      alert()
+    else if (this.progBenfits == null || this.progBenfits == "") {
+      this.alertMessage = "Please enter th name of the programme ";
+      swal(this.alertMessage);
+    }
+    else if (this.progBenfits == null || this.progAddress == "") {
+      this.alertMessage = "Please insert the programme's address";
+      swal(this.alertMessage);
     }
     else if (this.progPhone == null || this.progPhone == "") {
-      alert()
+      this.alertMessage = "Please insert the programme's phone numbers";
+      swal(this.alertMessage);
     }
-    else if (this.progEmail == null || this.progEmail == "") {
-      alert()
+    else if (this.progEmail == null || this.progEmail == "" || this.progEmail == undefined) {
+      this.alertMessage = "Please enter th email address of the programme ";
+      swal(this.alertMessage);
+    }
+    else if (this.contactValidation == 1) {
+      this.alertMessage = "The phone numbers you have entered is invalid, please enter a valid phone numbers  ";
+      swal(this.alertMessage);
+    }
+    else if (this.checkAddress == 1) {
+      this.alertMessage = "The address you have entered is invalid, please enter a valid address ";
+      swal(this.alertMessage);
     }
     else {
       var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
@@ -551,26 +637,84 @@ getcoo(address) {
       thebar.style.width = "75%"
     }
   }
+
+  ///validations for programmesdB
+  phonenumberValidatin() {
+    if (this.progPhone == undefined) {
+
+    } else {
+      var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+
+      if (this.progPhone.match(phoneno)) {
+        console.log(this.progPhone.match(phoneno));
+        this.contactValidation = 0;
+      }
+      else {
+        this.contactValidation = 1;
+        console.log(this.progPhone.match(phoneno));
+        console.log("wrong");
+
+      }
+
+    }
+
+  }
+
+  ///validation for jobs
+  phonenumberValidatinjob() {
+    if (this.cell == undefined) {
+    } else {
+      var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+
+      if (this.cell.match(phoneno)) {
+        console.log(this.cell.match(phoneno));
+        this.contactValidation = 0;
+      }
+      else {
+        this.contactValidation = 1;
+        console.log(this.progPhone.match(phoneno));
+        console.log("wrong");
+
+      }
+
+    }
+
+  }
+
+
+
   progApplicationOpen;
   progApplicationClose;
   progStartDate;
   progEndDate;
   progLink;
   toPage4Progs() {
-    if (this.progApplicationOpen == null || this.progApplicationOpen == "") {
-      alert()
+    let b = window.innerHeight;
+    this.is_urlValidation(this.progLink);
+    if (this.progApplicationOpen == undefined && this.progApplicationClose == undefined && this.progStartDate == undefined && this.progEndDate == undefined && this.progLink == undefined) {
+      this.alertMessage =
+        "Please insert the programmes's details";
+      swal(this.alertMessage);
+    }
+    else if (this.progApplicationOpen == null || this.progApplicationOpen == "") {
+      this.alertMessage = "Please select the opening date of the programme";
+      swal(this.alertMessage);
     }
     else if (this.progApplicationClose == null || this.progApplicationClose == "") {
-      alert()
+      this.alertMessage = "Please select the closing date of the programme ";
+      swal(this.alertMessage);
     }
     else if (this.progStartDate == null || this.progStartDate == "") {
-      alert()
+      this.alertMessage = "Please select the start date of the programme";
+      swal(this.alertMessage);
     }
     else if (this.progEndDate == null || this.progEndDate == "") {
-      alert()
+      this.alertMessage = "Please select the end date of the programme";
+      swal(this.alertMessage);
     }
     else if (this.progLink == null || this.progLink == "") {
-      alert()
+      this.alertMessage = "The website address you have entered is invalid, please enter a valid programme link";
+      swal(this.alertMessage);
     }
     else {
       var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
@@ -642,16 +786,6 @@ getcoo(address) {
     var thebar = document.getElementById("barSlide");
     thebar.style.width = "25%"
   }
-
-
-
-
-
-
-
-
-
-
 
   WiFiAvailability;
   freeOrPaidWiFi;
@@ -770,40 +904,117 @@ getcoo(address) {
   toggleRange() {
   }
 
-  goBack(){
+  goBack() {
     this.navCtrl.pop()
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   toPage2Jobs() {
-    var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-25%"
-    var thebar = document.getElementById("barSlide");
-    thebar.style.width = "50%"
+    let b = window.innerHeight;
+    this.is_urlValidation(this.progLink);
+    if (this.jobName == undefined && this.odate == undefined && this.cdate == undefined && this.jobType == undefined) {
+      this.alertMessage =
+        "Please insert the jobs's details";
+      swal(this.alertMessage);
+    }
+    else if (this.jobName == null || this.jobName == "") {
+      this.alertMessage = "Please enter the njob name";
+      swal(this.alertMessage);
+    }
+    else if (this.odate == null || this.odate == "") {
+      this.alertMessage = "Please select the opening date of the job ";
+      swal(this.alertMessage);
+    }
+    else if (this.cdate == null || this.cdate == "") {
+      this.alertMessage = "Please select the close date of the job";
+      swal(this.alertMessage);
+    }
+    else if (this.jobType == null || this.jobType == "") {
+      this.alertMessage = "Please select the type of job it is";
+      swal(this.alertMessage);
+    }
+
+    else {
+      var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
+      pager[0].style.marginLeft = "-25%"
+      var thebar = document.getElementById("barSlide");
+      thebar.style.width = "50%"
+    }
+
   }
   toPage3Jobs() {
-    var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-50%"
-    var thebar = document.getElementById("barSlide");
-    thebar.style.width = "75%"
+    let b = window.innerHeight;
+    this.phonenumberValidatinjob()
+    if (this.cell == undefined && this.req == undefined && this.res == undefined && this.mail == undefined && this.jobAddress == undefined) {
+      this.alertMessage =
+        "Please insert the jobs's details";
+      swal(this.alertMessage);
+    }
+    else if (this.cell == null || this.cell == "")   {
+      this.alertMessage = "Please enter the correct phone number";
+      swal(this.alertMessage);
+    }
+    // else if (this.cell > 10 || this.cell < 9)   {
+    //   this.alertMessage = "The number is incomplete ";
+    //   swal(this.alertMessage);
+    // }
+    else if (this.req == null || this.req == "") {
+      this.alertMessage = "Please enter the job requirements ";
+      swal(this.alertMessage);
+    }
+    else if (this.res == null || this.res == "") {
+      this.alertMessage = "Please select the job responsibility";
+      swal(this.alertMessage);
+    }
+    else if (this.mail == null || this.mail == "") {
+      this.alertMessage = "Please select the email addres  of the job";
+      swal(this.alertMessage);
+    }
+    else if (this.jobAddress == null || this.jobAddress == "") {
+      this.alertMessage = "Please the correct address";
+      swal(this.alertMessage);
+    }
+    else if (this.contactValidation == 1) {
+      this.alertMessage = "The phone numbers you have entered is invalid, please enter a valid phone numbers  ";
+      swal(this.alertMessage);
+    }
+    else if (this.checkAddress == 1) {
+      this.alertMessage = "The address you have entered is invalid, please enter a valid address ";
+      swal(this.alertMessage);
+    }
+    else {
+      var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
+      pager[0].style.marginLeft = "-50%"
+      var thebar = document.getElementById("barSlide");
+      thebar.style.width = "75%"
+    }
+
   }
   toPage4Jobs() {
-    var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-75%"
-    var thebar = document.getElementById("barSlide");
-    thebar.style.width = "100%"
+    this.is_urlValidation(this.link);
+     if(this.websiteValidation == 1) {
+      this.alertMessage ="The website address you have entered is invalid, please enter a valid website link ";
+      swal(this.alertMessage);
+    }
+    else if (this.downloadurl2 == null || this.downloadurl2 == "") {
+      this.alertMessage = "Please upload coverpage";
+      swal(this.alertMessage);
+    }
+    else if (this.downloadurl == null || this.downloadurl == "") {
+      this.alertMessage = "Please upload Logo";
+      swal(this.alertMessage);
+    }
+    else if (this.link == null || this.link == "") {
+      this.alertMessage = "Please enter the link";
+      swal(this.alertMessage);
+    }
+    else{
+      var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
+      pager[0].style.marginLeft = "-75%"
+      var thebar = document.getElementById("barSlide");
+      thebar.style.width = "100%"
+    }
+  
+    
   }
   backToPage1Jobs() {
     var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;

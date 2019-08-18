@@ -96,6 +96,8 @@ export class FormsPage {
     }
   }
   errMessage
+
+
   moveToPage2() {
     this.phonenumberValidatin();
     let b = window.innerHeight;
@@ -115,8 +117,19 @@ export class FormsPage {
         "Please insert the organisation's address";
       swal(this.alertMessage);
     }
+    else if (this.contactValidation == 1) {
+      this.alertMessage ="The phone numbers you have entered is invalid, please enter a valid phone numbers  ";
+      swal(this.alertMessage);
+    }
+    else if(this.websiteValidation == 1) {
+      this.alertMessage ="The website address you have entered is invalid, please enter a valid website address ";
+      swal(this.alertMessage);
+    }
+    else if (this.checkAddress == 1) {
+      this.alertMessage ="The address you have entered is invalid, please enter a valid address ";
+      swal(this.alertMessage);
+    }
     else if (this.orgPhone == undefined) {
-
       this.alertMessage =
         "Please insert the organisation's phone numbers";
       swal(this.alertMessage);
@@ -124,39 +137,21 @@ export class FormsPage {
       this.alertMessage =
         "Please insert the organisation's description.";
       swal(this.alertMessage);
-    } else {
-      this.is_urlValidation(this.orgWebsite)
-      if (this.websiteV == 0) {
+    } else { 
         var toSlide = document.getElementById("page1");
         toSlide.style.marginLeft = "-25%";
         progBar.style.width = "50%";
-      }
-      else if (this.contactValidation == 1) {
-        this.alertMessage ="The phone numbers you have entered is invalid, please enter a valid phone numbers  ";
-        swal(this.alertMessage);
-      }
-      else if(this.websiteValidation == 1) {
-        this.alertMessage ="The website address you have entered is invalid, please enter a valid website address ";
-        swal(this.alertMessage);
-      }
-      else if (this.checkAddress == 1) {
-        this.alertMessage ="The address you have entered is invalid, please enter a valid address ";
-        swal(this.alertMessage);
-      }
-      else {
-        this.alertMessage =
-          "Please check your website, something is not right";
-        swal(this.alertMessage);
-      }
     }
   }
 
- 
+
+
   phonenumberValidatin() {
     if (this.orgPhone == undefined) {
 
     } else {
       var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+
       if (this.orgPhone.match(phoneno)) {
         console.log(this.orgPhone.match(phoneno));
         this.contactValidation = 0;

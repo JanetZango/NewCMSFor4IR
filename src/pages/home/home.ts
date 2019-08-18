@@ -71,24 +71,18 @@ export class HomePage implements OnInit {
   mySide = 0
   key;
   downloadurlPic;
+  userImage;
+  progname;
   constructor(public navCtrl: NavController, public hubs: HubsProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController, public alertCtrl: AlertController) {
-
     this.getallorg();
     this.getallhubs();
     this.displayProfile();
-
-
     this.hubs.displayOnMAP().then((data:any) => {
       this.displayOrg = data
       console.log(this.displayOrg)
     })
-
-
-
     this.hubs.getCurrentLocation(this.lat, this.long).then((radius: any) => {
     })
-
-    // alert(this.downloadurlLogo)
   }
   storeOrgNames(names) {
     this.orgNames = names;
@@ -96,8 +90,11 @@ export class HomePage implements OnInit {
   }
 
   displayProfile(){
-    this.hubs.geOrgtUser().then((data)=>{
-      console.log(data)
+    this.hubs.geOrgtUser().then((data:any)=>{
+      this.userName = data.userName
+      this.userImage = data.userImage
+      this.userPosition = data.userPosition
+      console.log(this.userName)
   
     })
   }
@@ -411,7 +408,16 @@ export class HomePage implements OnInit {
           this.displayAllhubs[index].img +
           ">" +
           '<div style="padding-left: 10px;padding-right: 10px">' +
-          this.displayAllhubs[index].uid +
+          this.displayAllhubs[index].openDate +
+          "</div><br>" +
+          '<div style="padding-left: 10px;padding-right: 10px">' +
+          this.displayAllhubs[index].closeDate +
+          "</div><br>" +
+          '<div style="padding-left: 10px;padding-right: 10px">' +
+          this.displayAllhubs[index].progEndDate +
+          "</div><br>" +
+          '<div style="padding-left: 10px;padding-right: 10px">' +
+          this.displayAllhubs[index].progStartDate +
           "</div><br>" +
           "</div>"
       });
@@ -450,7 +456,6 @@ export class HomePage implements OnInit {
     settingsUpdate.style.display = "flex";
   }
   cancelSettings() {
-    
     var settingsUpdate = document.getElementById("container-overlay");
     settingsUpdate.style.display = "none";
   }

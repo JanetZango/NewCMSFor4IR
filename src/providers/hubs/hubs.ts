@@ -223,7 +223,6 @@ export class HubsProvider {
   displayOnMAP() {
 		return new Promise((resolve, reject) => {
 			this.ngzone.run(() => {
-			// this.getTruckArray.length =0;
 			var user = firebase.auth().currentUser.uid;
 			firebase.database().ref('4IRHubs/').on('value', (data: any) => {
 				this.getprog.length =0;
@@ -235,16 +234,31 @@ export class HubsProvider {
 					if (UploadDetails[key2].uid == user.uid) {
 						let obj = {
 							img: UploadDetails[key2].img,
-							progName: UploadDetails[key2].progName,
-							uid: UploadDetails[key2].user
+							progName: UploadDetails[key2].name,
+              uid: UploadDetails[key2].user,
+              address: UploadDetails[key2].address,
+							background: UploadDetails[key2].background,
+              benefits: UploadDetails[key2].benefits,
+              category: UploadDetails[key2].category,
+							closeDate: UploadDetails[key2].closeDate,
+              contacts: UploadDetails[key2].contacts,
+              desc: UploadDetails[key2].desc,
+							name: UploadDetails[key2].name,
+              openDate: UploadDetails[key2].openDate,
+              progEndDate: UploadDetails[key2].progEndDate,
+							progStartDate: UploadDetails[key2].progStartDate,
+              user: UploadDetails[key2].user,
+        
 						};
 						console.log(obj);
 						this.getprog.push(obj);
-						console.log(this.getprog);
+            console.log(this.getprog);
+           
 					}
-				}
+        }
+        resolve(this.getprog);
 			});
-			resolve(this.getprog);
+
 		});
 		});
   }
@@ -254,7 +268,7 @@ export class HubsProvider {
 		return new Promise((resolve, reject) => {
 			this.ngzone.run(() => {
 			var user = firebase.auth().currentUser.uid;
-			firebase.database().ref("4IRHubs/").on('value', (data: any) => {
+			firebase.database().ref("4IRHubs").on('value', (data: any) => {
 				this.getprog.length =0;
 				var UploadDetails = data.val();
 				console.log(UploadDetails);
@@ -264,14 +278,25 @@ export class HubsProvider {
 						let obj = {
 							img: UploadDetails[key2].img,
 							name: UploadDetails[key2].name,
-							uid: UploadDetails[key2].user
+              uid: UploadDetails[key2].user,
+              lat: UploadDetails[key2].lat,
+              long: UploadDetails[key2].long,
+              openDate: UploadDetails[key2].openDate,
+              closeDate: UploadDetails[key2].closeDate,
+              progStartDate: UploadDetails[key2].progStartDate,
+              progEndDate: UploadDetails[key2].progEndDate,
+              jobEndDate: UploadDetails[key2].jobEndDate,
+              jobStartdate: UploadDetails[key2].jobStartdate,
+              
 						};
 						console.log(obj);
 						this.getallhub.push(obj);
-						console.log(this.getallhub);		
-				}
+            console.log(this.getallhub);		
+            
+        }
+        resolve(this.getallhub);
 			});
-			resolve(this.getallhub);
+		
 		});
 		});
   }
@@ -281,20 +306,11 @@ export class HubsProvider {
 			this.ngzone.run(() => {
 			var user = firebase.auth().currentUser.uid;
 			firebase.database().ref("UserProfileForOrg/" + user).on('value', (data: any) => {
-       let details = data.val();
+       var details = data.val();
        console.log(details)
-       let obj ={
-        userContract: details.userContract,
-        userImage:details.userImage,
-        userName:details.userName,
-        userPosition:details.userPosition,
-        userPostiondesc:details.userPostiondesc
-       }
-       console.log(obj)
-       this.userProg.push(obj)
-       console.log(this.userProg)
+      resolve(details);
 			});
-			resolve(this.userProg);
+		
 		});
 		});
   }
@@ -492,6 +508,7 @@ export class HubsProvider {
         var user = firebase.auth().currentUser
         firebase.database().ref("4IRHubs").push({
           openDate: openDate,
+          category:"programmes",
           closeDate: closeDate,
           name: name,
           progType: progType,
@@ -548,12 +565,13 @@ export class HubsProvider {
   }
 
 
-  addJob(name,openDate, closeDate, address, desc, benefits, jobStartdate, jobEndDate, contact, img) {
+  addJob(name,openDate, closeDate, address, desc, benefits, jobStartdate, jobEndDate, contact, img,lat,long) {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser
-        firebase.database().ref("jobs/" + user.uid).push({
+        firebase.database().ref("4IRHubs").push({
           openDate: openDate,
+          category:"jobs",
           closeDate: closeDate,
           address: address,
           desc: desc,
@@ -562,7 +580,10 @@ export class HubsProvider {
           jobEndDate: jobEndDate,
           img: img,
           contact: contact,
-          name : name
+          name : name,
+          lat:lat,
+          long:long,
+          user : user.uid
         })
         resolve();
       })
@@ -650,6 +671,20 @@ export class HubsProvider {
         })
       })
     })
+  }
+
+
+  
+  RemoveUploadedPicture(key) {
+    return new Promise((accpt, rej) => {
+      var user = firebase.auth().currentUser
+      console.log(key)
+      console.log(user.uid)
+      this.ngzone.run(() => {
+        firebase.database().ref("4IRHubs/" + key).remove();
+        accpt("student deleted");
+      });
+    });
   }
 
 }

@@ -61,7 +61,7 @@
               <textarea name="" id="text-field" cols="30" rows="10" [(ngModel)]="progBenfits" placeholder="Benefits"></textarea>
               <input type="text" id="input-field" placeholder="Address" [(ngModel)]="progAddress"  (change)="setAddress()">
               <div class="Contacts">
-                <input type="text" id="input-field" placeholder="Phone" [(ngModel)]="progPhone"> 
+                <input type="tel" id="input-field" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"  placeholder="Phone" [(ngModel)]="progPhone"> 
                 <input type="text" id="input-field" placeholder="Email" [(ngModel)]="progEmail"> 
               </div>
             </div>
@@ -110,8 +110,8 @@
               <label for="cover-image" id="coverImage">
                 <img src="{{downloadurl}}" alt="">
               </label>
-              <label for="cover-image" id="logoImage">
-                <img src="../../assets/imgs/Logo Image.jpg" alt="">
+              <label for="logo-image" id="logoImage">
+                <img src="{{downloadurl2}}" alt="">
               </label>
             </div>
           </div>
@@ -152,8 +152,8 @@
             <div class="inputs">
               <textarea name="" [(ngModel)]="req" id="text-field" cols="30" rows="10" placeholder="Requirements"></textarea>
               <textarea name=""  [(ngModel)]="res" id="text-field" cols="30" rows="10" placeholder="Responsibilities"></textarea>
-              <input type="text" [(ngModel)]="add" id="input-field" placeholder="Address"> 
-              <input type="tel" [(ngModel)]="cell" id="input-field" placeholder="Phone"> 
+              <input type="text" [(ngModel)]="jobAddress" id="input-field" placeholder="Address" (change)="setAddressJobs()"> 
+              <input type="tel" [(ngModel)]="cell" id="input-field"  onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"  placeholder="Phone"> 
               <input type="email" [(ngModel)]="mail" id="input-field" placeholder="Email"> 
             </div>
           </div>
@@ -165,7 +165,7 @@
             <div class="inputs">
               <!-- User clicks here to upload logo and cover for Jobs -->
               <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image" (change)="insertpic($event)">
-              <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image" (change)="insertpic($event)">
+              <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image" (change)="insertpic2($event)">
               <div class="instructions">
                 <p>Please choose a cover photo and a logo (if any).
                 </p>
