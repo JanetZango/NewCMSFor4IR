@@ -248,6 +248,7 @@ export class HubsProvider {
               progEndDate: UploadDetails[key2].progEndDate,
 							progStartDate: UploadDetails[key2].progStartDate,
               user: UploadDetails[key2].user,
+              key : key2
         
 						};
 						console.log(obj);
@@ -263,6 +264,10 @@ export class HubsProvider {
 		});
   }
 
+  removeProg(key){
+    firebase.database().ref('4IRHubs/' + key).remove();
+  }
+
   
   getallhubs() {
 		return new Promise((resolve, reject) => {
@@ -276,17 +281,21 @@ export class HubsProvider {
 				for(var i =0 ;i<k2.length;i++){
 					var key2 = k2[i];
 						let obj = {
+              background : UploadDetails[key2].background,
+              contact : UploadDetails[key2].contact,
 							img: UploadDetails[key2].img,
 							name: UploadDetails[key2].name,
               uid: UploadDetails[key2].user,
               lat: UploadDetails[key2].lat,
               long: UploadDetails[key2].long,
+              address: UploadDetails[key2].address,
               openDate: UploadDetails[key2].openDate,
               closeDate: UploadDetails[key2].closeDate,
               progStartDate: UploadDetails[key2].progStartDate,
               progEndDate: UploadDetails[key2].progEndDate,
               jobEndDate: UploadDetails[key2].jobEndDate,
               jobStartdate: UploadDetails[key2].jobStartdate,
+              key : key2
               
 						};
 						console.log(obj);
@@ -327,16 +336,27 @@ export class HubsProvider {
     this.orgNames.push(cat);
   }
 
+ hideProg(key){
+    firebase.database().ref("4IRHubs/" + key).update({
+      status: 'hidden'
+    })
+  }
+
   //updateOrganization
-  update(name,downloadurlLogo,contact,background) {
+  update(applstart,applend,start,end,name,downloadurlLogo,contact,background,key) {
     return new Promise((pass, fail) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser
-        firebase.database().ref("Organizations/" + user.uid).update({
-          name: name,
+        firebase.database().ref("4IRHubs/" + key).update({
+          progName: name,
           downloadurlLogo: downloadurlLogo,
           contact: contact,
-          background:background
+          background:background,
+          openDate : applstart,
+          closeDate : applend,
+          progStartDate : start,
+          progEndDate : end
+
         });
       })
     })

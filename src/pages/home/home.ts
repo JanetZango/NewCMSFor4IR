@@ -262,10 +262,12 @@ export class HomePage implements OnInit {
   }
   servArray =  new Array();
   showServicesPage() {
-    this.hubs.getServices().then((data:any) =>{
-      console.log(data)
-      this.servArray  = data;
-    })
+    this.servArray = [];
+    for (var x = 0; x  < this.displayOrg.length; x++){
+      if (this.displayOrg[x].category == "services"){
+        this.servArray.push(this.displayOrg[x]);
+      }
+    }
     // this will show the services
     var theMap = document.getElementById("pg1").style.display = "none";
     var theServices = document.getElementById("pg2").style.display = "block";
@@ -286,10 +288,12 @@ export class HomePage implements OnInit {
 
   progArray =  new Array();
   showProgrammesPage() {
-    this.hubs.getPrograme().then((data:any) =>{
-      this.progArray = data;
-      console.log(data)
-    })
+    this.progArray = [];
+    for (var x = 0; x  < this.displayOrg.length; x++){
+      if (this.displayOrg[x].category == "programmes"){
+        this.progArray.push(this.displayOrg[x]);
+      }
+    }
     // this will show programmes
     var theMap = document.getElementById("pg1").style.display = "none";
     var theServices = document.getElementById("pg2").style.display = "none";
@@ -307,10 +311,16 @@ export class HomePage implements OnInit {
   }
   jobsArry =  new Array();
   showJobsPage() {
-    this.hubs.getJobs().then((data:any) =>{
-      this.jobsArry = data;
-    })
+    // this.hubs.getJobs().then((data:any) =>{
+    //   this.jobsArry = data;
+    // })
     // this will show jobs
+    this.jobsArry = [];
+    for (var x = 0; x  < this.displayOrg.length; x++){
+      if (this.displayOrg[x].category == "jobs"){
+        this.jobsArry.push(this.displayOrg[x]);
+      }
+    }
     var theMap = document.getElementById("pg1").style.display = "none";
     var theServices = document.getElementById("pg2").style.display = "none";
     var theProgs = document.getElementById("pg3").style.display = "none";
@@ -480,18 +490,7 @@ export class HomePage implements OnInit {
     console.log(this.items);
   }
 
-  updateOrg() {
-    this.cancelSettings();
-    // this.key
-    this.hubs.update(this.name, this.downloadurlLogo, this.contact, this.background).then((data) => {
-      this.getallorg();
-    });
-    const alert = this.alertCtrl.create({
-      subTitle: 'Your Information has been updated',
-      buttons: ['OK']
-    });
-    alert.present();
-  }
+ 
 
 
 
@@ -830,14 +829,74 @@ export class HomePage implements OnInit {
   // })
    }
 
+   deleteProg(indx,key){
+      const confirm = this.alertCtrl.create({
+      message: 'Do you agree to delete this program?',
+      buttons: [
+        {
+          text: 'Disagree',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+            this.displayOrg.splice(indx,1);
+            this.hubs.removeProg(key);
+          }
+        }
+      ]
+    });
+    confirm.present();
+   }
 
-   editprogram(){
-     console.log(`hi`);
+   applOpen;
+   applClose;
+   start;
+   end;
+   progbackground;
+   progname2;
+   contact2;
+   img2;
+   progKey;
+   
+   editprogram(i){
+     this.applOpen = i.openDate;
+     this.applClose = i.closeDate;
+     this.start = i.progStartDate;
+     this.end = i.progEndDate;
+
+     this.progbackground = i.background
+     this.progname2 = i .name;
+     this.contact2 = i.address;
+     this.img2 = i.img
+     this.progKey = i.key
      
+
+
     var settingsUpdate = document.getElementById("program-overlay");
     settingsUpdate.style.display = "block";
     settingsUpdate.style.display = "flex";
    }
+
+   updateOrg() {
+    this.cancelSettings();
+    // this.key
+    this.hubs.update( this.applOpen ,  this.applClose,this.start ,  this.end ,this.progname2, this.img2, this.contact, this.progbackground,this.progKey).then((data) => {
+      this.getallorg();
+    });
+    const alert = this.alertCtrl.create({
+      subTitle: 'Your Information has been updated',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  hideProg(i){
+    this.hubs.hideProg(i);
+  }
+
    cancelprogramm() {
     
     var settingsUpdate = document.getElementById("program-overlay");
