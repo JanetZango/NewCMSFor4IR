@@ -250,12 +250,13 @@ export class HomePage implements OnInit {
     var theServices = document.getElementById("pg2").style.display = "none";
     var theProgs = document.getElementById("pg3").style.display = "none";
     var theJobs = document.getElementById("pg4").style.display = "none";
+    var theJobs = document.getElementById("pg5").style.display = "none";
 
     var btn1 = document.getElementById("btn1").style.background = "rgba(255, 255, 255, 0.1)";
     var btn1 = document.getElementById("btn2").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0)";
-    
+    var btn1 = document.getElementById("btn5").style.background = "rgba(0, 0, 0, 0)";
     var settingsUpdate = document.getElementById("org-list-view");
     settingsUpdate.style.display = "block";
      
@@ -273,12 +274,13 @@ export class HomePage implements OnInit {
     var theServices = document.getElementById("pg2").style.display = "block";
     var theProgs = document.getElementById("pg3").style.display = "none";
     var theJobs = document.getElementById("pg4").style.display = "none";
+    var theJobs = document.getElementById("pg5").style.display = "none";
 
     var btn1 = document.getElementById("btn1").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn2").style.background = "rgba(255, 255, 255, 0.1)";
     var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0)";
-    
+    var btn1 = document.getElementById("btn5").style.background = "rgba(0, 0, 0, 0)";
     var settingsUpdate = document.getElementById("org-list-view");
     settingsUpdate.style.display = "none";
      
@@ -299,12 +301,13 @@ export class HomePage implements OnInit {
     var theServices = document.getElementById("pg2").style.display = "none";
     var theProgs = document.getElementById("pg3").style.display = "block";
     var theJobs = document.getElementById("pg4").style.display = "none";
+    var theJobs = document.getElementById("pg5").style.display = "none";
 
     var btn1 = document.getElementById("btn1").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn2").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn3").style.background = "rgba(255, 255, 255, 0.1)";
     var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0)";
-    
+    var btn1 = document.getElementById("btn5").style.background = "rgba(0, 0, 0, 0)";
     var settingsUpdate = document.getElementById("org-list-view");
     settingsUpdate.style.display = "none";
      
@@ -325,11 +328,40 @@ export class HomePage implements OnInit {
     var theServices = document.getElementById("pg2").style.display = "none";
     var theProgs = document.getElementById("pg3").style.display = "none";
     var theJobs = document.getElementById("pg4").style.display = "block";
+    var theJobs = document.getElementById("pg5").style.display = "none";
 
     var btn1 = document.getElementById("btn1").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn2").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn4").style.background = "rgba(255, 255, 255, 0.1)";
+    var btn1 = document.getElementById("btn5").style.background = "rgba(0, 0, 0, 0)";
+    var settingsUpdate = document.getElementById("org-list-view");
+    settingsUpdate.style.display = "none";
+     
+  }
+  wifrArry =  new Array();
+  showwifiPage() {
+    // this.hubs.getJobs().then((data:any) =>{
+    //   this.jobsArry = data;
+    // })
+    // this will show jobs
+    this.wifrArry = [];
+    for (var x = 0; x  < this.displayOrg.length; x++){
+      if (this.displayOrg[x].category == "wifi"){
+        this.wifrArry.push(this.displayOrg[x]);
+      }
+    }
+    var theMap = document.getElementById("pg1").style.display = "none";
+    var theServices = document.getElementById("pg2").style.display = "none";
+    var theProgs = document.getElementById("pg3").style.display = "none";
+    var theJobs = document.getElementById("pg4").style.display = "none";
+    var theJobs = document.getElementById("pg5").style.display = "block";
+
+    var btn1 = document.getElementById("btn1").style.background = "rgba(0, 0, 0, 0)";
+    var btn1 = document.getElementById("btn2").style.background = "rgba(0, 0, 0, 0)";
+    var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0)";
+    var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0)";
+    var btn1 = document.getElementById("btn5").style.background = "rgba(255, 255, 255, 0.1)";
     
     var settingsUpdate = document.getElementById("org-list-view");
     settingsUpdate.style.display = "none";
@@ -926,6 +958,27 @@ export class HomePage implements OnInit {
 canceljob() {
  
  var settingsUpdate = document.getElementById("job-overlay");
+ settingsUpdate.style.display = "none";
+}
+editwifi(){
+  console.log(`hi`);
+  
+ var settingsUpdate = document.getElementById("wifi-overlay");
+ settingsUpdate.style.display = "block";
+ settingsUpdate.style.display = "flex";
+}
+cancelwifi() {
+ 
+ var settingsUpdate = document.getElementById("wifi-overlay");
+ settingsUpdate.style.display = "none";
+}
+editprofile(){
+ var settingsUpdate = document.getElementById("profile-overlay");
+ settingsUpdate.style.display = "block";
+ settingsUpdate.style.display = "flex";
+}
+cancelprofile() {
+ var settingsUpdate = document.getElementById("profile-overlay");
  settingsUpdate.style.display = "none";
 }
 }

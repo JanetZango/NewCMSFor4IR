@@ -16,7 +16,8 @@
         <!-- <img src="{{downloadurl}}" alt="" class="cover-image-cover"> -->
         <img src="{{downloadurlLogo}}" alt="" class="logo-image">
         <div class="editinfor">
-            <ion-icon class="penedit" name="ios-create" (click)="goToSettings()"></ion-icon>
+            <button ion-fab mini  color="gold" (click)="goToSettings()"><ion-icon name="create"></ion-icon></button>
+            <!-- <ion-icon class="penedit" name="ios-create" (click)="goToSettings()"></ion-icon> -->
         </div>
       </div>
       <div class="buttons">
@@ -48,7 +49,7 @@
         <div class="btns">
           <div (click)="showMapPage()" id="btn1">Home</div>
           <div (click)="showServicesPage()" id="btn2">Services</div>
-          <div (click)="showwifiPage()" id="btn4">WiFi Hotspot</div>
+          <div (click)="showwifiPage()" id="btn5">WiFi Hotspot</div>
           <div (click)="showProgrammesPage()" id="btn3">Programmes</div>
           <div (click)="showJobsPage()" id="btn4">Job Opportunities</div>
           
@@ -72,12 +73,12 @@
           </div>
         </div>
         <div class="right">
-          <div class="person-info" (click)="goToSettings()">
+          <div class="person-info" (click)="editprofile()">
+              <div class="user-details">
+                  <p>{{userName}}</p>
+                  <p id="subStatement">{{userPosition}}</p>
+                </div>
             <img src="{{userImage}}" alt="" id="userimage">
-            <div class="user-details">
-              <p>{{userName}}</p>
-              <p id="subStatement">{{userPosition}}</p>
-            </div>
           </div>
         </div>
       </div>
@@ -107,6 +108,7 @@
         </div>
         <!-- editservice -->
         <div class="view" id="pg2">
+          <img class="empty" src="../../assets/preview (8).png" alt="" srcset="">
           <ion-fab bottom right (click)="add('Services')">
             <button ion-fab color="btn">
               <ion-icon name="add"></ion-icon>
@@ -147,6 +149,7 @@
           </div>
         </div>
         <div class="view" id="pg3">
+            <img class="empty" src="../../assets/preview (8).png" alt="" srcset="">
           <ion-fab bottom right (click)="add('Programmes')">
             <button ion-fab color="btn">
               <ion-icon name="add"></ion-icon>
@@ -212,6 +215,7 @@
           </div>
         </div>
         <div class="view" id="pg4">
+            <img class="empty" src="../../assets/preview (8).png" alt="" srcset="">
           <ion-fab bottom right (click)="add('Jobs')">
             <button ion-fab color="btn">
               <ion-icon name="add"></ion-icon>
@@ -273,14 +277,82 @@
                         <p id="bg-desc">{{i.jobEndDate}}</p>
                       </div>
                     </div>
-
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
+<!-------------------wifi------------------------------->
+        <div class="view" id="pg5">
+            <img class="empty" src="../../assets/preview (8).png" alt="" srcset="">
+            <ion-fab bottom right (click)="add('wifi')">
+              <button ion-fab color="btn">
+                <ion-icon name="add"></ion-icon>
+              </button>
+            </ion-fab>
+            <div class="card-container" *ngFor="let i of jobsArry">
+              <div class="card">
+                <div class="image-image">
+                  <div class="action-buttons">
+                    <button ion-button clear color="light">Hide</button>
+                    <button ion-button clear color="light">Delete</button>
+                    <button ion-button clear color="light" (click)='editwifi()'>Edit</button>
+                  </div>
+                  <img src="{{i.img}}" alt="" class="image-actual">
+                </div>
+                <div class="more-details">
+                  <div padding class="content-container">
+                      <h2>Details</h2>
+                      <div class="line"></div>
+                    <div>
+                      <p id="heading">{{i.name}}</p>
+                      <p id="sub-head">Background</p>
+                      <p id="bg-desc">
+                        {{i.benefits}}
+                      </p>
+                      <p id="sub-head">Address</p>
+                      <p id="bg-desc">
+                        {{i.address}}
+                      </p>
+                      <p id="sub-head">Description</p>
+                      <p id="bg-desc">
+                        {{i.desc}}
+                      </p>
+                    </div>
+                    <div>
+                      <p id="sub-head">Job Type</p>
+                      <p id="bg-desc">{{i.contacts}}</p>
+                      <!-- <p id="sub-head">Dates</p> -->
+                      <h2>Application</h2>
+                      <!-- <div class="line"></div> -->
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">{{i.openDate}}</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">{{i.closeDate}}</p>
+                        </div>
+                      </div>
+                      <h2>Programmes</h2>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Job Start Date</p>
+                          <p id="bg-desc">{{i.jobStartdate}}</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Job End Date</p>
+                          <p id="bg-desc">{{i.jobEndDate}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
 
     </div>
@@ -495,4 +567,65 @@
               </div>
             </div>
           </div> 
+
+          <div id="wifi-overlay">
+              <div class="toDismiss" (click)="cancelSettings()">
+          
+              </div>
+              <div class="editing-data-inputs">
+                <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
+                <div id="theLogo-update">
+          
+                  <label for="logoUpdate">
+                    <div>Logo</div>
+                    <img id="click-upload" src="{{downloadurlLogo}}" alt="">
+                  </label>
+                </div>
+                <div id="update-inputs">
+                  <p>Update organisation WiFi</p>
+                  <!-- <ion-input type="text" class="text-field" placeholder="Background" value="{{name}}" [(ngModel)]="name">
+                  </ion-input> -->
+                  <ion-input type="text" class="text-field" placeholder="Physical Address"  [(ngModel)]="address"></ion-input>
+                  <ion-input type="tel" class="text-field" placeholder="contact details" [(ngModel)]="contact"></ion-input>
+                  <ion-input type="email" class="text-field" placeholder="Email Address" [(ngModel)]="email" disabled></ion-input>
+                  <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="10"
+                    [(ngModel)]="background"></textarea>
+                  <div id="update-buttons">
+                    <button ion-button outline color="danger" (click)="cancelwifi()">Cancel</button>
+                    <button ion-button (click)="updateOrg()">Update</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="profile-overlay">
+                <div class="toDismiss" (click)="cancelSettings()">
+            
+                </div>
+                <div class="editing-data-inputs">
+                  <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
+                  <div id="theLogo-update">
+            
+                    <label for="logoUpdate">
+                      <div>Logo</div>
+                      <img id="click-upload" src="{{userImage}}" alt="">
+                    </label>
+                  </div>
+                  <div id="update-inputs">
+                    <p>Update User profile</p>
+                    <ion-input type="text" class="text-field" placeholder="Username"  [(ngModel)]="userName">
+                    </ion-input>
+                    <!-- <ion-input type="text" class="text-field" placeholder="Physical Address"  [(ngModel)]="address"></ion-input> -->
+                    <ion-input type="tel" class="text-field" placeholder="Phone number" [(ngModel)]="contact"></ion-input>
+                    <ion-input type="email" class="text-field" placeholder="Position" [(ngModel)]="userPosition" ></ion-input>
+                    <textarea name="" id="textarea-update" placeholder="Position Description" cols="30" rows="10"
+                      [(ngModel)]="background"></textarea>
+                    <div id="update-buttons">
+                      <button ion-button outline color="danger" (click)="cancelprofile()">Cancel</button>
+                      <button ion-button (click)="updateOrg()">Update</button>
+                    </div>
+                    <!-- <button ion-button block  color="secondary" (click)="logUserOut()">Logout</button> -->
+                  </div>
+                </div>
+              </div>
 </ion-content>
