@@ -175,12 +175,13 @@ export class AddOrganizationPage {
   showProgramcategory: boolean = true;
 
   pushid = this.navParams.get('pushid')
-  type = this.navParams.get('type');
+  type:string = this.navParams.get('type');
   alertMessage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public hubs: HubsProvider, public ngzone: NgZone, public alertCtrl: AlertController) {
     console.log(this.email)
     console.log(this.type)
+    
   }
 
   ionViewDidLoad() {
@@ -205,7 +206,7 @@ export class AddOrganizationPage {
   }
   err
   ionViewDidEnter() {
-    var x = document.getElementById("Jobs").style.display = 'flex';
+    var x = document.getElementById(this.type).style.display = 'flex';
     console.log(x);
     // var x = document.getElementById("Programmes").style.display = 'flex';
     // console.log(x);
@@ -882,23 +883,28 @@ export class AddOrganizationPage {
   }
   showChargeWiFi: boolean = false;
   showPricing: boolean = false;
+  showtext:string ;
   togglePrice() {
     if (this.WiFiAvailability == "Yes") {
       this.showChargeWiFi = true
+      this.showtext = "Please click next "
+      
     }
     else if (this.WiFiAvailability == "No") {
       this.showChargeWiFi = false
       this.freeOrPaidWiFi = ""
-
+      this.showtext = "Please click next "
     }
   }
   togglePayment() {
     if (this.freeOrPaidWiFi == "Paid") {
       this.showPricing = true
+      this.showtext = "Please click next "
     }
     else if (this.freeOrPaidWiFi == "Free") {
       this.priceWiFi = ""
       this.showPricing = false
+      this.showtext = "Please click next "
     }
   }
   toggleRange() {

@@ -22,6 +22,9 @@
         <div class="view" id="placeholder">
 
         </div>
+        <div *ngIf="Programmes">
+<h1>Programmes</h1>
+        </div>
         <div class="view" id="Programmes">
           <div class="pageProgrammes">
             <div class="buttons">
@@ -315,29 +318,33 @@
         </div>
         <div class="view" id="Wifi">
           <div class="pageWifi" id="page1Wifi">
+              <ion-icon class="wifi" name="ios-wifi" ></ion-icon>
             <div class="buttons">
               <button id="forward" ion-button (click)="toPage2WiFi()">Next</button>
             </div>
             <div class="inputs">
-              1
+              
               <ion-list class="programme-options">
                 <ion-item>
-                  <ion-label>do you offer WiFi</ion-label>
+                  <ion-label>Do you offer WiFi</ion-label>
                   <ion-select [(ngModel)]="WiFiAvailability" (ionChange)="togglePrice()">
                     <ion-option value="Yes">Yes</ion-option>
                     <ion-option value="No">No</ion-option>
                   </ion-select>
                 </ion-item>
               </ion-list>
+              <h1>{{showtext}}</h1>
+              
             </div>
           </div>
           <div class="pageWifi" id="page2Wifi">
+              <ion-icon class="wifi" name="ios-wifi" ></ion-icon>
             <div class="buttons">
               <button id="backward" ion-button (click)="backToPage1WiFi()">Back</button>
               <button id="forward" ion-button (click)="toPage3WiFi()">Next</button>
             </div>
             <div class="inputs" *ngIf="showChargeWiFi">
-              2
+              
               <ion-list class="programme-options">
                 <ion-item>
                   <ion-label>Is it free or paid</ion-label>
@@ -347,6 +354,8 @@
                   </ion-select>
                 </ion-item>
               </ion-list>
+              <h1>{{showtext}}</h1>
+             
             </div>
           </div>
           <div class="pageWifi" id="page3Wifi">
@@ -355,7 +364,7 @@
               <button id="forward" ion-button (click)="toPage4WiFi()">Next</button>
             </div>
             <div class="inputs" *ngIf="showPricing">
-              3
+                <ion-icon class="wifi" name="ios-wifi" ></ion-icon>
               <ion-list class="programme-options">
                 <ion-item>
                   <ion-label>Select data range</ion-label>
@@ -367,6 +376,7 @@
                   </ion-select>
                 </ion-item>
               </ion-list>
+              <h1>{{showtext}}</h1>
             </div>
           </div>
           <div class="pageWifi" id="page4Wifi">
@@ -375,13 +385,14 @@
               <button id="forward" ion-button>Done</button>
             </div>
             <div class="inputs">
-              4
+              
               <div class="about-wifi">
                 <p><b>WiFi Availability: </b> {{WiFiAvailability}}
                 </p>
                 <p><b>Pricing: </b> {{freeOrPaidWiFi}}</p>
                 <p><b>Range: </b> {{priceWiFi}}</p>
               </div>
+              <ion-icon class="wifi" name="ios-wifi" ></ion-icon>
             </div>
           </div>
         </div>
