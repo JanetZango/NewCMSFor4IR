@@ -21,25 +21,11 @@ export class HubsProvider {
   getprog = new Array();
   getallhub = new Array();
   userProg = new Array();
+  getAllOrg = new Array();
   constructor(public ngzone: NgZone, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
     console.log('Hello HubsProvider Provider');
   }
 
-  // update(name, email, downloadurlLogo, address, contact,background) {
-  //   return new Promise((pass, fail) => {
-  //     this.ngzone.run(() => {
-  //       var user = firebase.auth().currentUser
-  //       firebase.database().ref("Organizations/" + user.uid).update({
-  //         name: name,
-  //         email: email,
-  //         downloadurlLogo :downloadurlLogo,
-  //         address: address,
-  //         contact: contact ,
-  //         background :background
-  //       });
-  //     })
-  //   })
-  // }
 
 
   //check authstate
@@ -174,20 +160,22 @@ export class HubsProvider {
     
   }
 
+  
 
-  getAllOrganizations() {
+
+  getACurentloggedInOrganizations() {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser;
         firebase.database().ref("Organizations/" + user.uid).on("value", (data: any) => {
           if (data.val() != null) {
-            this.orgArray.length = 0;
-            this.orgNames.length = 0;
+            // this.orgArray.length = 0;
+            // this.orgNames.length = 0;
             let displayDetails = data.val();
             console.log(displayDetails)
             let keys = Object.keys(displayDetails);
             console.log(keys)
-              var k = keys[0];
+              // var k = keys[0];
               let orgObject = {
                 address: displayDetails.address,
                 background: displayDetails.background,
@@ -212,6 +200,53 @@ export class HubsProvider {
               console.log(this.orgArray)
             }
             resolve(this.orgArray)
+          // }
+        });
+      })
+    })
+  }
+
+
+
+  getAllOrganizations() {
+    return new Promise((resolve, reject) => {
+      this.ngzone.run(() => {
+        var user = firebase.auth().currentUser;
+        firebase.database().ref("Organizations").on("value", (data: any) => {
+          if (data.val() != null) {
+            // this.orgArray.length = 0;
+            this.orgNames.length = 0;
+            let displayDetails = data.val();
+            console.log(displayDetails)
+            let keys = Object.keys(displayDetails);
+            console.log(keys)
+              for(var x =0; x < keys.length;x++){
+                var k = keys[x];
+                let orgObject = {
+                  address: displayDetails[keys[x]].address,
+                  background: displayDetails[keys[x]].background,
+                  category: displayDetails[keys[x]].category,
+                  contact: displayDetails[keys[x]].contact,
+                  downloadurl: displayDetails[keys[x]].downloadurl,
+                  downloadurlLogo: displayDetails[keys[x]].downloadurlLogo,
+                  email: displayDetails[keys[x]].email,
+                  freeWifi: displayDetails[keys[x]].freeWifi,
+                  name: displayDetails[keys[x]].name,
+                  lat: displayDetails[keys[x]].lat,
+                  long: displayDetails[keys[x]].long,
+                  region: displayDetails[keys[x]].region,
+                  website: displayDetails[keys[x]].website,
+                  wifi: displayDetails[keys[x]].wifi,
+                  wifiRange: displayDetails[keys[x]].wifiRange,
+              
+                }
+                console.log(orgObject)
+                this.storeOrgNames(displayDetails.category);
+                this.getAllOrg.push(orgObject)
+                console.log(this.getAllOrg)
+              }
+            }
+            resolve(this.getAllOrg)
           // }
         });
       })
@@ -361,6 +396,40 @@ export class HubsProvider {
       })
     })
   }
+
+
+  updateOrg(contact,downloadurlLogo,name,background) {
+    return new Promise((pass, fail) => {
+      this.ngzone.run(() => {
+        var user = firebase.auth().currentUser
+        firebase.database().ref("Organizations/" + user.uid).update({
+          contact: contact,
+          downloadurlLogo: downloadurlLogo,
+          name: name,
+          background:background,
+      
+
+        });
+      })
+    })
+  }
+
+  
+  updateUserProfile(userContract,userImage,userName,userPosition,userPostiondesc) {
+    return new Promise((pass, fail) => {
+      this.ngzone.run(() => {
+        var user = firebase.auth().currentUser
+        firebase.database().ref("UserProfileForOrg/" + user.uid).update({
+          userContract: userContract,
+          userImage: userImage,
+          userName: userName,
+          userPosition:userPosition,
+          userPostiondesc:userPostiondesc
+        });
+      })
+    })
+  }
+
 
   //getcurrentlocation
   getCurrentLocation(lat, lng) {

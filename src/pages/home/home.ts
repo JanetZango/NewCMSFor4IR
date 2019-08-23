@@ -24,7 +24,10 @@ export class HomePage implements OnInit {
   getUserProfile = new Array();
   displayOrg = new Array();
   displayuser = new Array();
+  displayAllORG = new Array();
   //variables
+  alertMessage;
+  userPostiondesc;
   lat = -26.2620;
   name;
   address;
@@ -42,6 +45,7 @@ export class HomePage implements OnInit {
   wifiRange;
   userLocation: String;
   map;
+  userContract;
   icons = [
     { image: 'ios-wifi',
     name: 'Wi-Fi Hotspot '
@@ -73,10 +77,12 @@ export class HomePage implements OnInit {
   downloadurlPic;
   userImage;
   progname;
+
   constructor(public navCtrl: NavController, public hubs: HubsProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController, public alertCtrl: AlertController) {
     this.getallorg();
     this.getallhubs();
     this.displayProfile();
+    this.getallAvailableOrg();
     this.hubs.displayOnMAP().then((data:any) => {
       this.displayOrg = data
       console.log(this.displayOrg)
@@ -94,6 +100,8 @@ export class HomePage implements OnInit {
       this.userName = data.userName
       this.userImage = data.userImage
       this.userPosition = data.userPosition
+      this.userPostiondesc = data.userPostiondesc
+      this.userContract = data.userContract
       console.log(this.userName)
   
     })
@@ -101,7 +109,7 @@ export class HomePage implements OnInit {
 
 
   getallorg() {
-    this.hubs.getAllOrganizations().then((data: any) => {
+    this.hubs.getACurentloggedInOrganizations().then((data: any) => {
       this.getOrgArry = data
       console.log(this.getOrgArry)
       var names = this.hubs.getOrgNames()
@@ -118,6 +126,13 @@ export class HomePage implements OnInit {
       this.email = this.getOrgArry[0].email;
       this.contact = this.getOrgArry[0].contact
       this.key = this.getOrgArry[0].id
+    })
+  }
+
+  getallAvailableOrg(){
+    this.hubs.getAllOrganizations().then((data:any)=>{
+      this.displayAllORG = data
+      console.log(this.displayAllORG)
     })
   }
 
@@ -145,6 +160,21 @@ export class HomePage implements OnInit {
         let reader = new FileReader();
         reader.onload = (event: any) => {
           this.downloadurlLogo = event.target.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
+
+    }
+  }
+
+  insertuserprofile(event: any) {
+    this.d = 1;
+    let opts = document.getElementsByClassName('options') as HTMLCollectionOf<HTMLElement>;
+    if (this.d == 1) {
+      if (event.target.files && event.target.files[0]) {
+        let reader = new FileReader();
+        reader.onload = (event: any) => {
+          this.userImage = event.target.result;
         }
         reader.readAsDataURL(event.target.files[0]);
       }
@@ -314,10 +344,6 @@ export class HomePage implements OnInit {
   }
   jobsArry =  new Array();
   showJobsPage() {
-    // this.hubs.getJobs().then((data:any) =>{
-    //   this.jobsArry = data;
-    // })
-    // this will show jobs
     this.jobsArry = [];
     for (var x = 0; x  < this.displayOrg.length; x++){
       if (this.displayOrg[x].category == "jobs"){
@@ -341,10 +367,6 @@ export class HomePage implements OnInit {
   }
   wifrArry =  new Array();
   showwifiPage() {
-    // this.hubs.getJobs().then((data:any) =>{
-    //   this.jobsArry = data;
-    // })
-    // this will show jobs
     this.wifrArry = [];
     for (var x = 0; x  < this.displayOrg.length; x++){
       if (this.displayOrg[x].category == "wifi"){
@@ -443,25 +465,19 @@ export class HomePage implements OnInit {
       });
       let infowindow = new google.maps.InfoWindow({
         content:
-          '<div style="width: 400px; transition: 300ms;"><b>' +
-          this.displayAllhubs[index].name +
-          '</b><div style="display: flex; padding-top: 10px;">' +
-          '<img style="height: 100px; width: 100px; object-fit: cober; border-radius: 50px;" src=' +
-          this.displayAllhubs[index].img +
-          ">" +
-          '<div style="padding-left: 10px;padding-right: 10px">' +
-          this.displayAllhubs[index].openDate +
-          "</div><br>" +
-          '<div style="padding-left: 10px;padding-right: 10px">' +
-          this.displayAllhubs[index].closeDate +
-          "</div><br>" +
-          '<div style="padding-left: 10px;padding-right: 10px">' +
-          this.displayAllhubs[index].progEndDate +
-          "</div><br>" +
-          '<div style="padding-left: 10px;padding-right: 10px">' +
-          this.displayAllhubs[index].progStartDate +
-          "</div><br>" +
-          "</div>"
+        '<div style="width: 400px; transition: 300ms;"><b>' +
+        this.displayAllhubs[index].name +
+        '</b><div style="display: flex; padding-top: 10px;">' +
+        '<img style="height: 100px; width: 100px; object-fit: cober; border-radius: 50px;" src=' +
+        this.displayAllhubs[index].img +
+        ">" +
+        '<div style="padding-left: 10px;padding-right: 10px">' +
+        this.displayAllhubs[index].background +
+        "</div><br>" +
+
+
+
+        "</div>"
       });
       showMultipleMarker.addListener('click', () => {
         this.map.setZoom(14);
@@ -914,7 +930,6 @@ export class HomePage implements OnInit {
 
    updateOrg() {
     this.cancelSettings();
-    // this.key
     this.hubs.update( this.applOpen ,  this.applClose,this.start ,  this.end ,this.progname2, this.img2, this.contact, this.progbackground,this.progKey).then((data) => {
       this.getallorg();
     });
@@ -924,6 +939,9 @@ export class HomePage implements OnInit {
     });
     alert.present();
   }
+
+
+
 
   hideProg(i){
     this.hubs.hideProg(i);
@@ -980,5 +998,41 @@ editprofile(){
 cancelprofile() {
  var settingsUpdate = document.getElementById("profile-overlay");
  settingsUpdate.style.display = "none";
+}
+
+updateorgProfile(){
+  this.cancelSettings();
+  this.hubs.updateOrg(this.contact,this.downloadurlLogo,this.name,this.background).then((data)=>{
+    this.getallorg();
+  })
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000
+  });
+
+  Toast.fire({
+    type: "success",
+    title: "successfully updated your organization profile"
+  });
+}
+
+updateUserprofile(){
+  this.cancelSettings();
+  this.hubs.updateUserProfile(this.userContract,this.userImage,this.userName,this.userPosition,this.userPostiondesc).then((data)=>{
+    this.getallorg();
+  })
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000
+  });
+
+  Toast.fire({
+    type: "success",
+    title: "successfully updated your user profile"
+  });
 }
 }
