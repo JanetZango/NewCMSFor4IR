@@ -392,17 +392,18 @@ export class HomePage implements OnInit {
 
   //show map
   initMap() {
+    let loading = this.loadingCtrl.create({
+      spinner: 'bubbles',
+      content: 'Please wait...',
+      duration: 15000
+    });
     setTimeout(() => {
       this.hubs.getLocation(this.lat, this.long).then((data: any) => {
         this.userLocation = data;
         console.log(this.userLocation)
       })
     }, 1000);
-    let loading = this.loadingCtrl.create({
-      spinner: 'bubbles',
-      content: 'Please wait...',
-      duration: 15000
-    });
+  
     const options = {
       center: { lat: this.lat, lng: this.long },
       zoom: 10,
