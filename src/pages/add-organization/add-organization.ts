@@ -791,7 +791,13 @@ export class AddOrganizationPage {
   freeOrPaidWiFi;
   priceWiFi;
   toPage2WiFi() {
-    if (this.WiFiAvailability == "Yes") {
+    let b = window.innerHeight;
+    if (this.WiFiAvailability == undefined) {
+      this.alertMessage =
+        "Please insert the wifi details";
+      swal(this.alertMessage);
+    }
+    else if (this.WiFiAvailability == "Yes") {
       var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
       pager[0].style.marginLeft = "-25%"
       var thebar = document.getElementById("barSlide");
@@ -808,7 +814,13 @@ export class AddOrganizationPage {
     }
   }
   toPage3WiFi() {
-    if (this.freeOrPaidWiFi == "Free") {
+    let b = window.innerHeight;
+    if (this.freeOrPaidWiFi == undefined) {
+      this.alertMessage =
+        "Please select what type is it";
+      swal(this.alertMessage);
+    }
+    else if (this.freeOrPaidWiFi == "Free") {
       var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
       pager[0].style.marginLeft = "-75%"
       var thebar = document.getElementById("barSlide");
@@ -831,15 +843,10 @@ export class AddOrganizationPage {
     }
   }
   toPage4WiFi() {
-
     if (this.priceWiFi == "" || this.priceWiFi == null || this.priceWiFi == undefined) {
-
-      const alert = this.alertCtrl.create({
-        title: 'Select Range',
-        subTitle: "It looks like you haven't chosen a data range.",
-        buttons: ['OK']
-      });
-      alert.present();
+      this.alertMessage =
+      "Please select the price ";
+    swal(this.alertMessage);
     }
     else {
       var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;

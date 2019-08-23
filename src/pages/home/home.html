@@ -88,9 +88,10 @@
         </div>
         <div class="list-head">
           Fellow Organisations
+          
         </div>
         <div class="list-view-cotainer">
-          <div class="listed-item" *ngFor="let q of getOrgArry">
+          <div class="listed-item" *ngFor="let q of displayAllORG">
             <div>
               <img src="{{q.downloadurlLogo}}" alt="">
             </div>
@@ -108,7 +109,9 @@
         </div>
         <!-- editservice -->
         <div class="view" id="pg2">
-          <img class="empty" src="../../assets/preview (8).png" alt="" srcset="">
+          <div *ngIf="this.servArray ==null || this.servArray == undefined">
+              <img class="empty" src="../../assets/preview (8).png" alt="" srcset="">
+          </div>
           <ion-fab bottom right (click)="add('Services')">
             <button ion-fab color="btn">
               <ion-icon name="add"></ion-icon>
@@ -149,7 +152,10 @@
           </div>
         </div>
         <div class="view" id="pg3">
-            <img class="empty" src="../../assets/preview (8).png" alt="" srcset="">
+          <div *ngIf="this.progArray == null || this.progArray == undefined">
+              <img class="empty" src="../../assets/preview (8).png" alt="" srcset="">
+          </div>
+        
           <ion-fab bottom right (click)="add('Programmes')">
             <button ion-fab color="btn">
               <ion-icon name="add"></ion-icon>
@@ -215,7 +221,10 @@
           </div>
         </div>
         <div class="view" id="pg4">
-            <img class="empty" src="../../assets/preview (8).png" alt="" srcset="">
+          <div *ngIf="this.jobsArry == null || this.jobsArry == undefined">
+              <img class="empty" src="../../assets/preview (8).png" alt="" srcset="">
+          </div>
+          
           <ion-fab bottom right (click)="add('Jobs')">
             <button ion-fab color="btn">
               <ion-icon name="add"></ion-icon>
@@ -381,7 +390,7 @@
           [(ngModel)]="background"></textarea>
         <div id="update-buttons">
           <button ion-button outline color="danger" (click)="cancelSettings()">Cancel</button>
-          <button ion-button (click)="updateOrg()">Update</button>
+          <button ion-button (click)="updateorgProfile()">Update</button>
         </div>
         <button ion-button block  color="secondary" (click)="logUserOut()">Logout</button>
       </div>
@@ -603,10 +612,10 @@
             
                 </div>
                 <div class="editing-data-inputs">
-                  <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
+                  <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertuserprofile($event)" id="theLogo-update">
                   <div id="theLogo-update">
             
-                    <label for="logoUpdate">
+                    <label for="theLogo-update">
                       <div>Logo</div>
                       <img id="click-upload" src="{{userImage}}" alt="">
                     </label>
@@ -616,13 +625,13 @@
                     <ion-input type="text" class="text-field" placeholder="Username"  [(ngModel)]="userName">
                     </ion-input>
                     <!-- <ion-input type="text" class="text-field" placeholder="Physical Address"  [(ngModel)]="address"></ion-input> -->
-                    <ion-input type="tel" class="text-field" placeholder="Phone number" [(ngModel)]="contact"></ion-input>
+                    <ion-input type="tel" class="text-field" placeholder="Phone number" [(ngModel)]="userContract"></ion-input>
                     <ion-input type="email" class="text-field" placeholder="Position" [(ngModel)]="userPosition" ></ion-input>
                     <textarea name="" id="textarea-update" placeholder="Position Description" cols="30" rows="10"
-                      [(ngModel)]="background"></textarea>
+                      [(ngModel)]="userPostiondesc"></textarea>
                     <div id="update-buttons">
                       <button ion-button outline color="danger" (click)="cancelprofile()">Cancel</button>
-                      <button ion-button (click)="updateOrg()">Update</button>
+                      <button ion-button (click)="updateUserprofile()">Update</button>
                     </div>
                     <!-- <button ion-button block  color="secondary" (click)="logUserOut()">Logout</button> -->
                   </div>
