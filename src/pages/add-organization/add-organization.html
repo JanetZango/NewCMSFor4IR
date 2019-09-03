@@ -252,10 +252,10 @@
             <div class="inputs">
               Please complete your contact details to continue
               <br>
-              <input type="text" id="input-field" [(ngModel)]="sadd" placeholder="Address"> 
+              <input type="text" id="input-field" [(ngModel)]="sadd" placeholder="Address" (change)="setAddressservices()"> 
               <div class="contacts">
                 <input type="email" id="input-field" [(ngModel)]="semail" placeholder="Email"> 
-                <input type="number" id="input-field" [(ngModel)]="sphone" placeholder="Phone"> 
+                <input type="number" id="input-field" [(ngModel)]="sphone"  onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"  placeholder="Phone"> 
               </div>
             </div>
           </div>
@@ -382,7 +382,7 @@
           <div class="pageWifi" id="page4Wifi">
             <div class="buttons">
               <button id="backward" ion-button (click)="backToPage3WiFi()">Back</button>
-              <button id="forward" ion-button>Done</button>
+              <button id="forward" ion-button (click)="addwifi()">Done</button>
             </div>
             <div class="inputs">
               

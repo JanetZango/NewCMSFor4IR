@@ -318,7 +318,7 @@ export class AddOrganizationPage {
   sphone
 
   adds() {
-    this.hubs.addService('', '', '', this.sadd, this.sname, this.sphone, this.sabout, this.downloadurl6).then(() => {
+    this.hubs.addService('', '', '', this.sadd, this.sname, this.sphone, this.sabout, this.downloadurl6,this.orgAddressObject.lat, this.orgAddressObject.lng).then(() => {
       alert('service added');
       this.navCtrl.pop()
     })
@@ -432,8 +432,6 @@ export class AddOrganizationPage {
 
   RegistrationType() {
     alert(this.program)
-
-
     var thePlaceholder = document.getElementById("placeholderDiv");
     if (this.program == "Organisation") {
       this.showRegistionOrgs = true;
@@ -509,6 +507,20 @@ export class AddOrganizationPage {
     }
   }
 
+   //jobs
+   setAddressservices(event) {
+    if (this.sadd != undefined) {
+      this.getcoo(this.sadd).then((data: any) => {
+        this.orgAddressObject = data;
+        this.checkAddress = 0
+      }, Error => {
+        this.checkAddress = 1;
+        this.alertMessage = "The address you have entered is invalid, please enter a valid address";
+        swal(this.alertMessage);
+      })
+    }
+  }
+
 
 
 
@@ -569,7 +581,7 @@ export class AddOrganizationPage {
     let b = window.innerHeight;
     if (this.progName == undefined && this.progbackground == undefined && this.progDescription == undefined && this.progOptions == undefined) {
       this.alertMessage =
-        "Please insert the organisation's details";
+        "Please insert the programme's details";
       swal(this.alertMessage);
     }
     else if (this.progName == null || this.progName == "") {
@@ -680,8 +692,36 @@ export class AddOrganizationPage {
 
     }
 
+
+
+    //VALIDATIONS FOR services
+  
   }
 
+
+  phonenumberValidatinservice() {
+    if (this.sadd == undefined) {
+    } else {
+      var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+
+      if (this.sadd.match(phoneno)) {
+        console.log(this.cell.match(phoneno));
+        this.contactValidation = 0;
+      }
+      else {
+        this.contactValidation = 1;
+        console.log(this.progPhone.match(phoneno));
+        console.log("wrong");
+
+      }
+
+    }
+
+
+
+    //VALIDATIONS FOR services
+  
+  }
 
 
   progApplicationOpen;
@@ -752,16 +792,64 @@ export class AddOrganizationPage {
 
 
   toPage2Services() {
-    var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
-    var thebar = document.getElementById("barSlide");
-    thebar.style.width = "50%"
-    pager[0].style.marginLeft = "-25%";
+    let b = window.innerHeight;
+   
+    if (this.sname == undefined && this.sabout == undefined) {
+      this.alertMessage =
+        "Please insert the service's details";
+      swal(this.alertMessage);
+    }
+    else if (this.sname == null || this.sname == "") {
+      this.alertMessage = "Please type the service name";
+      swal(this.alertMessage);
+    }
+    else if (this.sabout == null || this.sabout == "") {
+      this.alertMessage = "Tell us about your service";
+      swal(this.alertMessage);
+    }
+    else{
+      var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
+      var thebar = document.getElementById("barSlide");
+      thebar.style.width = "50%"
+      pager[0].style.marginLeft = "-25%";
+    }
+   
   }
   toPage3Services() {
-    var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
-    pager[0].style.marginLeft = "-50%"
-    var thebar = document.getElementById("barSlide");
-    thebar.style.width = "75%"
+    let b = window.innerHeight;
+   
+    if (this.sadd == undefined && this.semail == undefined  &&this.sphone == undefined) {
+      this.alertMessage =
+        "Please insert the service's details";
+      swal(this.alertMessage);
+    }
+    else if (this.sadd == null || this.sadd == "") {
+      this.alertMessage = "Please type the address of the serviceS";
+      swal(this.alertMessage);
+    }
+    else if (this.semail == null || this.semail == "") {
+      this.alertMessage = "Tell us about your service";
+      swal(this.alertMessage);
+    }
+    else if (this.sphone == null || this.sphone == "") {
+      this.alertMessage = "please enter contact deatils";
+      swal(this.alertMessage);
+    }
+    else if (this.contactValidation == 1) {
+      this.alertMessage = "The phone numbers you have entered is invalid, please enter a valid phone numbers  ";
+      swal(this.alertMessage);
+    }
+    else if (this.checkAddress == 1) {
+      this.alertMessage = "The address you have entered is invalid, please enter a valid address ";
+      swal(this.alertMessage);
+    }
+    else{
+      var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
+      pager[0].style.marginLeft = "-50%"
+      var thebar = document.getElementById("barSlide");
+      thebar.style.width = "75%"
+    }
+   
   }
   toPage4Services() {
     var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
@@ -795,7 +883,7 @@ export class AddOrganizationPage {
     let b = window.innerHeight;
     if (this.WiFiAvailability == undefined) {
       this.alertMessage =
-        "Please insert the wifi details";
+        "Please select the type of wifi";
       swal(this.alertMessage);
     }
     else if (this.WiFiAvailability == "Yes") {

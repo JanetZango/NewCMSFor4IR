@@ -307,7 +307,12 @@ export class HubsProvider {
   getallhubs() {
 		return new Promise((resolve, reject) => {
 			this.ngzone.run(() => {
-			var user = firebase.auth().currentUser.uid;
+      var user = firebase.auth().currentUser.uid;
+      let loading = this.loadingCtrl.create({
+        spinner: 'bubbles',
+        content: 'Please wait...',
+        duration: 15000
+      });
 			firebase.database().ref("4IRHubs").on('value', (data: any) => {
 				this.getprog.length =0;
 				var UploadDetails = data.val();
@@ -336,7 +341,7 @@ export class HubsProvider {
 						console.log(obj);
 						this.getallhub.push(obj);
             console.log(this.getallhub);		
-            
+            loading.dismiss();
         }
         resolve(this.getallhub);
 			});
@@ -619,6 +624,27 @@ export class HubsProvider {
   }
 
 
+  addWifi(openDate, closeDate, name,img,lat,long) {
+    return new Promise((resolve, reject) => {
+      this.ngzone.run(() => {
+        var user = firebase.auth().currentUser
+        firebase.database().ref("4IRHubs").push({
+          openDate: openDate,
+          category:"programmes",
+          closeDate: closeDate,
+          name: name,     
+          img: img,
+          lat:lat,
+          long:long,
+          user : user.uid
+        })
+        resolve();
+      })
+    })
+  }
+
+
+
   getPrograme() {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
@@ -713,11 +739,11 @@ export class HubsProvider {
   }
 
 
-  addService(email,openDate, closeDate, address, serviceName, contact, desc, img) {
+  addService(email,openDate, closeDate, address, serviceName, contact, desc, img,lat,long) {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser
-        firebase.database().ref("services/" + user.uid).push({
+        firebase.database().ref("4IRHubs").push({
           openDate: openDate,
           email:email,
           closeDate: closeDate,
@@ -725,7 +751,9 @@ export class HubsProvider {
           desc: desc,
           img: img,
           contact: contact,
-          name : serviceName
+          name : serviceName,
+          lat:lat,
+          long:long
         })
         resolve();
       })

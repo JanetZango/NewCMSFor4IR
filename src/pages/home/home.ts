@@ -448,6 +448,38 @@ export class HomePage implements OnInit {
     this.navCtrl.push(AddOrganizationPage, {type:type})
   }
 
+
+
+  getItems(ev: any) {
+    console.log(`hi serach`);
+    
+    let searchlist = document.getElementsByClassName('searchitem') as HTMLCollectionOf<HTMLElement>;
+      //searchlist[0].style.display = 'block';
+      //this.search = 'search'
+    // Reset items back to all of the items
+    this.initializeItems();
+    // set val to the value of the searchbar
+    const val = ev.target.value;
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.items = this.items.filter((item) => {
+        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+      let searchlist = document.getElementsByClassName('searchitem') as HTMLCollectionOf<HTMLElement>;
+      //searchlist[0].style.display = 'block';
+    }
+  }
+  initializeItems() {
+    this.items = [
+
+    'Acceptance','Action','Adversity','Anger','Authenticity','Boundaries','Choice','Compassion','Competitveness','Courage','Customer-relations-management','Decisiveness','Delayed-gratification','Depression',
+    'Detachment','Dream-big','Emotional-intelligence','Enemy','Enthusiasm','Ethics','Excellence','Fear','Freedom','Giving','Gratitude','Growth','Happiness','Hard-work','Health','Humility','Inner-power',
+    'Innovation','Intuition','Learning','Love', 'Life','Morality','Obstacles','Passion','Patience','Perseverance','Positivity','Power','Purpose','Regrets','Relationships','Risk-taking','Self discovery',
+    'Service','Small-steps','Spiritual-intelligence','Temper','Think big','Thoughts','Time','Truth','Vision','Wealth',
+    ];
+  }
+
+
   //markers for the map
   markers() {
     console.log(this.displayAllhubs);
@@ -492,11 +524,6 @@ export class HomePage implements OnInit {
   }
 
 
-  //search method
-  initializeItems() {
-    this.items = this.orgNames
-    console.log(this.items)
-  }
 
   filterItems(val) {
     if (val && val.trim() != '') {
@@ -521,23 +548,7 @@ export class HomePage implements OnInit {
   updateDetails() {
     this.cancelSettings()
   }
-  getItems(ev) {
-    this.initializeItems();
-    // set val to the value of the ev target
-    var val = ev.target.value;
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
-      this.items = this.items.filter((item) => {
-        console.log(val);
-
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
-    else if (val == "" || val == null) {
-      this.items = [];
-    }
-    console.log(this.items);
-  }
+ 
 
  
 
