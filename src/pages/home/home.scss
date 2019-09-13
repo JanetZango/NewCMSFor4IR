@@ -165,7 +165,7 @@ h1{
     height: 100px;
     background: white;
     border-radius: 50px;
-    object-fit: contain;
+    object-fit: cover;
 
   }
   #container-overlay {
@@ -261,25 +261,25 @@ h1{
     object-fit: cover;
   }
   #actions {
-    width: 90%;
+    width: 100%;
     left: 50%;
     transform: translateX(-50%);
     height: 35px;
     border-top: 1px solid rgba(255, 255, 255, 0.822);
-    background: transparent;
+    background:  rgb(55, 150, 47);
     position: absolute;
     bottom: 0;
     display: flex;
+    z-index: 2;
     p {
       width: 100%;
       text-align: center;
       margin: 0;
       height: 100%;
       line-height: 35px;
+      z-index: 2;
     }
-    p:hover {
-      background: rgba(19, 19, 19, 0.342);
-    }
+  
   }
   .cover-image-cover {
     width: 90%;
@@ -293,7 +293,7 @@ h1{
     width: 160px;
     height: 160px;
     border-radius: 100px;
-    object-fit: contain;
+    object-fit: cover;
     position: absolute;
     bottom: -40px;
     left: 50%;
@@ -327,6 +327,7 @@ h1{
     height: calc(100% - 250px);
     padding: 10px;
     padding-top: 50px;
+    z-index: -1;
   }
   .btns {
     width: 100%;
@@ -432,7 +433,7 @@ h1{
     height: 50px;
     border-radius: 50px;
     margin-right: 10px;
-    object-fit: contain;
+    object-fit: cover;
     background: white;
   }
   .user-details {
