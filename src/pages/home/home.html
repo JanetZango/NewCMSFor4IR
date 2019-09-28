@@ -87,13 +87,13 @@
           <ion-icon name="{{toggleList}}"></ion-icon>
         </div>
         <div class="list-head">
-          Fellow Organisations
+         Organisations
           
         </div>
         <div class="list-view-cotainer">
-          <div class="listed-item" *ngFor="let q of displayAllORG">
+          <div class="listed-item" *ngFor="let q of displayAllhubs">
             <div>
-              <img src="{{q.downloadurlLogo}}" alt="">
+              <img src="{{q.img}}" alt="">
             </div>
             <div>
               <p><b>{{q.name}}</b></p>
@@ -294,13 +294,15 @@
         </div>
 <!-------------------wifi------------------------------->
         <div class="view" id="pg5">
+          <div *ngIf="this.wifrArry == null || this.wifrArry == undefined">
             <img class="empty" src="../../assets/preview (8).png" alt="" srcset="">
+        </div>
             <ion-fab bottom right (click)="add('Wifi')">
               <button ion-fab color="btn">
                 <ion-icon name="add"></ion-icon>
               </button>
             </ion-fab>
-            <div class="card-container" *ngFor="let i of jobsArry">
+            <div class="card-container" *ngFor="let i of wifrArry">
               <div class="card">
                 <div class="image-image">
                   <div class="action-buttons">
@@ -612,10 +614,10 @@
             
                 </div>
                 <div class="editing-data-inputs">
-                  <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertuserprofile($event)" id="logoUpdate">
+                  <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertuserprofile($event)" id="logoUpdate2">
                   <div id="theLogo-update">
             
-                    <label for="theLogo-update">
+                    <label for="logoUpdate2">
                       <div>Logo</div>
                       <img id="click-upload" src="{{userImage}}" alt="">
                     </label>

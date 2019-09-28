@@ -314,7 +314,7 @@ export class HubsProvider {
         duration: 15000
       });
 			firebase.database().ref("4IRHubs").on('value', (data: any) => {
-				this.getprog.length =0;
+				this.getallhub.length =0;
 				var UploadDetails = data.val();
 				console.log(UploadDetails);
 				var k2 = Object.keys(UploadDetails);

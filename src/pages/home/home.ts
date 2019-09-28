@@ -83,10 +83,7 @@ export class HomePage implements OnInit {
     this.getallhubs();
     this.displayProfile();
     this.getallAvailableOrg();
-    this.hubs.displayOnMAP().then((data:any) => {
-      this.displayOrg = data
-      console.log(this.displayOrg)
-    })
+    
     this.hubs.getCurrentLocation(this.lat, this.long).then((radius: any) => {
     })
   }
@@ -147,8 +144,13 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.initMap();
-   
+    this.getallhubs();
 
+
+    this.hubs.displayOnMAP().then((data:any) => {
+      this.displayOrg = data
+      console.log(this.displayOrg)
+    })
   }
 
   //updateLogo
@@ -324,6 +326,7 @@ export class HomePage implements OnInit {
     for (var x = 0; x  < this.displayOrg.length; x++){
       if (this.displayOrg[x].category == "programmes"){
         this.progArray.push(this.displayOrg[x]);
+        console.log(this.progArray)
       }
     }
     // this will show programmes

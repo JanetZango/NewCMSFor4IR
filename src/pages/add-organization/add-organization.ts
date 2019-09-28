@@ -27,6 +27,7 @@ export class AddOrganizationPage {
   orgAdress;
   // progAddress;
   orgPhone;
+
   orgWebsite;
   orgDescription;
   category;
@@ -114,7 +115,9 @@ export class AddOrganizationPage {
   internetCafeService;
   learningCenterServices;
   mallService;
-  checkAddress
+  checkAddress;
+  checkAddressjob
+  checkAddressserv;
   // General varable
   orgAddressObject;
   catService = []
@@ -124,7 +127,8 @@ export class AddOrganizationPage {
   progressBar = 25
 
   contactValidation;
-
+  contactValidationjob;
+  contactValidationserv;
   program;
   showRegistionOrgs: boolean = false;
   showRegistionProgs: boolean = false;
@@ -177,6 +181,7 @@ export class AddOrganizationPage {
   pushid = this.navParams.get('pushid')
   type:string = this.navParams.get('type');
   alertMessage;
+  sphone
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public hubs: HubsProvider, public ngzone: NgZone, public alertCtrl: AlertController) {
     console.log(this.email)
@@ -314,12 +319,12 @@ export class AddOrganizationPage {
   sname;
   sabout;
   sadd;
-  semail;;
-  sphone
+  semail;
+  // sphone;
 
   adds() {
     this.hubs.addService('', '', '', this.sadd, this.sname, this.sphone, this.sabout, this.downloadurl6,this.orgAddressObject.lat, this.orgAddressObject.lng).then(() => {
-      alert('service added');
+      // alert('service added');
       this.navCtrl.pop()
     })
   }
@@ -498,9 +503,9 @@ export class AddOrganizationPage {
     if (this.jobAddress != undefined) {
       this.getcoo(this.jobAddress).then((data: any) => {
         this.orgAddressObject = data;
-        this.checkAddress = 0
+        this.checkAddressjob = 0
       }, Error => {
-        this.checkAddress = 1;
+        this.checkAddressjob = 1;
         this.alertMessage = "The address you have entered is invalid, please enter a valid address";
         swal(this.alertMessage);
       })
@@ -512,9 +517,9 @@ export class AddOrganizationPage {
     if (this.sadd != undefined) {
       this.getcoo(this.sadd).then((data: any) => {
         this.orgAddressObject = data;
-        this.checkAddress = 0
+        this.checkAddressserv = 0
       }, Error => {
-        this.checkAddress = 1;
+        this.checkAddressserv = 1;
         this.alertMessage = "The address you have entered is invalid, please enter a valid address";
         swal(this.alertMessage);
       })
@@ -552,6 +557,79 @@ export class AddOrganizationPage {
   }
 
 
+   ///validations for programmesdB
+   phonenumberValidatin() {
+    if (this.progPhone == undefined) {
+
+    } else {
+      var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+
+      if (this.progPhone.match(phoneno)) {
+        console.log(this.progPhone.match(phoneno));
+        this.contactValidation = 0;
+      }
+      else {
+        this.contactValidation = 1;
+        console.log(this.progPhone.match(phoneno));
+        console.log("wrong");
+
+      }
+
+    }
+
+  }
+
+  ///validation for jobs
+  phonenumberValidatinjob() {
+    if (this.cell == undefined) {
+    } else {
+      var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+
+      if (this.cell.match(phoneno)) {
+        console.log(this.cell.match(phoneno));
+        this.contactValidationjob = 0;
+      }
+      else {
+        this.contactValidationjob = 1;
+        console.log(this.cell.match(phoneno));
+        console.log("wrong");
+
+      }
+
+    }
+
+
+
+    //VALIDATIONS FOR services
+  
+  }
+
+
+  phonenumberValidatinservice() {
+    if (this.sphone == undefined) {
+    } else {
+      var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+
+      if (this.sphone.match(phoneno)) {
+        console.log(this.sphone.match(phoneno));
+        this.contactValidation = 0;
+      }
+      else {
+        this.contactValidation = 1;
+        console.log(this.sphone.match(phoneno));
+        console.log("wrong");
+
+      }
+
+    }
+
+
+
+    //VALIDATIONS FOR services
+  
+  }
+
+
   addProg() {
     let b = window.innerHeight;
     this.hubs.addPrograme(this.progApplicationOpen, this.progApplicationClose, this.progName, this.progOptions, this.progbackground, this.progBenfits, this.progDescription, this.progStartDate, this.progEndDate, this.progAddress, this.progPhone, this.downloadurl, this.orgAddressObject.lat, this.orgAddressObject.lng).then(() => {
@@ -566,7 +644,7 @@ export class AddOrganizationPage {
         type: "success",
         title: "Your programme was succesfully added"
       });
-      this.navCtrl.pop();
+      this.navCtrl.push(HomePage);
     })
   }
 
@@ -651,78 +729,7 @@ export class AddOrganizationPage {
     }
   }
 
-  ///validations for programmesdB
-  phonenumberValidatin() {
-    if (this.progPhone == undefined) {
-
-    } else {
-      var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
-
-      if (this.progPhone.match(phoneno)) {
-        console.log(this.progPhone.match(phoneno));
-        this.contactValidation = 0;
-      }
-      else {
-        this.contactValidation = 1;
-        console.log(this.progPhone.match(phoneno));
-        console.log("wrong");
-
-      }
-
-    }
-
-  }
-
-  ///validation for jobs
-  phonenumberValidatinjob() {
-    if (this.cell == undefined) {
-    } else {
-      var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
-
-      if (this.cell.match(phoneno)) {
-        console.log(this.cell.match(phoneno));
-        this.contactValidation = 0;
-      }
-      else {
-        this.contactValidation = 1;
-        console.log(this.progPhone.match(phoneno));
-        console.log("wrong");
-
-      }
-
-    }
-
-
-
-    //VALIDATIONS FOR services
-  
-  }
-
-
-  phonenumberValidatinservice() {
-    if (this.sadd == undefined) {
-    } else {
-      var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
-
-      if (this.sadd.match(phoneno)) {
-        console.log(this.cell.match(phoneno));
-        this.contactValidation = 0;
-      }
-      else {
-        this.contactValidation = 1;
-        console.log(this.progPhone.match(phoneno));
-        console.log("wrong");
-
-      }
-
-    }
-
-
-
-    //VALIDATIONS FOR services
-  
-  }
-
+ 
 
   progApplicationOpen;
   progApplicationClose;
@@ -757,6 +764,11 @@ export class AddOrganizationPage {
       this.alertMessage = "The website address you have entered is invalid, please enter a valid programme link";
       swal(this.alertMessage);
     }
+    else if (this.websiteValidation == 1) {
+      this.alertMessage ="The website address you have entered is invalid, please enter a valid website address ";
+      swal(this.alertMessage);
+    }
+  
     else {
       var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
       pager[0].style.marginLeft = "-75%"
@@ -793,7 +805,6 @@ export class AddOrganizationPage {
 
   toPage2Services() {
     let b = window.innerHeight;
-   
     if (this.sname == undefined && this.sabout == undefined) {
       this.alertMessage =
         "Please insert the service's details";
@@ -817,8 +828,8 @@ export class AddOrganizationPage {
   }
   toPage3Services() {
     let b = window.innerHeight;
-   
-    if (this.sadd == undefined && this.semail == undefined  &&this.sphone == undefined) {
+   this.phonenumberValidatinservice();
+    if (this.semail == undefined  && this.sphone == undefined) {
       this.alertMessage =
         "Please insert the service's details";
       swal(this.alertMessage);
@@ -839,7 +850,7 @@ export class AddOrganizationPage {
       this.alertMessage = "The phone numbers you have entered is invalid, please enter a valid phone numbers  ";
       swal(this.alertMessage);
     }
-    else if (this.checkAddress == 1) {
+    else if (this.checkAddressserv == 1) {
       this.alertMessage = "The address you have entered is invalid, please enter a valid address ";
       swal(this.alertMessage);
     }
@@ -1045,7 +1056,7 @@ export class AddOrganizationPage {
   toPage3Jobs() {
     let b = window.innerHeight;
     this.phonenumberValidatinjob()
-    if (this.cell == undefined && this.req == undefined && this.res == undefined && this.mail == undefined && this.jobAddress == undefined) {
+    if (this.cell == undefined && this.req == undefined && this.res == undefined && this.mail == undefined ) {
       this.alertMessage =
         "Please insert the jobs's details";
       swal(this.alertMessage);
@@ -1054,10 +1065,7 @@ export class AddOrganizationPage {
       this.alertMessage = "Please enter the correct phone number";
       swal(this.alertMessage);
     }
-    // else if (this.cell > 10 || this.cell < 9)   {
-    //   this.alertMessage = "The number is incomplete ";
-    //   swal(this.alertMessage);
-    // }
+   
     else if (this.req == null || this.req == "") {
       this.alertMessage = "Please enter the job requirements ";
       swal(this.alertMessage);
@@ -1074,11 +1082,11 @@ export class AddOrganizationPage {
       this.alertMessage = "Please the correct address";
       swal(this.alertMessage);
     }
-    else if (this.contactValidation == 1) {
+    else if (this.contactValidationjob == 1) {
       this.alertMessage = "The phone numbers you have entered is invalid, please enter a valid phone numbers  ";
       swal(this.alertMessage);
     }
-    else if (this.checkAddress == 1) {
+    else if (this.checkAddressjob == 1) {
       this.alertMessage = "The address you have entered is invalid, please enter a valid address ";
       swal(this.alertMessage);
     }
