@@ -2,15 +2,10 @@
   <div class="container">
     <!-- this is the side panel -->
     <div class="side-pane">
+    <!-- <div class="sidepanescroll"> -->
       <button ion-button clear id="ifSmall" class="float-right" color="light" (click)="showSidePane()">
         <ion-icon name="close"></ion-icon>
       </button>
-      <div id="actions">
-        <p text-center>Version 0.0.1</p>
-        <!-- <p (click)="goToSettings()">Settings</p>
-        <p (click)="logUserOut()">Logout</p> -->
-        
-        </div>
       <div class="cover-image">
         <!-- <img src="{{downloadurl}}" alt="" class="cover-image-cover"> -->
         <img src="{{downloadurlLogo}}" alt="" class="logo-image">
@@ -24,7 +19,6 @@
           <h4>{{name}}</h4>
         </div>
         <div id="about-org">
-
           <div id="misc">
             <div class="about-label">
               <b id="label">About</b>
@@ -54,6 +48,13 @@
           
         </div>
       </div>
+    <!-- </div> -->
+      <div id="actions">
+          <p text-center>Version 0.0.1</p>
+          <!-- <p (click)="goToSettings()">Settings</p>
+          <p (click)="logUserOut()">Logout</p> -->
+          
+          </div>
     </div>
     <!-- this is the main view -->
     <div class="view-pane">
@@ -106,7 +107,7 @@
             <div #map id="map"></div>
   
         </div>
-        <!-- editservice -->
+        <!------------------------------------------------ editservice ------------------------->
         <div class="view" id="pg2">
           <div *ngIf="this.servArray ==null || this.servArray == undefined">
               <img class="empty" src="../../assets/preview (8).png" alt="" srcset="">
@@ -116,7 +117,7 @@
               <ion-icon name="add"></ion-icon>
             </button>
           </ion-fab>
-          <div class="card-container" *ngFor="let i of servArray">
+          <!-- <div class="card-container" *ngFor="let i of servArray">
             <div class="card">
               <div class="image-image">
                 <div class="action-buttons">
@@ -148,8 +149,67 @@
 
               </div>
             </div>
-          </div>
+          </div> -->
+
+          <div class="card-container">
+              <div class="card" *ngFor="let i of servArray; let x = index">
+                <div class="image-image">
+                  <div class="action-buttons">
+                    <button ion-button clear color="light" (click)="hideProg(i.key)">Hide</button>
+                    <button ion-button clear color="light" (click)='deleteProg(x,i.key)'>Delete</button>
+                    <button ion-button clear color="light" (click)='editprogram(i)'>Edit</button>
+                  </div>
+                  <img src="{{i.img}}" alt="" class="image-actual">
+                </div>
+                <div class="more-details">
+                  <div padding class="content-container">
+                      <h2>Details</h2>
+                      <div class="line"></div>
+                    <div>
+                      <p id="heading">{{i.serviceName}}</p>
+                      <p id="sub-head">Background</p>
+                      <p id="bg-desc">
+                        {{i.background}}
+                      </p>
+                      <p id="sub-head">Address</p>
+                      <p id="bg-desc">
+                        {{i.address}}
+                      </p>
+                      <p id="sub-head">Description</p>
+                      <p id="bg-desc">
+                        {{i.desc}}
+                      </p>
+                    </div>
+                    <div>
+                        <h2>Application </h2>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Application Open Date</p>
+                          <p id="bg-desc">{{i.openDate}}</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Application Close Date</p>
+                          <p id="bg-desc">{{i.closeDate}}</p>
+                        </div>
+                      </div>
+                      <h2>Programmes</h2>
+                      <div class="dates">
+                        <div class="open">
+                          <p id="sub-head" class="theSub-head">Programme Start</p>
+                          <p id="bg-desc">{{i.progStartDate}}</p>
+                        </div>
+                        <div class="close">
+                          <p id="sub-head" class="theSub-head">Programme End</p>
+                          <p id="bg-desc">{{i.progEndDate}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
+        <!-------------------------------------------- Programms ----------------------------------------->
         <div class="view" id="pg3">
           <div *ngIf="this.progArray == null || this.progArray == undefined">
               <img class="empty" src="../../assets/preview (8).png" alt="" srcset="">
@@ -191,7 +251,6 @@
                   </div>
                   <div>
                       <h2>Application </h2>
-                    <!-- <p id="sub-head">Dates</p> -->
                     <div class="dates">
                       <div class="open">
                         <p id="sub-head" class="theSub-head">Application Open Date</p>
@@ -219,6 +278,8 @@
             </div>
           </div>
         </div>
+
+         <!-------------------------------------------- Jobs ----------------------------------------->
         <div class="view" id="pg4">
           <div *ngIf="this.jobsArry == null || this.jobsArry == undefined">
               <img class="empty" src="../../assets/preview (8).png" alt="" srcset="">
@@ -229,7 +290,7 @@
               <ion-icon name="add"></ion-icon>
             </button>
           </ion-fab>
-          <div class="card-container" *ngFor="let i of jobsArry">
+          <!-- <div class="card-container" *ngFor="let i of jobsArry">
             <div class="card">
               <div class="image-image">
                 <div class="action-buttons">
@@ -261,9 +322,9 @@
                   <div>
                     <p id="sub-head">Job Type</p>
                     <p id="bg-desc">{{i.contacts}}</p>
-                    <!-- <p id="sub-head">Dates</p> -->
+                  
                     <h2>Application</h2>
-                    <!-- <div class="line"></div> -->
+                  
                     <div class="dates">
                       <div class="open">
                         <p id="sub-head" class="theSub-head">Application Open Date</p>
@@ -289,6 +350,66 @@
                 </div>
               </div>
             </div>
+          </div> -->
+
+          <div class="card-container">
+            <div class="card" *ngFor="let i of jobsArry let x = index">
+              <div class="image-image">
+                <div class="action-buttons">
+                  <button ion-button clear color="light" (click)="hideProg(i.key)">Hide</button>
+                  <button ion-button clear color="light" (click)='deleteProg(x,i.key)'>Delete</button>
+                  <button ion-button clear color="light" (click)='editprogram(i)'>Edit</button>
+                </div>
+                <img src="{{i.img}}" alt="" class="image-actual">
+              </div>
+              <div class="more-details">
+                <div padding class="content-container">
+                    <h2>Details</h2>
+                    <div class="line"></div>
+                  <div>
+                    <p id="heading">{{i.name}}</p>
+                    <p id="sub-head">Background</p>
+                    <p id="bg-desc">
+                      {{i.background}}
+                    </p>
+                    <p id="sub-head">Address</p>
+                    <p id="bg-desc">
+                      {{i.address}}
+                    </p>
+                    <p id="sub-head">Description</p>
+                    <p id="bg-desc">
+                      {{i.desc}}
+                    </p>
+                  </div>
+                  <div>
+                      <p id="sub-head">Job Type</p>
+                      <p id="bg-desc">{{i.contacts}}</p>
+                      <h2>Application </h2>
+                    <div class="dates">
+                      <div class="open">
+                        <p id="sub-head" class="theSub-head">Application Open Date</p>
+                        <p id="bg-desc">{{i.openDate}}</p>
+                      </div>
+                      <div class="close">
+                        <p id="sub-head" class="theSub-head">Application Close Date</p>
+                        <p id="bg-desc">{{i.closeDate}}</p>
+                      </div>
+                    </div>
+                    <h2>Programmes</h2>
+                    <div class="dates">
+                      <div class="open">
+                        <p id="sub-head" class="theSub-head">Programme Start</p>
+                        <p id="bg-desc">{{i.jobStartdate}}</p>
+                      </div>
+                      <div class="close">
+                        <p id="sub-head" class="theSub-head">Programme End</p>
+                        <p id="bg-desc">{{i.jobEndDate}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 <!-------------------wifi------------------------------->
@@ -301,7 +422,7 @@
                 <ion-icon name="add"></ion-icon>
               </button>
             </ion-fab>
-            <div class="card-container" *ngFor="let i of wifrArry">
+            <!-- <div class="card-container" *ngFor="let i of wifrArry">
               <div class="card">
                 <div class="image-image">
                   <div class="action-buttons">
@@ -333,9 +454,7 @@
                     <div>
                       <p id="sub-head">Job Type</p>
                       <p id="bg-desc">{{i.contacts}}</p>
-                      <!-- <p id="sub-head">Dates</p> -->
                       <h2>Application</h2>
-                      <!-- <div class="line"></div> -->
                       <div class="dates">
                         <div class="open">
                           <p id="sub-head" class="theSub-head">Application Open Date</p>
@@ -361,7 +480,41 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
+
+            <div class="card-container" *ngFor="let i of wifrArry">
+                <div class="card">
+                  <div class="image-imagewifi">
+                    <div class="action-buttons">
+                      <button ion-button clear color="light">Hide</button>
+                      <button ion-button clear color="light">Delete</button>
+                      <button ion-button clear color="light" (click)='editservice()'>Edit</button>
+                    </div>
+                    <img src="{{i.img}}" alt="" class="image-actual">
+                  </div>
+                  <div class="more-details" id="pg1-cont">
+                    <div padding class="content-container">
+                        <h2>Details</h2>
+                      <div>
+    
+                        <p id="heading">{{i.name}}</p>
+                        <!-- <p id="sub-head">Description</p>
+                        <p id="bg-desc">
+                          {{i.desc}}
+                        </p> -->
+                        <p id="sub-head">Address</p>
+                        <p id="bg-desc">{{i.address}}</p>
+                        <!-- <p id="sub-head">Contact Details</p>
+                        <p id="subSub-head">{{i.contacts}}</p>
+                        <p id="bg-desc">0813917127</p>
+                        <p id="subSub-head">Email</p>
+                        <p id="bg-desc-email">{{i.email}}</p> -->
+                      </div>
+                    </div>
+    
+                  </div>
+                </div>
+              </div>
           </div>
       </div>
 

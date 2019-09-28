@@ -1003,7 +1003,7 @@ export class AddOrganizationPage {
       this.showtext = "Please click next "
     }
     else if (this.freeOrPaidWiFi == "Free") {
-      this.priceWiFi = ""
+      this.priceWiFi = "Unlimited"
       this.showPricing = false
       this.showtext = "Please click next "
     }

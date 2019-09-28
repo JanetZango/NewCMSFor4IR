@@ -5,8 +5,7 @@
         <div class="infor-left">
           <div class="bg"></div>
           <div class="statement">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore blanditiis reiciendis porro nulla soluta
-            vero iure eum, itaque.
+              The digital world of connecting South Africa to the digital world.
           </div>
         </div>
       </div>
@@ -112,9 +111,9 @@
               <label for="cover-image" id="coverImage">
                 <img src="{{downloadurl}}" alt="">
               </label>
-              <label for="logo-image" id="logoImage">
+              <!-- <label for="logo-image" id="logoImage">
                 <img src="{{downloadurl2}}" alt="">
-              </label>
+              </label> -->
             </div>
           </div>
         </div>
@@ -179,12 +178,10 @@
                   </div>
                   <img src="{{downloadurl}}" alt="">
                 </label>
-                <label for="logo-image" id="myLogo">
-                  <!-- <div class="myLabel2">
-                    Logo
-                  </div> -->
+                <!-- <label for="logo-image" id="myLogo">
+                
                   <img src="{{downloadurl2}}" alt="">
-                </label>
+                </label> -->
               </div>
               <!-- <label for="cover-image" id="coverImage">
                 <img src="../../assets/imgs/South-African-Parliament-AT-1030x691.jpg" alt="">
@@ -277,12 +274,12 @@
                     </div>
                     <img src="{{downloadurl}}" alt="">
                   </label>
-                  <label for="logo-image" id="myLogo">
+                  <!-- <label for="logo-image" id="myLogo">
                     <div class="myLabel2">
-                      <!-- Logo -->
+                    
                     </div>
                     <img src="{{downloadurl2}}" alt="">
-                  </label>
+                  </label> -->
                 </div>
               </div>
             </div>
@@ -351,8 +348,12 @@
                     <ion-option value="Free">Free</ion-option>
                     <ion-option value="Paid">Paid</ion-option>
                   </ion-select>
+                  <input type="text" id="input-field" placeholder="Name"  >
+                  <input type="text" id="input-field" placeholder="Address"   (change)="setAddress()">
                 </ion-item>
               </ion-list>
+              <input type="text" id="input-field" placeholder="Name"  >
+              <input type="text" id="input-field" placeholder="Address"   (change)="setAddress()">
               <h1>{{showtext}}</h1>
              
             </div>

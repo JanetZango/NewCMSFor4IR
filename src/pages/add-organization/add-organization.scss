@@ -278,16 +278,16 @@ page-add-organization {
     z-index: 100;
   }
 
-  #myLogo img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    // margin-left: 0;
-    border-radius: 80px;
-    :hover {
-      filter: broghtness(50%);
-    }
-  }
+  // #myLogo img {
+  //   width: 80px;
+  //   height: 80px;
+  //   object-fit: cover;
+  //   // margin-left: 0;
+  //   border-radius: 80px;
+  //   :hover {
+  //     filter: broghtness(50%);
+  //   }
+  // }
 
   .images-container {
     text-align: left;
@@ -302,12 +302,12 @@ page-add-organization {
     object-fit: cover;
   }
 
-  #logoImage img {
-    width: 80px;
-    height: 80px;
-    border-radius: 80px;
-    object-fit: contain;
-  }
+  // #logoImage img {
+  //   width: 80px;
+  //   height: 80px;
+  //   border-radius: 80px;
+  //   object-fit: contain;
+  // }
 
   #coverImage img {
     width: 100%;
