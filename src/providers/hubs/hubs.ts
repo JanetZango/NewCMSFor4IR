@@ -623,19 +623,22 @@ export class HubsProvider {
     })
   }
 
+  
 
-  addWifi(openDate, closeDate, name,img,lat,long) {
+  addWifi(WiFiAvailability,freeOrPaidWiFi, priceWiFi,address,lat,long,name) {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser
         firebase.database().ref("4IRHubs").push({
-          openDate: openDate,
-          category:"programmes",
-          closeDate: closeDate,
-          name: name,     
-          img: img,
-          lat:lat,
+          WiFiAvailability:WiFiAvailability,
+          address:address,
+          category:"wifi",         
+          freeOrPaidWiFi: freeOrPaidWiFi,
+          priceWiFi:priceWiFi,
+          lat:lat, 
           long:long,
+          name:name,
+          img: "assets/wifi.jpg",
           user : user.uid
         })
         resolve();
@@ -745,6 +748,7 @@ export class HubsProvider {
         var user = firebase.auth().currentUser
         firebase.database().ref("4IRHubs").push({
           openDate: openDate,
+          category:"service",
           email:email,
           closeDate: closeDate,
           address: address,
