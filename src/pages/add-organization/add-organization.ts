@@ -179,14 +179,14 @@ export class AddOrganizationPage {
   showProgramcategory: boolean = true;
 
   pushid = this.navParams.get('pushid')
-  type:string = this.navParams.get('type');
+  type: string = this.navParams.get('type');
   alertMessage;
   sphone
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public hubs: HubsProvider, public ngzone: NgZone, public alertCtrl: AlertController) {
     console.log(this.email)
     console.log(this.type)
-    
+
   }
 
   ionViewDidLoad() {
@@ -323,7 +323,7 @@ export class AddOrganizationPage {
   // sphone;
 
   adds() {
-    this.hubs.addService('', '', '', this.sadd, this.sname, this.sphone, this.sabout, this.downloadurl6,this.orgAddressObject.lat, this.orgAddressObject.lng).then(() => {
+    this.hubs.addService('', '', '', this.sadd, this.sname, this.sphone, this.sabout, this.downloadurl6, this.orgAddressObject.lat, this.orgAddressObject.lng).then(() => {
       // alert('service added');
       this.navCtrl.pop()
     })
@@ -512,8 +512,8 @@ export class AddOrganizationPage {
     }
   }
 
-   //jobs
-   setAddressservices(event) {
+  //jobs
+  setAddressservices(event) {
     if (this.sadd != undefined) {
       this.getcoo(this.sadd).then((data: any) => {
         this.orgAddressObject = data;
@@ -557,13 +557,11 @@ export class AddOrganizationPage {
   }
 
 
-   ///validations for programmesdB
-   phonenumberValidatin() {
+  ///validations for programmesdB
+  phonenumberValidatin() {
     if (this.progPhone == undefined) {
-
     } else {
       var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
-
       if (this.progPhone.match(phoneno)) {
         console.log(this.progPhone.match(phoneno));
         this.contactValidation = 0;
@@ -593,7 +591,6 @@ export class AddOrganizationPage {
         this.contactValidationjob = 1;
         console.log(this.cell.match(phoneno));
         console.log("wrong");
-
       }
 
     }
@@ -601,7 +598,7 @@ export class AddOrganizationPage {
 
 
     //VALIDATIONS FOR services
-  
+
   }
 
 
@@ -609,13 +606,12 @@ export class AddOrganizationPage {
     if (this.sphone == undefined) {
     } else {
       var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
-
       if (this.sphone.match(phoneno)) {
         console.log(this.sphone.match(phoneno));
-        this.contactValidation = 0;
+        this.checkAddressserv = 0;
       }
       else {
-        this.contactValidation = 1;
+        this.checkAddressserv = 1;
         console.log(this.sphone.match(phoneno));
         console.log("wrong");
 
@@ -626,7 +622,7 @@ export class AddOrganizationPage {
 
 
     //VALIDATIONS FOR services
-  
+
   }
 
 
@@ -663,7 +659,7 @@ export class AddOrganizationPage {
       swal(this.alertMessage);
     }
     else if (this.progName == null || this.progName == "") {
-      this.alertMessage = "Please enter th name of the programme ";
+      this.alertMessage = "Please enter the name of the programme ";
       swal(this.alertMessage);
     }
     else if (this.progbackground == null || this.progbackground == "") {
@@ -729,7 +725,7 @@ export class AddOrganizationPage {
     }
   }
 
- 
+
 
   progApplicationOpen;
   progApplicationClose;
@@ -765,10 +761,10 @@ export class AddOrganizationPage {
       swal(this.alertMessage);
     }
     else if (this.websiteValidation == 1) {
-      this.alertMessage ="The website address you have entered is invalid, please enter a valid website address ";
+      this.alertMessage = "The website address you have entered is invalid, please enter a valid website address ";
       swal(this.alertMessage);
     }
-  
+
     else {
       var pager = document.getElementsByClassName("pageProgrammes") as HTMLCollectionOf<HTMLElement>;
       pager[0].style.marginLeft = "-75%"
@@ -818,18 +814,18 @@ export class AddOrganizationPage {
       this.alertMessage = "Tell us about your service";
       swal(this.alertMessage);
     }
-    else{
+    else {
       var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
       var thebar = document.getElementById("barSlide");
       thebar.style.width = "50%"
       pager[0].style.marginLeft = "-25%";
     }
-   
+
   }
   toPage3Services() {
     let b = window.innerHeight;
-   this.phonenumberValidatinservice();
-    if (this.semail == undefined  && this.sphone == undefined) {
+    this.phonenumberValidatinservice();
+    if (this.semail == undefined && this.sphone == undefined) {
       this.alertMessage =
         "Please insert the service's details";
       swal(this.alertMessage);
@@ -854,13 +850,13 @@ export class AddOrganizationPage {
       this.alertMessage = "The address you have entered is invalid, please enter a valid address ";
       swal(this.alertMessage);
     }
-    else{
+    else {
       var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
       pager[0].style.marginLeft = "-50%"
       var thebar = document.getElementById("barSlide");
       thebar.style.width = "75%"
     }
-   
+
   }
   toPage4Services() {
     var pager = document.getElementsByClassName("pageServices") as HTMLCollectionOf<HTMLElement>;
@@ -945,8 +941,8 @@ export class AddOrganizationPage {
   toPage4WiFi() {
     if (this.priceWiFi == "" || this.priceWiFi == null || this.priceWiFi == undefined) {
       this.alertMessage =
-      "Please select the price ";
-    swal(this.alertMessage);
+        "Please select the price ";
+      swal(this.alertMessage);
     }
     else {
       var pager = document.getElementsByClassName("pageWifi") as HTMLCollectionOf<HTMLElement>;
@@ -989,7 +985,7 @@ export class AddOrganizationPage {
   }
   showChargeWiFi: boolean = false;
   showPricing: boolean = false;
-  showtext:string ;
+  showtext: string;
   togglePrice() {
     if (this.WiFiAvailability == "Yes") {
       this.showChargeWiFi = true
@@ -1028,7 +1024,7 @@ export class AddOrganizationPage {
       swal(this.alertMessage);
     }
     else if (this.jobName == null || this.jobName == "") {
-      this.alertMessage = "Please enter the njob name";
+      this.alertMessage = "Please enter the job name";
       swal(this.alertMessage);
     }
     else if (this.odate == null || this.odate == "") {
@@ -1055,16 +1051,16 @@ export class AddOrganizationPage {
   toPage3Jobs() {
     let b = window.innerHeight;
     this.phonenumberValidatinjob()
-    if (this.cell == undefined && this.req == undefined && this.res == undefined && this.mail == undefined ) {
+    if (this.cell == undefined && this.req == undefined && this.res == undefined && this.mail == undefined) {
       this.alertMessage =
         "Please insert the jobs's details";
       swal(this.alertMessage);
     }
-    else if (this.cell == null || this.cell == "")   {
+    else if (this.cell == null || this.cell == "") {
       this.alertMessage = "Please enter the correct phone number";
       swal(this.alertMessage);
     }
-   
+
     else if (this.req == null || this.req == "") {
       this.alertMessage = "Please enter the job requirements ";
       swal(this.alertMessage);
@@ -1099,8 +1095,8 @@ export class AddOrganizationPage {
   }
   toPage4Jobs() {
     this.is_urlValidation(this.link);
-     if(this.websiteValidation == 1) {
-      this.alertMessage ="The website address you have entered is invalid, please enter a valid website link ";
+    if (this.websiteValidation == 1) {
+      this.alertMessage = "The website address you have entered is invalid, please enter a valid website link ";
       swal(this.alertMessage);
     }
     else if (this.downloadurl2 == null || this.downloadurl2 == "") {
@@ -1115,14 +1111,14 @@ export class AddOrganizationPage {
       this.alertMessage = "Please enter the link";
       swal(this.alertMessage);
     }
-    else{
+    else {
       var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
       pager[0].style.marginLeft = "-75%"
       var thebar = document.getElementById("barSlide");
       thebar.style.width = "100%"
     }
-  
-    
+
+
   }
   backToPage1Jobs() {
     var pager = document.getElementsByClassName("pageJobs") as HTMLCollectionOf<HTMLElement>;
