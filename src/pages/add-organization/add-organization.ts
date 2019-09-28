@@ -994,7 +994,6 @@ export class AddOrganizationPage {
     if (this.WiFiAvailability == "Yes") {
       this.showChargeWiFi = true
       this.showtext = "Please click next "
-      
     }
     else if (this.WiFiAvailability == "No") {
       this.showChargeWiFi = false

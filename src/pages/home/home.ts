@@ -924,6 +924,7 @@ export class HomePage implements OnInit {
    img2;
    progKey;
    
+   
    editprogram(i){
      this.applOpen = i.openDate;
      this.applClose = i.closeDate;
