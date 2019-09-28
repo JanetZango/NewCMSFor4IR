@@ -38,12 +38,12 @@
                 <ion-item>
                   <ion-label>Programme Type</ion-label>
                   <ion-select [(ngModel)]="progOptions">
-                    <ion-option value="nes">Learnership</ion-option>
-                    <ion-option value="n64">Internship</ion-option>
-                    <ion-option value="ps">Skills Development</ion-option>
-                    <ion-option value="genesis">Training</ion-option>
-                    <ion-option value="saturn">Bootcamp</ion-option>
-                    <ion-option value="snes">Apprenticeship</ion-option>
+                    <ion-option value="Learnership">Learnership</ion-option>
+                    <ion-option value="Internship">Internship</ion-option>
+                    <ion-option value="Skills Development">Skills Development</ion-option>
+                    <ion-option value="Training">Training</ion-option>
+                    <ion-option value="Bootcamp">Bootcamp</ion-option>
+                    <ion-option value="Apprenticeship">Apprenticeship</ion-option>
                   </ion-select>
                 </ion-item>
               </ion-list>
@@ -106,14 +106,20 @@
             </div>
 
             <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image" (change)="insertpic($event)">
-            <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image" (change)="insertpic2($event)">
-            <div class="inputs">c
+            <!-- <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image" (change)="insertpic2($event)"> -->
+            <div class="inputs">
               <label for="cover-image" id="coverImage">
                 <img src="{{downloadurl}}" alt="">
               </label>
+<<<<<<< HEAD
               <!-- <label for="logo-image" id="logoImage">
                 <img src="{{downloadurl2}}" alt="">
               </label> -->
+=======
+              <label for="logo-image" id="logoImage">
+                <!-- <img src="{{downloadurl2}}" alt=""> -->
+              </label>
+>>>>>>> 77a3e1061479c305fd460c3b31737e1f0d761da7
             </div>
           </div>
         </div>
@@ -165,12 +171,13 @@
             </div>
             <div class="inputs">
               <!-- User clicks here to upload logo and cover for Jobs -->
-              <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image" (change)="insertpic($event)">
+              <!-- <input type="file" accept="image/x-png,image/gif,image/jpeg" id="logo-image" (change)="insertpic2($event)"> -->
               <input type="file" accept="image/x-png,image/gif,image/jpeg" id="cover-image" (change)="insertpic2($event)">
               <div class="instructions">
                 <p>Please choose a cover photo and a logo (if any).
                 </p>
               </div>
+             
               <div class="images-container">
                 <label for="cover-image" id="myCover">
                   <div class="myLabel">
@@ -178,8 +185,15 @@
                   </div>
                   <img src="{{downloadurl}}" alt="">
                 </label>
+<<<<<<< HEAD
                 <!-- <label for="logo-image" id="myLogo">
                 
+=======
+                <label for="logo-image" id="myLogo">
+                  <div class="myLabel2">
+                    <!-- Logo -->
+                  </div>
+>>>>>>> 77a3e1061479c305fd460c3b31737e1f0d761da7
                   <img src="{{downloadurl2}}" alt="">
                 </label> -->
               </div>
@@ -251,7 +265,7 @@
               <input type="text" id="input-field" [(ngModel)]="sadd" placeholder="Address" (change)="setAddressservices()"> 
               <div class="contacts">
                 <input type="email" id="input-field" [(ngModel)]="semail" placeholder="Email"> 
-                <input type="number" id="input-field"   onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"  placeholder="Phone"    [(ngModel)]="sphone"> 
+                <input type="tel" id="input-field"   onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"  placeholder="Phone"    [(ngModel)]="sphone"> 
               </div>
             </div>
           </div>
@@ -263,8 +277,8 @@
             <div class="inputs">
               <h4>Graphical Content</h4>
               <!-- User clicks here to upload logo and cover for Jobs -->
-              <input type="file" accept="image/x-png,image/gif,image/jpeg"   id="logo-image" (change)="insertpic($event)">
-              <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="cover-image">
+              <!-- <input type="file" accept="image/x-png,image/gif,image/jpeg"   id="logo-image" (change)="insertpic($event)"> -->
+              <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic2($event)" id="cover-image">
               <div id="uploadPage">
 
                 <div class="images-container">
@@ -377,6 +391,10 @@
                 </ion-item>
               </ion-list>
               <h1>{{showtext}}</h1>
+
+              <ion-input type="text"  id="input-field" placeholder="Address"  [(ngModel)]="wifiaddress"  (change)="setAddresswifi()"></ion-input>
+
+              <ion-input type="text"  id="input-field" placeholder="Name"  [(ngModel)]="name"  ></ion-input>
             </div>
           </div>
           <div class="pageWifi" id="page4Wifi">

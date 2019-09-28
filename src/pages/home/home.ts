@@ -297,7 +297,7 @@ export class HomePage implements OnInit {
   showServicesPage() {
     this.servArray = [];
     for (var x = 0; x  < this.displayOrg.length; x++){
-      if (this.displayOrg[x].category == "services"){
+      if (this.displayOrg[x].category == "service"){
         this.servArray.push(this.displayOrg[x]);
       }
     }

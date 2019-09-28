@@ -38,7 +38,8 @@ export class AddOrganizationPage {
   wifi;
   offerWifi;
   chooseWifiRange;
-
+  wifiaddress;
+  checkAddressswifi;
   // hide services
   showheiServices: boolean = false;
   showLibaryServices: boolean = false;
@@ -52,60 +53,12 @@ export class AddOrganizationPage {
   promPhone;
   twitter;
   facebook;
+  contactValidationsev;
   programService;
   serviceArrayTemp = []
   showPhoneHint: boolean = false;
 
-  heiServices = [{ title: "Testing & Analytical", description: " Services include material testing and behaviour analysis, as well as quality tests. These can be R&D or routine jobs according to existing standards or client's specifications, using readily available high-end software and equipment." },
 
-
-  { title: "Rapid Prototyping and Manufacturing", description: 'model with regard to the indicated functional aspects of a product. The manufacturing is not limited to batch/pilot manufacturing of models, but can include either contract machining or manufacturing, based on the clients drawings or specifications' },
-  { title: "Consultation, Technology Audit and Feasibility Study", description: 'Consultation includes search and technology brokerage services, finding the know-how as a diagnostic service, assessment or consultancy. This is usually the first part of any project to identify the potential for improvement and the required interventions. This involves the searching and sourcing of technology from outside the Universities of Technology, generally from firms, engineering consultants; brokering as well as possibly managing technology transfers to SME' },
-  { title: "Process or Product Improvement", description: 'Productivity, workflow and quality all improve production facilities and products by applying standard procedures and methods. In many cases, this would also involve testing and analytical services to make the product conform to required specifications on new market demands and regulations' },
-  { title: "Applied Development, Engineering and Design", description: 'This involves the application of engineering processes from CAD to CAM now CA ,including scaled production based on the know-how from Technology Stations, needing professional engineering and design skills as well as identification and sourcing of technology or equipment. These services lead to demand driven projects that can be funded by various funding Agencies' },
-
-  ]
-  libraryService = [{ title: "Research", description: " involves the step-by-step process used to gather information in order to write a paper, create a presentation, or complete a project. ... They describe, analyze, and/or evaluate information found in primary sources" },
-  { title: "Training", description: '"The latest information and communication technology (ICT) developments, including data curation, digital preservation, data management planning, institutional repositories, social media, online learning, publishing, e-books and mobile technology offer wonderful new opportunities in the delivery of information services and the way libraries are managed. Librarianship forms the basis of specialization and diverse career opportunities including document management, knowledge management, childrens librarianship, research librarianship and electronic resources management"' }
-
-
-  ]
-
-  learningCenterService = [{ title: "Skill Development", description: " is the process of (1) identifying your skill gaps, and (2) developing and honing these skills. It is important because your skills determine your ability to execute your plans with success. ... In goal achievement, your skills are your tools." }
-    , { title: "Training", description: "Training is a program that helps people learn specific knowledge or skills to improve performance in their current roles. Development is more expansive and focuses on people growth and future performance, rather than an immediate job role" },
-  { title: "EnterpreneurShip Programme", description: "The Entrepreneurship Development Programme is aimed at creating a conducive environment for young entrepreneurs to access relevant entrepreneurship skills, knowledge, values and attitudes for their businesses." }
-  ]
-
-  mallServices = [{ title: "Internet ", description: "Wanting to share your Mall of Africa experience with your friends and family on social media? Needing to send a business email in the midst of shopping? Not a problem! You can surf the internet for free wherever you are at Mall of Africa." },
-  { title: "Training ", description: "Training is a program that helps people learn specific knowledge or skills to improve performance in their current roles. Development is more expansive and focuses on people growth and future performance, rather than an immediate job role" }
-
-  ]
-
-  internetCafeServices = [{ title: "Internet", description: "s a place that offers customers hi-speed internet access, other computer services and variety of PC games. It deals with internet time that a customer buys and it can be sold per hour or minute and sometimes longer" },
-  { title: " Printing", description: 'Managed print services (MPS) is the provision and oversight of business document output needs by an external service provider. ... The next step is typically a partial or complete replacement of existing hardware, including printers, faxes, scanners, photocopiers and multifunction (MFP) devices.' }
-    , { title: "fax", description: "an exact copy of a document made by electronic scanning and transmitted as data by telecommunications links." }
-
-  ]
-
-
-  allServices = [{ title: "Testing & Analystical", description: " Services include material testing and behaviour analysis, as well as quality tests. These can be R&D or routine jobs according to existing standards or client's specifications, using readily available high-end software and equipment." },
-  { title: "Rapid Prototyping and Manufacturing", description: 'model with regard to the indicated functional aspects of a product. The manufacturing is not limited to batch/pilot manufacturing of models, but can include either contract machining or manufacturing, based on the clients drawings or specifications' },
-  { title: "Consultation, Technology Audit and Feasibility Study", description: 'Consultation includes search and technology brokerage services, finding the know-how as a diagnostic service, assessment or consultancy. This is usually the first part of any project to identify the potential for improvement and the required interventions. This involves the searching and sourcing of technology from outside the Universities of Technology, generally from firms, engineering consultants; brokering as well as possibly managing technology transfers to SME' },
-
-  { title: "Skill Development", description: " is the process of (1) identifying your skill gaps, and (2) developing and honing these skills. It is important because your skills determine your ability to execute your plans with success. ... In goal achievement, your skills are your tools." },
-  { title: "Enterpreneurship Programme", description: "The Entrepreneurship Development Programme is aimed at creating a conducive environment for young entrepreneurs to access relevant entrepreneurship skills, knowledge, values and attitudes for their businesses." },
-  { title: "Training ", description: "Training is a program that helps people learn specific knowledge or skills to improve performance in their current roles. Development is more expansive and focuses on people growth and future performance, rather than an immediate job role" },
-  { title: "Applied Development, Engineering and Design", description: 'This involves the application of engineering processes from CAD to CAM now CA ,including scaled production based on the know-how from Technology Stations, needing professional engineering and design skills as well as identification and sourcing of technology or equipment. These services lead to demand driven projects that can be funded by various funding Agencies' },
-  { tittle: "Internet", description: "provider is a company that provides access to the Internet. Most ISPs require you to subscribe in order to use their services, but there are ways to connect to the Internet for free" },
-
-  { title: "Printing", description: 'Managed print services (MPS) is the provision and oversight of business document output needs by an external service provider. ... The next step is typically a partial or complete replacement of existing hardware, including printers, faxes, scanners, photocopiers and multifunction (MFP) devices.' }
-  ]
-
-
-
-
-
-  coffeeshopServices = [{ title: "Internet", description: "Offering internet to customers" }]
   // email varaiable 
   email = this.navParams.get("email");
   //EnterpreneurShip Programme
@@ -141,7 +94,7 @@ export class AddOrganizationPage {
   programCloseDate;
   programType;
   other;
-
+  checkAddresswifi;
   Programcategory;
   ProgramIntroduction;
   objectives;
@@ -157,7 +110,7 @@ export class AddOrganizationPage {
 
   showApplicationLink: boolean = false;
 
-
+  name;
   showProgramBenefits: boolean = false;
   showJobs: boolean = false;
   showWifiAccess: boolean = false;
@@ -300,7 +253,7 @@ export class AddOrganizationPage {
 
 
   addJob() {
-    this.hubs.addJob(this.jobName, this.odate, this.cdate, this.jobAddress, this.res, '', this.odate, this.cdate, this.jobType, this.downloadurl3, this.orgAddressObject.lat, this.orgAddressObject.lng).then(() => {
+    this.hubs.addJob(this.jobName, this.odate, this.cdate, this.jobAddress, this.res, '', this.odate, this.cdate, this.jobType, this.downloadurl, this.orgAddressObject.lat, this.orgAddressObject.lng).then(() => {
       const Toast = Swal.mixin({
         toast: true,
         position: "top-end",
@@ -323,61 +276,12 @@ export class AddOrganizationPage {
   // sphone;
 
   adds() {
-    this.hubs.addService('', '', '', this.sadd, this.sname, this.sphone, this.sabout, this.downloadurl6, this.orgAddressObject.lat, this.orgAddressObject.lng).then(() => {
+    this.hubs.addService('', '', '', this.sadd, this.sname, this.sphone, this.sabout, this.downloadurl, this.orgAddressObject.lat, this.orgAddressObject.lng).then(() => {
       // alert('service added');
       this.navCtrl.pop()
     })
   }
-  downloadurl5 = "../../assets/imgs/Cover Image.jpg";
-  insert6(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      let reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.downloadurl5 = event.target.result;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
-
-  }
-
-
-  downloadurl6 = "../../assets/imgs/Cover Image.jpg";
-  insert7(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      let reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.downloadurl6 = event.target.result;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
-
-  }
-
-
-
-  downloadurl3 = "../../assets/imgs/Cover Image.jpg";
-  insert(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      let reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.downloadurl3 = event.target.result;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
-
-  }
-
-  downloadurl4 = "../../assets/imgs/Cover Image.jpg";
-  insert2(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      let reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.downloadurl4 = event.target.result;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
-
-  }
+  
 
   showServices() {
 
@@ -483,6 +387,57 @@ export class AddOrganizationPage {
 
   }
 
+  downloadurl3 = "../../assets/imgs/Cover Image.jpg";
+  insert6(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.downloadurl3 = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+
+  }
+
+
+  downloadurl4 = "../../assets/imgs/Cover Image.jpg";
+  insert7(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.downloadurl4 = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+
+  }
+
+
+
+  downloadurl5 = "../../assets/imgs/Cover Image.jpg";
+  insert(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.downloadurl5 = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+
+  }
+
+  downloadurl6 = "../../assets/imgs/Cover Image.jpg";
+  insert2(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.downloadurl6 = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+
+  }
+
 
   //getaddress
   setAddress(event) {
@@ -525,6 +480,21 @@ export class AddOrganizationPage {
       })
     }
   }
+
+   //wifi
+   setAddresswifi(event) {
+    if (this.wifiaddress != undefined) {
+      this.getcoo(this.wifiaddress).then((data: any) => {
+        this.orgAddressObject = data;
+        this.checkAddressswifi = 0
+      }, Error => {
+        this.checkAddresswifi = 1;
+        this.alertMessage = "The address you have entered is invalid, please enter a valid address";
+        swal(this.alertMessage);
+      })
+    }
+  }
+
 
 
 
@@ -608,10 +578,10 @@ export class AddOrganizationPage {
       var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
       if (this.sphone.match(phoneno)) {
         console.log(this.sphone.match(phoneno));
-        this.checkAddressserv = 0;
+        this.contactValidationsev = 0;
       }
       else {
-        this.checkAddressserv = 1;
+        this.contactValidationsev = 1;
         console.log(this.sphone.match(phoneno));
         console.log("wrong");
 
@@ -622,6 +592,25 @@ export class AddOrganizationPage {
 
 
     //VALIDATIONS FOR services
+
+  }
+
+  addwifi(){
+    let b = window.innerHeight;
+    this.hubs.addWifi( this.WiFiAvailability,this.freeOrPaidWiFi,this.priceWiFi,this.wifiaddress,this.orgAddressObject.lat, this.orgAddressObject.lng,this.name).then((data)=>{
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000
+      });
+
+      Toast.fire({
+        type: "success",
+        title: "Your wifi was succesfully added"
+      });
+      this.navCtrl.pop();
+    })
 
   }
 
@@ -640,7 +629,7 @@ export class AddOrganizationPage {
         type: "success",
         title: "Your programme was succesfully added"
       });
-      this.navCtrl.push(HomePage);
+      this.navCtrl.pop();
     })
   }
 
@@ -823,8 +812,9 @@ export class AddOrganizationPage {
 
   }
   toPage3Services() {
+        this.phonenumberValidatinservice();
     let b = window.innerHeight;
-    this.phonenumberValidatinservice();
+
     if (this.semail == undefined && this.sphone == undefined) {
       this.alertMessage =
         "Please insert the service's details";
@@ -842,7 +832,7 @@ export class AddOrganizationPage {
       this.alertMessage = "please enter contact deatils";
       swal(this.alertMessage);
     }
-    else if (this.contactValidation == 1) {
+    else if (this.contactValidationsev == 1) {
       this.alertMessage = "The phone numbers you have entered is invalid, please enter a valid phone numbers  ";
       swal(this.alertMessage);
     }
