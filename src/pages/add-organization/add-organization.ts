@@ -252,22 +252,22 @@ export class AddOrganizationPage {
   mail;
 
 
-  addJob() {
-    this.hubs.addJob(this.jobName, this.odate, this.cdate, this.jobAddress, this.res, '', this.odate, this.cdate, this.jobType, this.downloadurl, this.orgAddressObject.lat, this.orgAddressObject.lng).then(() => {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 3000
-      });
+  // addJob() {
+  //   this.hubs.addJob(this.jobName, this.odate, this.cdate, this.jobAddress, this.res, '', this.odate, this.cdate, this.jobType, this.downloadurl, this.orgAddressObject.lat, this.orgAddressObject.lng).then(() => {
+  //     const Toast = Swal.mixin({
+  //       toast: true,
+  //       position: "top-end",
+  //       showConfirmButton: false,
+  //       timer: 3000
+  //     });
 
-      Toast.fire({
-        type: "success",
-        title: "Your Advert was succesfullt added"
-      });
-      this.navCtrl.pop();
-    })
-  }
+  //     Toast.fire({
+  //       type: "success",
+  //       title: "Your Advert was succesfullt added"
+  //     });
+  //     this.navCtrl.pop();
+  //   })
+  // }
 
   sname;
   sabout;
@@ -275,12 +275,12 @@ export class AddOrganizationPage {
   semail;
   // sphone;
 
-  adds() {
-    this.hubs.addService('', '', '', this.sadd, this.sname, this.sphone, this.sabout, this.downloadurl, this.orgAddressObject.lat, this.orgAddressObject.lng).then(() => {
-      // alert('service added');
-      this.navCtrl.pop()
-    })
-  }
+  // adds() {
+  //   this.hubs.addService('', '', '', this.sadd, this.sname, this.sphone, this.sabout, this.downloadurl, this.orgAddressObject.lat, this.orgAddressObject.lng).then(() => {
+  //     // alert('service added');
+  //     this.navCtrl.pop()
+  //   })
+  // }
   
 
   showServices() {
@@ -363,80 +363,80 @@ export class AddOrganizationPage {
   }
 
 
-  downloadurl = "../../assets/imgs/Cover Image.jpg";
-  insertpic(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      let reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.downloadurl = event.target.result;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
+  // downloadurl = "../../assets/imgs/Cover Image.jpg";
+  // insertpic(event: any) {
+  //   if (event.target.files && event.target.files[0]) {
+  //     let reader = new FileReader();
+  //     reader.onload = (event: any) => {
+  //       this.downloadurl = event.target.result;
+  //     }
+  //     reader.readAsDataURL(event.target.files[0]);
+  //   }
 
-  }
+  // }
 
-  downloadurl2 = "../../assets/imgs/Logo Image.jpg";
-  insertpic2(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      let reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.downloadurl2 = event.target.result;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
+  // downloadurl2 = "../../assets/imgs/Logo Image.jpg";
+  // insertpic2(event: any) {
+  //   if (event.target.files && event.target.files[0]) {
+  //     let reader = new FileReader();
+  //     reader.onload = (event: any) => {
+  //       this.downloadurl2 = event.target.result;
+  //     }
+  //     reader.readAsDataURL(event.target.files[0]);
+  //   }
 
-  }
+  // }
 
-  downloadurl3 = "../../assets/imgs/Cover Image.jpg";
-  insert6(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      let reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.downloadurl3 = event.target.result;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
+  // downloadurl3 = "../../assets/imgs/Cover Image.jpg";
+  // insert6(event: any) {
+  //   if (event.target.files && event.target.files[0]) {
+  //     let reader = new FileReader();
+  //     reader.onload = (event: any) => {
+  //       this.downloadurl3 = event.target.result;
+  //     }
+  //     reader.readAsDataURL(event.target.files[0]);
+  //   }
 
-  }
-
-
-  downloadurl4 = "../../assets/imgs/Cover Image.jpg";
-  insert7(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      let reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.downloadurl4 = event.target.result;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
-
-  }
+  // }
 
 
+  // downloadurl4 = "../../assets/imgs/Cover Image.jpg";
+  // insert7(event: any) {
+  //   if (event.target.files && event.target.files[0]) {
+  //     let reader = new FileReader();
+  //     reader.onload = (event: any) => {
+  //       this.downloadurl4 = event.target.result;
+  //     }
+  //     reader.readAsDataURL(event.target.files[0]);
+  //   }
 
-  downloadurl5 = "../../assets/imgs/Cover Image.jpg";
-  insert(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      let reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.downloadurl5 = event.target.result;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
+  // }
 
-  }
 
-  downloadurl6 = "../../assets/imgs/Cover Image.jpg";
-  insert2(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      let reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.downloadurl6 = event.target.result;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
 
-  }
+  // downloadurl5 = "../../assets/imgs/Cover Image.jpg";
+  // insert(event: any) {
+  //   if (event.target.files && event.target.files[0]) {
+  //     let reader = new FileReader();
+  //     reader.onload = (event: any) => {
+  //       this.downloadurl5 = event.target.result;
+  //     }
+  //     reader.readAsDataURL(event.target.files[0]);
+  //   }
+
+  // }
+
+  // downloadurl6 = "../../assets/imgs/Cover Image.jpg";
+  // insert2(event: any) {
+  //   if (event.target.files && event.target.files[0]) {
+  //     let reader = new FileReader();
+  //     reader.onload = (event: any) => {
+  //       this.downloadurl6 = event.target.result;
+  //     }
+  //     reader.readAsDataURL(event.target.files[0]);
+  //   }
+
+  // }
 
 
   //getaddress
@@ -500,31 +500,31 @@ export class AddOrganizationPage {
 
 
   //getCoordinates
-  getcoo(address) {
-    return new Promise((accpt, rej) => {
-      this.ngzone.run(() => {
-        let geocoder = new google.maps.Geocoder();
-        geocoder.geocode({ address: address }, function (results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            var arr = results[0].address_components;
-            var arr2 = arr[3];
-            this.latitude = results[0].geometry.location.lat();
-            this.longitude = results[0].geometry.location.lng();
-            let position = {
-              lat: results[0].geometry.location.lat(),
-              lng: results[0].geometry.location.lng(),
-              city: arr2.long_name
-            };
-            accpt(position);
-            console.log(position)
-          }
-          else {
-            rej('')
-          }
-        });
-      });
-    });
-  }
+  // getcoo(address) {
+  //   return new Promise((accpt, rej) => {
+  //     this.ngzone.run(() => {
+  //       let geocoder = new google.maps.Geocoder();
+  //       geocoder.geocode({ address: address }, function (results, status) {
+  //         if (status == google.maps.GeocoderStatus.OK) {
+  //           var arr = results[0].address_components;
+  //           var arr2 = arr[3];
+  //           this.latitude = results[0].geometry.location.lat();
+  //           this.longitude = results[0].geometry.location.lng();
+  //           let position = {
+  //             lat: results[0].geometry.location.lat(),
+  //             lng: results[0].geometry.location.lng(),
+  //             city: arr2.long_name
+  //           };
+  //           accpt(position);
+  //           console.log(position)
+  //         }
+  //         else {
+  //           rej('')
+  //         }
+  //       });
+  //     });
+  //   });
+  // }
 
 
   ///validations for programmesdB
@@ -615,23 +615,23 @@ export class AddOrganizationPage {
   }
 
 
-  addProg() {
-    let b = window.innerHeight;
-    this.hubs.addPrograme(this.progApplicationOpen, this.progApplicationClose, this.progName, this.progOptions, this.progbackground, this.progBenfits, this.progDescription, this.progStartDate, this.progEndDate, this.progAddress, this.progPhone, this.downloadurl, this.orgAddressObject.lat, this.orgAddressObject.lng).then(() => {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 3000
-      });
+  // addProg() {
+  //   let b = window.innerHeight;
+  //   this.hubs.addPrograme(this.progApplicationOpen, this.progApplicationClose, this.progName, this.progOptions, this.progbackground, this.progBenfits, this.progDescription, this.progStartDate, this.progEndDate, this.progAddress, this.progPhone, this.downloadurl, this.orgAddressObject.lat, this.orgAddressObject.lng).then(() => {
+  //     const Toast = Swal.mixin({
+  //       toast: true,
+  //       position: "top-end",
+  //       showConfirmButton: false,
+  //       timer: 3000
+  //     });
 
-      Toast.fire({
-        type: "success",
-        title: "Your programme was succesfully added"
-      });
-      this.navCtrl.pop();
-    })
-  }
+  //     Toast.fire({
+  //       type: "success",
+  //       title: "Your programme was succesfully added"
+  //     });
+  //     this.navCtrl.pop();
+  //   })
+  // }
 
   click() {
     alert("clicked")
@@ -1128,4 +1128,147 @@ export class AddOrganizationPage {
     var thebar = document.getElementById("barSlide");
     thebar.style.width = "75%"
   }
+
+
+
+  addJob() {
+    this.hubs.addJob(this.jobName, this.odate, this.cdate, this.jobAddress, this.res, '', this.odate, this.cdate, this.jobType, this.downloadurl3, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city).then(() => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000
+      });
+      Toast.fire({
+        type: "success",
+        title: "Your Advert was succesfullt added"
+      });
+      this.navCtrl.pop();
+    })
+  }
+
+  // sname;
+  // sabout;
+  // sadd;
+  // semail;
+  // sphone;
+  adds() {
+    this.hubs.addService('', '', '', this.sadd, this.sname, this.sphone, this.sabout, this.downloadurl6,this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city).then(() => {
+      // alert('service added');
+      this.navCtrl.pop()
+    })
+  }
+  downloadurl5 = "../../assets/imgs/Cover Image.jpg";
+  insert6(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.downloadurl5 = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+  downloadurl6 = "../../assets/imgs/Cover Image.jpg";
+  insert7(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.downloadurl6 = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+  downloadurl3 = "../../assets/imgs/Cover Image.jpg";
+  insert(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.downloadurl3 = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+  downloadurl4 = "../../assets/imgs/Cover Image.jpg";
+  insert2(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.downloadurl4 = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+  downloadurl = "../../assets/imgs/Cover Image.jpg";
+  insertpic(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.downloadurl = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+  downloadurl2 = "../../assets/imgs/Logo Image.jpg";
+  insertpic2(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.downloadurl2 = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+
+
+  getcoo(address) {
+    return new Promise((accpt, rej) => {
+      this.ngzone.run(() => {
+        let geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ address: address }, function (results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            var arr = results[0].address_components;
+            var arr2 = arr[3];
+            this.latitude = results[0].geometry.location.lat();
+            this.longitude = results[0].geometry.location.lng();
+            let position = {
+              lat: results[0].geometry.location.lat(),
+              lng: results[0].geometry.location.lng(),
+              city: arr2.long_name
+            };
+            accpt(position);
+            console.log(position)
+          }
+          else {
+            rej('')
+          }
+        });
+      });
+    });
+  }
+  addProg() {
+    let b = window.innerHeight;
+    this.hubs.addPrograme(this.progApplicationOpen, this.progApplicationClose, this.progName, this.progOptions, this.progbackground, this.progBenfits, this.progDescription, this.progStartDate, this.progEndDate, this.progAddress, this.progPhone, this.downloadurl, this.orgAddressObject.lat, this.orgAddressObject.lng, this.orgAddressObject.city).then(() => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000
+      });
+      Toast.fire({
+        type: "success",
+        title: "Your programme was succesfully added"
+      });
+      this.navCtrl.push(HomePage);
+    })
+  }
+
+
+
+
+
+
+
+
+
+
 }

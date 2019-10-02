@@ -2,16 +2,18 @@
   <div class="container">
     <!-- this is the side panel -->
     <div class="side-pane">
-    <!-- <div class="sidepanescroll"> -->
+      <!-- <div class="sidepanescroll"> -->
       <button ion-button clear id="ifSmall" class="float-right" color="light" (click)="showSidePane()">
         <ion-icon name="close"></ion-icon>
       </button>
       <div class="cover-image">
-        <!-- <img src="{{downloadurl}}" alt="" class="cover-image-cover"> -->
+
         <img src="{{downloadurlLogo}}" alt="" class="logo-image">
         <div class="editinfor">
-            <button ion-fab mini  color="gold" (click)="goToSettings()"><ion-icon name="create"></ion-icon></button>
-            <!-- <ion-icon class="penedit" name="ios-create" (click)="goToSettings()"></ion-icon> -->
+          <button ion-fab mini color="gold" (click)="goToSettings()">
+            <ion-icon name="create"></ion-icon>
+          </button>
+ 
         </div>
       </div>
       <div class="buttons">
@@ -45,16 +47,14 @@
           <div (click)="showwifiPage()" id="btn5">WiFi Hotspot</div>
           <div (click)="showProgrammesPage()" id="btn3">Programmes</div>
           <div (click)="showJobsPage()" id="btn4">Job Opportunities</div>
-          
+
         </div>
       </div>
-    <!-- </div> -->
+      <!-- </div> -->
       <div id="actions">
-          <p text-center>Version 0.0.1</p>
-          <!-- <p (click)="goToSettings()">Settings</p>
-          <p (click)="logUserOut()">Logout</p> -->
-          
-          </div>
+        <p text-center>Version 0.0.1</p>
+
+      </div>
     </div>
     <!-- this is the main view -->
     <div class="view-pane">
@@ -64,20 +64,24 @@
           <button id="ifSmall" ion-button clear color="light" (click)="showSidePane()">
             <ion-icon name="menu"></ion-icon>
           </button>
-          <ion-searchbar placeholder="Search" (ionInput)="getItems($event)"></ion-searchbar>
+          <ion-searchbar placeholder="Search" [(ngModel)]="itemName" (ionInput)="getItems($event)"></ion-searchbar>
+          <!-- <ion-searchbar placeholder="Search" (ionInput)="getItems($event)"></ion-searchbar> -->
           <div id="results">
-
-            <ion-item no-lines *ngFor="let item of items; let i=index">
+           
+            <ion-item no-lines *ngFor="let item of items; let i=index" (click)="openMarkerInfo(item)">
               <p>{{item}}</p>
             </ion-item>
+            <!-- <ion-item no-lines *ngFor="let item of items; let i=index">
+              <p>{{item}}</p>
+            </ion-item> -->
           </div>
         </div>
         <div class="right">
           <div class="person-info" (click)="editprofile()">
-              <div class="user-details">
-                  <p>{{userName}}</p>
-                  <p id="subStatement">{{userPosition}}</p>
-                </div>
+            <div class="user-details">
+              <p>{{userName}}</p>
+              <p id="subStatement">{{userPosition}}</p>
+            </div>
             <img src="{{userImage}}" alt="" id="userimage">
           </div>
         </div>
@@ -87,8 +91,8 @@
           <ion-icon name="{{toggleList}}"></ion-icon>
         </div>
         <div class="list-head">
-         Organisations
-          
+          Organisations
+
         </div>
         <div class="list-view-cotainer">
           <div class="listed-item" *ngFor="let q of displayAllhubs">
@@ -104,13 +108,13 @@
       </div>
       <div class="switch-box">
         <div class="view" id="pg1">
-            <div #map id="map"></div>
-  
+          <div #map id="map"></div>
+
         </div>
         <!------------------------------------------------ editservice ------------------------->
         <div class="view" id="pg2">
           <div *ngIf="this.servArray ==null || this.servArray == undefined">
-              <img class="empty" src="../../assets/preview (8).png" alt="" srcset="">
+            <img class="empty" src="../../assets/preview (8).png" alt="" srcset="">
           </div>
           <ion-fab bottom right (click)="add('Services')">
             <button ion-fab color="btn">
@@ -152,69 +156,69 @@
           </div> -->
 
           <div class="card-container">
-              <div class="card" *ngFor="let i of servArray; let x = index">
-                <div class="image-image">
-                  <div class="action-buttons">
-                    <button ion-button clear color="light" (click)="hideProg(i.key)">Hide</button>
-                    <button ion-button clear color="light" (click)='deleteProg(x,i.key)'>Delete</button>
-                    <button ion-button clear color="light" (click)='editprogram(i)'>Edit</button>
-                  </div>
-                  <img src="{{i.img}}" alt="" class="image-actual">
+            <div class="card" *ngFor="let i of servArray; let x = index">
+              <div class="image-image">
+                <div class="action-buttons">
+                  <button ion-button clear color="light" (click)="hideServ(i.key)">Hide</button>
+                  <button ion-button clear color="light" (click)='deleteServ(x,i.key)'>Delete</button>
+                  <button ion-button clear color="light" (click)='editservice(i)'>Edit</button>
                 </div>
-                <div class="more-details">
-                  <div padding class="content-container">
-                      <h2>Details</h2>
-                      <div class="line"></div>
-                    <div>
-                      <p id="heading">{{i.serviceName}}</p>
-                      <p id="sub-head">Background</p>
-                      <p id="bg-desc">
-                        {{i.background}}
-                      </p>
-                      <p id="sub-head">Address</p>
-                      <p id="bg-desc">
-                        {{i.address}}
-                      </p>
-                      <p id="sub-head">Description</p>
-                      <p id="bg-desc">
-                        {{i.desc}}
-                      </p>
-                    </div>
-                    <div>
-                        <h2>Application </h2>
-                      <div class="dates">
-                        <div class="open">
-                          <p id="sub-head" class="theSub-head">Application Open Date</p>
-                          <p id="bg-desc">{{i.openDate}}</p>
-                        </div>
-                        <div class="close">
-                          <p id="sub-head" class="theSub-head">Application Close Date</p>
-                          <p id="bg-desc">{{i.closeDate}}</p>
-                        </div>
+                <img src="{{i.img}}" alt="" class="image-actual">
+              </div>
+              <div class="more-details">
+                <div padding class="content-container">
+                  <h2>Details</h2>
+                  <div class="line"></div>
+                  <div>
+                    <p id="heading">{{i.serviceName}}</p>
+                    <p id="sub-head">Background</p>
+                    <p id="bg-desc">
+                      {{i.background}}
+                    </p>
+                    <p id="sub-head">Address</p>
+                    <p id="bg-desc">
+                      {{i.address}}
+                    </p>
+                    <p id="sub-head">Description</p>
+                    <p id="bg-desc">
+                      {{i.desc}}
+                    </p>
+                  </div>
+                  <div>
+                    <h2>Application </h2>
+                    <div class="dates">
+                      <div class="open">
+                        <p id="sub-head" class="theSub-head">Application Open Date</p>
+                        <p id="bg-desc">{{i.openDate}}</p>
                       </div>
-                      <h2>Programmes</h2>
-                      <div class="dates">
-                        <div class="open">
-                          <p id="sub-head" class="theSub-head">Programme Start</p>
-                          <p id="bg-desc">{{i.progStartDate}}</p>
-                        </div>
-                        <div class="close">
-                          <p id="sub-head" class="theSub-head">Programme End</p>
-                          <p id="bg-desc">{{i.progEndDate}}</p>
-                        </div>
+                      <div class="close">
+                        <p id="sub-head" class="theSub-head">Application Close Date</p>
+                        <p id="bg-desc">{{i.closeDate}}</p>
+                      </div>
+                    </div>
+                    <h2>Programmes</h2>
+                    <div class="dates">
+                      <div class="open">
+                        <p id="sub-head" class="theSub-head">Programme Start</p>
+                        <p id="bg-desc">{{i.progStartDate}}</p>
+                      </div>
+                      <div class="close">
+                        <p id="sub-head" class="theSub-head">Programme End</p>
+                        <p id="bg-desc">{{i.progEndDate}}</p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
         </div>
         <!-------------------------------------------- Programms ----------------------------------------->
         <div class="view" id="pg3">
           <div *ngIf="this.progArray == null || this.progArray == undefined">
-              <img class="empty" src="../../assets/preview (8).png" alt="" srcset="">
+            <img class="empty" src="../../assets/preview (8).png" alt="" srcset="">
           </div>
-        
+
           <ion-fab bottom right (click)="add('Programmes')">
             <button ion-fab color="btn">
               <ion-icon name="add"></ion-icon>
@@ -232,8 +236,8 @@
               </div>
               <div class="more-details">
                 <div padding class="content-container">
-                    <h2>Details</h2>
-                    <div class="line"></div>
+                  <h2>Details</h2>
+                  <div class="line"></div>
                   <div>
                     <p id="heading">{{i.name}}</p>
                     <p id="sub-head">Background</p>
@@ -250,7 +254,7 @@
                     </p>
                   </div>
                   <div>
-                      <h2>Application </h2>
+                    <h2>Application </h2>
                     <div class="dates">
                       <div class="open">
                         <p id="sub-head" class="theSub-head">Application Open Date</p>
@@ -279,12 +283,12 @@
           </div>
         </div>
 
-         <!-------------------------------------------- Jobs ----------------------------------------->
+        <!-------------------------------------------- Jobs ----------------------------------------->
         <div class="view" id="pg4">
           <div *ngIf="this.jobsArry == null || this.jobsArry == undefined">
-              <img class="empty" src="../../assets/preview (8).png" alt="" srcset="">
+            <img class="empty" src="../../assets/preview (8).png" alt="" srcset="">
           </div>
-          
+
           <ion-fab bottom right (click)="add('Jobs')">
             <button ion-fab color="btn">
               <ion-icon name="add"></ion-icon>
@@ -356,16 +360,16 @@
             <div class="card" *ngFor="let i of jobsArry let x = index">
               <div class="image-image">
                 <div class="action-buttons">
-                  <button ion-button clear color="light" (click)="hideProg(i.key)">Hide</button>
-                  <button ion-button clear color="light" (click)='deleteProg(x,i.key)'>Delete</button>
-                  <button ion-button clear color="light" (click)='editprogram(i)'>Edit</button>
+                  <button ion-button clear color="light" (click)="hideJobs(i.key)">Hide</button>
+                  <button ion-button clear color="light" (click)='deleteJob(x,i.key)'>Delete</button>
+                  <button ion-button clear color="light" (click)='editjob(i)'>Edit</button>
                 </div>
                 <img src="{{i.img}}" alt="" class="image-actual">
               </div>
               <div class="more-details">
                 <div padding class="content-container">
-                    <h2>Details</h2>
-                    <div class="line"></div>
+                  <h2>Details</h2>
+                  <div class="line"></div>
                   <div>
                     <p id="heading">{{i.name}}</p>
                     <p id="sub-head">Background</p>
@@ -382,9 +386,9 @@
                     </p>
                   </div>
                   <div>
-                      <p id="sub-head">Job Type</p>
-                      <p id="bg-desc">{{i.contacts}}</p>
-                      <h2>Application </h2>
+                    <p id="sub-head">Job Type</p>
+                    <p id="bg-desc">{{i.contacts}}</p>
+                    <h2>Application </h2>
                     <div class="dates">
                       <div class="open">
                         <p id="sub-head" class="theSub-head">Application Open Date</p>
@@ -412,17 +416,17 @@
             </div>
           </div>
         </div>
-<!-------------------wifi------------------------------->
+        <!-------------------wifi------------------------------->
         <div class="view" id="pg5">
           <div *ngIf="this.wifrArry == null || this.wifrArry == undefined">
             <img class="empty" src="../../assets/preview (8).png" alt="" srcset="">
-        </div>
-            <ion-fab bottom right (click)="add('Wifi')">
-              <button ion-fab color="btn">
-                <ion-icon name="add"></ion-icon>
-              </button>
-            </ion-fab>
-            <!-- <div class="card-container" *ngFor="let i of wifrArry">
+          </div>
+          <ion-fab bottom right (click)="add('Wifi')">
+            <button ion-fab color="btn">
+              <ion-icon name="add"></ion-icon>
+            </button>
+          </ion-fab>
+          <!-- <div class="card-container" *ngFor="let i of wifrArry">
               <div class="card">
                 <div class="image-image">
                   <div class="action-buttons">
@@ -482,40 +486,40 @@
               </div>
             </div> -->
 
-            <div class="card-container" *ngFor="let i of wifrArry">
-                <div class="card">
-                  <div class="image-imagewifi">
-                    <div class="action-buttons">
-                      <button ion-button clear color="light">Hide</button>
-                      <button ion-button clear color="light">Delete</button>
-                      <button ion-button clear color="light" (click)='editservice()'>Edit</button>
-                    </div>
-                    <img src="{{i.img}}" alt="" class="image-actual">
-                  </div>
-                  <div class="more-details" id="pg1-cont">
-                    <div padding class="content-container">
-                        <h2>Details</h2>
-                      <div>
-    
-                        <p id="heading">{{i.name}}</p>
-                        <!-- <p id="sub-head">Description</p>
+          <div class="card-container" *ngFor="let i of wifrArry">
+            <div class="card">
+              <div class="image-imagewifi">
+                <div class="action-buttons">
+                  <button ion-button clear color="light">Hide</button>
+                  <button ion-button clear color="light">Delete</button>
+                  <button ion-button clear color="light" (click)='editservice()'>Edit</button>
+                </div>
+                <img src="{{i.img}}" alt="" class="image-actual">
+              </div>
+              <div class="more-details" id="pg1-cont">
+                <div padding class="content-container">
+                  <h2>Details</h2>
+                  <div>
+
+                    <p id="heading">{{i.name}}</p>
+                    <!-- <p id="sub-head">Description</p>
                         <p id="bg-desc">
                           {{i.desc}}
                         </p> -->
-                        <p id="sub-head">Address</p>
-                        <p id="bg-desc">{{i.address}}</p>
-                        <!-- <p id="sub-head">Contact Details</p>
+                    <p id="sub-head">Address</p>
+                    <p id="bg-desc">{{i.address}}</p>
+                    <!-- <p id="sub-head">Contact Details</p>
                         <p id="subSub-head">{{i.contacts}}</p>
                         <p id="bg-desc">0813917127</p>
                         <p id="subSub-head">Email</p>
                         <p id="bg-desc-email">{{i.email}}</p> -->
-                      </div>
-                    </div>
-    
                   </div>
                 </div>
+
               </div>
+            </div>
           </div>
+        </div>
       </div>
 
     </div>
@@ -537,7 +541,6 @@
         <p>Update organisation profile</p>
         <ion-input type="text" class="text-field" placeholder="Organisation Name" value="{{name}}" [(ngModel)]="name">
         </ion-input>
-        <!-- <ion-input type="text" class="text-field" placeholder="Physical Address"  [(ngModel)]="address"></ion-input> -->
         <ion-input type="tel" class="text-field" placeholder="Phone" [(ngModel)]="contact"></ion-input>
         <ion-input type="email" class="text-field" placeholder="Email Address" [(ngModel)]="email" disabled></ion-input>
         <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="10"
@@ -546,249 +549,244 @@
           <button ion-button outline color="danger" (click)="cancelSettings()">Cancel</button>
           <button ion-button (click)="updateorgProfile()">Update</button>
         </div>
-        <button ion-button block  color="secondary" (click)="logUserOut()">Logout</button>
+        <button ion-button block color="secondary" (click)="logUserOut()">Logout</button>
       </div>
     </div>
   </div>
-  
+
 
 
   <div id="program-overlay">
-      <div class="toDismiss" (click)="cancelSettings()">
-  
-      </div>
-      <div class="editing-data-inputs">
-        <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
-        <div id="theLogo-update">
-  
-          <label for="logoUpdate">
-            <div>Logo</div>
-            <img id="click-upload" src="{{downloadurlLogo}}" alt="">
-          </label>
-        </div>
-        <div id="update-inputs">
-          <p>Update organisation profile</p>
-          <ion-input type="text" class="text-field" placeholder="Background"  [(ngModel)]="progname2">
-          </ion-input>
-          <!-- <ion-input type="text" class="text-field" placeholder="Physical Address"  [(ngModel)]="address"></ion-input> -->
-          <ion-input type="tel" class="text-field" placeholder="Address" [(ngModel)]="contact2"></ion-input>
+    <div class="toDismiss" (click)="cancelSettings()">
 
-          <ion-grid>
+    </div>
+    <div class="editing-data-inputs">
+      <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
+      <div id="theLogo-update">
+
+        <label for="logoUpdate">
+          <div>Logo</div>
+          <img id="click-upload" src="{{downloadurlLogo}}" alt="">
+        </label>
+      </div>
+      <div id="update-inputs">
+        <p>Update organisation profile</p>
+        <ion-input type="text" class="text-field" placeholder="Background" [(ngModel)]="progname2">
+        </ion-input>
+
+        <ion-input type="tel" class="text-field" placeholder="Address" [(ngModel)]="contact2"></ion-input>
+
+        <ion-grid>
           <ion-row>
-              
-              <ion-row col-12>
-                  <p text-center>Application</p>
-              </ion-row>
-              <ion-col col-6>
-               
-                  <ion-item>
-                      <ion-label>Start </ion-label>
-                      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="applOpen"></ion-datetime>
-                    </ion-item>
-              </ion-col>
-              <ion-col col-6>
-                  <ion-item>
-                      <ion-label>End</ion-label>
-                      <ion-datetime text-center displayFormat="MM/DD/YYYY" [(ngModel)]="applClose"></ion-datetime>
-                    </ion-item>
-              </ion-col>
+
+            <ion-row col-12>
+              <p text-center>Application</p>
+            </ion-row>
+            <ion-col col-6>
+
+              <ion-item>
+                <ion-label>Start </ion-label>
+                <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="applOpen"></ion-datetime>
+              </ion-item>
+            </ion-col>
+            <ion-col col-6>
+              <ion-item>
+                <ion-label>End</ion-label>
+                <ion-datetime text-center displayFormat="MM/DD/YYYY" [(ngModel)]="applClose"></ion-datetime>
+              </ion-item>
+            </ion-col>
           </ion-row>
           <ion-row>
-              <ion-row col-12>
-                  <p>Program</p>
-              </ion-row>
-             
-              <ion-col col-6>
-                  <ion-item>
-                      <ion-label>Start</ion-label>
-                      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="start"></ion-datetime>
-                    </ion-item>
-              </ion-col>
-              <ion-col col-6>
-                  <ion-item>
-                      <ion-label>End</ion-label>
-                      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="end"></ion-datetime>
-                    </ion-item>
-              </ion-col>
+            <ion-row col-12>
+              <p>Program</p>
+            </ion-row>
+
+            <ion-col col-6>
+              <ion-item>
+                <ion-label>Start</ion-label>
+                <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="start"></ion-datetime>
+              </ion-item>
+            </ion-col>
+            <ion-col col-6>
+              <ion-item>
+                <ion-label>End</ion-label>
+                <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="end"></ion-datetime>
+              </ion-item>
+            </ion-col>
           </ion-row>
-          </ion-grid>
-        
-          <!-- <ion-input type="email" class="text-field" placeholder="Email Address" [(ngModel)]="email" disabled></ion-input> -->
-          <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="5"
-            [(ngModel)]="progbackground"></textarea>
-       
-          <div id="update-buttons">
-            <button ion-button outline color="danger" (click)="cancelprogramm()">Cancel</button>
-            <button ion-button (click)="updateOrg()">Update</button>
-          </div>
+        </ion-grid>
+
+        <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="5"
+          [(ngModel)]="progbackground"></textarea>
+
+        <div id="update-buttons">
+          <button ion-button outline color="danger" (click)="cancelprogramm()">Cancel</button>
+          <button ion-button (click)="updateOrg()">Update</button>
         </div>
       </div>
     </div>
+  </div>
 
 
-    <div id="service-overlay">
-        <div class="toDismiss" (click)="cancelSettings()">
-    
+  <div id="service-overlay">
+    <div class="toDismiss" (click)="cancelSettings()">
+
+    </div>
+    <div class="editing-data-inputs">
+      <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
+      <div id="theLogo-update">
+
+        <label for="logoUpdate">
+          <div>Logo</div>
+          <img id="click-upload" src="{{downloadurlLogo}}" alt="">
+        </label>
+      </div>
+      <div id="update-inputs">
+        <p>Update organisation service</p>
+   
+        <ion-input type="text" class="text-field" placeholder="Physical Address" [(ngModel)]="address"></ion-input>
+        <ion-input type="tel" class="text-field" placeholder="contact details" [(ngModel)]="contact"></ion-input>
+        <ion-input type="email" class="text-field" placeholder="Email Address" [(ngModel)]="email" disabled></ion-input>
+        <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="10"
+          [(ngModel)]="background"></textarea>
+        <div id="update-buttons">
+          <button ion-button outline color="danger" (click)="cancelservice()">Cancel</button>
+          <button ion-button (click)="updateOrg()">Update</button>
+
         </div>
-        <div class="editing-data-inputs">
-          <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
-          <div id="theLogo-update">
-    
-            <label for="logoUpdate">
-              <div>Logo</div>
-              <img id="click-upload" src="{{downloadurlLogo}}" alt="">
-            </label>
-          </div>
-          <div id="update-inputs">
-            <p>Update organisation service</p>
-            <!-- <ion-input type="text" class="text-field" placeholder="Background" value="{{name}}" [(ngModel)]="name">
-            </ion-input> -->
-            <ion-input type="text" class="text-field" placeholder="Physical Address"  [(ngModel)]="address"></ion-input>
-            <ion-input type="tel" class="text-field" placeholder="contact details" [(ngModel)]="contact"></ion-input>
-            <ion-input type="email" class="text-field" placeholder="Email Address" [(ngModel)]="email" disabled></ion-input>
-            <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="10"
-              [(ngModel)]="background"></textarea>
-            <div id="update-buttons">
-              <button ion-button outline color="danger" (click)="cancelservice()">Cancel</button>
-              <button ion-button (click)="updateOrg()">Update</button>
-              
-            </div>
-            
-          </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div id="job-overlay">
+    <div class="toDismiss" (click)="cancelSettings()">
+
+    </div>
+    <div class="editing-data-inputs">
+      <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
+      <div id="theLogo-update">
+
+        <label for="logoUpdate">
+          <div>Logo</div>
+          <img id="click-upload" src="{{downloadurlLogo}}" alt="">
+        </label>
+      </div>
+      <div id="update-inputs">
+        <p>Update organisation Jobs</p>
+        <ion-input type="text" class="text-field" placeholder="Background" value="{{name}}" [(ngModel)]="name">
+        </ion-input>
+        <ion-input type="text" class="text-field" placeholder="Job type" [(ngModel)]="address"></ion-input>
+        <ion-input type="tel" class="text-field" placeholder="Address" [(ngModel)]="contact"></ion-input>
+
+        <ion-grid>
+          <ion-row>
+
+            <ion-row col-12>
+              <p text-center>Application</p>
+            </ion-row>
+            <ion-col col-6>
+
+              <ion-item>
+                <ion-label>Start </ion-label>
+                <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+              </ion-item>
+            </ion-col>
+            <ion-col col-6>
+              <ion-item>
+                <ion-label>End</ion-label>
+                <ion-datetime text-center displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-row col-12>
+              <p>Program</p>
+            </ion-row>
+
+            <ion-col col-6>
+              <ion-item>
+                <ion-label>Start</ion-label>
+                <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+              </ion-item>
+            </ion-col>
+            <ion-col col-6>
+              <ion-item>
+                <ion-label>End</ion-label>
+                <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="5"
+          [(ngModel)]="background"></textarea>
+
+        <div id="update-buttons">
+          <button ion-button outline color="danger" (click)="canceljob()">Cancel</button>
+          <button ion-button (click)="updateOrg()">Update</button>
         </div>
       </div>
+    </div>
+  </div>
 
+  <div id="wifi-overlay">
+    <div class="toDismiss" (click)="cancelSettings()">
 
-      <div id="job-overlay">
-          <div class="toDismiss" (click)="cancelSettings()">
-  
-            </div>
-            <div class="editing-data-inputs">
-              <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
-              <div id="theLogo-update">
-        
-                <label for="logoUpdate">
-                  <div>Logo</div>
-                  <img id="click-upload" src="{{downloadurlLogo}}" alt="">
-                </label>
-              </div>
-              <div id="update-inputs">
-                <p>Update organisation Jobs</p>
-                <ion-input type="text" class="text-field" placeholder="Background" value="{{name}}" [(ngModel)]="name">
-                </ion-input>
-                <ion-input type="text" class="text-field" placeholder="Job type"  [(ngModel)]="address"></ion-input>
-                <ion-input type="tel" class="text-field" placeholder="Address" [(ngModel)]="contact"></ion-input>
-      
-                <ion-grid>
-                <ion-row>
-                    
-                    <ion-row col-12>
-                        <p text-center>Application</p>
-                    </ion-row>
-                    <ion-col col-6>
-                     
-                        <ion-item>
-                            <ion-label>Start </ion-label>
-                            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
-                          </ion-item>
-                    </ion-col>
-                    <ion-col col-6>
-                        <ion-item>
-                            <ion-label>End</ion-label>
-                            <ion-datetime text-center displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
-                          </ion-item>
-                    </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-row col-12>
-                        <p>Program</p>
-                    </ion-row>
-                   
-                    <ion-col col-6>
-                        <ion-item>
-                            <ion-label>Start</ion-label>
-                            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
-                          </ion-item>
-                    </ion-col>
-                    <ion-col col-6>
-                        <ion-item>
-                            <ion-label>End</ion-label>
-                            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
-                          </ion-item>
-                    </ion-col>
-                </ion-row>
-                </ion-grid>
-              
-                <!-- <ion-input type="email" class="text-field" placeholder="Email Address" [(ngModel)]="email" disabled></ion-input> -->
-                <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="5"
-                  [(ngModel)]="background"></textarea>
-             
-                <div id="update-buttons">
-                  <button ion-button outline color="danger" (click)="canceljob()">Cancel</button>
-                  <button ion-button (click)="updateOrg()">Update</button>
-                </div>
-              </div>
-            </div>
-          </div> 
+    </div>
+    <div class="editing-data-inputs">
+      <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
+      <div id="theLogo-update">
 
-          <div id="wifi-overlay">
-              <div class="toDismiss" (click)="cancelSettings()">
-          
-              </div>
-              <div class="editing-data-inputs">
-                <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
-                <div id="theLogo-update">
-          
-                  <label for="logoUpdate">
-                    <div>Logo</div>
-                    <img id="click-upload" src="{{downloadurlLogo}}" alt="">
-                  </label>
-                </div>
-                <div id="update-inputs">
-                  <p>Update organisation WiFi</p>
-                  <!-- <ion-input type="text" class="text-field" placeholder="Background" value="{{name}}" [(ngModel)]="name">
-                  </ion-input> -->
-                  <ion-input type="text" class="text-field" placeholder="Physical Address"  [(ngModel)]="address"></ion-input>
-                  <ion-input type="tel" class="text-field" placeholder="contact details" [(ngModel)]="contact"></ion-input>
-                  <ion-input type="email" class="text-field" placeholder="Email Address" [(ngModel)]="email" disabled></ion-input>
-                  <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="10"
-                    [(ngModel)]="background"></textarea>
-                  <div id="update-buttons">
-                    <button ion-button outline color="danger" (click)="cancelwifi()">Cancel</button>
-                    <button ion-button (click)="updateOrg()">Update</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <label for="logoUpdate">
+          <div>Logo</div>
+          <img id="click-upload" src="{{downloadurlLogo}}" alt="">
+        </label>
+      </div>
+      <div id="update-inputs">
+        <p>Update organisation WiFi</p>
+        <ion-input type="text" class="text-field" placeholder="Physical Address" [(ngModel)]="address"></ion-input>
+        <ion-input type="tel" class="text-field" placeholder="contact details" [(ngModel)]="contact"></ion-input>
+        <ion-input type="email" class="text-field" placeholder="Email Address" [(ngModel)]="email" disabled></ion-input>
+        <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="10"
+          [(ngModel)]="background"></textarea>
+        <div id="update-buttons">
+          <button ion-button outline color="danger" (click)="cancelwifi()">Cancel</button>
+          <button ion-button (click)="updateOrg()">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-            <div id="profile-overlay">
-                <div class="toDismiss" (click)="cancelSettings()">
-            
-                </div>
-                <div class="editing-data-inputs">
-                  <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertuserprofile($event)" id="logoUpdate2">
-                  <div id="theLogo-update">
-            
-                    <label for="logoUpdate2">
-                      <div>Logo</div>
-                      <img id="click-upload" src="{{userImage}}" alt="">
-                    </label>
-                  </div>
-                  <div id="update-inputs">
-                    <p>Update User profile</p>
-                    <ion-input type="text" class="text-field" placeholder="Username"  [(ngModel)]="userName">
-                    </ion-input>
-                    <!-- <ion-input type="text" class="text-field" placeholder="Physical Address"  [(ngModel)]="address"></ion-input> -->
-                    <ion-input type="tel" class="text-field" placeholder="Phone number" [(ngModel)]="userContract"></ion-input>
-                    <ion-input type="email" class="text-field" placeholder="Position" [(ngModel)]="userPosition" ></ion-input>
-                    <textarea name="" id="textarea-update" placeholder="Position Description" cols="30" rows="10"
-                      [(ngModel)]="userPostiondesc"></textarea>
-                    <div id="update-buttons">
-                      <button ion-button outline color="danger" (click)="cancelprofile()">Cancel</button>
-                      <button ion-button (click)="updateUserprofile()">Update</button>
-                    </div>
-                    <!-- <button ion-button block  color="secondary" (click)="logUserOut()">Logout</button> -->
-                  </div>
-                </div>
-              </div>
+  <div id="profile-overlay">
+    <div class="toDismiss" (click)="cancelSettings()">
+
+    </div>
+    <div class="editing-data-inputs">
+      <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertuserprofile($event)"
+        id="logoUpdate2">
+      <div id="theLogo-update">
+
+        <label for="logoUpdate2">
+          <div>Logo</div>
+          <img id="click-upload" src="{{userImage}}" alt="">
+        </label>
+      </div>
+      <div id="update-inputs">
+        <p>Update User profile</p>
+        <ion-input type="text" class="text-field" placeholder="Username" [(ngModel)]="userName">
+        </ion-input>
+        <ion-input type="tel" class="text-field" placeholder="Phone number" [(ngModel)]="userContract"></ion-input>
+        <ion-input type="email" class="text-field" placeholder="Position" [(ngModel)]="userPosition"></ion-input>
+        <textarea name="" id="textarea-update" placeholder="Position Description" cols="30" rows="10"
+          [(ngModel)]="userPostiondesc"></textarea>
+        <div id="update-buttons">
+          <button ion-button outline color="danger" (click)="cancelprofile()">Cancel</button>
+          <button ion-button (click)="updateUserprofile()">Update</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </ion-content>
