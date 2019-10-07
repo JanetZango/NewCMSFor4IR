@@ -83,12 +83,13 @@ export class HomePage implements OnInit {
     this.getallhubs();
     this.displayProfile();
     this.getallAvailableOrg();
-    
+    this.storeOrgNames()
     this.hubs.getCurrentLocation(this.lat, this.long).then((radius: any) => {
     })
   }
-  storeOrgNames(names) {
-    this.orgNames = names;
+  storeOrgNames() {
+     this.orgNames =   this.hubs.returnstoreOrgNames()
+      
     console.log(this.orgNames);
   }
 
@@ -977,13 +978,6 @@ export class HomePage implements OnInit {
    settingsUpdate.style.display = "none";
  }
 
-//  editjob(){
-//   console.log(`hi`);
-  
-//  var settingsUpdate = document.getElementById("job-overlay");
-//  settingsUpdate.style.display = "block";
-//  settingsUpdate.style.display = "flex";
-// }
 canceljob() {
  
  var settingsUpdate = document.getElementById("job-overlay");
@@ -1270,11 +1264,13 @@ start;
 end;
 progbackground;
 pr;
-contact2;
+progaddr;
 img22;
 progKey;
 progEmail;
-servImg
+progImg
+progdesc 
+
 editprogram(i){
   console.log(i)
   this.applOpen = i.openDate;
@@ -1283,9 +1279,10 @@ editprogram(i){
   this.end = i.progEndDate;
  this.progEmail = i.email;
   this.progbackground = i.background
+  this.progdesc = i.desc
   this.pr = i.name;
-  this.contact2 = i.address;
-  this.img22 = i.img
+  this.progaddr = i.address;
+  this.progImg = i.img
   this.progKey = i.key
   
  var settingsUpdate = document.getElementById("program-overlay");
@@ -1298,16 +1295,16 @@ insertpic2222(event: any) {
     if (event.target.files && event.target.files[0]) {
       let reader = new FileReader();
       reader.onload = (event: any) => {
-        this.servImg = event.target.result;
+        this.progImg = event.target.result;
       }
       reader.readAsDataURL(event.target.files[0]);
     }
 
   }
 }
-editservice() {
+updateservice() {
   this.cancelSettings();
-  this.hubs.update( this.applOpen ,  this.applClose,this.start ,  this.end ,this.pr, this.img22, this.contact2, this.progbackground,this.progKey).then((data) => {
+  this.hubs.update( this.applOpen ,  this.applClose,this.start ,  this.end ,this.pr, this.img22, this.progaddr, this.progbackground,this.progKey).then((data) => {
     this.getallorg();
   });
   const alert = this.alertCtrl.create({
@@ -1335,6 +1332,7 @@ jName;
 jAddrs;
 jConta;
 jdesc;
+jback
 jstart;
 jend;
 jAppS;
@@ -1343,11 +1341,13 @@ Jimg;
 jKey;
 
 editjob(x){
+console.log(this.jobsArry[x]);
 
  this.jName = this.jobsArry[x].name
  this. jAddrs = this.jobsArry[x].address
  this.jConta = this.jobsArry[x].contacts
- this.jdesc = this.jobsArry[x].background
+ this.jback = this.jobsArry[x].background
+ this.jdesc = this.jobsArry[x].desc
  this.jstart = this.jobsArry[x].progStartDate
  this.jend = this.jobsArry[x].progEndDate
  this.jAppS = this.jobsArry[x].openDate;
@@ -1376,22 +1376,26 @@ hideProg(i){
   this.hubs.hideProg(i);
 }
 servAdd;
-//servImg;
+servImg;
 servContact;
 servEmail = 'library@gmail.com';
 servDesc;
 servKey;
-//   editservice(x){
-//     this.servAdd = this.servArray[x].address;
-//     this.servImg =this.servArray[x].img
-//     this.servContact =  this.servArray[x].contacts;
-//     this.servDesc = this.servArray[x].desc;
-//     this.servKey =  this.servArray[x].key
+  editservice(x){
+    console.log(x);
     
-//    var settingsUpdate = document.getElementById("service-overlay");
-//    settingsUpdate.style.display = "block";
-//    settingsUpdate.style.display = "flex";
-//   }
+    console.log(this.servArray);
+    this.servAdd = this.servArray[x].address;
+    this.servImg =this.servArray[x].img
+    this.servContact =  this.servArray[x].contacts;
+    this.servDesc = this.servArray[x].desc;
+    this.servKey =  this.servArray[x].key
+   
+    
+   var settingsUpdate = document.getElementById("service-overlay");
+   settingsUpdate.style.display = "block";
+   settingsUpdate.style.display = "flex";
+  }
 
 
 
@@ -1434,359 +1438,6 @@ servKey;
       }
     }
   }
-
-//   hideProg(key){
-//     firebase.database().ref("4IRHubs/" + key).update({
-//       status: 'hidden'
-//     })
-//   }
-//  //updateOrganization
-//  update(applstart,applend,start,end,name2,downloadurlLogo,contact,background,key) {
-//   console.log(name2);
-//   return new Promise((pass, fail) => {
-//     this.ngzone.run(() => {
-//       firebase.database().ref("4IRHubs/" + key).update({
-//         progName: end,
-//         img: downloadurlLogo,
-//         address : contact,
-//         background:background,
-//         openDate : applstart,
-//         closeDate : applend,
-//         progStartDate : start,
-//         progEndDate : end
-//       });
-//       pass('');
-//     })
-//   })
-// }
-// updateService(contact,img,desc,addr, key) {
-//   return new Promise((pass, fail) => {
-//     this.ngzone.run(() => {
-//       firebase.database().ref("4IRHubs/" + key).update({
-//         desc: desc,
-//         img: img,
-//         contacts : contact,
-//         address:addr,
-//       });
-//       pass('');
-//     })
-//   })
-// }
-// updateOrg(contact,downloadurlLogo,name,background) {
-//   return new Promise((pass, fail) => {
-//     this.ngzone.run(() => {
-//       var user = firebase.auth().currentUser
-//       firebase.database().ref("Organizations/" + user.uid).update({
-//         contact: contact,
-//         downloadurlLogo: downloadurlLogo,
-//         name: name,
-//         background:background,
-    
-//       });
-//     })
-//   })
-// }
-
-// addService(email,openDate, closeDate, address, serviceName, contact, desc, img,lat,long, city) {
-//   return new Promise((resolve, reject) => {
-//     this.ngzone.run(() => {
-//       var user = firebase.auth().currentUser
-//       firebase.database().ref("4IRHubs").push({
-//         openDate: openDate,
-//         email:email,
-//         closeDate: closeDate,
-//         address: address,
-//         desc: desc,
-//         img: img,
-//         contact: contact,
-//         name : serviceName,
-//         lat:lat,
-//         long:long,
-//         city: city
-//       })
-//       resolve();
-//     })
-//   })
-// }
-//   addJob(name,openDate, closeDate, address, desc, benefits, jobStartdate, jobEndDate, contact, img,lat,long, city) {
-//     return new Promise((resolve, reject) => {
-//       this.ngzone.run(() => {
-//         var user = firebase.auth().currentUser
-//         firebase.database().ref("4IRHubs").push({
-//           openDate: openDate,
-//           category:"jobs",
-//           closeDate: closeDate,
-//           address: address,
-//           desc: desc,
-//           benefits: benefits,
-//           jobStartdate: jobStartdate,
-//           jobEndDate: jobEndDate,
-//           img: img,
-//           contact: contact,
-//           name : name,
-//           lat:lat,
-//           long:long,
-//           city: city,
-//           user : user.uid
-//         })
-//         resolve();
-//       })
-//     })
-
-//   }
-//     addPrograme(openDate, closeDate, name, progType, background, benefits, desc, progStartDate, progEndDate, address, contacts, img,lat,long, city) {
-//       return new Promise((resolve, reject) => {
-//         this.ngzone.run(() => {
-//           var user = firebase.auth().currentUser
-//           firebase.database().ref("4IRHubs").push({
-//             openDate: openDate,
-//             category:"programmes",
-//             closeDate: closeDate,
-//             name: name,
-//             progType: progType,
-//             background: background,
-//             benefits: benefits,
-//             desc: desc,
-//             progStartDate: progStartDate,
-//             progEndDate: progEndDate,
-//             address: address,
-//             contacts: contacts,
-//             img: img,
-//             lat:lat,
-//             long:long,
-//             user : user.uid,
-//             city: city
-//           })
-//           resolve();
-//         })
-//       })
-//     }
- 
-//     updatejob(name,add,con,backg,start,end,applS,applE,img, key) {
-//       return new Promise((pass, fail) => {
-//         this.ngzone.run(() => {
-//           firebase.database().ref("4IRHubs/" + key).update({
-//             name: name,
-//             address: add,
-//             contacts: con,
-//             background: backg,
-//             openDate: start,
-//             closeDate: end,
-//             progStartDate: applS,
-//             progEndDate: applE,
-//             img : img,
-//           });
-//           pass('');
-//         })
-//       })
-//     }
-//     getACurentloggedInOrganizations() {
-//       return new Promise((resolve, reject) => {
-//         this.ngzone.run(() => {
-//           var user = firebase.auth().currentUser;
-//           firebase.database().ref("Organizations/" + user.uid).on("value", (data: any) => {
-//             if (data.val() != null) {
-//               // this.orgArray.length = 0;
-//               // this.orgNames.length = 0;
-//               let displayDetails = data.val();
-//               console.log(displayDetails)
-//               let keys = Object.keys(displayDetails);
-//               console.log(keys)
-//                 // var k = keys[0];
-//                 let orgObject = {
-//                   address: displayDetails.address,
-//                   background: displayDetails.background,
-//                   category: displayDetails.category,
-//                   contact: displayDetails.contact,
-//                   downloadurl: displayDetails.downloadurl,
-//                   downloadurlLogo: displayDetails.downloadurlLogo,
-//                   email: displayDetails.email,
-//                   freeWifi: displayDetails.freeWifi,
-//                   name: displayDetails.name,
-//                   lat: displayDetails.lat,
-//                   long: displayDetails.long,
-//                   region: displayDetails.region,
-//                   website: displayDetails.website,
-//                   wifi: displayDetails.wifi,
-//                   wifiRange: displayDetails.wifiRange,
-              
-//                 }
-//                 console.log(orgObject)
-//                 //this.storeOrgNames(displayDetails.category);
-//                 this.orgArray.push(orgObject)
-//                 console.log(this.orgArray)
-//               }
-//               resolve(this.orgArray)
-//             // }
-//           });
-//         })
-//       })
-//     }
-
-  
-//     getACurentloggedInOrganizations() {
-//       return new Promise((resolve, reject) => {
-//         this.ngzone.run(() => {
-//           var user = firebase.auth().currentUser;
-//           firebase.database().ref("Organizations/" + user.uid).on("value", (data: any) => {
-//             if (data.val() != null) {
-//               // this.orgArray.length = 0;
-//               // this.orgNames.length = 0;
-//               let displayDetails = data.val();
-//               console.log(displayDetails)
-//               let keys = Object.keys(displayDetails);
-//               console.log(keys)
-//                 // var k = keys[0];
-//                 let orgObject = {
-//                   address: displayDetails.address,
-//                   background: displayDetails.background,
-//                   category: displayDetails.category,
-//                   contact: displayDetails.contact,
-//                   downloadurl: displayDetails.downloadurl,
-//                   downloadurlLogo: displayDetails.downloadurlLogo,
-//                   email: displayDetails.email,
-//                   freeWifi: displayDetails.freeWifi,
-//                   name: displayDetails.name,
-//                   lat: displayDetails.lat,
-//                   long: displayDetails.long,
-//                   region: displayDetails.region,
-//                   website: displayDetails.website,
-//                   wifi: displayDetails.wifi,
-//                   wifiRange: displayDetails.wifiRange,
-              
-//                 }
-//                 console.log(orgObject)
-//                 //this.storeOrgNames(displayDetails.category);
-//                 this.orgArray.push(orgObject)
-//                 console.log(this.orgArray)
-//               }
-//               resolve(this.orgArray)
-//             // }
-//           });
-//         })
-//       })
-//     }
-
-//     displayOnMAP() {
-//       return new Promise((resolve, reject) => {
-//           this.ngzone.run(() => {
-//           var user = firebase.auth().currentUser.uid;
-//           firebase.database().ref('4IRHubs/').on('value', (data: any) => {
-//               this.getprog.length =0;
-//               var UploadDetails = data.val();
-//               console.log(UploadDetails);
-//               var k2 = Object.keys(UploadDetails);
-//               for(var i =0 ;i<k2.length;i++){
-//                   var key2 = k2[i];
-//                   if (UploadDetails[key2].uid == user.uid) {
-//                       let obj = {
-//                           img: UploadDetails[key2].img,
-//                           progName: UploadDetails[key2].name,
-//             uid: UploadDetails[key2].user,
-//             address: UploadDetails[key2].address,
-//                           background: UploadDetails[key2].background,
-//             benefits: UploadDetails[key2].benefits,
-//             category: UploadDetails[key2].category,
-//                           closeDate: UploadDetails[key2].closeDate,
-//             contacts: UploadDetails[key2].contacts,
-//             desc: UploadDetails[key2].desc,
-//                           name: UploadDetails[key2].name,
-//             openDate: UploadDetails[key2].openDate,
-//             progEndDate: UploadDetails[key2].progEndDate,
-//                           progStartDate: UploadDetails[key2].progStartDate,
-//             user: UploadDetails[key2].user,
-//             city: UploadDetails[key2].city,
-//             key : key2,
-      
-//           };
-//           this.storeOrgNames(UploadDetails[key2].name)
-//           this.cityNames(UploadDetails[key2].city)
-//                       console.log(obj);
-//                       this.getprog.push(obj);
-//           console.log(this.getprog);
-//                   }
-//       }
-//       resolve(this.getprog);
-//           });
-//       });
-//       });
-// }
-// ogNames = new Array()
-// storeOrgNames(cat) {
-//   console.log(cat)
-//   if (cat != undefined)
-//   this.ogNames.push(cat);
-// }
-  
-// update(applstart,applend,start,end,name2,downloadurlLogo,contact,background,key) {
-//   console.log(name2);
-//   return new Promise((pass, fail) => {
-//     this.ngzone.run(() => {
-//       firebase.database().ref("4IRHubs/" + key).update({
-//         progName: end,
-//         img: downloadurlLogo,
-//         address : contact,
-//         background:background,
-//         openDate : applstart,
-//         closeDate : applend,
-//         progStartDate : start,
-//         progEndDate : end
-//       });
-//       pass('');
-//     })
-//   })
-// }
-// updateService(contact,img,desc,addr, key) {
-//   return new Promise((pass, fail) => {
-//     this.ngzone.run(() => {
-//       firebase.database().ref("4IRHubs/" + key).update({
-//         desc: desc,
-//         img: img,
-//         contacts : contact,
-//         address:addr,
-//       });
-//       pass('');
-//     })
-//   })
-// }
-// updateOrg(contact,downloadurlLogo,name,background) {
-//   return new Promise((pass, fail) => {
-//     this.ngzone.run(() => {
-//       var user = firebase.auth().currentUser
-//       firebase.database().ref("Organizations/" + user.uid).update({
-//         contact: contact,
-//         downloadurlLogo: downloadurlLogo,
-//         name: name,
-//         background:background,
-    
-//       });
-//     })
-//   })
-// }
-// getOrgNames() {
-//   return this.ogNames
-// }
-
-
-
-
-
-  
-  
-  
-  
-  
-
-
-
-
-
-
-
-
-
-
-
 
 }
 

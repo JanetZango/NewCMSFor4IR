@@ -1086,7 +1086,6 @@ export class HubsProvider {
   }
 
 
-
   displayOnMAP() {
 		return new Promise((resolve, reject) => {
 			this.ngzone.run(() => {
@@ -1132,14 +1131,16 @@ export class HubsProvider {
 		});
   }
 
-  storeCityNames =  new Array();
-  cityNames(name){
-    // this.orgNames.push(name)
-  }
+  // storeCityNames =  new Array();
+   cityNames(name){
+  //   console.log(name);
+    
+  //    this.storeCityNames.push(name)
+   }
 
-  returnCityNames(){
-    return this.orgNames
-  }
+  // returnCityNames(){
+  //   return this.orgNames
+  // }
 
   removeProg(key){
     firebase.database().ref('4IRHubs/' + key).remove();
@@ -1218,7 +1219,9 @@ export class HubsProvider {
     // if (cat != undefined)
     this.ogNames.push(cat);
   }
-
+  returnstoreOrgNames() {
+    return this.ogNames;
+  }
  hideProg(key){
     firebase.database().ref("4IRHubs/" + key).update({
       status: 'hidden'
