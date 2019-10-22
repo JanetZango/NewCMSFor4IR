@@ -302,6 +302,31 @@ export class HubsProvider {
   removeProg(key){
     firebase.database().ref('4IRHubs/' + key).remove();
   }
+  
+  updateprog(progKey,progname2,contact2,progbackground, applOpen,applClose,start,end,img){
+    console.log(progKey)
+    return new Promise((resolve, reject) => {
+    firebase.database().ref("4IRHubs/" + progKey).update({
+      progName: progname2,
+      contact: contact2,
+      background:progbackground,
+      openDate : applOpen,
+      closeDate : applClose,
+      progStartDate : start,
+      progEndDate : end,
+      img:img
+    })
+    });
+  }
+
+  updateserv(servKey,desc3,img3){
+    return new Promise((resolve, reject) => {
+      firebase.database().ref("4IRHubs/" + servKey).update({
+        img:img3,
+        desc:desc3
+      })
+      });
+  }
 
   
   getallhubs() {
@@ -412,8 +437,6 @@ export class HubsProvider {
           downloadurlLogo: downloadurlLogo,
           name: name,
           background:background,
-      
-
         });
       })
     })

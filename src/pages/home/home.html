@@ -116,13 +116,13 @@
               <ion-icon name="add"></ion-icon>
             </button>
           </ion-fab>
-          <div class="card-container" *ngFor="let i of servArray">
-            <div class="card">
+          <div class="card-container" >
+            <div class="card" *ngFor="let i of servArray">
               <div class="image-image">
                 <div class="action-buttons">
                   <button ion-button clear color="light">Hide</button>
                   <button ion-button clear color="light">Delete</button>
-                  <button ion-button clear color="light" (click)='editservice()'>Edit</button>
+                  <button ion-button clear color="light" (click)='editservice(i)'>Edit</button>
                 </div>
                 <img src="{{i.img}}" alt="" class="image-actual">
               </div>
@@ -154,7 +154,6 @@
           <div *ngIf="this.progArray == null || this.progArray == undefined">
               <img class="empty" src="../../assets/preview (8).png" alt="" srcset="">
           </div>
-        
           <ion-fab bottom right (click)="add('Programmes')">
             <button ion-fab color="btn">
               <ion-icon name="add"></ion-icon>
@@ -229,13 +228,13 @@
               <ion-icon name="add"></ion-icon>
             </button>
           </ion-fab>
-          <div class="card-container" *ngFor="let i of jobsArry">
-            <div class="card">
+          <div class="card-container" >
+            <div class="card" *ngFor="let i of jobsArry">
               <div class="image-image">
                 <div class="action-buttons">
                   <button ion-button clear color="light">Hide</button>
                   <button ion-button clear color="light">Delete</button>
-                  <button ion-button clear color="light" (click)='editjob()'>Edit</button>
+                  <button ion-button clear color="light" (click)='editjob(i)'>Edit</button>
                 </div>
                 <img src="{{i.img}}" alt="" class="image-actual">
               </div>
@@ -301,13 +300,13 @@
                 <ion-icon name="add"></ion-icon>
               </button>
             </ion-fab>
-            <div class="card-container" *ngFor="let i of wifrArry">
-              <div class="card">
+            <div class="card-container" >
+              <div class="card" *ngFor="let i of wifrArry">
                 <div class="image-image">
                   <div class="action-buttons">
                     <button ion-button clear color="light">Hide</button>
                     <button ion-button clear color="light">Delete</button>
-                    <button ion-button clear color="light" (click)='editwifi()'>Edit</button>
+                    <button ion-button clear color="light" (click)='editwifi(i)'>Edit</button>
                   </div>
                   <img src="{{i.img}}" alt="" class="image-actual">
                 </div>
@@ -316,47 +315,21 @@
                       <h2>Details</h2>
                       <div class="line"></div>
                     <div>
-                      <p id="heading">{{i.name}}</p>
+                      <p id="heading">{{i.name4}}</p>
                       <p id="sub-head">Background</p>
                       <p id="bg-desc">
-                        {{i.benefits}}
+                        {{i.background}}
                       </p>
                       <p id="sub-head">Address</p>
                       <p id="bg-desc">
                         {{i.address}}
                       </p>
-                      <p id="sub-head">Description</p>
+                      <p id="sub-head">freeOrPaidWiFi</p>
                       <p id="bg-desc">
-                        {{i.desc}}
+                        {{i.freeOrPaidWiFi}}
                       </p>
                     </div>
-                    <div>
-                      <p id="sub-head">Job Type</p>
-                      <p id="bg-desc">{{i.contacts}}</p>
-                      <!-- <p id="sub-head">Dates</p> -->
-                      <h2>Application</h2>
-                      <!-- <div class="line"></div> -->
-                      <div class="dates">
-                        <div class="open">
-                          <p id="sub-head" class="theSub-head">Application Open Date</p>
-                          <p id="bg-desc">{{i.openDate}}</p>
-                        </div>
-                        <div class="close">
-                          <p id="sub-head" class="theSub-head">Application Close Date</p>
-                          <p id="bg-desc">{{i.closeDate}}</p>
-                        </div>
-                      </div>
-                      <h2>Programmes</h2>
-                      <div class="dates">
-                        <div class="open">
-                          <p id="sub-head" class="theSub-head">Job Start Date</p>
-                          <p id="bg-desc">{{i.jobStartdate}}</p>
-                        </div>
-                        <div class="close">
-                          <p id="sub-head" class="theSub-head">Job End Date</p>
-                          <p id="bg-desc">{{i.jobEndDate}}</p>
-                        </div>
-                      </div>
+                    <div>     
                     </div>
                   </div>
                 </div>
@@ -405,12 +378,12 @@
   
       </div>
       <div class="editing-data-inputs">
-        <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
+        <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic2($event)" id="logoUpdate2">
         <div id="theLogo-update">
   
-          <label for="logoUpdate">
+          <label for="logoUpdate2">
             <div>Logo</div>
-            <img id="click-upload" src="{{downloadurlLogo}}" alt="">
+            <img id="click-upload" src="{{img2}}" alt="">
           </label>
         </div>
         <div id="update-inputs">
@@ -418,7 +391,7 @@
           <ion-input type="text" class="text-field" placeholder="Background"  [(ngModel)]="progname2">
           </ion-input>
           <!-- <ion-input type="text" class="text-field" placeholder="Physical Address"  [(ngModel)]="address"></ion-input> -->
-          <ion-input type="tel" class="text-field" placeholder="Address" [(ngModel)]="contact2"></ion-input>
+          <ion-input type="tel" class="text-field" placeholder="Contact details" [(ngModel)]="contact2"></ion-input>
 
           <ion-grid>
           <ion-row>
@@ -478,26 +451,21 @@
     
         </div>
         <div class="editing-data-inputs">
-          <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
+          <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic3($event)" id="logoUpdate3">
           <div id="theLogo-update">
     
-            <label for="logoUpdate">
+            <label for="logoUpdate3">
               <div>Logo</div>
-              <img id="click-upload" src="{{downloadurlLogo}}" alt="">
+              <img id="click-upload" src="{{img3}}" alt="">
             </label>
           </div>
           <div id="update-inputs">
             <p>Update organisation service</p>
-            <!-- <ion-input type="text" class="text-field" placeholder="Background" value="{{name}}" [(ngModel)]="name">
-            </ion-input> -->
-            <ion-input type="text" class="text-field" placeholder="Physical Address"  [(ngModel)]="address"></ion-input>
-            <ion-input type="tel" class="text-field" placeholder="contact details" [(ngModel)]="contact"></ion-input>
-            <ion-input type="email" class="text-field" placeholder="Email Address" [(ngModel)]="email" disabled></ion-input>
-            <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="10"
-              [(ngModel)]="background"></textarea>
+            <textarea name="" id="textarea-update" placeholder="service Description" cols="30" rows="10"
+              [(ngModel)]="desc3"></textarea>
             <div id="update-buttons">
               <button ion-button outline color="danger" (click)="cancelservice()">Cancel</button>
-              <button ion-button (click)="updateOrg()">Update</button>
+              <button ion-button (click)="updateservice()">Update</button>
               
             </div>
             
@@ -511,20 +479,20 @@
   
             </div>
             <div class="editing-data-inputs">
-              <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
+              <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate5">
               <div id="theLogo-update">
         
-                <label for="logoUpdate">
+                <label for="logoUpdate5">
                   <div>Logo</div>
-                  <img id="click-upload" src="{{downloadurlLogo}}" alt="">
+                  <img id="click-upload" src="{{img5}}" alt="">
                 </label>
               </div>
               <div id="update-inputs">
                 <p>Update organisation Jobs</p>
-                <ion-input type="text" class="text-field" placeholder="Background" value="{{name}}" [(ngModel)]="name">
+                <ion-input type="text" class="text-field" placeholder="Name"  [(ngModel)]="name5">
                 </ion-input>
                 <ion-input type="text" class="text-field" placeholder="Job type"  [(ngModel)]="address"></ion-input>
-                <ion-input type="tel" class="text-field" placeholder="Address" [(ngModel)]="contact"></ion-input>
+                <ion-input type="text" class="text-field" placeholder="Description" [(ngModel)]="desc5"></ion-input>
       
                 <ion-grid>
                 <ion-row>
@@ -536,34 +504,17 @@
                      
                         <ion-item>
                             <ion-label>Start </ion-label>
-                            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+                            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="jobStartdate5"></ion-datetime>
                           </ion-item>
                     </ion-col>
                     <ion-col col-6>
                         <ion-item>
                             <ion-label>End</ion-label>
-                            <ion-datetime text-center displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+                            <ion-datetime text-center displayFormat="MM/DD/YYYY" [(ngModel)]="jobEndDate5"></ion-datetime>
                           </ion-item>
                     </ion-col>
                 </ion-row>
-                <ion-row>
-                    <ion-row col-12>
-                        <p>Program</p>
-                    </ion-row>
-                   
-                    <ion-col col-6>
-                        <ion-item>
-                            <ion-label>Start</ion-label>
-                            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
-                          </ion-item>
-                    </ion-col>
-                    <ion-col col-6>
-                        <ion-item>
-                            <ion-label>End</ion-label>
-                            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
-                          </ion-item>
-                    </ion-col>
-                </ion-row>
+            
                 </ion-grid>
               
                 <!-- <ion-input type="email" class="text-field" placeholder="Email Address" [(ngModel)]="email" disabled></ion-input> -->
@@ -588,18 +539,13 @@
           
                   <label for="logoUpdate">
                     <div>Logo</div>
-                    <img id="click-upload" src="{{downloadurlLogo}}" alt="">
+                    <img id="click-upload" src="{{img}}" alt="">
                   </label>
                 </div>
                 <div id="update-inputs">
-                  <p>Update organisation WiFi</p>
-                  <!-- <ion-input type="text" class="text-field" placeholder="Background" value="{{name}}" [(ngModel)]="name">
-                  </ion-input> -->
-                  <ion-input type="text" class="text-field" placeholder="Physical Address"  [(ngModel)]="address"></ion-input>
-                  <ion-input type="tel" class="text-field" placeholder="contact details" [(ngModel)]="contact"></ion-input>
-                  <ion-input type="email" class="text-field" placeholder="Email Address" [(ngModel)]="email" disabled></ion-input>
+                  <p>Update organisation WiFi</p>  
                   <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="10"
-                    [(ngModel)]="background"></textarea>
+                    [(ngModel)]="background4"></textarea>
                   <div id="update-buttons">
                     <button ion-button outline color="danger" (click)="cancelwifi()">Cancel</button>
                     <button ion-button (click)="updateOrg()">Update</button>

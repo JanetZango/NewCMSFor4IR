@@ -47,19 +47,22 @@ export class HomePage implements OnInit {
   map;
   userContract;
   icons = [
-    { image: 'ios-wifi',
-    name: 'Wi-Fi Hotspot '
-  },
+    {
+      image: 'ios-wifi',
+      name: 'Wi-Fi Hotspot '
+    },
     {
       image: 'ios-briefcase',
       name: 'Jobs'
     },
-    { image: 'pie' ,
-    name: 'Programes'
-  },
-    { image: 'ios-people', 
-    name: 'Services'
-  },
+    {
+      image: 'pie',
+      name: 'Programes'
+    },
+    {
+      image: 'ios-people',
+      name: 'Services'
+    },
   ]
   toggleList = "ios-arrow-back";
   icon = 'assets/imgs/wifi2.svg'
@@ -83,7 +86,7 @@ export class HomePage implements OnInit {
     this.getallhubs();
     this.displayProfile();
     this.getallAvailableOrg();
-    
+
     this.hubs.getCurrentLocation(this.lat, this.long).then((radius: any) => {
     })
   }
@@ -92,15 +95,15 @@ export class HomePage implements OnInit {
     console.log(this.orgNames);
   }
 
-  displayProfile(){
-    this.hubs.geOrgtUser().then((data:any)=>{
+  displayProfile() {
+    this.hubs.geOrgtUser().then((data: any) => {
       this.userName = data.userName
       this.userImage = data.userImage
       this.userPosition = data.userPosition
       this.userPostiondesc = data.userPostiondesc
       this.userContract = data.userContract
       console.log(this.userName)
-  
+
     })
   }
 
@@ -126,18 +129,18 @@ export class HomePage implements OnInit {
     })
   }
 
-  getallAvailableOrg(){
-    this.hubs.getAllOrganizations().then((data:any)=>{
+  getallAvailableOrg() {
+    this.hubs.getAllOrganizations().then((data: any) => {
       this.displayAllORG = data
       console.log(this.displayAllORG)
     })
   }
 
-  getallhubs(){
-    this.hubs.getallhubs().then((data:any)=>{
+  getallhubs() {
+    this.hubs.getallhubs().then((data: any) => {
       console.log(data)
       this.displayAllhubs = data
-     console.log(this.displayAllhubs)
+      console.log(this.displayAllhubs)
     })
   }
 
@@ -145,9 +148,9 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.initMap();
     this.getallhubs();
+    this.getallorg();
 
-
-    this.hubs.displayOnMAP().then((data:any) => {
+    this.hubs.displayOnMAP().then((data: any) => {
       this.displayOrg = data
       console.log(this.displayOrg)
     })
@@ -168,6 +171,38 @@ export class HomePage implements OnInit {
 
     }
   }
+
+
+  insertpic2(event: any) {
+    this.d = 1;
+    let opts = document.getElementsByClassName('options') as HTMLCollectionOf<HTMLElement>;
+    if (this.d == 1) {
+      if (event.target.files && event.target.files[0]) {
+        let reader = new FileReader();
+        reader.onload = (event: any) => {
+          this.img2 = event.target.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
+
+    }
+  }
+
+  insertpic3(event: any) {
+    this.d = 1;
+    let opts = document.getElementsByClassName('options') as HTMLCollectionOf<HTMLElement>;
+    if (this.d == 1) {
+      if (event.target.files && event.target.files[0]) {
+        let reader = new FileReader();
+        reader.onload = (event: any) => {
+          this.img3 = event.target.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
+
+    }
+  }
+
 
   insertuserprofile(event: any) {
     this.d = 1;
@@ -291,13 +326,13 @@ export class HomePage implements OnInit {
     var btn1 = document.getElementById("btn5").style.background = "rgba(0, 0, 0, 0)";
     var settingsUpdate = document.getElementById("org-list-view");
     settingsUpdate.style.display = "block";
-     
+
   }
-  servArray =  new Array();
+  servArray = new Array();
   showServicesPage() {
     this.servArray = [];
-    for (var x = 0; x  < this.displayOrg.length; x++){
-      if (this.displayOrg[x].category == "service"){
+    for (var x = 0; x < this.displayOrg.length; x++) {
+      if (this.displayOrg[x].category == "service") {
         this.servArray.push(this.displayOrg[x]);
       }
     }
@@ -315,16 +350,16 @@ export class HomePage implements OnInit {
     var btn1 = document.getElementById("btn5").style.background = "rgba(0, 0, 0, 0)";
     var settingsUpdate = document.getElementById("org-list-view");
     settingsUpdate.style.display = "none";
-     
+
   }
 
- 
 
-  progArray =  new Array();
+
+  progArray = new Array();
   showProgrammesPage() {
     this.progArray = [];
-    for (var x = 0; x  < this.displayOrg.length; x++){
-      if (this.displayOrg[x].category == "programmes"){
+    for (var x = 0; x < this.displayOrg.length; x++) {
+      if (this.displayOrg[x].category == "programmes") {
         this.progArray.push(this.displayOrg[x]);
         console.log(this.progArray)
       }
@@ -343,13 +378,13 @@ export class HomePage implements OnInit {
     var btn1 = document.getElementById("btn5").style.background = "rgba(0, 0, 0, 0)";
     var settingsUpdate = document.getElementById("org-list-view");
     settingsUpdate.style.display = "none";
-     
+
   }
-  jobsArry =  new Array();
+  jobsArry = new Array();
   showJobsPage() {
     this.jobsArry = [];
-    for (var x = 0; x  < this.displayOrg.length; x++){
-      if (this.displayOrg[x].category == "jobs"){
+    for (var x = 0; x < this.displayOrg.length; x++) {
+      if (this.displayOrg[x].category == "jobs") {
         this.jobsArry.push(this.displayOrg[x]);
       }
     }
@@ -366,13 +401,13 @@ export class HomePage implements OnInit {
     var btn1 = document.getElementById("btn5").style.background = "rgba(0, 0, 0, 0)";
     var settingsUpdate = document.getElementById("org-list-view");
     settingsUpdate.style.display = "none";
-     
+
   }
-  wifrArry =  new Array();
+  wifrArry = new Array();
   showwifiPage() {
     this.wifrArry = [];
-    for (var x = 0; x  < this.displayOrg.length; x++){
-      if (this.displayOrg[x].category == "wifi"){
+    for (var x = 0; x < this.displayOrg.length; x++) {
+      if (this.displayOrg[x].category == "wifi") {
         this.wifrArry.push(this.displayOrg[x]);
       }
     }
@@ -387,10 +422,10 @@ export class HomePage implements OnInit {
     var btn1 = document.getElementById("btn3").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn4").style.background = "rgba(0, 0, 0, 0)";
     var btn1 = document.getElementById("btn5").style.background = "rgba(255, 255, 255, 0.1)";
-    
+
     var settingsUpdate = document.getElementById("org-list-view");
     settingsUpdate.style.display = "none";
-     
+
   }
 
   //show map
@@ -406,7 +441,7 @@ export class HomePage implements OnInit {
         console.log(this.userLocation)
       })
     }, 1000);
-  
+
     const options = {
       center: { lat: this.lat, lng: this.long },
       zoom: 10,
@@ -447,18 +482,18 @@ export class HomePage implements OnInit {
 
   }
 
-  add(type){
-    this.navCtrl.push(AddOrganizationPage, {type:type})
+  add(type) {
+    this.navCtrl.push(AddOrganizationPage, { type: type })
   }
 
 
 
   getItems(ev: any) {
     console.log(`hi serach`);
-    
+
     let searchlist = document.getElementsByClassName('searchitem') as HTMLCollectionOf<HTMLElement>;
-      //searchlist[0].style.display = 'block';
-      //this.search = 'search'
+    //searchlist[0].style.display = 'block';
+    //this.search = 'search'
     // Reset items back to all of the items
     this.initializeItems();
     // set val to the value of the searchbar
@@ -475,10 +510,10 @@ export class HomePage implements OnInit {
   initializeItems() {
     this.items = [
 
-    'Acceptance','Action','Adversity','Anger','Authenticity','Boundaries','Choice','Compassion','Competitveness','Courage','Customer-relations-management','Decisiveness','Delayed-gratification','Depression',
-    'Detachment','Dream-big','Emotional-intelligence','Enemy','Enthusiasm','Ethics','Excellence','Fear','Freedom','Giving','Gratitude','Growth','Happiness','Hard-work','Health','Humility','Inner-power',
-    'Innovation','Intuition','Learning','Love', 'Life','Morality','Obstacles','Passion','Patience','Perseverance','Positivity','Power','Purpose','Regrets','Relationships','Risk-taking','Self discovery',
-    'Service','Small-steps','Spiritual-intelligence','Temper','Think big','Thoughts','Time','Truth','Vision','Wealth',
+      'Acceptance', 'Action', 'Adversity', 'Anger', 'Authenticity', 'Boundaries', 'Choice', 'Compassion', 'Competitveness', 'Courage', 'Customer-relations-management', 'Decisiveness', 'Delayed-gratification', 'Depression',
+      'Detachment', 'Dream-big', 'Emotional-intelligence', 'Enemy', 'Enthusiasm', 'Ethics', 'Excellence', 'Fear', 'Freedom', 'Giving', 'Gratitude', 'Growth', 'Happiness', 'Hard-work', 'Health', 'Humility', 'Inner-power',
+      'Innovation', 'Intuition', 'Learning', 'Love', 'Life', 'Morality', 'Obstacles', 'Passion', 'Patience', 'Perseverance', 'Positivity', 'Power', 'Purpose', 'Regrets', 'Relationships', 'Risk-taking', 'Self discovery',
+      'Service', 'Small-steps', 'Spiritual-intelligence', 'Temper', 'Think big', 'Thoughts', 'Time', 'Truth', 'Vision', 'Wealth',
     ];
   }
 
@@ -501,19 +536,19 @@ export class HomePage implements OnInit {
       });
       let infowindow = new google.maps.InfoWindow({
         content:
-        '<div style="width: 400px; transition: 300ms;"><b>' +
-        this.displayAllhubs[index].name +
-        '</b><div style="display: flex; padding-top: 10px;">' +
-        '<img style="height: 100px; width: 100px; object-fit: cober; border-radius: 50px;" src=' +
-        this.displayAllhubs[index].img +
-        ">" +
-        '<div style="padding-left: 10px;padding-right: 10px">' +
-        this.displayAllhubs[index].background +
-        "</div><br>" +
+          '<div style="width: 400px; transition: 300ms;"><b>' +
+          this.displayAllhubs[index].name +
+          '</b><div style="display: flex; padding-top: 10px;">' +
+          '<img style="height: 100px; width: 100px; object-fit: cober; border-radius: 50px;" src=' +
+          this.displayAllhubs[index].img +
+          ">" +
+          '<div style="padding-left: 10px;padding-right: 10px">' +
+          this.displayAllhubs[index].background +
+          "</div><br>" +
 
 
 
-        "</div>"
+          "</div>"
       });
       showMultipleMarker.addListener('click', () => {
         this.map.setZoom(14);
@@ -551,9 +586,9 @@ export class HomePage implements OnInit {
   updateDetails() {
     this.cancelSettings()
   }
- 
 
- 
+
+
 
 
 
@@ -875,25 +910,25 @@ export class HomePage implements OnInit {
 
 
 
-  animation(){
+  animation() {
     const img = document.querySelectorAll('.anim');
 
-  //   observer = new IntersectionObserver((entries)=>{
-  //     entries.forEach(entry =>{
-  //     if (entry.intersectionRation > 0) {
-  //       entry.target.style.animation ='anim1 2s forwards ease-out';
-  //     } else {
-  //       entry.target.style.animation = 'none'
-  //     }
-  //   })
-  // })
-  // img.forEach(img =>{
-  //   observer.observer(img)
-  // })
-   }
+    //   observer = new IntersectionObserver((entries)=>{
+    //     entries.forEach(entry =>{
+    //     if (entry.intersectionRation > 0) {
+    //       entry.target.style.animation ='anim1 2s forwards ease-out';
+    //     } else {
+    //       entry.target.style.animation = 'none'
+    //     }
+    //   })
+    // })
+    // img.forEach(img =>{
+    //   observer.observer(img)
+    // })
+  }
 
-   deleteProg(indx,key){
-      const confirm = this.alertCtrl.create({
+  deleteProg(indx, key) {
+    const confirm = this.alertCtrl.create({
       message: 'Do you agree to delete this program?',
       buttons: [
         {
@@ -905,50 +940,126 @@ export class HomePage implements OnInit {
         {
           text: 'Agree',
           handler: () => {
-            this.displayOrg.splice(indx,1);
+            this.displayOrg.splice(indx, 1);
             this.hubs.removeProg(key);
           }
         }
       ]
     });
     confirm.present();
-   }
+  }
 
-   applOpen;
-   applClose;
-   start;
-   end;
-   progbackground;
-   progname2;
-   contact2;
-   img2;
-   progKey;
-   
-   
-   editprogram(i){
-     this.applOpen = i.openDate;
-     this.applClose = i.closeDate;
-     this.start = i.progStartDate;
-     this.end = i.progEndDate;
+  applOpen;
+  applClose;
+  start;
+  end;
+  progbackground;
+  progname2;
+  contact2;
+  img2;
+  progKey;
 
-     this.progbackground = i.background
-     this.progname2 = i .name;
-     this.contact2 = i.address;
-     this.img2 = i.img
-     this.progKey = i.key
-     
+
+  editprogram(i) {
+    this.applOpen = i.openDate;
+    this.applClose = i.closeDate;
+    this.start = i.progStartDate;
+    this.end = i.progEndDate;
+    this.progbackground = i.background
+    this.progname2 = i.name;
+    this.contact2 = i.address;
+    this.img2 = i.img
+    this.progKey = i.key
+    
+
+    console.log(this.progKey)
+    
+
 
 
     var settingsUpdate = document.getElementById("program-overlay");
     settingsUpdate.style.display = "block";
     settingsUpdate.style.display = "flex";
-   }
+  }
 
-   updateOrg() {
+ 
+   img3;
+   desc3;
+   servKey;
+  editservice(i) {
+     this.img3 = i.img
+     this.desc3 = i.desc
+     this.servKey = i.key
+
+    var settingsUpdate = document.getElementById("service-overlay");
+    settingsUpdate.style.display = "block";
+    settingsUpdate.style.display = "flex";
+  }
+
+ img5;
+ name5;
+ jobStartdate5;
+ jobEndDate5;
+ desc5;
+  editjob(i) {
+    this.img5 = i.img
+    this.name5 = i.name
+    this.jobEndDate5 = i.jobEndDate
+    this.jobStartdate5 =i.jobStartdate
+    this.desc5 = i.desc
+
+
+
+
+
+    var settingsUpdate = document.getElementById("job-overlay");
+    settingsUpdate.style.display = "block";
+    settingsUpdate.style.display = "flex";
+  }
+
+  name4;
+  background4;
+  img;
+  freeOrPaidWiFi4;
+  address4;
+
+
+  editwifi(i) {
+
+    this.name4 = i.name
+    this.background4 = i.background
+    this.img = i.img
+    this.freeOrPaidWiFi4  = i.freeOrPaidWiFi
+    this.address4 = i.address
+
+    var settingsUpdate = document.getElementById("wifi-overlay");
+    settingsUpdate.style.display = "block";
+    settingsUpdate.style.display = "flex";
+  }
+
+  updateOrg() {
     this.cancelSettings();
-    this.hubs.update( this.applOpen ,  this.applClose,this.start ,  this.end ,this.progname2, this.img2, this.contact, this.progbackground,this.progKey).then((data) => {
+    console.log(this.progKey)
+    this.hubs.updateprog(this.progKey,this.progname2,this.contact2,this.progbackground, this.applOpen, this.applClose,this.start,this.end,this.img2).then((data)=>{
+      console.log(data)
       this.getallorg();
+    })
+    const alert = this.alertCtrl.create({
+      subTitle: 'Your Information has been updated',
+      buttons: ['OK']
     });
+    alert.present();
+  }
+
+
+  
+  updateservice() {
+    this.cancelSettings();
+    console.log(this.servKey)
+    this.hubs.updateserv(this.servKey,this.desc3,this.img2).then((data)=>{
+      console.log(data)
+      this.getallorg();
+    })
     const alert = this.alertCtrl.create({
       subTitle: 'Your Information has been updated',
       buttons: ['OK']
@@ -959,96 +1070,79 @@ export class HomePage implements OnInit {
 
 
 
-  hideProg(i){
+
+  hideProg(i) {
     this.hubs.hideProg(i);
   }
 
-   cancelprogramm() {
-    
+  cancelprogramm() {
+
     var settingsUpdate = document.getElementById("program-overlay");
     settingsUpdate.style.display = "none";
   }
 
-  editservice(){
-    console.log(`hi`);
-    
-   var settingsUpdate = document.getElementById("service-overlay");
-   settingsUpdate.style.display = "block";
-   settingsUpdate.style.display = "flex";
-  }
+
   cancelservice() {
-   
-   var settingsUpdate = document.getElementById("service-overlay");
-   settingsUpdate.style.display = "none";
- }
 
- editjob(){
-  console.log(`hi`);
-  
- var settingsUpdate = document.getElementById("job-overlay");
- settingsUpdate.style.display = "block";
- settingsUpdate.style.display = "flex";
-}
-canceljob() {
- 
- var settingsUpdate = document.getElementById("job-overlay");
- settingsUpdate.style.display = "none";
-}
-editwifi(){
-  console.log(`hi`);
-  
- var settingsUpdate = document.getElementById("wifi-overlay");
- settingsUpdate.style.display = "block";
- settingsUpdate.style.display = "flex";
-}
-cancelwifi() {
- 
- var settingsUpdate = document.getElementById("wifi-overlay");
- settingsUpdate.style.display = "none";
-}
-editprofile(){
- var settingsUpdate = document.getElementById("profile-overlay");
- settingsUpdate.style.display = "block";
- settingsUpdate.style.display = "flex";
-}
-cancelprofile() {
- var settingsUpdate = document.getElementById("profile-overlay");
- settingsUpdate.style.display = "none";
-}
+    var settingsUpdate = document.getElementById("service-overlay");
+    settingsUpdate.style.display = "none";
+  }
 
-updateorgProfile(){
-  this.cancelSettings();
-  this.hubs.updateOrg(this.contact,this.downloadurlLogo,this.name,this.background).then((data)=>{
-    this.getallorg();
-  })
-  const Toast = Swal.mixin({
-    toast: true,
-    position: "top-end",
-    showConfirmButton: false,
-    timer: 3000
-  });
 
-  Toast.fire({
-    type: "success",
-    title: "successfully updated your organization profile"
-  });
-}
+  canceljob() {
 
-updateUserprofile(){
-  this.cancelSettings();
-  this.hubs.updateUserProfile(this.userContract,this.userImage,this.userName,this.userPosition,this.userPostiondesc).then((data)=>{
-    this.getallorg();
-  })
-  const Toast = Swal.mixin({
-    toast: true,
-    position: "top-end",
-    showConfirmButton: false,
-    timer: 3000
-  });
+    var settingsUpdate = document.getElementById("job-overlay");
+    settingsUpdate.style.display = "none";
+  }
 
-  Toast.fire({
-    type: "success",
-    title: "successfully updated your user profile"
-  });
-}
+  cancelwifi() {
+
+    var settingsUpdate = document.getElementById("wifi-overlay");
+    settingsUpdate.style.display = "none";
+  }
+  editprofile() {
+    var settingsUpdate = document.getElementById("profile-overlay");
+    settingsUpdate.style.display = "block";
+    settingsUpdate.style.display = "flex";
+  }
+  cancelprofile() {
+    var settingsUpdate = document.getElementById("profile-overlay");
+    settingsUpdate.style.display = "none";
+  }
+
+  updateorgProfile() {
+    this.cancelSettings();
+    this.hubs.updateOrg(this.contact, this.downloadurlLogo, this.name, this.background).then((data) => {
+      this.getallorg();
+    })
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000
+    });
+
+    Toast.fire({
+      type: "success",
+      title: "successfully updated your organization profile"
+    });
+  }
+
+  updateUserprofile() {
+    this.cancelSettings();
+    this.hubs.updateUserProfile(this.userContract, this.userImage, this.userName, this.userPosition, this.userPostiondesc).then((data) => {
+      this.getallorg();
+    })
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000
+    });
+
+    Toast.fire({
+      type: "success",
+      title: "successfully updated your user profile"
+    });
+  }
 }

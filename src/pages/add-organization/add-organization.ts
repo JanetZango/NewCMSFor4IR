@@ -380,7 +380,7 @@ export class AddOrganizationPage {
     if (event.target.files && event.target.files[0]) {
       let reader = new FileReader();
       reader.onload = (event: any) => {
-        this.downloadurl2 = event.target.result;
+        this.downloadurl = event.target.result;
       }
       reader.readAsDataURL(event.target.files[0]);
     }
