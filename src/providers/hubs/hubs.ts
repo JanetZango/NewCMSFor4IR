@@ -302,7 +302,15 @@ export class HubsProvider {
   removeProg(key){
     firebase.database().ref('4IRHubs/' + key).remove();
   }
-  
+  removesev(key){
+    firebase.database().ref('4IRHubs/' + key).remove();
+  }
+  removejobs(key){
+    firebase.database().ref('4IRHubs/' + key).remove();
+  }
+  removewifi(key){
+    firebase.database().ref('4IRHubs/' + key).remove();
+  }
   updateprog(progKey,progname2,contact2,progbackground, applOpen,applClose,start,end,img){
     console.log(progKey)
     return new Promise((resolve, reject) => {

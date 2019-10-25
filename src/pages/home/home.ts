@@ -949,6 +949,74 @@ export class HomePage implements OnInit {
     confirm.present();
   }
 
+  deletesev(indx, key) {
+    const confirm = this.alertCtrl.create({
+      message: 'Do you agree to delete this program?',
+      buttons: [
+        {
+          text: 'Disagree',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+            this.displayOrg.splice(indx, 1);
+            this.hubs.removesev(key);
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+
+  deletejobs(indx, key) {
+    const confirm = this.alertCtrl.create({
+      message: 'Do you agree to delete this program?',
+      buttons: [
+        {
+          text: 'Disagree',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+            this.displayOrg.splice(indx, 1);
+            this.hubs.removejobs(key);
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+
+  
+  deletewifi(indx, key) {
+    const confirm = this.alertCtrl.create({
+      message: 'Do you agree to delete this program?',
+      buttons: [
+        {
+          text: 'Disagree',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+            this.displayOrg.splice(indx, 1);
+            this.hubs.removewifi(key);
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
   applOpen;
   applClose;
   start;

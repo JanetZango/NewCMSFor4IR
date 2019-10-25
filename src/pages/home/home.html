@@ -121,7 +121,7 @@
               <div class="image-image">
                 <div class="action-buttons">
                   <button ion-button clear color="light">Hide</button>
-                  <button ion-button clear color="light">Delete</button>
+                  <button ion-button clear color="light"  (click)='deletesev(x,i.key)'>Delete</button>
                   <button ion-button clear color="light" (click)='editservice(i)'>Edit</button>
                 </div>
                 <img src="{{i.img}}" alt="" class="image-actual">
@@ -233,7 +233,7 @@
               <div class="image-image">
                 <div class="action-buttons">
                   <button ion-button clear color="light">Hide</button>
-                  <button ion-button clear color="light">Delete</button>
+                  <button ion-button clear color="light" (click)='deletejobs(x,i.key)'>Delete</button>
                   <button ion-button clear color="light" (click)='editjob(i)'>Edit</button>
                 </div>
                 <img src="{{i.img}}" alt="" class="image-actual">
@@ -305,7 +305,7 @@
                 <div class="image-image">
                   <div class="action-buttons">
                     <button ion-button clear color="light">Hide</button>
-                    <button ion-button clear color="light">Delete</button>
+                    <button ion-button clear color="light"  (click)='deletewifi(x,i.key)'>Delete</button>
                     <button ion-button clear color="light" (click)='editwifi(i)'>Edit</button>
                   </div>
                   <img src="{{i.img}}" alt="" class="image-actual">
@@ -516,8 +516,6 @@
                 </ion-row>
             
                 </ion-grid>
-              
-                <!-- <ion-input type="email" class="text-field" placeholder="Email Address" [(ngModel)]="email" disabled></ion-input> -->
                 <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="5"
                   [(ngModel)]="background"></textarea>
              
