@@ -1059,6 +1059,8 @@ export class HomePage implements OnInit {
      this.desc3 = i.desc
      this.servKey = i.key
 
+     console.log(this.servKey)
+
     var settingsUpdate = document.getElementById("service-overlay");
     settingsUpdate.style.display = "block";
     settingsUpdate.style.display = "flex";
