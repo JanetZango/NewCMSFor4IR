@@ -535,15 +535,6 @@
     <div class="toDismiss" (click)="cancelSettings()">
 
     </div>
-    <div class="editing-data-inputs">
-      <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
-      <div id="theLogo-update">
-
-        <label for="logoUpdate">
-          <div>Logo</div>
-          <img id="click-upload" src="{{progImg}}" alt="">
-        </label>
-      </div>
       <div class="editing-data-inputs">
         <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic2($event)" id="logoUpdate2">
         <div id="theLogo-update">
@@ -609,8 +600,7 @@
         </div>
       </div>
     </div>
-  </div>
-
+</div>
 
     <div id="service-overlay">
         <div class="toDismiss" (click)="cancelSettings()">
@@ -639,87 +629,37 @@
         </div>
 
       </div>
+    
+  <!-- </div> -->
+
+
+  <div id="job-overlay">
+    <div class="toDismiss" (click)="cancelSettings()">
+
     </div>
-  </div>
+    <div class="editing-data-inputs">
+      <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
+      <div id="theLogo-update">
 
-
-      <div id="job-overlay">
-          <div class="toDismiss" (click)="cancelSettings()">
-  
-            </div>
-            <div class="editing-data-inputs">
-              <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate5">
-              <div id="theLogo-update">
+        <label for="logoUpdate">
+          <div>Logo</div>
+          <img id="click-upload" src="{{Jimg}}" alt="">
+        </label>
+      </div>
+      <div id="update-inputs">
+        <p>Update organisation Jobs</p>
+        <ion-input type="text" class="text-field" placeholder="Background" value="{{jName}}" [(ngModel)]="jName ">
+        </ion-input>
+        <ion-input type="text" class="text-field" placeholder="Job type" [(ngModel)]="jConta"></ion-input>
+        <ion-input type="tel" class="text-field" placeholder="Address" [(ngModel)]="jAddrs"></ion-input>
         
-                <label for="logoUpdate5">
-                  <div>Logo</div>
-                  <img id="click-upload" src="{{img5}}" alt="">
-                </label>
-              </div>
-              <div id="update-inputs">
-                <p>Update organisation Jobs</p>
-                <ion-input type="text" class="text-field" placeholder="Name"  [(ngModel)]="name5">
-                </ion-input>
-                <ion-input type="text" class="text-field" placeholder="Job type"  [(ngModel)]="address"></ion-input>
-                <ion-input type="text" class="text-field" placeholder="Description" [(ngModel)]="desc5"></ion-input>
-      
-                <ion-grid>
-                <ion-row>
-                    
-                    <ion-row col-12>
-                        <p text-center>Application</p>
-                    </ion-row>
-                    <ion-col col-6>
-                     
-                        <ion-item>
-                            <ion-label>Start </ion-label>
-                            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="jobStartdate5"></ion-datetime>
-                          </ion-item>
-                    </ion-col>
-                    <ion-col col-6>
-                        <ion-item>
-                            <ion-label>End</ion-label>
-                            <ion-datetime text-center displayFormat="MM/DD/YYYY" [(ngModel)]="jobEndDate5"></ion-datetime>
-                          </ion-item>
-                    </ion-col>
-                </ion-row>
-            
-                </ion-grid>
-                <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="5"
-                  [(ngModel)]="background"></textarea>
-             
-                <div id="update-buttons">
-                  <button ion-button outline color="danger" (click)="canceljob()">Cancel</button>
-                  <button ion-button (click)="updateOrg()">Update</button>
-                </div>
-              </div>
-            </div>
-          </div> 
+        <ion-grid>
+          <ion-row>
 
-          <div id="wifi-overlay">
-              <div class="toDismiss" (click)="cancelSettings()">
-          
-              </div>
-              <div class="editing-data-inputs">
-                <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertpic($event)" id="logoUpdate">
-                <div id="theLogo-update">
-          
-                  <label for="logoUpdate">
-                    <div>Logo</div>
-                    <img id="click-upload" src="{{img}}" alt="">
-                  </label>
-                </div>
-                <div id="update-inputs">
-                  <p>Update organisation WiFi</p>  
-                  <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="10"
-                    [(ngModel)]="background4"></textarea>
-                  <div id="update-buttons">
-                    <button ion-button outline color="danger" (click)="cancelwifi()">Cancel</button>
-                    <button ion-button (click)="updateOrg()">Update</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ion-row col-12>
+              <p text-center>Application</p>
+            </ion-row>
+            <ion-col col-6>
 
               <ion-item>
                 <ion-label>Start </ion-label>

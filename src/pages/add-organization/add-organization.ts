@@ -363,82 +363,6 @@ export class AddOrganizationPage {
   }
 
 
-<<<<<<< HEAD
-  downloadurl = "../../assets/imgs/Cover Image.jpg";
-  insertpic(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      let reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.downloadurl = event.target.result;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
-
-  }
-
-  downloadurl2 = "../../assets/imgs/Logo Image.jpg";
-  insertpic2(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      let reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.downloadurl = event.target.result;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
-
-  }
-
-  downloadurl3 = "../../assets/imgs/Cover Image.jpg";
-  insert6(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      let reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.downloadurl3 = event.target.result;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
-
-  }
-
-
-  downloadurl4 = "../../assets/imgs/Cover Image.jpg";
-  insert7(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      let reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.downloadurl4 = event.target.result;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
-
-  }
-
-
-
-  downloadurl5 = "../../assets/imgs/Cover Image.jpg";
-  insert(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      let reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.downloadurl5 = event.target.result;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
-
-  }
-
-  downloadurl6 = "../../assets/imgs/Cover Image.jpg";
-  insert2(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      let reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.downloadurl6 = event.target.result;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
-
-  }
-=======
   // downloadurl = "../../assets/imgs/Cover Image.jpg";
   // insertpic(event: any) {
   //   if (event.target.files && event.target.files[0]) {
@@ -456,7 +380,7 @@ export class AddOrganizationPage {
   //   if (event.target.files && event.target.files[0]) {
   //     let reader = new FileReader();
   //     reader.onload = (event: any) => {
-  //       this.downloadurl2 = event.target.result;
+  //       this.downloadurl = event.target.result;
   //     }
   //     reader.readAsDataURL(event.target.files[0]);
   //   }
@@ -489,7 +413,7 @@ export class AddOrganizationPage {
   // }
 
 
-
+//
   // downloadurl5 = "../../assets/imgs/Cover Image.jpg";
   // insert(event: any) {
   //   if (event.target.files && event.target.files[0]) {
@@ -513,7 +437,6 @@ export class AddOrganizationPage {
   //   }
 
   // }
->>>>>>> 37f2de8275200ad5cae1d5022491f6b50a6dd95f
 
 
   //getaddress

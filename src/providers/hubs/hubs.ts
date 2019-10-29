@@ -1145,7 +1145,6 @@ export class HubsProvider {
   removeProg(key){
     firebase.database().ref('4IRHubs/' + key).remove();
   }
-<<<<<<< HEAD
   removesev(key){
     firebase.database().ref('4IRHubs/' + key).remove();
   }
@@ -1181,8 +1180,6 @@ export class HubsProvider {
   }
 
   
-=======
->>>>>>> 37f2de8275200ad5cae1d5022491f6b50a6dd95f
   getallhubs() {
 		return new Promise((resolve, reject) => {
 			this.ngzone.run(() => {
