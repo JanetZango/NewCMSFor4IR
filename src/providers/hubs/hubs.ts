@@ -1170,10 +1170,10 @@ export class HubsProvider {
     });
   }
 
-  updateserv(servKey,desc3,img3){
+  updateserv(progKey,desc3,img){
     return new Promise((resolve, reject) => {
-      firebase.database().ref("4IRHubs/" + servKey).update({
-        img:img3,
+      firebase.database().ref("4IRHubs/" + progKey).update({
+        img:img,
         desc:desc3
       })
       });

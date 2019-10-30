@@ -1092,6 +1092,7 @@ export class HomePage implements OnInit {
   img;
   freeOrPaidWiFi4;
   address4;
+  wifikey;
 
 
   editwifi(i) {
@@ -1101,6 +1102,7 @@ export class HomePage implements OnInit {
     this.img = i.img
     this.freeOrPaidWiFi4  = i.freeOrPaidWiFi
     this.address4 = i.address
+    this.wifikey = i.img
 
     var settingsUpdate = document.getElementById("wifi-overlay");
     settingsUpdate.style.display = "block";
@@ -1126,7 +1128,7 @@ export class HomePage implements OnInit {
   updateservice() {
     this.cancelSettings();
     console.log(this.servKey)
-    this.hubs.updateserv(this.servKey,this.desc3,this.img2).then((data)=>{
+    this.hubs.updateserv(this.servKey,this.desc3,this.img3).then((data)=>{
       console.log(data)
       this.getallorg();
     })
