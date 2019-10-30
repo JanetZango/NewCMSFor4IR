@@ -136,7 +136,7 @@
                     <h2>Details</h2>
                   <div>
 
-                    <p id="heading">{{i.serviceName}}</p>
+                    <p id="heading">{{i.name}}</p>
                     <p id="sub-head">Description</p>
                     <p id="bg-desc">
                       {{i.desc}}
@@ -617,8 +617,10 @@
           </div>
           <div id="update-inputs">
             <p>Update organisation service</p>
+            <ion-input type="text" class="text-field" placeholder="name"  [(ngModel)]="serviceName">
+            </ion-input>
             <textarea name="" id="textarea-update" placeholder="service Description" cols="30" rows="10"
-              [(ngModel)]="desc3"></textarea>
+              [(ngModel)]="descServ"></textarea>
             <div id="update-buttons">
               <button ion-button outline color="danger" (click)="cancelservice()">Cancel</button>
               <button ion-button (click)="updateservice()">Update</button>

@@ -1052,12 +1052,18 @@ export class HomePage implements OnInit {
 
  
    img3;
-   desc3;
+   descServ;
    servKey;
+   serviceName;
+
+
+
+
   editservice(i) {
      this.img3 = i.img
-     this.desc3 = i.desc
+     this.descServ = i.desc
      this.servKey = i.key
+     this.serviceName = i.name
 
      console.log(this.servKey)
 
@@ -1128,7 +1134,7 @@ export class HomePage implements OnInit {
   updateservice() {
     this.cancelSettings();
     console.log(this.servKey)
-    this.hubs.updateserv(this.servKey,this.desc3,this.img3).then((data)=>{
+    this.hubs.updateserv(this.servKey,this.descServ,this.img).then((data)=>{
       console.log(data)
       this.getallorg();
     })
