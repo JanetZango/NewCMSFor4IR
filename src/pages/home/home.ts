@@ -203,6 +203,39 @@ export class HomePage implements OnInit {
     }
   }
 
+  
+  insertpic4(event: any) {
+    this.d = 1;
+    let opts = document.getElementsByClassName('options') as HTMLCollectionOf<HTMLElement>;
+    if (this.d == 1) {
+      if (event.target.files && event.target.files[0]) {
+        let reader = new FileReader();
+        reader.onload = (event: any) => {
+          this.img4 = event.target.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
+
+    }
+  }
+
+  
+  
+  insertpic5(event: any) {
+    this.d = 1;
+    let opts = document.getElementsByClassName('options') as HTMLCollectionOf<HTMLElement>;
+    if (this.d == 1) {
+      if (event.target.files && event.target.files[0]) {
+        let reader = new FileReader();
+        reader.onload = (event: any) => {
+          this.img5 = event.target.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
+
+    }
+  }
+
 
   insertuserprofile(event: any) {
     this.d = 1;
@@ -383,6 +416,7 @@ export class HomePage implements OnInit {
   jobsArry = new Array();
   showJobsPage() {
     this.jobsArry = [];
+    console.log(this.jobsArry);
     for (var x = 0; x < this.displayOrg.length; x++) {
       if (this.displayOrg[x].category == "jobs") {
         this.jobsArry.push(this.displayOrg[x]);
@@ -1073,16 +1107,18 @@ export class HomePage implements OnInit {
   }
 
  img5;
- name5;
+ namej;
  jobStartdate5;
  jobEndDate5;
  desc5;
+ jobkey;
   editjob(i) {
     this.img5 = i.img
-    this.name5 = i.name
+    this.namej = i.name
     this.jobEndDate5 = i.jobEndDate
     this.jobStartdate5 =i.jobStartdate
     this.desc5 = i.desc
+    this.jobkey = i.key
 
 
 
@@ -1093,22 +1129,21 @@ export class HomePage implements OnInit {
     settingsUpdate.style.display = "flex";
   }
 
-  name4;
+  nameF;
   background4;
-  img;
-  freeOrPaidWiFi4;
+  img4;
+  freeOrPaidWiFi;
   address4;
   wifikey;
 
 
   editwifi(i) {
-
-    this.name4 = i.name
+    this.nameF = i.name
     this.background4 = i.background
-    this.img = i.img
-    this.freeOrPaidWiFi4  = i.freeOrPaidWiFi
+    this.img4 = i.img
+    this.freeOrPaidWiFi  = i.freeOrPaidWiFi
     this.address4 = i.address
-    this.wifikey = i.img
+    this.wifikey = i.key
 
     var settingsUpdate = document.getElementById("wifi-overlay");
     settingsUpdate.style.display = "block";
@@ -1134,7 +1169,7 @@ export class HomePage implements OnInit {
   updateservice() {
     this.cancelSettings();
     console.log(this.servKey)
-    this.hubs.updateserv(this.servKey,this.descServ,this.img).then((data)=>{
+    this.hubs.updateserv(this.servKey,this.descServ,this.img3,this.serviceName).then((data)=>{
       console.log(data)
       this.getallorg();
     })
@@ -1144,6 +1179,36 @@ export class HomePage implements OnInit {
     });
     alert.present();
   }
+
+
+  updateWIFI() {
+    this.cancelSettings();
+    console.log(this.wifikey)
+    this.hubs.updatewifi(this.wifikey,this.background4,this.img4,this.nameF).then((data)=>{
+      console.log(data)
+      this.getallorg();
+    })
+    const alert = this.alertCtrl.create({
+      subTitle: 'Your Information has been updated',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  updateJobs(){
+    this.cancelSettings();
+    console.log(this.wifikey)
+    this.hubs.updatejobs(this.jobkey,this.desc5,this.img5,this.namej).then((data)=>{
+      console.log(data)
+      this.getallorg();
+    })
+    const alert = this.alertCtrl.create({
+      subTitle: 'Your Information has been updated',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
 
 
 

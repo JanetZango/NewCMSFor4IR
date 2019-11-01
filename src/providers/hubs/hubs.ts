@@ -1158,7 +1158,7 @@ export class HubsProvider {
     console.log(progKey)
     return new Promise((resolve, reject) => {
     firebase.database().ref("4IRHubs/" + progKey).update({
-      progName: progname2,
+      name: progname2,
       contact: contact2,
       background:progbackground,
       openDate : applOpen,
@@ -1170,15 +1170,36 @@ export class HubsProvider {
     });
   }
 
-  updateserv(progKey,desc3,img){
+  updateserv(progKey,desc3,img,name){
     return new Promise((resolve, reject) => {
       firebase.database().ref("4IRHubs/" + progKey).update({
         img:img,
-        desc:desc3
+        desc:desc3,
+        name:name
       })
       });
   }
 
+  updatewifi(wifikey,background4,img4,nameF){
+    return new Promise((resolve, reject) => {
+      firebase.database().ref("4IRHubs/" + wifikey).update({
+        img:img4,
+        background:background4,
+        name:nameF
+      })
+      });
+  }
+
+
+  updatejobs(jobkey,desc5,img5,namej){
+    return new Promise((resolve, reject) => {
+      firebase.database().ref("4IRHubs/" + jobkey).update({
+        img:img5,
+        desc:desc5,
+        name:namej
+      })
+      });
+  }
   
   getallhubs() {
 		return new Promise((resolve, reject) => {
