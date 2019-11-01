@@ -1315,7 +1315,6 @@ export class HomePage implements OnInit {
       document.getElementById('results').style.display = "none";
       this.onCancel(this)
     }, 500);
-    
   }
   onCancel(ev) {
     this.items = [];
