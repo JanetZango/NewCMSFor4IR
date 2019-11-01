@@ -129,6 +129,12 @@ export class HomePage implements OnInit {
     })
   }
 
+  ionViewDidLoad() {
+    this.getallhubs();
+    
+   
+  }
+
   getallAvailableOrg() {
     this.hubs.getAllOrganizations().then((data: any) => {
       this.displayAllORG = data
@@ -364,6 +370,7 @@ export class HomePage implements OnInit {
   servArray = new Array();
   showServicesPage() {
     this.servArray = [];
+    this.servArray.length =0;
     for (var x = 0; x < this.displayOrg.length; x++) {
       if (this.displayOrg[x].category == "service") {
         this.servArray.push(this.displayOrg[x]);
@@ -391,6 +398,7 @@ export class HomePage implements OnInit {
   progArray = new Array();
   showProgrammesPage() {
     this.progArray = [];
+    this.progArray.length =0;
     for (var x = 0; x < this.displayOrg.length; x++) {
       if (this.displayOrg[x].category == "programmes") {
         this.progArray.push(this.displayOrg[x]);
@@ -416,6 +424,7 @@ export class HomePage implements OnInit {
   jobsArry = new Array();
   showJobsPage() {
     this.jobsArry = [];
+    this.jobsArry.length =0;
     console.log(this.jobsArry);
     for (var x = 0; x < this.displayOrg.length; x++) {
       if (this.displayOrg[x].category == "jobs") {
@@ -440,6 +449,7 @@ export class HomePage implements OnInit {
   wifrArry = new Array();
   showwifiPage() {
     this.wifrArry = [];
+    this.wifrArry.length =0;
     for (var x = 0; x < this.displayOrg.length; x++) {
       if (this.displayOrg[x].category == "wifi") {
         this.wifrArry.push(this.displayOrg[x]);
@@ -946,19 +956,6 @@ export class HomePage implements OnInit {
 
   animation() {
     const img = document.querySelectorAll('.anim');
-
-    //   observer = new IntersectionObserver((entries)=>{
-    //     entries.forEach(entry =>{
-    //     if (entry.intersectionRation > 0) {
-    //       entry.target.style.animation ='anim1 2s forwards ease-out';
-    //     } else {
-    //       entry.target.style.animation = 'none'
-    //     }
-    //   })
-    // })
-    // img.forEach(img =>{
-    //   observer.observer(img)
-    // })
   }
 
   deleteProg(indx, key) {
@@ -976,6 +973,7 @@ export class HomePage implements OnInit {
           handler: () => {
             this.displayOrg.splice(indx, 1);
             this.hubs.removeProg(key);
+            this.getallhubs();
           }
         }
       ]
@@ -998,6 +996,7 @@ export class HomePage implements OnInit {
           handler: () => {
             this.displayOrg.splice(indx, 1);
             this.hubs.removesev(key);
+            this.getallhubs();
           }
         }
       ]
@@ -1021,6 +1020,7 @@ export class HomePage implements OnInit {
           handler: () => {
             this.displayOrg.splice(indx, 1);
             this.hubs.removejobs(key);
+            this.getallhubs();
           }
         }
       ]
@@ -1045,6 +1045,7 @@ export class HomePage implements OnInit {
           handler: () => {
             this.displayOrg.splice(indx, 1);
             this.hubs.removewifi(key);
+            this.getallhubs();
           }
         }
       ]
@@ -1150,64 +1151,6 @@ export class HomePage implements OnInit {
     settingsUpdate.style.display = "flex";
   }
 
-  updateOrg() {
-    this.cancelSettings();
-    console.log(this.progKey)
-    this.hubs.updateprog(this.progKey,this.progname2,this.contact2,this.progbackground, this.applOpen, this.applClose,this.start,this.end,this.img2).then((data)=>{
-      console.log(data)
-      this.getallorg();
-    })
-    const alert = this.alertCtrl.create({
-      subTitle: 'Your Information has been updated',
-      buttons: ['OK']
-    });
-    alert.present();
-  }
-
-
-  
-  updateservice() {
-    this.cancelSettings();
-    console.log(this.servKey)
-    this.hubs.updateserv(this.servKey,this.descServ,this.img3,this.serviceName).then((data)=>{
-      console.log(data)
-      this.getallorg();
-    })
-    const alert = this.alertCtrl.create({
-      subTitle: 'Your Information has been updated',
-      buttons: ['OK']
-    });
-    alert.present();
-  }
-
-
-  updateWIFI() {
-    this.cancelSettings();
-    console.log(this.wifikey)
-    this.hubs.updatewifi(this.wifikey,this.background4,this.img4,this.nameF).then((data)=>{
-      console.log(data)
-      this.getallorg();
-    })
-    const alert = this.alertCtrl.create({
-      subTitle: 'Your Information has been updated',
-      buttons: ['OK']
-    });
-    alert.present();
-  }
-
-  updateJobs(){
-    this.cancelSettings();
-    console.log(this.wifikey)
-    this.hubs.updatejobs(this.jobkey,this.desc5,this.img5,this.namej).then((data)=>{
-      console.log(data)
-      this.getallorg();
-    })
-    const alert = this.alertCtrl.create({
-      subTitle: 'Your Information has been updated',
-      buttons: ['OK']
-    });
-    alert.present();
-  }
 
 
 
@@ -1268,6 +1211,88 @@ export class HomePage implements OnInit {
     Toast.fire({
       type: "success",
       title: "successfully updated your organization profile"
+    });
+  }
+
+
+
+  updateOrg() {
+    this.cancelSettings();
+    this.hubs.updateprog(this.progKey,this.progname2,this.contact2,this.progbackground, this.applOpen, this.applClose,this.start,this.end,this.img2).then((data)=>{
+      this.getallorg();
+    })
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000
+    });
+
+    Toast.fire({
+      type: "success",
+      title: "successfully updated your profile information"
+    });
+  }
+
+
+  
+  updateservice() {
+    this.cancelSettings();
+    this.hubs.updateserv(this.servKey,this.descServ,this.img3,this.serviceName).then((data)=>{
+      console.log(data)
+      this.getallorg();
+    })
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000
+    });
+
+    Toast.fire({
+      type: "success",
+      title: "successfully updated your service information"
+    });
+  }
+
+
+  updateWIFI() {
+    this.cancelSettings();
+    console.log(this.wifikey)
+    this.hubs.updatewifi(this.wifikey,this.background4,this.img4,this.nameF).then((data)=>{
+      console.log(data)
+      this.getallorg();
+    })
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000
+    });
+
+    Toast.fire({
+      type: "success",
+      title: "successfully updated your wifi information"
+    });
+  }
+
+  updateJobs(){
+    this.cancelSettings();
+    console.log(this.wifikey)
+    this.hubs.updatejobs(this.jobkey,this.desc5,this.img5,this.namej).then((data)=>{
+      console.log(data)
+      this.getallorg();
+    })
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000
+    });
+
+    Toast.fire({
+      type: "success",
+      title: "successfully updated your job information"
     });
   }
 
