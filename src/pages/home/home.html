@@ -64,7 +64,7 @@
           <button id="ifSmall" ion-button clear color="light" (click)="showSidePane()">
             <ion-icon name="menu"></ion-icon>
           </button>
-          <ion-searchbar placeholder="Search" [(ngModel)]="itemName" (ionInput)="getItems($event)"></ion-searchbar>
+          <ion-searchbar placeholder="Search"  (ionClear)="onCancel($event)"  [(ngModel)]="itemName" (ionInput)="getItems($event)" (ionFocus)='onInput($event)' (ionBlur)='noInput($event)'></ion-searchbar>
           <!-- <ion-searchbar placeholder="Search" (ionInput)="getItems($event)"></ion-searchbar> -->
           <div id="results">
            
@@ -603,12 +603,57 @@
               <img id="click-upload" src="{{img3}}" alt="">
             </label>
           </div>
+          
           <div id="update-inputs">
             <p>Update organisation service</p>
-            <ion-input type="text" class="text-field" placeholder="name"  [(ngModel)]="serviceName">
+            <ion-input type="text" class="text-field" placeholder="Background"  [(ngModel)]="progname2">
             </ion-input>
-            <textarea name="" id="textarea-update" placeholder="service Description" cols="30" rows="10"
-              [(ngModel)]="descServ"></textarea>
+            <!-- <ion-input type="text" class="text-field" placeholder="Physical Address"  [(ngModel)]="address"></ion-input> -->
+            <ion-input type="tel" class="text-field" placeholder="Contact details" [(ngModel)]="contact2"></ion-input>
+  
+            <ion-grid>
+            <ion-row>
+  
+              <ion-row col-12>
+                <p text-center>Application</p>
+              </ion-row>
+              <ion-col col-6>
+  
+                <ion-item>
+                  <ion-label>Start </ion-label>
+                  <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="applOpen"></ion-datetime>
+                </ion-item>
+              </ion-col>
+              <ion-col col-6>
+                <ion-item>
+                  <ion-label>End</ion-label>
+                  <ion-datetime text-center displayFormat="MM/DD/YYYY" [(ngModel)]="applClose"></ion-datetime>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-row col-12>
+                <p>Program</p>
+              </ion-row>
+  
+              <ion-col col-6>
+                <ion-item>
+                  <ion-label>Start</ion-label>
+                  <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="start"></ion-datetime>
+                </ion-item>
+              </ion-col>
+              <ion-col col-6>
+                <ion-item>
+                  <ion-label>End</ion-label>
+                  <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="end"></ion-datetime>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+  
+          <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="5"
+            [(ngModel)]="progbackground"></textarea>
+  
             <div id="update-buttons">
               <button ion-button outline color="danger" (click)="cancelservice()">Cancel</button>
               <button ion-button (click)="updateservice()">Update</button>
@@ -638,10 +683,53 @@
       </div>
       <div id="update-inputs">
         <p>Update organisation Jobs</p>
-        <ion-input type="text" class="text-field" placeholder="Background" value="{{namej}}" [(ngModel)]="namej">
+        <ion-input type="text" class="text-field" placeholder="Background"  [(ngModel)]="progname2">
         </ion-input>
-        <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="10"
-        [(ngModel)]="desc5"></textarea>
+        <!-- <ion-input type="text" class="text-field" placeholder="Physical Address"  [(ngModel)]="address"></ion-input> -->
+        <ion-input type="tel" class="text-field" placeholder="Contact details" [(ngModel)]="contact2"></ion-input>
+
+        <ion-grid>
+        <ion-row>
+
+          <ion-row col-12>
+            <p text-center>Application</p>
+          </ion-row>
+          <ion-col col-6>
+
+            <ion-item>
+              <ion-label>Start </ion-label>
+              <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="applOpen"></ion-datetime>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+              <ion-label>End</ion-label>
+              <ion-datetime text-center displayFormat="MM/DD/YYYY" [(ngModel)]="applClose"></ion-datetime>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-row col-12>
+            <p>Program</p>
+          </ion-row>
+
+          <ion-col col-6>
+            <ion-item>
+              <ion-label>Start</ion-label>
+              <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="start"></ion-datetime>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+              <ion-label>End</ion-label>
+              <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="end"></ion-datetime>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <textarea name="" id="textarea-update" placeholder="Organisation Description" cols="30" rows="5"
+        [(ngModel)]="progbackground"></textarea>
      
         <div id="update-buttons">
           <button ion-button outline color="danger" (click)="canceljob()">Cancel</button>
@@ -704,6 +792,102 @@
           <button ion-button (click)="updateUserprofile()">Update</button>
         </div>
 
+      </div>
+    </div>
+  </div>
+
+
+ <!------------------------------------------------searchModeal----------------------------------------------->
+  <div id="serachmodela-overlay">
+
+
+    <div class="main" *ngFor="let m of serachresults">
+      <div class="closebtn">
+        <ion-icon color="light" style="font-size: 4em;" name="md-close" (click)="cancelsearchresuts()"></ion-icon>
+      </div>
+      <div class="imgcenter">
+        <!-- <img class="coverimg" src={{m.img}} alt="" srcset=""> -->
+        <img style="margin: 3% auto; height: 15vh; width: 15vh; border-radius: 100px;" src={{m.img}} alt="" srcset="">
+      </div>
+      <div padding class="textcontainer">
+        <h1 text-center style="font-size: 1.8em;">{{m.name}}</h1>
+        <h4 class="alltextcolor">Background</h4>
+
+        <p class="alltextcolor">{{m.background}}</p>
+
+        <h4 class="alltextcolor">Address</h4>
+        <p class="alltextcolor">{{m.address}}</p>
+
+        <div>
+          <h4 class="alltextcolor">Application</h4>
+
+          <div class="AppJob">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-6>
+                  <p class="alltextcolor" no-margin text-center>Application Open Date</p>
+                  <p class="alltextcolor" no-margin text-center>{{m.progStartDate}}</p>
+                </ion-col>
+                <ion-col col-6>
+                  <p class="alltextcolor" no-margin text-center>Application Close Date</p>
+                  <p class="alltextcolor" no-margin text-center>{{m.progEndDate}}</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </div>
+        <div>
+          <br>
+          <h4 class="alltextcolor">Job</h4>
+
+          <div class="AppJob">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-6>
+                  <p class="alltextcolor" no-margin text-center>Job Start Date</p>
+                  <p class="alltextcolor" no-margin text-center>{{m.jobStartdate}}</p>
+                </ion-col>
+                <ion-col col-6>
+                  <p class="alltextcolor" no-margin text-center>Job End Date</p>
+                  <p class="alltextcolor" no-margin text-center>{{m.jobEndDate}}</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </div>
+
+        <h4 class="alltextcolor">Contacts</h4>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col col-4>
+              <div class="contact">
+                <p style="font-weight: 600;" class="contactinnertext">Phone number</p>
+                <p class="contactinnertext">011 855 0594</p>
+              </div>
+            </ion-col>
+            <ion-col col-4>
+              <div class="contact">
+                <p style="font-weight: 600;" class="contactinnertext">Website</p>
+                <p class="contactinnertext">www.google.com</p>
+              </div>
+            </ion-col>
+            <!-- </ion-row>
+    <ion-row> -->
+            <ion-col col-4>
+              <div class="contact">
+                <p style="font-weight: 600;" class="contactinnertext">Email</p>
+                <p class="contactinnertext">nenenkosi@gmail.com</p>
+              </div>
+            </ion-col>
+            <!-- <ion-col col-6>
+            <div class="contact" >
+              <p text-center class="contactinnertext">Email</p>
+              <p text-center class="contactinnertext">nenenkosi@gmail.com</p>
+            </div>
+          </ion-col> -->
+          </ion-row>
+        </ion-grid>
       </div>
     </div>
   </div>

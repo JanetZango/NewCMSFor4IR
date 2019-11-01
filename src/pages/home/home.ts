@@ -552,13 +552,7 @@ export class HomePage implements OnInit {
     }
   }
   initializeItems() {
-    this.items = [
-
-      'Acceptance', 'Action', 'Adversity', 'Anger', 'Authenticity', 'Boundaries', 'Choice', 'Compassion', 'Competitveness', 'Courage', 'Customer-relations-management', 'Decisiveness', 'Delayed-gratification', 'Depression',
-      'Detachment', 'Dream-big', 'Emotional-intelligence', 'Enemy', 'Enthusiasm', 'Ethics', 'Excellence', 'Fear', 'Freedom', 'Giving', 'Gratitude', 'Growth', 'Happiness', 'Hard-work', 'Health', 'Humility', 'Inner-power',
-      'Innovation', 'Intuition', 'Learning', 'Love', 'Life', 'Morality', 'Obstacles', 'Passion', 'Patience', 'Perseverance', 'Positivity', 'Power', 'Purpose', 'Regrets', 'Relationships', 'Risk-taking', 'Self discovery',
-      'Service', 'Small-steps', 'Spiritual-intelligence', 'Temper', 'Think big', 'Thoughts', 'Time', 'Truth', 'Vision', 'Wealth',
-    ];
+    this.items = this.orgNames
   }
 
 
@@ -1313,4 +1307,47 @@ export class HomePage implements OnInit {
       title: "successfully updated your user profile"
     });
   }
+  onInput(e){
+    document.getElementById('results').style.display = "block"
+  }
+  noInput(e){
+    setTimeout(() => {
+      document.getElementById('results').style.display = "none";
+      this.onCancel(this)
+    }, 500);
+    
+  }
+  onCancel(ev) {
+    this.items = [];
+  }
+  cancelsearchresuts() {
+    var settingsUpdate = document.getElementById("serachmodela-overlay");
+    settingsUpdate.style.display = "none";
+  }
+  serachresults = []
+  loclenght = []
+  openMarkerInfo(i) {
+    console.log(i);
+    this.loclenght = []
+    for (var x = 0; x < this.displayAllhubs.length; x++) {
+      if (i == this.displayAllhubs[x].name) {
+        //console.log(this.displayAllhubs[x]);
+        this.serachresults = [this.displayAllhubs[x]]
+        //console.log(this.serachresults)
+        document.getElementById('serachmodela-overlay').style.display = 'block'
+        //this.navCtrl.push(ViewservicePage, { orgObject: this.getOrgArry[x], loginState: this.logInState });
+        break;
+      } else if (i == this.displayAllhubs[x].location) {
+        console.log(`location`);
+        console.log(this.displayAllhubs[x].location);
+        if (this.displayAllhubs[x].location) {
+          this.loclenght.push(this.displayAllhubs[x].name)
+          this.items = this.loclenght
+          console.log(this.loclenght);
+        } else {
+        }
+      }
+    }
+  }
+ 
 }
