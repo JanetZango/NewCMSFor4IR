@@ -95,6 +95,9 @@
 
         </div>
         <div class="list-view-cotainer">
+          <div *ngIf="this.displayAllhubs.length ==0 || this.displayAllhubs.length ==undefined">
+          <p style="text-align: center;">No Organisations avaliable.....</p>
+          </div>
           <div class="listed-item" *ngFor="let q of displayAllhubs">
             <div>
               <img src="{{q.img}}" alt="">
@@ -682,8 +685,7 @@
 
     </div>
     <div class="editing-data-inputs">
-      <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertuserprofile($event)"
-        id="logoUpdate2">
+      <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="insertuserprofile($event)" id="logoUpdate2">
       <div id="theLogo-update">
 
         <label for="logoUpdate2">
@@ -707,4 +709,94 @@
       </div>
     </div>
   </div>
+
+
+  <div id="serachmodela-overlay">
+    <div class="main" *ngFor="let m of serachresults">
+      <div class="closebtn">
+        <ion-icon color="light" style="font-size: 4em;" name="md-close" (click)="cancelsearchresuts()"></ion-icon>
+      </div>
+      <div class="imgcenter">
+        <!-- <img class="coverimg" src={{m.img}} alt="" srcset=""> -->
+        <img style="margin: 3% auto; height: 15vh; width: 15vh; border-radius: 100px;" src={{m.img}} alt="" srcset="">
+      </div>
+      <div padding class="textcontainer">
+        <h1 text-center style="font-size: 1.8em;">{{m.name}}</h1>
+        <h4 class="alltextcolor">Background</h4>
+        <p class="alltextcolor">{{m.background}}</p>
+        <h4 class="alltextcolor">Address</h4>
+        <p class="alltextcolor">{{m.address}}</p>
+        <div>
+          <h4 class="alltextcolor">Application</h4>
+          <div class="AppJob">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-6>
+                  <p class="alltextcolor" no-margin text-center>Application Open Date</p>
+                  <p class="alltextcolor" no-margin text-center>{{m.progStartDate}}</p>
+                </ion-col>
+                <ion-col col-6>
+                  <p class="alltextcolor" no-margin text-center>Application Close Date</p>
+                  <p class="alltextcolor" no-margin text-center>{{m.progEndDate}}</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </div>
+        <div>
+          <br>
+          <h4 class="alltextcolor">Job</h4>
+          <div class="AppJob">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-6>
+                  <p class="alltextcolor" no-margin text-center>Job Start Date</p>
+                  <p class="alltextcolor" no-margin text-center>{{m.jobStartdate}}</p>
+                </ion-col>
+                <ion-col col-6>
+                  <p class="alltextcolor" no-margin text-center>Job End Date</p>
+                  <p class="alltextcolor" no-margin text-center>{{m.jobEndDate}}</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </div>
+        <h4 class="alltextcolor">Contacts</h4>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-4>
+              <div class="contact">
+                <p style="font-weight: 600;" class="contactinnertext">Phone number</p>
+                <p class="contactinnertext">011 855 0594</p>
+              </div>
+            </ion-col>
+            <ion-col col-4>
+              <div class="contact">
+                <p style="font-weight: 600;" class="contactinnertext">Website</p>
+                <p class="contactinnertext">www.google.com</p>
+              </div>
+            </ion-col>
+            <!-- </ion-row>
+    <ion-row> -->
+            <ion-col col-4>
+              <div class="contact">
+                <p style="font-weight: 600;" class="contactinnertext">Email</p>
+                <p class="contactinnertext">nenenkosi@gmail.com</p>
+              </div>
+            </ion-col>
+            <!-- <ion-col col-6>
+            <div class="contact" >
+              <p text-center class="contactinnertext">Email</p>
+              <p text-center class="contactinnertext">nenenkosi@gmail.com</p>
+            </div>
+          </ion-col> -->
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+  </div>
+
+
+
+
 </ion-content>

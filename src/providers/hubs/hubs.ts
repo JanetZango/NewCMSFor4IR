@@ -1109,12 +1109,12 @@ export class HubsProvider {
 							closeDate: UploadDetails[key2].closeDate,
               contacts: UploadDetails[key2].contacts,
               desc: UploadDetails[key2].desc,
-							name: UploadDetails[key2].name,
+              name: UploadDetails[key2].name,
               openDate: UploadDetails[key2].openDate,
               progEndDate: UploadDetails[key2].progEndDate,
 							progStartDate: UploadDetails[key2].progStartDate,
               user: UploadDetails[key2].user,
-              city: UploadDetails[key2].city,
+              city: UploadDetails[key2].location,
               key : key2,
         
             };
