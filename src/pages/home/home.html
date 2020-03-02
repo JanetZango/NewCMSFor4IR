@@ -82,7 +82,7 @@
               <p>{{userName}}</p>
               <p id="subStatement">{{userPosition}}</p>
             </div>
-            <img src="{{userImage}}" alt="" id="userimage">
+            <img src="{{userImage1}}" alt="" id="userimage">
           </div>
         </div>
       </div>
@@ -147,7 +147,7 @@
                     <p id="sub-head">Address</p>
                     <p id="bg-desc">{{i.address}}</p>
                     <p id="sub-head">Contact Details</p>
-                    <p id="subSub-head">{{i.contacts}}</p>
+                    <p id="subSub-head">{{i.contact}}</p>
                     <p id="bg-desc">0813917127</p>
                     <p id="subSub-head">Email</p>
                     <p id="bg-desc-email">{{i.email}}</p>
@@ -327,7 +327,7 @@
                   </div>
                   <div>
                     <p id="sub-head">Job Type</p>
-                    <p id="bg-desc">{{i.contacts}}</p>
+                    <p id="bg-desc">{{i.contact}}</p>
                   
                     <!-- <h2>Application</h2>
                     <div class="dates">
@@ -377,7 +377,7 @@
                   </div>
                   <div>
                     <p id="sub-head">Job Type</p>
-                    <p id="bg-desc">{{i.contacts}}</p>
+                    <p id="bg-desc">{{i.contact}}</p>
                     <h2>Application </h2>
                     <div class="dates">
                       <div class="open">
@@ -674,7 +674,7 @@
           [(ngModel)]="background4"></textarea>
         <div id="update-buttons">
           <button ion-button outline color="danger" (click)="cancelwifi()">Cancel</button>
-          <button ion-button (click)=" updateWIFI()">Update</button>
+          <button ion-button (click)="updateWIFI()">Update</button>
         </div>
       </div>
     </div>
@@ -690,7 +690,7 @@
 
         <label for="logoUpdate2">
           <div>Logo</div>
-          <img id="click-upload" src="{{userImage}}" alt="">
+          <img id="click-upload" src="{{userImage1}}" alt="">
         </label>
       </div>
       <div id="update-inputs">

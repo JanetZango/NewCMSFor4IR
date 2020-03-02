@@ -80,7 +80,7 @@ export class HomePage implements OnInit {
   downloadurlPic;
   userImage;
   progname;
-
+  userImage1
   constructor(public navCtrl: NavController, public hubs: HubsProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController, public alertCtrl: AlertController) {
     this.getallorg();
     this.getallhubs();
@@ -99,12 +99,14 @@ export class HomePage implements OnInit {
 
   displayProfile() {
     this.hubs.geOrgtUser().then((data: any) => {
+  
       this.userName = data.userName
-      this.userImage = data.userImage
+      this.userImage1 = data.userImage
       this.userPosition = data.userPosition
       this.userPostiondesc = data.userPostiondesc
       this.userContract = data.userContract
       console.log(this.userName)
+      console.log(data)
 
     })
   }
@@ -253,7 +255,7 @@ export class HomePage implements OnInit {
       if (event.target.files && event.target.files[0]) {
         let reader = new FileReader();
         reader.onload = (event: any) => {
-          this.userImage = event.target.result;
+          this.userImage1 = event.target.result;
         }
         reader.readAsDataURL(event.target.files[0]);
       }

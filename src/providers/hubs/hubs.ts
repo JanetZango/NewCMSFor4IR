@@ -1107,7 +1107,7 @@ export class HubsProvider {
               benefits: UploadDetails[key2].benefits,
               category: UploadDetails[key2].category,
 							closeDate: UploadDetails[key2].closeDate,
-              contacts: UploadDetails[key2].contacts,
+              contact: UploadDetails[key2].contact,
               desc: UploadDetails[key2].desc,
               name: UploadDetails[key2].name,
               openDate: UploadDetails[key2].openDate,
@@ -1511,7 +1511,7 @@ export class HubsProvider {
   }
 
 
-  addPrograme(openDate, closeDate, name, progType, background, benefits, desc, progStartDate, progEndDate, address, contacts, img,lat,long, city) {
+  addPrograme(openDate, closeDate, name, progType, background, benefits, desc, progStartDate, progEndDate, address, contact, img,lat,long, city) {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser
@@ -1527,7 +1527,7 @@ export class HubsProvider {
           progStartDate: progStartDate,
           progEndDate: progEndDate,
           address: address,
-          contacts: contacts,
+          contact: contact,
           img: img,
           lat:lat,
           long:long,
@@ -1602,7 +1602,7 @@ export class HubsProvider {
                 progStartDate: details[k].progStartDate,
                 progEndDate: details[k].progEndDate,
                 address: details[k].address,
-                contacts: details[k].contacts,
+                contact: details[k].contact,
                 img: details[k].img,
               }
               progs.push(progObject)
@@ -1661,7 +1661,7 @@ export class HubsProvider {
                 jobStartdate: details[k].jobStartdate,
                 jobEndDate: details[k].jobEndDate,
                 address: details[k].address,
-                contacts: details[k].contacts,
+                contact: details[k].contact,
                 img: details[k].img,
                 name : details[k].name
               }
@@ -1713,7 +1713,7 @@ export class HubsProvider {
                 closeDate: details[k].closeDate,
                 desc: details[k].desc,
                 address: details[k].address,
-                contacts: details[k].contact,
+                contact: details[k].contact,
                 img: details[k].img,
                 serviceName: details[k].name,
                 email: details[k].email
